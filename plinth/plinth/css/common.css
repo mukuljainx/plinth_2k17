@@ -1,0 +1,96 @@
+@font-face {
+    font-family: rez;
+    src: url("../font/REZ.ttf");
+}
+
+@font-face {
+    font-family: caviar;
+    src: url("../font/CaviarDreams.ttf");
+}
+
+@font-face {
+    font-family: cl;
+    src: url("../font/ChampagneAndLimousines.ttf");
+}
+
+@font-face {
+    font-family: hn;
+    src: url("../font/HelveticaNeue.ttf");
+}
+
+nav{
+    height: 70px;
+    padding: 20px 20px 0px ;
+}
+
+.header-logo{
+    width: 60px;
+
+}
+
+.navitem{
+    position: relative;
+    top: -40px;
+    font:normal 1.125em hn;
+}
+
+.navitem li{
+    list-style: none;
+    display: inline-block;
+    padding: 10px;
+}
+
+.navitem a{
+    color:black;
+    text-decoration: none;
+}
+
+.ham-btn{
+    display: none;
+    position: fixed;
+    top:25px;
+    right: 10px;
+}
+.ham-wrapper{  
+    display: none;
+    position: fixed;
+    top:45px;
+    right: 0px;
+    display: none;
+    z-index:9999;
+    max-width: 0px;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    box-shadow: 0px 2px 8px 1px rgba(0,0,0,0.9);
+}
+.fly-left{
+    max-width: 250px;
+}
+
+.ham-content{
+    font:normal 1.125em hn;
+}
+
+.ham-content li{
+    list-style: none;
+    padding:30px;
+}
+
+.ham-content a{
+    text-decoration: none;
+    color:white;
+}
+
+@media screen and (max-width: 768px) {
+    .navitem{
+        display:none;
+    }
+    .ham-wrapper{
+        display: block;
+    }
+    .ham-btn{
+        display: block;
+    }
+    
+    
+}

@@ -1,0 +1,34 @@
+.content{
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+h4{
+    font: normal 40px 'Roboto';
+    color:#0431B4;
+    padding-bottom: 10px;
+}
+
+.desc{
+    font-family: 'Roboto';
+    max-width: 1100px;
+}
+
+.spons-content{
+    AAheight:200px;
+    AAbox-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-left: 5px !important; 
+    padding-right: 5px !important;
+}
+
+.wrapper{
+    padding-bottom: 80px;
+}
+
+.fa-long-arrow-left{
+    color: #0431B4;
+}
