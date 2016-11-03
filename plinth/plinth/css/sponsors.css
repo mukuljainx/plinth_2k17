@@ -14,16 +14,30 @@ h4{
     max-width: 1100px;
 }
 
-.spons-content{
-    AAheight:200px;
-    AAbox-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
+.spons-content{ 
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
-    padding-top: 20px;
-    padding-bottom: 40px;
-    padding-left: 5px !important; 
-    padding-right: 5px !important;
-    height:170px;
+    height:200px;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.spons-content:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.spons-content img{
+    padding-top:20px;
+}
+
+
+
+.name{
+    text-align: center;
+    font-family: 'Roboto';
+    position: absolute;
+    top: 150px;
 }
 
 .wrapper{
