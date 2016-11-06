@@ -14,17 +14,105 @@ h4{
     max-width: 1100px;
 }
 
-.text{
-	padding-left: 100px;
-	padding-right: 100px;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	text-align: center;
+.container {
+    height: 350px;
+  font-family: arial;
+  width: 500px;
+  margin: 30px auto 0;
+  display: block;
+  padding: 30px 50px 20px;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
+    
 }
 
-.fields{
-	border-left-style: solid;
-	border-color: #26A69A;
-	border-left-width: 5px;
+h1 {
+  color: #3399cc;
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
+  margin: 0 0 70px 0;
 }
 
+.group {
+  position: relative;
+  width: 300px;
+    top:-40px;
+    margin-left: 30px;
+  margin-bottom: 30px;
+}
+.group input, .group textarea {
+    box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #333;
+  padding: 10px;
+  display: block;
+  width: 300px;
+}
+.group input:focus, .group textarea:focus {
+  outline: none;
+    border:none;
+    box-shadow: none;
+    border-bottom: 2px solid #3399cc;
+}
+.group input:focus ~ label, .group input:valid ~ label, .group textarea:focus ~ label, .group textarea:valid ~ label {
+  top: -10px;
+  font-size: 14px;
+  color: #3399cc;
+}
+.group label {
+  position: absolute;
+  color: #333;
+  top: 12px;
+  left: 0;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+
+
+input:focus ~ .bar:before, textarea:focus ~ .bar:before {
+  left: 0;
+  right: 0;
+}
+
+.submit{
+    text-align: center;
+    float: right;
+}
+
+.button{
+    float: right;
+    position: relative;
+    top: -40px;
+}
+
+.h0{
+    font: normal 18px 'Roboto';
+    color:#0431B4;
+}
+
+.container li{
+    list-style: none;
+}
+
+.social{
+    text-align: center;
+}
+
+.social li{
+    margin-top: 10px;
+    display: inline-block;
+    padding-left:40px;
+    padding-right:40px;
+}
+
+.social a{
+    color: black;
+}
+
+.fa-facebook-official:hover{
+    color:#0431B4;
+}
+
+.fa-google-plus-square:hover{
+    color:#ff0000
+}
