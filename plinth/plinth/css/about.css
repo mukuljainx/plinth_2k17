@@ -64,6 +64,22 @@ iframe{
     margin-bottom: 10px;
 }
 
+@media screen and (max-width: 640px){
+    .two{
+        margin-top: 10px;
+        margin-left: 1px;
+    }
+    
+    .two-one, .two-two, .three-one, .three-two{
+        height: 400px;
+    }
+    
+    .three{
+        margin-left: 1px;
+    }
+    
+}
+
 
 
 
