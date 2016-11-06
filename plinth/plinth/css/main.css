@@ -79,26 +79,22 @@ body{
     color:white;
 }
 
-.footer-wrapper{
-    AAborder: 1px solid white;
-    position: relative;
-    top:40px;
+.footer-posi{
+    margin-top: 20px;
 }
 
-.footer{
-    AAborder:1px solid white;
-    max-width: 600px;
-    
+.footer-text{
+    max-width: 600px;    
 }
 
-.footer li{
+.footer-text li{
     list-style: none;
     display: inline-block;
     padding:15px;
     font:normal 18px hn;
 }
 
-.footer a{
+.footer-text a{
     text-decoration: none;
     color:white;
 }
@@ -452,5 +448,13 @@ body{
     }
     .logo-svg{
         max-width: 300px;    
+    }
+}
+
+@media screen and (min-height : 768px and min-width : 640px){
+    footer{
+        position: absolute;
+        bottom: 20px;
+        margin-left: calc( 50% - 300px);
     }
 }

@@ -83,13 +83,27 @@ nav{
     color:black;
 }
 
+
 .ham-close{
     display: none;
     float: right;
     position: fixed;
-    top:25px;
+    top:10px;
     right: 10px;
     opacity: 0.5;
+}
+
+
+.ham-close span{
+    font:normal 20px 'Roboto';
+}
+
+.back{
+    color: #0431B4;
+}
+
+.back:hover{
+    opacity: 0.8;
 }
 
 @media screen and (max-width: 768px) {
@@ -99,7 +113,5 @@ nav{
     .ham-btn{
         display: block;
     }
-    
-    
 }
 

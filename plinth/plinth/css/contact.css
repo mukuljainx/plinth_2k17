@@ -17,13 +17,13 @@ h4{
 .container {
     height: 350px;
   font-family: arial;
-  width: 500px;
+/*  max-width: 1000px;*/
   margin: 30px auto 0;
   display: block;
   padding: 30px 50px 20px;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
-    
 }
+
 
 h1 {
   color: #3399cc;
@@ -74,15 +74,10 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
   right: 0;
 }
 
-.submit{
-    text-align: center;
-    float: right;
-}
-
 .button{
-    float: right;
     position: relative;
     top: -40px;
+    margin-left:150px; 
 }
 
 .h0{
@@ -90,8 +85,10 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
     color:#0431B4;
 }
 
-.container li{
+
+.card-contact li{
     list-style: none;
+    font-family: 'Roboto';
 }
 
 .social{
@@ -116,3 +113,5 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
 .fa-google-plus-square:hover{
     color:#ff0000
 }
+
+

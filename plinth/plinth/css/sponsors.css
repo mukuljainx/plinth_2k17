@@ -31,13 +31,17 @@ h4{
     padding-top:20px;
 }
 
-
-
 .name{
+    margin-top: 60px;
+}
+
+.name span{
     text-align: center;
-    font-family: 'Roboto';
+    font:normal 17px 'Roboto';
+/*
     position: absolute;
     top: 150px;
+*/
 }
 
 .wrapper{
@@ -46,4 +50,310 @@ h4{
 
 .fa-long-arrow-left{
     color: #0431B4;
+}
+
+img[src="media/sap.gif"]{
+    margin-top: 20px;
+    height:auto;
+    width:130px;
+}
+
+img[src="media/ti.png"]{
+    margin-top: 10px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/i3indya.png"]{
+    margin-top: 0px;
+    height:auto;
+    width:120px;
+}
+
+img[src="media/av.jpg"]{
+    margin-top: 25px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/g4g.png"]{
+    margin-top: 25px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/inspi.png"]{
+    margin-top: 20px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/hackerearth.png"]{
+    margin-top: 30px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/hr.jpg"]{
+    margin-top: 10px;
+    height:auto;
+    width:80px;
+}
+
+img[src="media/srjna.png"]{
+    margin-top: 10px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/tvg.png"]{
+    margin-top: 15px;
+    height:auto;
+    width:100px;
+}
+
+img[src="media/ve.jpg"]{
+    margin-top: 20px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/adideva.png"]{
+    margin-top: 10px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/roboraze.png"]{
+    margin-top: 30px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/zw.png"]{
+    margin-top: 20px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/finx.png"]{
+    margin-top: 10px;
+    height:auto;
+    width:100px;
+}
+
+img[src="media/space.png"]{
+    margin-top: 20px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/tcf.png"]{
+    margin-top: 20px;
+    height:auto;
+    width:130px;
+}
+
+img[src="media/dream.jpg"]{
+    margin-top: -10px;
+    height:auto;
+    width:140px;
+}
+
+img[src="media/ivycamp.jpg"]{
+    margin-top: 0px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/startup.png"]{
+    margin-top: 10px;
+    height:auto;
+    width:170px;
+}
+
+img[src="media/adword.png"]{
+    margin-top: 0px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/ketto.jpg"]{
+    margin-top: -10px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/wh.jpg"]{
+    margin-top: -10px;
+    height:auto;
+    width:120px;
+}
+
+img[src="media/ebay.jpg"]{
+    margin-top: 0px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/pizza.jpg"]{
+    margin-top: 20px;
+    height:auto;
+    width:100px;
+}
+
+img[src="media/youth.jpg"]{
+    margin-top: 20px;
+    height:auto;
+    width:140px;
+}
+
+img[src="media/bb.png"]{
+    margin-top: 0px;
+    height:auto;
+    width:120px;
+}
+
+img[src="media/2019.jpg"]{
+    margin-top: 20px;
+    height:auto;
+    width:120px;
+}
+
+img[src="media/me.png"]{
+    margin-top: 0px;
+    height:auto;
+    width:100px;
+}
+
+img[src="media/knowyourfest.png"]{
+    margin-top: 20px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/festpav.png"]{
+    margin-top: 20px;
+    height:auto;
+    width:150px;
+}
+
+img[src="media/fe.jpg"]{
+    margin-top: 20px;
+    height:auto;
+    width:70px;
+}
+
+img[src="media/ae.png"]{
+    margin-top: 0px;
+    height:auto;
+    width:100px;
+}
+
+.ti{
+    margin-top: 55px;
+}
+
+.i3{
+    margin-top: 50px;
+}
+
+.av{
+    margin-top: 75px;
+}
+
+.g4g{
+    margin-top: 68px;
+}
+
+.he{
+    margin-top: 73px;
+}
+
+.hr{
+    margin-top: 45px;
+}
+
+.srj{
+    margin-top: 52px;
+}
+
+.tvg{
+    margin-top: 50px;
+}
+
+.rc{
+    margin-top: 78px;
+}
+
+.fin{
+    margin-top: 62px;
+}
+
+.sd{
+    margin-top: 45px;
+}
+
+.tcf{
+    margin-top: 50px;
+}
+
+.dw{
+    margin-top: 7px;
+}
+
+.ivy{
+    margin-top: 45px;
+}
+
+.so{
+    margin-top: 57px;
+}
+
+.ga{
+    margin-top: 35px;
+}
+
+.ket{
+    margin-top: 25px;
+}
+
+.wh{
+    margin-top: 20px;
+}
+
+.eb, .lp{
+    margin-top: 47px;
+}
+
+.yi{
+    margin-top: 45px;
+}
+
+.bb{
+    margin-top: 50px;
+}
+
+.t19{
+    margin-top: 55px;
+}
+
+.max{
+    margin-top: 35px;
+}
+
+.kaf{
+    margin-top: 70px;
+}
+
+.fp{
+    margin-top: 70px;
+}
+
+.fad{
+    margin-top: 40px;
+}
+
+.all{
+    margin-top: 35px;
 }
