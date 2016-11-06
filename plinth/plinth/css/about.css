@@ -64,6 +64,10 @@ iframe{
     margin-bottom: 10px;
 }
 
+.high-wrapper{
+    margin-bottom: 100px;
+}
+
 @media screen and (max-width: 640px){
     .two{
         margin-top: 10px;

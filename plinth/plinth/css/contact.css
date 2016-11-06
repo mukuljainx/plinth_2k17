@@ -91,18 +91,18 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
     font-family: 'Roboto';
 }
 
-.social{
+.soc{
     text-align: center;
 }
 
-.social li{
+.soc li{
     margin-top: 10px;
     display: inline-block;
     padding-left:40px;
     padding-right:40px;
 }
 
-.social a{
+.soc a{
     color: black;
 }
 
@@ -114,4 +114,7 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
     color:#ff0000
 }
 
+.big-wrapper{
+    margin-bottom: 100px;
+}
 

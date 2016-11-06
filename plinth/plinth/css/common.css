@@ -106,6 +106,48 @@ nav{
     opacity: 0.8;
 }
 
+.social-wrapper{
+}
+
+.social{
+/*    border:1px solid white;*/
+    max-width: 500px;
+}
+
+.social li{
+    list-style: none;
+    display: inline-block;
+    padding: 0px 15px;
+}
+
+.social a{
+    text-decoration: none;
+    color:#4a4a4a;
+}
+
+
+.footer-text{
+    max-width: 600px;
+}
+
+.footer-text li{
+    list-style: none;
+    display: inline-block;
+    padding:0px 15px;
+    font:bold 18px hn;
+}
+
+.footer-text a{
+    text-decoration: none;
+    color:#4a4a4a;
+}
+
+.footer-fixed{
+  position: absolute;
+  bottom: 20px;
+  margin-left: calc( 50% - 300px );
+}
+
 @media screen and (max-width: 768px) {
     .navitem{
         display:none;
