@@ -57,21 +57,17 @@ body{
 }
 
 .social-wrapper{
-    AAborder: 1px solid white;
-    position: relative;
-    top:52px;
 }
 
 .social{
     AAborder:1px solid white;
     max-width: 500px;
-
 }
 
 .social li{
     list-style: none;
     display: inline-block;
-    padding:15px;
+    padding: 0px 15px;
 }
 
 .social a{
@@ -80,7 +76,6 @@ body{
 }
 
 .footer-posi{
-    margin-top: 20px;
 }
 
 .footer-text{
@@ -90,7 +85,7 @@ body{
 .footer-text li{
     list-style: none;
     display: inline-block;
-    padding:15px;
+    padding:0px 15px;
     font:normal 18px hn;
 }
 
