@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    atvImg();
+});
+
 $(document).foundation()
 
 //HAMBURGER
@@ -33,3 +37,4 @@ $('.back').click(function() {
         window.location.assign("index.html");
     }
 });
+

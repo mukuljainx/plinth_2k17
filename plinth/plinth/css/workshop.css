@@ -1,0 +1,72 @@
+.details{
+    font:normal 16px 'Roboto';
+}
+
+h4{
+    font: normal 40px 'Roboto';
+    color:#c90ceb;
+    padding-bottom: 10px;
+}
+
+.content{
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+/*
+.columns{
+    background-color: darkgray;
+    
+}
+*/
+
+.dp-image{
+    background-color: darkgray;
+    width:150px;
+    height: 150px;
+    border-radius: 100px;
+}
+
+.title-workshop{
+    font:bold 20px 'Roboto';
+}
+
+.by-workshop{
+    font:normal 16px 'Roboto';
+    color:#4a4a4a;
+}
+
+.details a{
+    font:normal 20px 'Roboto';
+    color:#c90ceb;
+    padding-right: 30px;
+}
+
+.workshop-desc{
+    font:normal 16px 'Roboto';
+    color:#4a4a4a;
+    margin-top: 50px;
+}
+
+footer{
+    margin-top: 100px;
+}
+
+.content{
+    margin-top: 50px;
+}
+
+.content-head{
+    font:bold 18px 'Roboto';
+    color:black;
+}
+
+.pipe-1{
+    margin-left: 40px;
+    margin-right: 35px;
+}
+
+.pipe-2{
+    margin-left: 20px;
+    margin-right: 20px;    
+}
