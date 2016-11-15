@@ -1,0 +1,140 @@
+h4{
+    font: normal 40px 'Roboto';
+    color:#3ca37c;
+    padding-bottom: 10px;
+}
+
+.content{
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+footer{
+    margin-top: 100px;
+}
+
+.dp-image{
+    background-color: darkgray;
+    width:150px;
+    height: 150px;
+    border-radius: 100px;
+/*    margin-left: 220px;*/
+}
+
+.details{
+    font:normal 16px 'Roboto';
+}
+
+.title-workshop{
+    font:bold 20px 'Roboto';
+}
+
+.details ul{
+    list-style: none;
+    margin: 0px;
+}
+
+.details li{
+    display: inline-block;
+    padding-right: 30px;
+}
+
+.details a{
+    font:normal 20px 'Roboto';
+    color:#3ca37c;
+}
+
+.card{
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    height:100px;
+    width: 300px;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 60px;
+    padding-top: 10px;
+}
+
+.card-img{
+    background-color: darkgray;
+    width:80px;
+    height: 80px;
+    border-radius: 100px;
+}
+
+.prize{
+    padding-top: 15px;
+}
+
+.tab-wrapper{
+    margin-top: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+ul.tab {
+    list-style: none;
+    margin: 0;
+    padding: 30px;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+ul.tab li {
+    display: inline-block;
+    padding-right: 80px;
+}
+
+ul.tab li a{
+    font:bold 15px 'Roboto';
+    color:#606060;
+}
+
+ul.tab li a:focus, .active {
+    color:#3ca37c;
+}
+
+.tabcontent {
+    font-family: 'Roboto';
+    display: none;
+    float: left;
+}
+
+.tabcontent span{
+    font:normal 30px 'Roboto';
+}
+
+/*
+.tabcontent {
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;  Fading effect takes 1 second 
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+*/
+
+.content-head{
+    margin-top: 50px;
+}
+
+.contentdesc{
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+
+.big-wrapper{
+    overflow: hidden;
+}
+
+.wrapper{
+    width = 5820px;
+}

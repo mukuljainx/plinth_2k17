@@ -37,10 +37,18 @@ h4{
     color:#4a4a4a;
 }
 
+.details ul{
+    list-style: none;
+    margin: 0px;
+}
+
+.details li{
+    display: inline-block;
+    padding-right: 30px;
+}
 .details a{
     font:normal 20px 'Roboto';
     color:#c90ceb;
-    padding-right: 30px;
 }
 
 .workshop-desc{
