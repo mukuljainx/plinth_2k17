@@ -19,8 +19,12 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
-$(document).ready(function() {
-  $('.tablinks').on('click', 'span', function(){
-    $(".wrapper").css("transform","translateX("+$(this).index() * -970+"px)");
-  });
+$('.drop-toggle').click(function() {
+    $('.drop-content-wrapper').toggleClass('drop-content-wrapper-display');
 });
+
+$('.tablinks').click(function() {
+    $('.drop-content-wrapper').removeClass('drop-content-wrapper-display');
+});
+
+
