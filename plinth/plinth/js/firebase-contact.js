@@ -9,9 +9,24 @@ var config = {
 firebase.initializeApp(config);
 
 
+var inName = document.getElementById("in-name");
+var inEmail = document.getElementById("in-email");
+var inQuery = document.getElementById("in-query");
+var btnSubmit = document.getElementById("btn-submit");
+
 var dbref = firebase.database().ref();
-var inName = document.getElementById('in-name');
-var inEmail = document.getElementById('in-email');
-var inQuery = document.getElementById('in-query');
+var queryref = dbref.child("Queries");
+
+btnSubmit.addEventListener('click', submit=>{
+    var name = inName.value;
+    var email = inEmail.value;
+    var query = inQuery.value;
+    
+    queryref.push({
+        Name: name,
+        Email: email,
+        Query: query
+    });
+});
 
 

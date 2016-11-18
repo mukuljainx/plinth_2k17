@@ -65,26 +65,26 @@
                         <form>
                             <i class="fa fa-user-circle" aria-hidden="true"></i>
                             <div class="group">      
-                                <input type="text" class="in-name" required>
+                                <input type="text" id="in-name" required>
                                 <span class="highlight"></span>
                                 <label>Name</label>
                             </div>
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                             <div class="group">      
-                                <input type="email" class="in-email" required>
+                                <input type="email" id="in-email" required>
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Email</label>
                             </div>
                             <i class="fa fa-pencil-square" aria-hidden="true"></i>
                             <div class="group">      
-                                <textarea class="in-query"></textarea>
+                                <textarea id="in-query"></textarea>
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Query</label>
                             </div>
 
-                            <a class="button success">Submit</a>
+                            <a class="button success" id="btn-submit">Submit</a>
 
                         </form>
 <!--                    </div>-->
@@ -195,6 +195,7 @@
         <script src="js/app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
         <script src="js/firebase-contact.js"></script>
+        
         
     </body>
 </html>
