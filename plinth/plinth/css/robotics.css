@@ -58,7 +58,7 @@ footer{
 /*    height:100px;*/
 /*    width: 300px;*/
     text-align: center;
-    
+
     padding-top: 5px;
     padding-bottom: 5px;
     max-width:300px;
@@ -72,11 +72,11 @@ footer{
     height: 80px;
     border-radius: 100px;
     margin: auto;
-   
+
 }
 
 .prize{
-    padding-top: 15px; 
+    padding-top: 15px;
     margin: auto;
 }
 
@@ -139,7 +139,7 @@ ul.drop-tab {
 /*    float: right;*/
     position: absolute;
     right: 111px;
-    top:670px;
+    top:620px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
 }
@@ -149,13 +149,17 @@ ul.drop-tab {
 }
 
 .drop-content-wrapper ul{
-    padding: 0px;
+    padding: 0px 0px;
     margin: 0px;
 }
 
 .drop-content-wrapper li{
     list-style: none;
-    padding: 5px;
+    padding: 10px 20px;
+}
+
+.drop-content-wrapper li:hover{
+  background: #f1f1f1;
 }
 
 .drop-content-wrapper a{
@@ -166,7 +170,7 @@ ul.drop-tab {
 /*
 .tabcontent {
     -webkit-animation: fadeEffect 1s;
-    animation: fadeEffect 1s;  Fading effect takes 1 second 
+    animation: fadeEffect 1s;  Fading effect takes 1 second
 }
 
 @-webkit-keyframes fadeEffect {
@@ -253,7 +257,7 @@ ul.drop-tab {
   color: #3ca37c;
 }
 .group label {
-  font:normal 22px cl;  
+  font:normal 22px cl;
   position: absolute;
   top: 12px;
   left: 0;
@@ -325,7 +329,7 @@ input[type="radio"]:checked + label span {
     .drop-content-wrapper{
         position: absolute;
         right: 70px;
-        top:830px;   
+        top:830px;
     }
 }
 
