@@ -212,27 +212,83 @@ ul.drop-tab {
     z-index: 99999;
     display: none;
     position: absolute;
-    left:500px;
+    left:400px;
     top:50px;
-    width:500px;
-    height: auto;
+    width:680px;
+    height: 550px;
     box-shadow: 0px 4px 8px 1px rgba(0,0,0,0.2);
     padding:100px 50px 50px;
+    overflow: auto;
+    align-content: center;
 }
+
 
 .reg-form-display{
     display: block;
 }
 
+.btn{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: 240px;
+}
+
+.btn-register{
+    box-shadow: 0px 4px 8px 1px rgba(0,0,0,0.2);
+    padding: 10px 20px 10px;
+    font:bold 22px cl;
+    color:black;
+}
+
+.add-memb{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 220px;    
+}
+
+.add{
+    font:bold 22px cl;
+    color:black;
+}
+
+
+
+
+.reg-social ul{
+    margin: 0px;
+    padding: 0px;
+}
+
+.reg-social li{
+    list-style: none;
+    color: black;
+    font:normal 22px cl;
+    display: inline-block;
+        box-shadow: 0px 4px 8px 1px rgba(0,0,0,0.2);
+    margin-right: 20px;
+    padding:10px 20px 10px;
+}
+
+.reg-social a{
+    color: black;
+}
+
+.fa-facebook, .fa-google-plus{
+    padding-right: 10px;
+}
 
 
 .group {
   position: relative;
   width: 300px;
     top:-40px;
+/*
     margin-left: 30px;
   margin-bottom: 30px;
+*/
+    margin: auto;
 }
+
 .group input, .group textarea {
     box-shadow: none;
   border: none;
@@ -269,8 +325,9 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
 
 .radio-sex{
     position: relative;
-    top:-50px;
-    left:25px;
+    top:-30px;
+    left:130px;
+    margin-bottom: -10px;
 }
 
 .reg-sex-h{
@@ -283,11 +340,29 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
     margin-left: 80px;
 }
 
+.radio-year{
+    position: relative;
+    top:-30px;
+    left:110px;
+    margin-bottom: -10px;
+}
+
 .reg-acc-h{
     font:normal 22px cl;
 }
 
+.radio-acc{
+    margin-top: -40px;
+}
 
+.reg-acc{
+    margin-top: -30px;
+    margin-left: 150px;
+}
+
+.radio-acc{
+    margin-left: 150px; 
+}
 
 /*radio button*/
 
