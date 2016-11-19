@@ -100,6 +100,8 @@ body{
   margin-left: calc( 50% - 300px );
 }
 
+
+
 @media screen and (max-width: 700px) {
     .logo-clg{
         font: normal 13px cl;
