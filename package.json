@@ -1,5 +1,5 @@
 {
-  "name": "Plinth 2017 | Ghost edition",
+  "name": "Plinth-2017",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -14,5 +14,9 @@
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "author": "Mukul Jain",
+  "contributors": [
+      "Mukul Jain <jainmukul1996@gmail.com>"
+  ]
 }
