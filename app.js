@@ -4,11 +4,33 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var authenticate = require('./authenticate');
+
+// data base connection
+var DBconfig = require('./config/dbconfig')
+mongoose.Promise = global.Promise;
+mongoose.connect(DBconfig.url);
+
+var db = mongoose.connection;
+
+db.on('error',console.error.bind(console, 'connection error:'));
+db.once('open', function(){
+  console.log('connected to db server successfully');
+});
+// database connection done
+
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+//passport
+
+app.use(passport.initialize());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
