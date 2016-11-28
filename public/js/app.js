@@ -1,4 +1,6 @@
-$(document).foundation()
+
+
+$(document).foundation();
 
 //HAMBURGER
 
