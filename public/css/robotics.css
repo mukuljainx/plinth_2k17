@@ -88,25 +88,32 @@ footer{
 
 ul.tab {
     list-style: none;
-    margin: 0;
-    padding: 30px;
+    margin: 0px;
+    padding: 0px;
     overflow: hidden;
     background-color: #f1f1f1;
 }
 
 ul.tab li {
     display: inline-block;
-    padding-right: 80px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 ul.tab li a{
     font:bold 15px 'Roboto';
     color:#606060;
+    padding-right: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 40px;
 }
 
 ul.tab li a:focus, .active {
-    color:#3ca37c;
+   border-bottom: 3px solid #3ca37c;
 }
+
+
 
 .tabcontent {
     font-family: 'Roboto';
