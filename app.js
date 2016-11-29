@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var authenticate = require('./authenticate');
+var session = require('express-session');
+var flash = require('express-flash');
 
 // data base connection
 var DBconfig = require('./config/dbconfig')
@@ -33,8 +35,11 @@ var app = express();
 app.use(passport.initialize());
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'public'));
+app.set('view engine', 'ejs');
+
+app.use(session({ secret: 'somerandomkeytimespread' })); // session secret
+app.use(flash());
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
