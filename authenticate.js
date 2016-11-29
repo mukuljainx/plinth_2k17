@@ -4,14 +4,15 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var User = require('./models/user');
 var configAuth = require('./config/auth');
 
-passport.serializeUser(function(user, done){
-	done(null, user.id);
+passport.serializeUser(function(user, done) {
+        done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done){
-	User.findById(id, function(err, user){
-		done(err, user);
-	});
+    // used to deserialize the user
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
 });
 
 exports.google = passport.use(new GoogleStrategy({
@@ -19,68 +20,64 @@ exports.google = passport.use(new GoogleStrategy({
         clientSecret    : configAuth.googleAuth.clientSecret,
         callbackURL     : '/user/auth/google/callback',
 	},
+	function(accessToken, refreshToken, profile, done) {
+		User.findOne({ 'email': profile.emails[0].value }, function(err, user) {
+		  if(err) {
+		    console.log(err); // handle errors!
+		  }
+		  if (!err && user !== null) {
+		    done(null, user);
+		  } else {
+		    user = new User();
+			user.googleid    = profile.id;
+			user.googletoken = accessToken;
+			user.name  		 = profile.displayName;
+			user.email 		 = profile.emails[0].value; // pull the first email
 
-	// function(token, refreshToken, profile, done){
-	// 	console.log("checkpoint 1");
-	// 	process.nextTick(function(){
-	// 		User.findOne({ 'google.id' : profile.id }, function(err, user){
-	// 			if(err){
-	// 				console.log("checkpoint 4");
-	// 				return done(err);
-	// 			}
-	// 			if(user){
-	// 				console.log("checkpoint 3");
-	//
-	// 				//some code to make them login
-	// 				return done(null, user);
-	// 			}
-	// 			else{
-	// 				console.log("checkpoint 2");
-	//
-	// 				var newUser = new User();
-	//
-	// 				//set basic info, other will be asked later
-	// 				newUser.google.id    = profile.id;
-    //                 newUser.google.token = token;
-    //                 newUser.google.name  = profile.displayName;
-    //                 newUser.google.email = profile.emails[0].value; // pull the first email
-	//
-    //                 newUser.save(function(err) {
-    //                     if (err)
-    //                         throw err;
-	// 					console.log(newUser);
-    //                     return done(null, newUser);
-    //                 });
-	// 			}
-	//
-	// 		});
-	// 	});
-	// };
-		function(accessToken, refreshToken, profile, done) {
-			console.log("checkpoint 1");
-			User.findOne({ 'google.id': profile.id }, function(err, user) {
-			  if(err) {
-				console.log("checkpoint 2");
-			    console.log(err); // handle errors!
-			  }
-			  if (!err && user !== null) {
-				console.log("checkpoint 3");
-			    done(null, user);
-			  } else {
-				console.log("checkpoint 4");
-			    user = new User();
-				user.google.id    = profile.id;
-				user.google.token = accessToken;
-				user.google.name  = profile.displayName;
-				user.google.email = profile.emails[0].value; // pull the first email
+		    user.save(function(err) {
+		      if(err) {
+		        console.log(err); // handle errors!
+		      } else {
+		        console.log("saving user ...");
+		        done(null, user);
+		      }
+		    });
+		  }
+		})
+	})
+);
 
-			    user.save(function(err) {
-			      if(err) {
-			        console.log(err); // handle errors!
-			      } else {
-			        console.log("saving user ...");
-			        done(null, user);
-			      }
-			    });
-			  }
-		  })}));
+
+exports.facebook = passport.use(new FacebookStrategy({
+		clientID        : configAuth.facebookAuth.clientID,
+        clientSecret    : configAuth.facebookAuth.clientSecret,
+        callbackURL     : '/user/auth/facebook/callback',
+		profileFields   : ['id', 'emails', 'name'],
+	},
+	function(accessToken, refreshToken, profile, done) {
+		User.findOne({ 'email': profile.emails[0].value }, function(err, user) {
+		  if(err) {
+		    console.log(err); // handle errors!
+		  }
+		  if (!err && user !== null) {
+		    done(null, user);
+		  } else {
+			// console.log("**************\nCheckpoint\n**************\n New user adding");
+		    user = new User();
+			user.facebookid    = profile.id;
+			user.facebooktoken = accessToken;
+			user.name  		   = profile.displayName;
+			user.email 		   = profile.emails[0].value; // pull the first email
+
+		    user.save(function(err) {
+		      if(err) {
+		        console.log(err); // handle errors!
+		      } else {
+		        console.log("saving user ...");
+		        done(null, user);
+		      }
+		    });
+		  }
+		})
+	})
+);

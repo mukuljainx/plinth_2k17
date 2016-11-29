@@ -1,11 +1,24 @@
 var User = require('../models/user');
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('../config/auth');
+var nJwt = require('njwt');
 
 exports.getToken = function (user) {
-    return jwt.sign(user, config.secretKey, {
-        expiresIn: 3600
-    });
+    var claims = {
+      sub: user.email,
+      iss: 'https://plinth.in',
+      permissions: 'event-registration'
+    }
+
+    var jwt = nJwt.create(claims,config.secretKey);
+    jwt.setExpiration(new Date('2017-01-31'));
+    console.log('*************************');
+    console.log(jwt);
+    console.log('*************************');
+
+    var token = jwt.compact();
+    return token
+
 };
 
 exports.verifyOrdinaryUser = function (req, res, next) {
@@ -22,6 +35,7 @@ exports.verifyOrdinaryUser = function (req, res, next) {
                 return next(err);
             } else {
                 // if everything is good, save to request for use in other routes
+                console.log(decoded);
                 req.decoded = decoded;
                 next();
             }
