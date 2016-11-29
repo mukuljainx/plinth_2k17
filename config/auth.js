@@ -1,5 +1,5 @@
 module.exports = {
-
+    'secretKey': process.env.SECRET_KEY,
     'facebookAuth' : {
         'clientID'      : process.env.FB_CLIENT_ID, // your App ID
         'clientSecret'  : process.env.FB_CLIENT_SECRET, // your App Secret
