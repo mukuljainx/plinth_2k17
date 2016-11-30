@@ -191,14 +191,30 @@ nav{
 }
 
 .notif{
-/*    display: none;*/
+    text-align: right;
+    display: none;
     position: fixed;
-    top: 50px;
-    right: 0px;
-    max-width: 200px;
+    top: 60px;
+    right: 20px;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
-    font: bold 15px 'Roboto';
+    font: normal 15px 'Roboto';
+    padding: 20px;
+    background-color: white;
+    z-index: 999;
+}
+
+.reg-status{
+    padding-left: 15px;
+}
+
+.reg-status-img{
+    padding: 3px;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: white;
+    background-color:#1585cf;
+    border-radius: 100%;
 }
 
 @media screen and (max-width: 768px) {
