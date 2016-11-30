@@ -20,9 +20,12 @@ exports.getToken = function (user) {
 
 exports.verifyOrdinaryUser = function (req, res, next) {
     // check header or url parameters or post parameters for token
-    var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
-    // decode token
+    var tokenx = req.body.token || req.query.token || req.headers['access-token'];
+
+    var buffer = new Buffer(tokenx, 'base64');
+    var token = buffer.toString('ascii');
+        // decode token
     if (token) {
         // verifies secret and checks exp
         jwt.verify(token, config.secretKey, function (err, decoded) {
@@ -32,9 +35,8 @@ exports.verifyOrdinaryUser = function (req, res, next) {
                 return next(err);
             } else {
                 // if everything is good, save to request for use in other routes
-                console.log(decoded);
                 req.decoded = decoded;
-                next();
+                return next();
             }
         });
     } else {

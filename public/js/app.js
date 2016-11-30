@@ -1,5 +1,3 @@
-
-
 $(document).foundation();
 
 //HAMBURGER
@@ -23,18 +21,23 @@ $('body').click(function() {
     }
 });
 
-//BACK
+//cookie service
 
-$('.back').click(function() {
-    var hist=history.length;
-//    console.log(hist);
-    if(hist>1){
-        window.history.back();
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
     }
-    else{
-        window.location.assign("index.html");
-    }
-});
+    return "";
+}
+
 
 //Register Modal
 
@@ -57,9 +60,13 @@ var profiles =
 };
 
 function unloadcallback(){
-    if(localStorage.temptoken !== undefined)
-        //document.cookie = "access_token=" + localStorage.temptoken + "; expires=Mon, 30 Dec 2017 12:00:00 UTC;";
-        
+    if(localStorage.temptoken !== undefined){
+        document.cookie = "access-token=" + localStorage.temptoken + "; expires=Mon, 30 Dec 2017 12:00:00 UTC;";
+        $.post( "/user/user_validate", { "token" : getCookie('access-token') })
+        .done(function( data ) {
+            console.log(data);
+        });
+    }
 };
 
 
