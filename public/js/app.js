@@ -59,6 +59,10 @@ var profiles =
     }
 };
 
+function isLoggedIn(){
+        // check if user is already logged
+}
+
 function unloadcallback(){
     if(localStorage.temptoken !== undefined){
         document.cookie = "access-token=" + localStorage.temptoken + "; expires=Mon, 30 Dec 2017 12:00:00 UTC;";
@@ -74,11 +78,11 @@ function unloadcallback(){
                     //save his details
                     //notify him
                     //change view add his sign in
+                    //set some browser cookie to on
             else
                 //close current modal
                 //change view add his sign in
             }
-
         });
     }
 };
