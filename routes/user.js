@@ -26,33 +26,14 @@ router.get('/auth/google/callback', function(req,res,next){
         return res.status(500).json({
           err: 'Could not log in user'
         });
-      }
-    //   console.log('*************************************');
-    //   console.log(req);
-    //   console.log('*************************************');
-    //   console.log('*************************************');
-    //   console.log(res);
-    //   console.log('*************************************');
-      var token = Verify.getToken(user);
-    //   res.status(200).json({
-    //     status: 'Google Login successful!',
-    //     success: true,
-    //     token: token,
-    //   });
+    }
+      var tokenx = Verify.getToken(user);
+      var buffer = new Buffer(tokenx);
+      var token = buffer.toString('base64');
       req.flash('access_token',token);
       res.redirect(301,'/user/redirect');
     });
   })(req,res,next);
-});
-
-
-router.get('/redirect', function(req, res) {
-    // console.log('*************************************');
-    // console.log(req.flash('access_token'));
-    // console.log('*************************************');
-   res.render('redirect',{
-       user : req.flash('access_token')
-   });
 });
 
 
@@ -82,16 +63,25 @@ router.get('/auth/facebook/callback', function(req,res,next){
             err: 'Could not log in user'
             });
         }
-        var token = Verify.getToken(user);
-        res.status(200).json({
-        status: 'Facebook Login successful!',
-        success: true,
-        token: token,
-        user : user,
-      });
+        var tokenx = Verify.getToken(user);
+        var buffer = new Buffer(tokenx);
+        var token = buffer.toString('base64');
+        req.flash('access_token',token);
+        res.redirect(301,'/user/redirect');
     });
   })(req,res,next);
 });
 
+/*******************
+
+Redirect
+
+********************/
+
+router.get('/redirect', function(req, res) {
+   res.render('redirect',{
+       token : req.flash('access_token'),
+   });
+});
 
 module.exports = router;

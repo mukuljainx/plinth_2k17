@@ -8,11 +8,13 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.min.css" rel="stylesheet">
     </head>
     <body>
-
-        <%= user %>
-
-        <p style="text-align : center; margin-top : 40px;">redirecting ...</p>
+        <p style="margin-left:20px;">redirecting ...</p>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-        <script src="js/redirect.js"></script>
+        <script>
+        localStorage.setItem("temptoken", '<%= token %>');
+        alert('<%= token %>');
+        window.close();
+        close();
+        </script>
     </body>
 </html>

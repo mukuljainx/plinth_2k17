@@ -12,9 +12,6 @@ exports.getToken = function (user) {
 
     var jwt = nJwt.create(claims,config.secretKey);
     jwt.setExpiration(new Date('2017-01-31'));
-    console.log('*************************');
-    console.log(jwt);
-    console.log('*************************');
 
     var token = jwt.compact();
     return token

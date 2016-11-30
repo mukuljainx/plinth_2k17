@@ -43,3 +43,25 @@ $('.register-pop-up').click(function(){
 });
 
 
+// popus window for login
+
+var profiles =
+{
+    windowCallUnload:
+    {
+        // height:300,
+        // width:400,
+        center:1,
+        onUnload:unloadcallback
+    }
+};
+
+function unloadcallback(){
+    document.cookie = "access_token=" + localStorage.temptoken + "; expires=Fri, 20 Dec 2017 12:00:00 UTC";
+};
+
+
+$(function()
+{
+    $(".popupwindow").popupwindow(profiles);
+});
