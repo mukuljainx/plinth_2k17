@@ -60,7 +60,12 @@ var profiles =
 };
 
 function isLoggedIn(){
-        // check if user is already logged
+    // check if user is already logged
+    // through post each time
+}
+
+function logOut(){
+    //logout user
 }
 
 function unloadcallback(){
@@ -76,6 +81,7 @@ function unloadcallback(){
                 //if(modal is closed)
                     // unregister user
                     // notify him registration unsuccesfull
+                    // remove cookie from browser access_token
                 //else(filled details)
                     //save his details
                     //notify him
