@@ -75,11 +75,7 @@ function unloadcallback(){
         .done(function( data ) {
             if(!data.response){
                 //open modal for complete signup
-                $('#regForm').foundation()
-                $('#regForm').foundation('open');
-                // var popup = new Foundation.Reveal($('#regForm'));
-                // popup.open();
-                //close current modal
+                $('.holax').trigger('click');
                 $('.close-button').trigger('click');
                 //if(modal is closed)
                     // unregister user
