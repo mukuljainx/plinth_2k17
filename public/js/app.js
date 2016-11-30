@@ -70,7 +70,9 @@ function unloadcallback(){
         .done(function( data ) {
             if(!data.response){
                 //open modal for complete signup
+                $('#regForm').foundation('reveal', 'open');
                 //close current modal
+                $('#register-pop-up-window').foundation('reveal', 'close');
                 //if(modal is closed)
                     // unregister user
                     // notify him registration unsuccesfull
@@ -81,6 +83,7 @@ function unloadcallback(){
                     //set some browser cookie to on
             else
                 //close current modal
+                $('#register-pop-up-window').foundation('reveal', 'close');
                 //change view add his sign in
             }
         });
