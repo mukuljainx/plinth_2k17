@@ -76,7 +76,9 @@ function unloadcallback(){
             if(!data.response){
                 //open modal for complete signup
                 $('#regForm').foundation()
-                $('#regForm').foundation('reveal', 'open');
+                $('#regForm').foundation('open');
+                // var popup = new Foundation.Reveal($('#regForm'));
+                // popup.open();
                 //close current modal
                 $('.close-button').trigger('click');
                 //if(modal is closed)

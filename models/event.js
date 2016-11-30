@@ -14,7 +14,7 @@ var eventSchema = mongoose.Schema({
         eventName         : String,
         eventDate         : String,
         eventVenue        : String,
-        prizeWorth        : Number,
+        prizeWorth        : String,
         synopsis          : String,
         eventDescription  : String,
         rules             : String,

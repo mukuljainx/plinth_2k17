@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var Eventx = require('../models/event');
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -35,6 +38,7 @@ router.get('/competitions/robotics', function(req, res) {
 });
 
 router.get('/competitions/management', function(req, res) {
+
    res.render('roboticsEvents');
 });
 
@@ -67,7 +71,19 @@ router.get('/profile', function(req, res) {
 });
 
 router.get('/competitions/astronomy/armageddon', function(req, res) {
-   res.render('/partials/event');
+    eveDetails = {};
+    Eventx.findOne({'eventName' : 'armageddon'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
+
 });
 
 router.get('/competitions/astronomy/astro_hunt', function(req, res) {
