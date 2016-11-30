@@ -1,0 +1,22 @@
+{
+    "imageLink" : "images/icons/literary/wrangle.svg",
+    "registerLink" : "/registration/literary/wrangle",
+    "register0" : "<li><a class='reg-btn' href='#' data-open='regform'>Register ></a></li>",
+    "register1" : "<li><a class='reg-btn' href='#' onClick='registerUser('literary', 'wrangle')'>Register ></a></li>",
+    "paymentLink" : "",
+    "payment0" : "<li><a href='#' data-open='paymentpop'>Make Payment></a></li>",
+    "payment1" : "",
+    "memberUpperLimit" : 3,
+    "memberLowerLimit" : 1,
+    "clubName" : "literary",
+    "eventName" : "wrangle",
+    "eventDate" : "22nd Jan 2016",
+    "eventVenue" : "The LNMIIT, Jaipur",
+    "prizeWorth" : "INR. 30,000",
+    "synopsis" : "<p>Wrangle or hush - let’s discuss the issues that concerns us. A lot is going in our country and there are plethora of issues that deserves our attention. Plinth 2017 invites you to an open discussion that would intrigue you to speak and think about the issues that form a part of our daily lives.</p>",
+    "eventDescription" : " <p><ol><li>Teams will be provided with a set of 25 questions</li><li>The questions will be a mix of both Multiple-choice & Direct-Answer Q.</li><li>The questions will be based on hypothetical situations wherein laws of physics will be twisted & conceptual aptitude will be checked.</li><li>Marks will be allotted to each question individually.</li><li>Team with maximum marks will be declared the winner</li></ol></p>",
+    "rules" : "<p><b>General Rules </b><ol><li>Each participant will get maximum of 2 minutes to speak in one go.</li></ol></p>",
+    "judges" : "<p>Details will be Updated soon</p>",
+    "mentors" : "<p>Details will be Updated soon</p>",
+    "sponsors" : "<p>Details will be Updated soon</p>"
+}
