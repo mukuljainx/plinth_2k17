@@ -85,55 +85,185 @@ router.get('/competitions/astronomy/armageddon', function(req, res) {
 });
 
 router.get('/competitions/astronomy/astro_hunt', function(req, res) {
-   res.render('/partials/event');
+   Eventx.findOne({'eventName' : 'astro_hunt'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
 });
 
 router.get('/competitions/astronomy/physics_bowl', function(req, res) {
-   res.render('/partials/event');
+   Eventx.findOne({'eventName' : 'physics_bowl'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
 });
 
 router.get('/competitions/astronomy/star_trek', function(req, res) {
-   res.render('/partials/event');
+   Eventx.findOne({'eventName' : 'star_trek'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
 });
 
 router.get('/competitions/coding/fix_the_bug', function(req, res) {
-   res.render('/partials/event');
+   Eventx.findOne({'eventName' : 'fix_the_bug'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
 });
 
 router.get('/competitions/coding/iupc', function(req, res) {
-   res.render('/partials/event');
+   Eventx.findOne({'eventName' : 'iupc'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
 });
 
 router.get('/competitions/coding/iupc_distraction', function(req, res) {
-   res.render('/partials/event');
+   Eventx.findOne({'eventName' : 'iupc_distraction'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
 });
 
 router.get('/competitions/robotics/lfr', function(req, res) {
-   res.render('/partials/event');
+   Eventx.findOne({'eventName' : 'lfr'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
 });
 
 router.get('/competitions/robotics/quad', function(req, res) {
-   res.render('/partials/event');
+   Eventx.findOne({'eventName' : 'quad'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
 });
 
 router.get('/competitions/robotics/roborace', function(req, res) {
-   res.render('/partials/event');
+   Eventx.findOne({'eventName' : 'roborace'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
 });
 
 router.get('/competitions/robotics/robosoccer', function(req, res) {
-   res.render('/partials/event');
+   Eventx.findOne({'eventName' : 'robosoccer'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
 });
 
 router.get('/competitions/robotics/robowar', function(req, res) {
-   res.render('/partials/event');
+   Eventx.findOne({'eventName' : 'robowar'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
 });
 
 router.get('/competitions/robotics/transporter', function(req, res) {
-   res.render('/partials/event');
+   Eventx.findOne({'eventName' : 'transporter'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
 });
 
 router.get('/competitions/management/sif', function(req, res) {
-   res.render('/partials/event');
+   Eventx.findOne({'eventName' : 'sif'}, function(err, eventx) {
+        // if there are any errors, return the error
+        if (err)
+            return done(err);
+        // check to see if theres already a user with that email
+        if (eventx){
+            res.render('partials/event',{
+                eventDetail : eventx
+            });
+        }
+    });
 });
 
 module.exports = router;
