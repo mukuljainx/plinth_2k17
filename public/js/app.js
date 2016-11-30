@@ -64,7 +64,21 @@ function unloadcallback(){
         document.cookie = "access-token=" + localStorage.temptoken + "; expires=Mon, 30 Dec 2017 12:00:00 UTC;";
         $.post( "/user/user_validate", { "token" : getCookie('access-token') })
         .done(function( data ) {
-            console.log(data);
+            if(!data.response){
+                //open modal for complete signup
+                //close current modal
+                //if(modal is closed)
+                    // unregister user
+                    // notify him registration unsuccesfull
+                //else(filled details)
+                    //save his details
+                    //notify him
+                    //change view add his sign in
+            else
+                //close current modal
+                //change view add his sign in
+            }
+
         });
     }
 };
