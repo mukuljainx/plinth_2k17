@@ -4,6 +4,7 @@ var passport = require('passport');
 var google = require('../authenticate').google;
 var facebook = require('../authenticate').facebook;
 var Verify = require('./verify');
+var User = require('../models/user');
 
 
 /* GET users listing. */
@@ -84,10 +85,22 @@ router.get('/redirect', function(req, res) {
    });
 });
 
-router.post('/redirect', function(req, res) {
-   res.render('redirect',{
-       token : req.flash('access_token'),
-   });
+router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
+    User.findOne({ 'email' :  req.decoded.sub }, function(err, user) {
+        // if there are any errors, return the error
+        if (err){
+            return done(err);
+        }
+        // check to see if theres already a user with that email
+        if (user) {
+            if(true){
+                res.json({"response" : false});
+            }
+            else if(user.phoneNumber !== 0){
+                res.json({"response" : true});
+            }
+        }
+    });
 });
 
 module.exports = router;

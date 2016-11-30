@@ -33,6 +33,7 @@ exports.google = passport.use(new GoogleStrategy({
 			user.googletoken = accessToken;
 			user.name  		 = profile.displayName;
 			user.email 		 = profile.emails[0].value; // pull the first email
+            user.phoneNumber = 0;
 
 		    user.save(function(err) {
 		      if(err) {

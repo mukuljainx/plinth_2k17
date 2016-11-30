@@ -14,12 +14,28 @@ router.get('/about', function(req, res) {
    res.render('about');
 });
 
-router.get('/astronomy', function(req, res) {
+router.get('/competitions/astronomy', function(req, res) {
    res.render('astronomy');
 });
 
-router.get('/coding', function(req, res) {
+router.get('/competitions/coding', function(req, res) {
    res.render('coding');
+});
+
+router.get('/competitions/literature', function(req, res) {
+   res.render('literature');
+});
+
+router.get('/competitions/quizzing', function(req, res) {
+   res.render('quizzing');
+});
+
+router.get('/competitions/robotics', function(req, res) {
+   res.render('roboticsEvents');
+});
+
+router.get('/competitions/management', function(req, res) {
+   res.render('roboticsEvents');
 });
 
 router.get('/contact_us', function(req, res) {
@@ -28,18 +44,6 @@ router.get('/contact_us', function(req, res) {
 
 router.get('/faq', function(req, res) {
    res.render('faq');
-});
-
-router.get('/literature', function(req, res) {
-   res.render('literature');
-});
-
-router.get('/quizzing', function(req, res) {
-   res.render('quizzing');
-});
-
-router.get('/roboticsEvents', function(req, res) {
-   res.render('roboticsEvents');
 });
 
 router.get('/contact_us', function(req, res) {

@@ -38,6 +38,11 @@ app.use(passport.initialize());
 app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'ejs');
 
+app.use('*/js', express.static(path.join(__dirname, 'public/js')))
+app.use('*/css', express.static(path.join(__dirname, 'public/css')))
+app.use('*/media', express.static(path.join(__dirname, 'public/media')))
+app.use('*/font', express.static(path.join(__dirname, 'public/font')))
+
 app.use(session({ secret: 'somerandomkeytimespread' })); // session secret
 app.use(flash());
 
