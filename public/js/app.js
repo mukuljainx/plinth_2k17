@@ -58,7 +58,8 @@ var profiles =
 
 function unloadcallback(){
     if(localStorage.temptoken !== undefined)
-        document.cookie = "access_token=" + localStorage.temptoken + "; expires=Mon, 30 Dec 2017 12:00:00 UTC";
+        //document.cookie = "access_token=" + localStorage.temptoken + "; expires=Mon, 30 Dec 2017 12:00:00 UTC;";
+        
 };
 
 

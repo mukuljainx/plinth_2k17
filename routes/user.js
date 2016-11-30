@@ -84,4 +84,10 @@ router.get('/redirect', function(req, res) {
    });
 });
 
+router.post('/redirect', function(req, res) {
+   res.render('redirect',{
+       token : req.flash('access_token'),
+   });
+});
+
 module.exports = router;
