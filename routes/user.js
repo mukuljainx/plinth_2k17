@@ -93,11 +93,15 @@ router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
         }
         // check to see if theres already a user with that email
         if (user) {
-            if(true){
-                res.json({"response" : false});
+            if(!user.valid){
+                res.json({"response" : false, "email" : user.email, "name" : user.name});
             }
-            else if(user.phoneNumber !== 0){
+            else if(user.valid){
                 res.json({"response" : true});
+            }
+            else{
+                console.log("sad");
+                res.json({"response" : false});
             }
         }
     });

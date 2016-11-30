@@ -1,5 +1,6 @@
 <a data-open="regform" class="holax" style="display:none">asda</a>
             <div class="reveal reg-form" id="regform" data-reveal>
+            <form action="javascript:void(0)" name="registration-form">
                 <div class="group">
                     <input type="text" id="in-name" required>
                     <span class="highlight"></span>
@@ -10,11 +11,11 @@
                     <span class="reg-sex-h">Gender</span>
                     <div class="reg-sex">
                         <span class='radButtonSpanWorkload'>
-                          <input class="radButtonWorkload" type="radio" id="radioWorkload1"   name="sex" value="male" />
+                          <input class="radButtonWorkload" type="radio" id="radioWorkload1" name="sex" value="male" required/>
                           <label for="radioWorkload1"><span></span>Male</label>
                         </span>
                         <span class='radButtonSpanWorkload'>
-                          <input class="radButtonWorkload" type="radio" id="radioWorkload2"   name="sex" value="female" />
+                          <input class="radButtonWorkload" type="radio" id="radioWorkload2" name="sex" value="female" />
                           <label for="radioWorkload2"><span></span>Female</label>
                         </span>
                     </div>
@@ -69,11 +70,11 @@
                     <span class="reg-acc-h">Accomodation</span>
                     <div class="reg-acc">
                         <span class='radButtonSpanWorkload'>
-                          <input class="radButtonWorkload" type="radio" id="radioWorkload8"   name="acc" value="yes" />
+                          <input class="radButtonWorkload" type="radio" id="radioWorkload8"   name="acc" value="yes" required />
                           <label for="radioWorkload8"><span></span>Yes</label>
                         </span>
                         <span class='radButtonSpanWorkload'>
-                          <input class="radButtonWorkload" type="radio" id="radioWorkload9"   name="acc" value="no" />
+                          <input class="radButtonWorkload" type="radio" id="radioWorkload9"   name="acc" value="no"  />
                           <label for="radioWorkload9"><span></span>No</label>
                         </span>
                     </div>
@@ -84,7 +85,7 @@
                 </div>
 
                 <div class="reg-form-btn">
-                    <a class="reg-form-btn-register" href="javascript:void(0)">Register</a>
+                    <input type="submit" value="Register" class="reg-form-btn-register">
                 </div>
 
                 <div class="reg-social">
@@ -93,5 +94,50 @@
                         <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Register With Google</a></li>
                     </ul>
                 </div>
+            </form>
             </div>
-        </div>
+
+
+
+<script>
+
+$(function() {
+  // Initialize form validation on the registration form.
+  // It has the name attribute "registration"
+  $("form[name='registration-form']").validate({
+    // Specify validation rules
+    rules: {
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      firstname: "required",
+      lastname: "required",
+      email: {
+        required: true,
+        // Specify that email should be validated
+        // by the built-in "email" rule
+        email: true
+      },
+      password: {
+        required: true,
+        minlength: 5
+      }
+    },
+    // Specify validation error messages
+    messages: {
+      firstname: "Please enter your firstname",
+      lastname: "Please enter your lastname",
+      password: {
+        required: "Please provide a password",
+        minlength: "Your password must be at least 5 characters long"
+      },
+      email: "Please enter a valid email address"
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+});
+</script>

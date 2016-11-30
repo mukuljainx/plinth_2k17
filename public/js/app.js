@@ -74,9 +74,10 @@ function unloadcallback(){
         $.post( "/user/user_validate", { "token" : getCookie('access-token') })
         .done(function( data ) {
             if(!data.response){
-                //open modal for complete signup
-                $('.holax').trigger('click');
-                $('.close-button').trigger('click');
+                console.log(data);
+                $('.holax').trigger('click'); // register form
+                $('.close-button').trigger('click'); // old form
+                $('.reg-social').css("display","none"); // register btn with fb and google
                 //if(modal is closed)
                     // unregister user
                     // notify him registration unsuccesfull
