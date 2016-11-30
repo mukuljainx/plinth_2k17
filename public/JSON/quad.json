@@ -8,6 +8,7 @@
     "payment1" : "",
     "memberUpperLimit" : 10,
     "memberLowerLimit" : 1,
+    "clubName" : "robotics",
     "eventName" : "quadcopter",
     "eventDate" : "22nd Jan 2016",
     "eventVenue" : "The LNMIIT, Jaipur",

@@ -8,6 +8,7 @@
     "payment1" : "",
     "memberUpperLimit" : 3,
     "memberLowerLimit" : 1,
+    "clubName" : "robotics",
     "eventName" : "physics bowl",
     "eventDate" : "22nd Jan 2016",
     "eventVenue" : "The LNMIIT, Jaipur",

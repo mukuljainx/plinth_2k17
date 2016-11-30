@@ -8,6 +8,7 @@
     "payment1" : "",
     "memberUpperLimit" : 1,
     "memberLowerLimit" : 1,
+    "clubName" : "management",
     "eventName" : "sif",
     "eventDate" : "22nd Jan 2016",
     "eventVenue" : "The LNMIIT, Jaipur",

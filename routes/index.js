@@ -14,5 +14,108 @@ router.get('/about', function(req, res) {
    res.render('about');
 });
 
+router.get('/astronomy', function(req, res) {
+   res.render('astronomy');
+});
+
+router.get('/coding', function(req, res) {
+   res.render('coding');
+});
+
+router.get('/contact_us', function(req, res) {
+   res.render('contact_us');
+});
+
+router.get('/faq', function(req, res) {
+   res.render('faq');
+});
+
+router.get('/literature', function(req, res) {
+   res.render('literature');
+});
+
+router.get('/quizzing', function(req, res) {
+   res.render('quizzing');
+});
+
+router.get('/roboticsEvents', function(req, res) {
+   res.render('roboticsEvents');
+});
+
+router.get('/contact_us', function(req, res) {
+   res.render('contact_us');
+});
+
+router.get('/sponsors_old', function(req, res) {
+   res.render('sponsors_old');
+});
+
+router.get('/team', function(req, res) {
+   res.render('team');
+});
+
+router.get('/workshop', function(req, res) {
+   res.render('workshop');
+});
+
+router.get('/profile', function(req, res) {
+   res.render('profile');
+});
+
+router.get('/competitions/astronomy/armageddon', function(req, res) {
+   res.render('/partials/event');
+});
+
+router.get('/competitions/astronomy/astro_hunt', function(req, res) {
+   res.render('/partials/event');
+});
+
+router.get('/competitions/astronomy/physics_bowl', function(req, res) {
+   res.render('/partials/event');
+});
+
+router.get('/competitions/astronomy/star_trek', function(req, res) {
+   res.render('/partials/event');
+});
+
+router.get('/competitions/coding/fix_the_bug', function(req, res) {
+   res.render('/partials/event');
+});
+
+router.get('/competitions/coding/iupc', function(req, res) {
+   res.render('/partials/event');
+});
+
+router.get('/competitions/coding/iupc_distraction', function(req, res) {
+   res.render('/partials/event');
+});
+
+router.get('/competitions/robotics/lfr', function(req, res) {
+   res.render('/partials/event');
+});
+
+router.get('/competitions/robotics/quad', function(req, res) {
+   res.render('/partials/event');
+});
+
+router.get('/competitions/robotics/roborace', function(req, res) {
+   res.render('/partials/event');
+});
+
+router.get('/competitions/robotics/robosoccer', function(req, res) {
+   res.render('/partials/event');
+});
+
+router.get('/competitions/robotics/robowar', function(req, res) {
+   res.render('/partials/event');
+});
+
+router.get('/competitions/robotics/transporter', function(req, res) {
+   res.render('/partials/event');
+});
+
+router.get('/competitions/management/sif', function(req, res) {
+   res.render('/partials/event');
+});
 
 module.exports = router;

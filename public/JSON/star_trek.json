@@ -8,6 +8,7 @@
     "payment1" : "",
     "memberUpperLimit" : 3,
     "memberLowerLimit" : 1,
+    "clubName" : "astronomy",
     "eventName" : "star trek",
     "eventDate" : "22nd Jan 2016",
     "eventVenue" : "The LNMIIT, Jaipur",
