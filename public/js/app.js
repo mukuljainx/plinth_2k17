@@ -66,7 +66,9 @@ function unloadcallback(){
         .done(function( data ) {
             if(!data.response){
                 //open modal for complete signup
+                $('#regForm').foundation('reveal', 'open');
                 //close current modal
+                $('#register-pop-up-window').foundation('reveal', 'close');
                 //if(modal is closed)
                     // unregister user
                     // notify him registration unsuccesfull
@@ -76,6 +78,7 @@ function unloadcallback(){
                     //change view add his sign in
             else
                 //close current modal
+                $('#register-pop-up-window').foundation('reveal', 'close');
                 //change view add his sign in
             }
 
