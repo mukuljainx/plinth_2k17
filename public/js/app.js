@@ -72,7 +72,7 @@ function unloadcallback(){
                 //open modal for complete signup
                 $('#regForm').foundation('reveal', 'open');
                 //close current modal
-                $('#register-pop-up-window').foundation('reveal', 'close');
+                $('.close-button').trigger('click');
                 //if(modal is closed)
                     // unregister user
                     // notify him registration unsuccesfull
@@ -81,9 +81,10 @@ function unloadcallback(){
                     //notify him
                     //change view add his sign in
                     //set some browser cookie to on
-            else
+            }
+            else{
                 //close current modal
-                $('#register-pop-up-window').foundation('reveal', 'close');
+                $('.close-button').trigger('click');
                 //change view add his sign in
             }
         });
