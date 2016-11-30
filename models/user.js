@@ -13,6 +13,7 @@ var userSchema = mongoose.Schema({
         year           : Number,
         city           : String,
         accommodation  : Boolean,
+        valid          : Boolean,
 });
 
 // create the model for users and expose it to our app

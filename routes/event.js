@@ -5,19 +5,31 @@ var Eventx = require('../models/event');
 
 router.post('/add', function(req, res, next) {
 
+  var eventx = new Eventx();
+
+  eventx.imageLink         = body.req.imageLink;
+  eventx.registerLink      = body.req.registerLink;
+  eventx.register0         = body.req.register0;
+  eventx.register1         = body.req.register1;
+  eventx.paymentLink       = body.req.paymentLink;
+  eventx.payment0          = body.req.payment0;
+  eventx.payment1          = body.req.payment1;
+  eventx.memberUpperLimit  = body.req.memberUpperLimit;
+  eventx.memberLowerLimit  = body.req.memberLowerLimit;
+  eventx.clubName          = body.req.clubName;
+  eventx.eventName         = body.req.eventName;
+  eventx.eventDate         = body.req.eventDate;
+  eventx.eventVenue        = body.req.eventVenue;
+  eventx.prizeWorth        = body.req.prizeWorth;
+  eventx.synopsis          = body.req.synopsis;
+  eventx.eventDescription  = body.req.eventDescription;
+  eventx.rules             = body.req.rules;
+  eventx.judges            = body.req.judges;
+  eventx.mentors           = body.req.mentors;
+  eventx.sponsors          = body.req.sponsors;
 
 
-  for(var i=0; i < req.body.menuData.length; i++){
-    menu.messMenu.menuData.push({
-      day : req.body.menuData[i].day,
-      breakFast : req.body.menuData[i].breakFast,
-      lunch : req.body.menuData[i].lunch,
-      snacks : req.body.menuData[i].snacks,
-      dinner : req.body.menuData[i].dinner,
-    })
-  }
-
-  menu.save(function(err) {
+  eventx.save(function(err) {
     if (err){
         console.log("fraeky error");
         res.send(err);
