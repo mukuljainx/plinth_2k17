@@ -13,35 +13,7 @@
     </head>
     <body>
 
-        <nav>
-                <div class="header-logo">
-                    <a href="index.html"><img src="media/logo.svg"/></a>
-                </div>
-                <button class="ham-btn"><i class="fa fa-bars fa-lg" aria-hidden="true"></i></button>
-                <div class="ham-wrapper">
-                    <div class="ham-content text-center">
-                        <button class="ham-close"><span>X</span></button>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="competitions.html">Competitions</a></li>
-                            <li><a href="#">Workshops</a></li>
-                            <li><a href="#">Lectures</a></li>
-                            <li><a href="#">The LNMIIT MUN</a></li>
-                            <li><a data-open="register-pop-up-window">Register</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="navitem text-right">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="competitions.html">Competitions</a></li>
-                        <li><a href="#">Workshops</a></li>
-                        <li><a href="#">Lectures</a></li>
-                        <li><a href="#">The LNMIIT MUN</a></li>
-                        <li><a data-open="register-pop-up-window" >Register</a></li>
-                    </ul>
-                </div>
-            </nav>
+        <% include includes/header %>
 
         <div class="reveal" id="register-pop-up-window" data-reveal>
           <h5 class="text-center">Register Yourself</h5>
@@ -79,7 +51,7 @@
                                     <p class="name">Astronomy</p>
                                     <p class="name-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
                                 </div>
-                                <a href="astronomy.html" class="know-more">Know More ></a>
+                                <a href="/astronomy/" class="know-more">Know More ></a>
                             </div>
                           </div>
                           <div class="small-8 medium-4 large-4 small-centered medium-uncentered columns">
@@ -89,7 +61,7 @@
                                 <p class="name">Coding</p>
                                 <p class="name-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
                               </div>
-                              <a href="coding.html" class="know-more">Know More ></a>
+                              <a href="/coding/" class="know-more">Know More ></a>
                             </div>
                           </div>
                           <div class="small-8 medium-4 large-4 small-centered medium-uncentered columns">
@@ -99,7 +71,7 @@
                                   <p class="name">Robotics</p>
                                   <p class="name-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
                               </div>
-                              <a href="roboticsEvents.html" class="know-more">Know More ></a>
+                              <a href="/roboticsEvents/" class="know-more">Know More ></a>
                             </div>
                           </div>
                           <div class="small-8 medium-4 large-4 small-centered medium-uncentered columns">
@@ -108,7 +80,7 @@
                               <div class="container">
                                   <p class="name">Quizzing</p>
                                   <p class="name-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                                  <a href="quizzing.html" class="know-more">Know More ></a>
+                                  <a href="/quizzing/" class="know-more">Know More ></a>
                               </div>
                             </div>
                           </div>
@@ -119,7 +91,7 @@
                                       <p class="name">Literature</p>
                                       <p class="name-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
                               </div>
-                              <a href="literature.html" class="know-more">Know More ></a>
+                              <a href="/literature/" class="know-more">Know More ></a>
                             </div>
                         </div>
                         <div class="small-8 medium-4 large-4 end small-centered medium-uncentered columns">
@@ -129,39 +101,15 @@
                                   <p class="name">Management</p>
                                   <p class="name-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
                               </div>
-                              <a href="management.html" class="know-more">Know More ></a>
+                              <a href="/management/" class="know-more">Know More ></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <footer>
-                <div class="row social-wrapper">
-                <div class="small-12 small-centered column text-center social">
-                    <ul>
-                        <li><a href="https://www.facebook.com/Plinth.LNMIIT/" target="_blank"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-                        <li><a href="https://twitter.com/PlinthLNMIIT" target="_blank"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-                        <li><a href="https://plus.google.com/+PLINTHLNMIIT/posts" target="_blank"><i class="fa fa-google-plus fa-lg" aria-hidden="true"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fa fa-youtube-play fa-lg" aria-hidden="true" ></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-                </div>
-                <div class="row footer-wrapper footer-posi">
-                    <div class="small-12 small-centered column text-center footer-text">
-                        <ul>
-                            <a href="about.html"><li>About Us</li></a>
-                            <a href="sponsors.html"><li>Sponsors</li></a>
-                            <a href="#"><li>Our Team</li></a>
-                            <a href="faq.html"><li>FAQs</li></a>
-                            <a href="contactUs.html"><li>Contact Us</li></a>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
-
-
+        
+        <% include includes/footer %>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/what-input/2.1.1/what-input.min.js"></script>

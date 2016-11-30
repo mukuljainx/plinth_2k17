@@ -1,0 +1,21 @@
+{
+    "imageLink" : "images/icons/astronomy/physics_bowl.svg",
+    "registerLink" : "/registration/astronomy/physics_bowl",
+    "register0" : "<li><a class='reg-btn' href='#' data-open='regform'>Register ></a></li>",
+    "register1" : "<li><a class='reg-btn' href='#' onClick='registerUser('astronomy', 'physicsBowl')'>Register ></a></li>",
+    "paymentLink" : "",
+    "payment0" : "<li><a href='#' data-open='paymentpop'>Make Payment></a></li>",
+    "payment1" : "",
+    "memberUpperLimit" : 3,
+    "memberLowerLimit" : 1,
+    "eventName" : "physics bowl",
+    "eventDate" : "22nd Jan 2016",
+    "eventVenue" : "The LNMIIT, Jaipur",
+    "prizeWorth" : "INR. 30,000",
+    "synopsis" : " <p>Details will be Updated soon</p>",
+    "eventDescription" : " <p><ol><li>Teams will be provided with a set of 25 questions</li><li>The questions will be a mix of both Multiple-choice & Direct-Answer Q.</li><li>The questions will be based on hypothetical situations wherein laws of physics will be twisted & conceptual aptitude will be checked.</li><li>Marks will be allotted to each question individually.</li><li>Team with maximum marks will be declared the winner</li></ol></p>",
+    "rules" : "<p><b>General Rules </b><ol><li>Students will participate in teams of maximum 3.</li><li>Use of Mobile phone is strictly prohibited.</li><li>In case of discrepancy, decision of organizers is final.</li></ol></p>",
+    "judges" : "<p>Details will be Updated soon</p>",
+    "mentors" : "<p>Details will be Updated soon</p>",
+    "sponsors" : "<p>Details will be Updated soon</p>"
+}
