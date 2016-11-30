@@ -3,7 +3,6 @@ var router = express.Router();
 var Eventx = require('../models/event');
 
 
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -71,7 +70,6 @@ router.get('/profile', function(req, res) {
 });
 
 router.get('/competitions/astronomy/armageddon', function(req, res) {
-    eveDetails = {};
     Eventx.findOne({'eventName' : 'armageddon'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
