@@ -78,18 +78,19 @@ function unloadcallback(){
                 $('.holax').trigger('click'); // register form
                 $('.close-button').trigger('click'); // old form
                 $('.reg-social').css("display","none"); // register btn with fb and google
-                //if(modal is closed)
+                // if(modal is closed)
                     // unregister user
                     // notify him registration unsuccesfull
                     // remove cookie from browser access_token
-                //else(filled details)
-                    //save his details
-                    //notify him
-                    //change view add his sign in
-                    //set some browser cookie to on
+                // else(filled details)
+                    $.post( "/user/user_register_complete", { "token" : getCookie('access-token'), "user" : userDetails })
+                    .done(function( data ) {
+                        if(data.response)
+                        //notify him
+                        //change view add his sign in
+                    }
             }
             else{
-                //close current modal
                 $('.close-button').trigger('click');
                 //change view add his sign in
             }

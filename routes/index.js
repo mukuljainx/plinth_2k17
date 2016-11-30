@@ -81,7 +81,6 @@ router.get('/competitions/astronomy/armageddon', function(req, res) {
             });
         }
     });
-
 });
 
 router.get('/competitions/astronomy/astro_hunt', function(req, res) {

@@ -38,6 +38,7 @@ router.get('/auth/google/callback', function(req,res,next){
 });
 
 
+
 /****************
 
 facebook
@@ -103,6 +104,28 @@ router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
                 console.log("sad");
                 res.json({"response" : false});
             }
+        }
+    });
+});
+
+router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, res) {
+    var update = {
+        phoneNumber    : req.body.user.phoneNumber,
+        college        : req.body.user.college,
+        year           : req.body.user.year,
+        city           : req.body.user.city,
+        accommodation  : req.body.user.accommodation,
+        valid          : true,
+    };
+    var options = {new: true};
+    User.findOneAndUpdate({'email' : req.decoded.sub}, update, options, function(err, user) {
+        if (err){
+            return done(err);
+        }
+        // check to see if theres already a user with that email
+        if (user) {
+            console.log(user);
+            res.json({"response" : true});
         }
     });
 });
