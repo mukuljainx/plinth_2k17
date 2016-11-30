@@ -85,7 +85,7 @@ router.get('/competitions/astronomy/armageddon', function(req, res) {
 });
 
 router.get('/competitions/astronomy/astro_hunt', function(req, res) {
-   Eventx.findOne({'eventName' : 'astro_hunt'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'astro hunt'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);
@@ -99,7 +99,7 @@ router.get('/competitions/astronomy/astro_hunt', function(req, res) {
 });
 
 router.get('/competitions/astronomy/physics_bowl', function(req, res) {
-   Eventx.findOne({'eventName' : 'physics_bowl'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'physics bowl'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);
@@ -113,7 +113,7 @@ router.get('/competitions/astronomy/physics_bowl', function(req, res) {
 });
 
 router.get('/competitions/astronomy/star_trek', function(req, res) {
-   Eventx.findOne({'eventName' : 'star_trek'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'star trek'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);
@@ -127,7 +127,7 @@ router.get('/competitions/astronomy/star_trek', function(req, res) {
 });
 
 router.get('/competitions/coding/fix_the_bug', function(req, res) {
-   Eventx.findOne({'eventName' : 'fix_the_bug'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'fix the bug'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);
@@ -155,7 +155,7 @@ router.get('/competitions/coding/iupc', function(req, res) {
 });
 
 router.get('/competitions/coding/iupc_distraction', function(req, res) {
-   Eventx.findOne({'eventName' : 'iupc_distraction'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'iupc distraction'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);
@@ -183,7 +183,7 @@ router.get('/competitions/robotics/lfr', function(req, res) {
 });
 
 router.get('/competitions/robotics/quad', function(req, res) {
-   Eventx.findOne({'eventName' : 'quad'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'quadcopter'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);
