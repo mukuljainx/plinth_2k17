@@ -98,7 +98,6 @@ function unloadcallback(){
                 $('.close-button').trigger('click');
                 //change view add his sign in
             }
-
         });
     }
 };
@@ -123,5 +122,12 @@ $('.reg-form-btn-register').click(function() {
         city : $('.city').val(),
         accomodation : $('input:radio[name=acc]:checked').val()
     };
-    console.log(UserDetail);
 });
+
+function notifDisplay(status){
+    var regMsg = ["Your registration is not successfull !", "Your registration is successfull !"]
+    var regIcon = ['<i class="fa fa-times" aria-hidden="true"></i>', '<i class="fa fa-check" aria-hidden="true"></i>']
+    $(".reg-status-img").html(regIcon[status]);
+    $(".reg-status").html(regMsg[status]);
+    $(".notif").css('display','block').delay(3000).fadeOut();
+}

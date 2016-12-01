@@ -279,7 +279,7 @@ nav{
 .add-memb{
     margin-top: 20px;
     margin-bottom: 30px;
-    margin-left: 130px;
+    margin-left: 100px;
 }
 
 .add-memb span{
@@ -366,7 +366,7 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
 .radio-sex{
     position: relative;
     top:-30px;
-    left:130px;
+    left:100px;
     margin-bottom: -10px;
 }
 
@@ -383,7 +383,7 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
 .radio-year{
     position: relative;
     top:-30px;
-    left:130px;
+    left:100px;
     margin-bottom: -10px;
 }
 
@@ -405,7 +405,7 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
 }
 
 .radio-acc{
-    margin-left: 130px;
+    margin-left: 100px;
 }
 
 /*radio button*/
