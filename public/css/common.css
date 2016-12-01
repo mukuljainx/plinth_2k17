@@ -18,11 +18,6 @@
     src: url("../font/HelveticaNeue.ttf");
 }
 
-/*
-section{
-    max-width: 1280px;
-}
-*/
 
 nav{
     height: 70px;
@@ -69,11 +64,7 @@ nav{
     box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.1);
     color: black;
 }
-/*
-.fly-left{
-    max-width: 250px;
-}
-*/
+
 
 .ham-content{
     font:normal 1.125em hn;
@@ -116,7 +107,6 @@ nav{
 }
 
 .social{
-/*    border:1px solid white;*/
     max-width: 500px;
 }
 
@@ -236,17 +226,8 @@ nav{
 
 .reg-form{
     background-color: white;
-/*    display: none;*/
-/*
-    position: absolute;
-    left:350px;
-    top:50px;
-    width:680px;
-    height: 550px;
-*/
     box-shadow: 0px 4px 8px 1px rgba(0,0,0,0.2);
     padding:50px 0px;
-/*    overflow: auto;*/
     align-content: center;
 }
 
@@ -284,7 +265,6 @@ nav{
 }
 
 
-
 .reg-social ul{
     margin: 0px;
     padding: 0px;
@@ -308,7 +288,6 @@ nav{
     padding-right: 10px;
 }
 
-
 .group {
   position: relative;
 }
@@ -321,17 +300,20 @@ nav{
   display: block;
   width: 300px;
 }
+
 .group input:focus, .group textarea:focus {
   outline: none;
     border:none;
     box-shadow: none;
     border-bottom: 2px solid #3ca37c;
 }
+
 .group input:focus ~ label, .group input:valid ~ label, .group textarea:focus ~ label, .group textarea:valid ~ label {
   top: -10px;
   font-size: 17px;
   color: #3ca37c;
 }
+
 .group label {
   font:normal 22px cl;
   position: absolute;
@@ -340,7 +322,6 @@ nav{
   -webkit-transition: 0.2s ease all;
   transition: 0.2s ease all;
 }
-
 
 input:focus ~ .bar:before, textarea:focus ~ .bar:before {
   left: 0;
@@ -383,7 +364,6 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
     margin-top: -30px;
     margin-left: 150px;
 }
-
 
 /*radio button*/
 
