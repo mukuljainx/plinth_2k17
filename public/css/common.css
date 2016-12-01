@@ -212,12 +212,12 @@ nav{
     text-align: right;
     display: none;
     position: fixed;
-    top: 60px;
+    top: 48px;
     right: 20px;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
     font: normal 15px 'Roboto';
-    padding: 20px;
+    padding:10px 10px 10px;
     background-color: white;
     z-index: 999;
 }
@@ -226,14 +226,6 @@ nav{
     font: normal 15px 'Roboto';
     color: black;
 }
-
-.profile-dp{
-
-}
-
-
-
-
 
 
 /* registration form */

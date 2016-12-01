@@ -4,10 +4,10 @@
 }
 
 .usr-profile-wrap{
-    margin: auto;
-    max-width: 700px;
+/*    margin: auto;*/
+/*    max-width: 700px;*/
 /*    background-color: darkgray;*/
-    margin-top: 150px;
+    margin-top: 50px;
 }
 
 .usr-img-wrap{
@@ -31,13 +31,18 @@
 
 .user-profile-subh{
     font: bold 15px 'Roboto';
-    padding-right: 30px;
+/*    padding-right: 30px;*/
+/*    background-color: #4a4a4a;*/
+    width: 75px;
+    display: inline-block;
 } 
 
 .usr-email, .usr-phone, .usr-clg, .usr-city{
     font: normal 15px 'Roboto';
     opacity: 0.8;
-    padding-left: 50px;
+    display: inline-block;
+    width: 75px;
+/*    padding-left: 50px;*/
 /*    padding-right: 50px;*/
 }
 
@@ -46,26 +51,29 @@ footer{
 }
 
 .usr-clg{
-    padding-left: 38px;
+/*    padding-left: 38px;*/
 }
 
 .usr-city{
-    padding-left: 60px;
+/*    padding-left: 60px;*/
 }
 
 .usr-phone{
-    padding-left: 44px;
+/*    padding-left: 44px;*/
 }
 
 .event-date-time{
     font: normal 15px 'Roboto';
     opacity: 0.8;
+    display: inline-block;
+/*    background-color: #4a4a4a;*/
 /*    padding-left: 50px;*/
 }
 
 .reg-status{
     font: normal 15px 'Roboto';
     opacity: 0.8;
-    padding-left: 40px;
-    
+    display: inline-block;
+/*    background-color: #4a4a4a;*/
+/*    padding-left: 40px;*/
 }
