@@ -39,7 +39,8 @@ exports.verifyOrdinaryUser = function (req, res, next) {
     tokenz = getCookie('access-token', cookie);
 
     var tokenx = req.body.token || req.query.token || tokenz;
-
+    // console.log(tokenx);
+    // console.log('**********************');
     var buffer = new Buffer(tokenx, 'base64');
     var token = buffer.toString('ascii');
         // decode token

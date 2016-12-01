@@ -231,17 +231,15 @@ nav{
 
 }
 
-
-
-
-
-
 /* registration form */
 
+.form-silver-wrap{
+    width: 300px;
+    margin: auto;
+}
 
 .reg-form{
     background-color: white;
-    z-index: 99999;
 /*    display: none;*/
 /*
     position: absolute;
@@ -251,7 +249,7 @@ nav{
     height: 550px;
 */
     box-shadow: 0px 4px 8px 1px rgba(0,0,0,0.2);
-    padding:100px 50px 50px;
+    padding:50px 0px;
 /*    overflow: auto;*/
     align-content: center;
 }
@@ -264,7 +262,6 @@ nav{
 .reg-form-btn{
     margin-top: 30px;
     margin-bottom: 50px;
-    margin-left: 220px;
 }
 
 .reg-form-btn-register{
@@ -279,7 +276,6 @@ nav{
 .add-memb{
     margin-top: 20px;
     margin-bottom: 30px;
-    margin-left: 100px;
 }
 
 .add-memb span{
@@ -290,7 +286,6 @@ nav{
     font:bold 22px cl;
     color:black;
 }
-
 
 
 
@@ -320,13 +315,6 @@ nav{
 
 .group {
   position: relative;
-  width: 300px;
-    top:-40px;
-/*
-    margin-left: 30px;
-  margin-bottom: 30px;
-*/
-    margin: auto;
 }
 
 .group input, .group textarea {
@@ -363,31 +351,31 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
   right: 0;
 }
 
-.radio-sex{
-    position: relative;
-    top:-30px;
-    left:100px;
-    margin-bottom: -10px;
+.radio-gender{
+    margin-bottom: -22px;
+    padding-top: 10px;
 }
 
-.reg-sex-h{
+.reg-gender-h{
     font:normal 22px cl;
 }
 
-.reg-sex{
+.reg-gender{
     position: relative;
     top:-28px;
     margin-left: 80px;
 }
 
 .radio-year{
-    position: relative;
-    top:-30px;
-    left:100px;
-    margin-bottom: -10px;
+    margin-bottom: -22px;
+    padding-top: 5px;
 }
 
-.radio-year .reg-sex{
+.radio-year label{
+    margin-right: 0px;
+}
+
+.radio-year .reg-gender{
     margin-left: 50px;
 }
 
@@ -395,18 +383,11 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
     font:normal 22px cl;
 }
 
-.radio-acc{
-    margin-top: -40px;
-}
-
 .reg-acc{
     margin-top: -30px;
     margin-left: 150px;
 }
 
-.radio-acc{
-    margin-left: 100px;
-}
 
 /*radio button*/
 

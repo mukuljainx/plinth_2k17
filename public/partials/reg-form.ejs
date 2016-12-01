@@ -1,99 +1,105 @@
 <a data-open="regform" class="holax" style="display:block">asda</a>
-            <div class="reveal reg-form" id="regform" data-reveal>
-            <form action="javascript:void(0)" name="registration-form" id="registerForm">
-                <div class="group">
-                    <input type="text" id="in-name" class="user-name" required>
-                    <span class="highlight"></span>
-                    <label>Name</label>
-                </div>
 
-                <div class="radio-sex">
-                    <span class="reg-sex-h">Gender</span>
-                    <div class="reg-sex">
-                        <span class='radButtonSpanWorkload'>
-                          <input class="radButtonWorkload" type="radio" id="radioWorkload1" name="sex" value="male" required/>
-                          <label for="radioWorkload1"><span></span>Male</label>
-                        </span>
-                        <span class='radButtonSpanWorkload'>
-                          <input class="radButtonWorkload" type="radio" id="radioWorkload2" name="sex" value="female" />
-                          <label for="radioWorkload2"><span></span>Female</label>
-                        </span>
-                        <b id="itemErrors"></b> 
-                    </div>
-                </div>
+<div class="reveal reg-form" id="regform" data-reveal>
+    <div class="form-silver-wrap">
+        <form action="javascript:void(0)" name="registration-form" id="registerForm">
+        <div class="group">
+            <input type="text" id="in-name" class="user-name" required>
+            <span class="highlight"></span>
+            <label>Name</label>
+        </div>
 
-                <div class="group">
-                    <input type="text" id="in-name" class="phone" required>
-                    <span class="highlight"></span>
-                    <label>Phone Number</label>
-                </div>
-                <div class="group">
-                    <input type="text" id="in-name" class="email" required>
-                    <span class="highlight"></span>
-                    <label>Email</label>
-                </div>
-                <div class="group">
-                    <input type="text" id="in-name" class="college" required>
-                    <span class="highlight"></span>
-                    <label>College</label>
-                </div>
-                <div class="radio-year">
-                    <span class="reg-sex-h">Year</span>
-                    <div class="reg-sex">
-                        <span class='radButtonSpanWorkload'>
-                          <input class="radButtonWorkload" type="radio" id="radioWorkload3"   name="year" value="1" />
-                          <label for="radioWorkload3"><span></span>1</label>
-                        </span>
-                        <span class='radButtonSpanWorkload'>
-                          <input class="radButtonWorkload" type="radio" id="radioWorkload4"   name="year" value="2" />
-                          <label for="radioWorkload4"><span></span>2</label>
-                        </span>
-                        <span class='radButtonSpanWorkload'>
-                          <input class="radButtonWorkload" type="radio" id="radioWorkload5"   name="year" value="3" />
-                          <label for="radioWorkload5"><span></span>3</label>
-                        </span>
-                        <span class='radButtonSpanWorkload'>
-                          <input class="radButtonWorkload" type="radio" id="radioWorkload6"   name="year" value="4" />
-                          <label for="radioWorkload6"><span></span>4</label>
-                        </span>
-                        <span class='radButtonSpanWorkload'>
-                          <input class="radButtonWorkload" type="radio" id="radioWorkload7"   name="year" value="5" />
-                          <label for="radioWorkload7"><span></span>5</label>
-                        </span>
-                    </div>
-                </div>
-                <div class="group">
-                    <input type="text" id="in-name" class="city" required>
-                    <span class="highlight"></span>
-                    <label>City</label>
-                </div>
-                <div class="radio-acc">
-                    <span class="reg-acc-h">Accomodation</span>
-                    <div class="reg-acc">
-                        <span class='radButtonSpanWorkload'>
-                          <input class="radButtonWorkload" type="radio" id="radioWorkload8"   name="acc" value="yes" required />
-                          <label for="radioWorkload8"><span></span>Yes</label>
-                        </span>
-                        <span class='radButtonSpanWorkload'>
-                          <input class="radButtonWorkload" type="radio" id="radioWorkload9"   name="acc" value="no"  />
-                          <label for="radioWorkload9"><span></span>No</label>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="add-memb">
-                    <a class="add" href="javascript:void(0)">+ <span>Add Member</span></a>
-                </div>
-
-                <div class="reg-form-btn">
-                    <input type="submit" value="Register" class="reg-form-btn-register">
-                </div>
-
-                <div class="reg-social">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i>Register With Facebook</a></li>
-                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Register With Google</a></li>
-                    </ul>
-                </div>
-            </form>
+        <div class="radio-gender">
+            <span class="reg-gender-h">Gender</span>
+            <div class="reg-gender">
+                <span class='radButtonSpanWorkload'>
+                  <input class="radButtonWorkload" type="radio" id="radioWorkload1" name="gender" value="male" required/>
+                  <label for="radioWorkload1"><span></span>Male</label>
+                </span>
+                <span class='radButtonSpanWorkload'>
+                  <input class="radButtonWorkload" type="radio" id="radioWorkload2" name="gender" value="female" />
+                  <label for="radioWorkload2"><span></span>Female</label>
+                </span>
+                <b id="itemErrors"></b>
             </div>
+        </div>
+
+        <div class="group">
+            <input type="text" id="in-name" class="phone" required>
+            <span class="highlight"></span>
+            <label>Phone Number</label>
+        </div>
+        <div class="group">
+            <input type="text" id="in-name" class="email" required>
+            <span class="highlight"></span>
+            <label>Email</label>
+        </div>
+        <div class="group">
+            <input type="text" id="in-name" class="college" required>
+            <span class="highlight"></span>
+            <label>College</label>
+        </div>
+        <div class="radio-year">
+            <span class="reg-gender-h">Year</span>
+            <div class="reg-gender">
+                <span class='radButtonSpanWorkload'>
+                  <input class="radButtonWorkload" type="radio" id="radioWorkload3"   name="year" value="1" />
+                  <label for="radioWorkload3"><span></span>1</label>
+                </span>
+                <span class='radButtonSpanWorkload'>
+                  <input class="radButtonWorkload" type="radio" id="radioWorkload4"   name="year" value="2" />
+                  <label for="radioWorkload4"><span></span>2</label>
+                </span>
+                <span class='radButtonSpanWorkload'>
+                  <input class="radButtonWorkload" type="radio" id="radioWorkload5"   name="year" value="3" />
+                  <label for="radioWorkload5"><span></span>3</label>
+                </span>
+                <span class='radButtonSpanWorkload'>
+                  <input class="radButtonWorkload" type="radio" id="radioWorkload6"   name="year" value="4" />
+                  <label for="radioWorkload6"><span></span>4</label>
+                </span>
+                <span class='radButtonSpanWorkload'>
+                  <input class="radButtonWorkload" type="radio" id="radioWorkload7"   name="year" value="5" />
+                  <label for="radioWorkload7"><span></span>5</label>
+                </span>
+            </div>
+        </div>
+        <div class="group">
+            <input type="text" id="in-name" class="city" required>
+            <span class="highlight"></span>
+            <label>City</label>
+        </div>
+        <div class="radio-acc">
+            <span class="reg-acc-h">Accomodation</span>
+            <div class="reg-acc">
+                <span class='radButtonSpanWorkload'>
+                  <input class="radButtonWorkload" type="radio" id="radioWorkload8"   name="acc" value="yes" required />
+                  <label for="radioWorkload8"><span></span>Yes</label>
+                </span>
+                <span class='radButtonSpanWorkload'>
+                  <input class="radButtonWorkload" type="radio" id="radioWorkload9"   name="acc" value="no"  />
+                  <label for="radioWorkload9"><span></span>No</label>
+                </span>
+            </div>
+        </div>
+
+        <div class="add-memb">
+            <a class="add" href="javascript:void(0)">+ <span>Add Member</span></a>
+        </div>
+
+        <div class="reg-form-btn text-center">
+            <input type="submit" value="Register" class="reg-form-btn-register" onclick="registerUserComplete">
+        </div>
+    </form>
+</div>
+        <div class="reg-social text-center">
+            <ul>
+                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i>Register With Facebook</a></li>
+                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Register With Google</a></li>
+            </ul>
+        </div>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+</div>
