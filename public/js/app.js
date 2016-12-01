@@ -131,3 +131,11 @@ function notifDisplay(status){
     $(".reg-status").html(regMsg[status]);
     $(".notif").css('display','block').delay(3000).fadeOut();
 }
+
+
+$('.nav-usr-name').mouseover(function() {
+    $('.profile-drop-down').css('display','block');
+});
+$('.nav-usr-name').mouseout(function() {
+    $('.profile-drop-down').css('display','none');
+});
