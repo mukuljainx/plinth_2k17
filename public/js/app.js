@@ -85,15 +85,16 @@ function unloadcallback(){
                 // else(filled details)
                     $.post( "/user/user_register_complete", { "token" : getCookie('access-token'), "user" : userDetails })
                     .done(function( data ) {
-                        if(data.response)
+                        if(data.response){}
                         //notify him
                         //change view add his sign in
-                    }
+                            });
             }
             else{
                 $('.close-button').trigger('click');
                 //change view add his sign in
             }
+        
         });
     }
 };
@@ -103,3 +104,28 @@ $(function()
 {
     $(".popupwindow").popupwindow(profiles);
 });
+
+
+// Reg Form Object
+
+$('.reg-form-btn-register').click(function() {
+    var UserDetail ={
+        name : $('.user-name').val(),
+        gender : $('input:radio[name=sex]:checked').val(),
+        phoneNumber : $('.phone').val(),
+        email : $('.email').val(),
+        college : $('.college').val(),
+        year : $('input:radio[name=year]:checked').val(),
+        city : $('.city').val(),
+        accomodation : $('input:radio[name=acc]:checked').val()
+    };
+    console.log(UserDetail);
+});
+
+function notifDisplay(status){
+    var regMsg = ["Your registration is not successfull !", "Your registration is successfull !"]
+    var regIcon = ['<i class="fa fa-times" aria-hidden="true"></i>', '<i class="fa fa-check" aria-hidden="true"></i>']
+    $(".reg-status-img").html(regIcon[status]);
+    $(".reg-status").html(regMsg[status]);
+    $(".notif").css('display','block').delay(3000).fadeOut();
+}

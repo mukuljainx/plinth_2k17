@@ -1,8 +1,8 @@
-<a data-open="regform" class="holax" style="display:none">asda</a>
+<a data-open="regform" class="holax" style="display:block">asda</a>
             <div class="reveal reg-form" id="regform" data-reveal>
-            <form action="javascript:void(0)" name="registration-form">
+            <form action="javascript:void(0)" name="registration-form" id="registerForm">
                 <div class="group">
-                    <input type="text" id="in-name" required>
+                    <input type="text" id="in-name" class="user-name" required>
                     <span class="highlight"></span>
                     <label>Name</label>
                 </div>
@@ -18,21 +18,22 @@
                           <input class="radButtonWorkload" type="radio" id="radioWorkload2" name="sex" value="female" />
                           <label for="radioWorkload2"><span></span>Female</label>
                         </span>
+                        <b id="itemErrors"></b> 
                     </div>
                 </div>
 
                 <div class="group">
-                    <input type="text" id="in-name" required>
+                    <input type="text" id="in-name" class="phone" required>
                     <span class="highlight"></span>
                     <label>Phone Number</label>
                 </div>
                 <div class="group">
-                    <input type="text" id="in-name" required>
+                    <input type="text" id="in-name" class="email" required>
                     <span class="highlight"></span>
                     <label>Email</label>
                 </div>
                 <div class="group">
-                    <input type="text" id="in-name" required>
+                    <input type="text" id="in-name" class="college" required>
                     <span class="highlight"></span>
                     <label>College</label>
                 </div>
@@ -62,7 +63,7 @@
                     </div>
                 </div>
                 <div class="group">
-                    <input type="text" id="in-name" required>
+                    <input type="text" id="in-name" class="city" required>
                     <span class="highlight"></span>
                     <label>City</label>
                 </div>
@@ -81,7 +82,7 @@
                 </div>
 
                 <div class="add-memb">
-                    <a class="add" href="javascript:void(0)">+ Add Member</a>
+                    <a class="add" href="javascript:void(0)">+ <span>Add Member</span></a>
                 </div>
 
                 <div class="reg-form-btn">
@@ -96,48 +97,3 @@
                 </div>
             </form>
             </div>
-
-
-
-<script>
-
-$(function() {
-  // Initialize form validation on the registration form.
-  // It has the name attribute "registration"
-  $("form[name='registration-form']").validate({
-    // Specify validation rules
-    rules: {
-      // The key name on the left side is the name attribute
-      // of an input field. Validation rules are defined
-      // on the right side
-      firstname: "required",
-      lastname: "required",
-      email: {
-        required: true,
-        // Specify that email should be validated
-        // by the built-in "email" rule
-        email: true
-      },
-      password: {
-        required: true,
-        minlength: 5
-      }
-    },
-    // Specify validation error messages
-    messages: {
-      firstname: "Please enter your firstname",
-      lastname: "Please enter your lastname",
-      password: {
-        required: "Please provide a password",
-        minlength: "Your password must be at least 5 characters long"
-      },
-      email: "Please enter a valid email address"
-    },
-    // Make sure the form is submitted to the destination defined
-    // in the "action" attribute of the form when valid
-    submitHandler: function(form) {
-      form.submit();
-    }
-  });
-});
-</script>
