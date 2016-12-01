@@ -99,9 +99,9 @@ router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
             }
             else if(user.valid){
                 res.json({"response" : true});
+
             }
             else{
-                console.log("sad");
                 res.json({"response" : false});
             }
         }
@@ -128,6 +128,11 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
             res.json({"response" : true});
         }
     });
+});
+
+
+router.get('/random', Verify.verifyOrdinaryUser ,function(req, res) {
+    res.end('asd');
 });
 
 module.exports = router;

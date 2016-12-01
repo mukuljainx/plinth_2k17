@@ -20,8 +20,25 @@ exports.getToken = function (user) {
 
 exports.verifyOrdinaryUser = function (req, res, next) {
     // check header or url parameters or post parameters for token
+    function getCookie(cname, cookie) {
+        var name = cname + "=";
+        var ca = cookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length,c.length);
+            }
+        }
+        return "";
+    }
 
-    var tokenx = req.body.token || req.query.token || req.headers['access-token'];
+    cookie = req.headers.cookie;
+    tokenz = getCookie('access-token', cookie);
+
+    var tokenx = req.body.token || req.query.token || tokenz;
 
     var buffer = new Buffer(tokenx, 'base64');
     var token = buffer.toString('ascii');
