@@ -59,19 +59,21 @@ var profiles =
     }
 };
 
-function isLoggedIn(){
-    // check if user is already logged
-    // through post each time
-}
 
 function logOut(){
-    //logout user
+    var cookies = document.cookie.split(";");
+
+   for (var i = 0; i < cookies.length; i++) {
+       var cookie = cookies[i];
+       var eqPos = cookie.indexOf("=");
+       var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+       document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+   }
 }
 
 function unloadcallback(){
     if(localStorage.temptoken !== undefined){
-        document.cookie = "access-token=" + localStorage.temptoken + "; expires=Mon, 30 Dec 2017 12:00:00 UTC;";
-        $.post( "/user/user_validate", { "token" : getCookie('access-token') })
+        $.post( "/user/user_validate", { "token" : localStorage.temptoken })
         .done(function( data ) {
             if(!data.response){
                 console.log(data);
@@ -85,15 +87,18 @@ function unloadcallback(){
                 // else(filled details)
                     $.post( "/user/user_register_complete", { "token" : getCookie('access-token'), "user" : userDetails })
                     .done(function( data ) {
-                        if(data.response)
+                        if(data.response){
+                        document.cookie = "access-token=" + localStorage.temptoken + "; expires=Mon, 30 Dec 2017 12:00:00 UTC;path=/";
                         //notify him
                         //change view add his sign in
-                    }
+                        }
+                    });
             }
             else{
                 $('.close-button').trigger('click');
                 //change view add his sign in
             }
+
         });
     }
 };
@@ -102,4 +107,21 @@ function unloadcallback(){
 $(function()
 {
     $(".popupwindow").popupwindow(profiles);
+});
+
+
+// Reg Form Object
+
+$('.reg-form-btn-register').click(function() {
+    var UserDetail ={
+        name : $('.user-name').val(),
+        gender : $('input:radio[name=sex]:checked').val(),
+        phoneNumber : $('.phone').val(),
+        email : $('.email').val(),
+        college : $('.college').val(),
+        year : $('input:radio[name=year]:checked').val(),
+        city : $('.city').val(),
+        accomodation : $('input:radio[name=acc]:checked').val()
+    };
+    console.log(UserDetail);
 });
