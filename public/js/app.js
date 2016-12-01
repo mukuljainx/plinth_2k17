@@ -80,19 +80,8 @@ function unloadcallback(){
                 $('.holax').trigger('click'); // register form
                 $('.close-button').trigger('click'); // old form
                 $('.reg-social').css("display","none"); // register btn with fb and google
-                // if(modal is closed)
-                    // unregister user
-                    // notify him registration unsuccesfull
-                    // remove cookie from browser access_token
-                // else(filled details)
-                    $.post( "/user/user_register_complete", { "token" : getCookie('access-token'), "user" : userDetails })
-                    .done(function( data ) {
-                        if(data.response){
-                        document.cookie = "access-token=" + localStorage.temptoken + "; expires=Mon, 30 Dec 2017 12:00:00 UTC;path=/";
-                        //notify him
-                        //change view add his sign in
-                        }
-                    });
+                $('.user-name').val(data.name);
+                $('.email').val(data.email);
             }
             else{
                 $('.close-button').trigger('click');
@@ -101,6 +90,17 @@ function unloadcallback(){
         });
     }
 };
+
+function registerUserComplete(){
+    $.post( "/user/user_register_complete", { "token" : getCookie('access-token'), "user" : userDetails })
+    .done(function( data ) {
+        if(data.response){
+            document.cookie = "access-token=" + localStorage.temptoken + "; expires=Mon, 30 Dec 2017 12:00:00 UTC;path=/";
+            //notify him
+            //change view add his sign in
+        }
+    });
+}
 
 
 $(function()
