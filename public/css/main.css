@@ -1,6 +1,11 @@
 body{
-    background-image: url("../media/bg.png");
+/*    background-image: url("../media/bg.png");*/
     color:white;
+    background: url("../media/bg.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .navitem a{
@@ -57,8 +62,6 @@ body{
     font:bold 12px hn;
 }
 
-.social-wrapper{
-}
 
 .social{
     AAborder:1px solid white;
@@ -76,8 +79,6 @@ body{
     color:white;
 }
 
-.footer-posi{
-}
 
 .footer-text{
     max-width: 600px;
