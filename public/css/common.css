@@ -26,13 +26,17 @@ nav{
 
 .header-logo{
     width: 60px;
+    display: inline-block;
 
 }
 
 .navitem{
-    position: relative;
-    top: -40px;
+/*    position: relative;*/
+/*    top: -40px;*/
+    display: inline-block;
+    float: right;
     font:normal 1.125em hn;
+    margin-top: -5px;
 }
 
 .navitem li{
