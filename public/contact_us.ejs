@@ -15,6 +15,9 @@
     <body>
         
         <% include partials/header %>
+        <%if (!isLoggedIn) { %>
+                <% include partials/reg-form %>
+        <% } %>
         
         <div class="content">
             <div class="row head">

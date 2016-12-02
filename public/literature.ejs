@@ -14,7 +14,9 @@
     <body>
 
         <% include partials/header %>
-        <% include partials/reg-form %>
+        <%if (!isLoggedIn) { %>
+                <% include partials/reg-form %>
+        <% } %>
 
         <div class="reveal" id="register-pop-up-window" data-reveal>
           <h5 class="text-center">Register Yourself</h5>
