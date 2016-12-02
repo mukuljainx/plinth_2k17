@@ -51,6 +51,7 @@ body{
     left:75px;
 }
 
+
 .super{
     vertical-align: super;
     font:bold 12px hn;
@@ -449,7 +450,7 @@ body{
         position: relative;
         top: -145px;
     }
-    .logo-svg{
+    #logo-svg{
         max-width: 300px;
     }
 }
