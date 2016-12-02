@@ -26,13 +26,17 @@ nav{
 
 .header-logo{
     width: 60px;
+    display: inline-block;
 
 }
 
 .navitem{
-    position: relative;
-    top: -40px;
+/*    position: relative;*/
+/*    top: -40px;*/
+    display: inline-block;
+    float: right;
     font:normal 1.125em hn;
+    margin-top: -5px;
 }
 
 .navitem li{
@@ -147,15 +151,18 @@ nav{
 
 #register-pop-up-window{
   padding-top: 20px;
+    color: black;
 }
 #register-pop-up-window h5{
   font-family: cl;
   font-size: 26px;
+    color: black;
 }
 #register-pop-up-window p{
   font-family: robo;
   font-size: 16px;
   padding: 20px;
+    color: black;
 }
 
 .btn-register{
