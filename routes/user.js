@@ -95,6 +95,7 @@ router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
         // check to see if theres already a user with that email
         if (user) {
             if(!user.valid){
+                res.cookie('mycookieerr','kk1321');
                 res.json({"response" : false, "email" : user.email, "name" : user.name});
             }
             else if(user.valid){
@@ -131,7 +132,9 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
 });
 
 
-router.get('/random', Verify.verifyOrdinaryUser ,function(req, res) {
+router.get('/random', function(req, res) {
+    console.log(JSON.stringify(req.cookies));
+    res.cookie('mycookie','kkkklsla');
     res.end('asd');
 });
 

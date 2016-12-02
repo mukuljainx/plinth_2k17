@@ -45,7 +45,6 @@ $('.register-pop-up').click(function(){
   $('.wrapper-form').css('display','block');
 });
 
-
 // popus window for login
 
 var profiles =
