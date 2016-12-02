@@ -375,7 +375,7 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
 /*radio button*/
 
 .radButtonWorkload {
-/*    opacity: 0;*/
+    opacity: 0;
 /*    display: none;*/
 /*    visibility: hidden;*/
     width: 0px;

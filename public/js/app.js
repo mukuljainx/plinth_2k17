@@ -99,9 +99,8 @@ function registerUserComplete(){
     $.post( "/user/user_register_complete", { "token" : localStorage.temptoken, "user" : getUserDetails() })
     .done(function( data ) {
         if(data.response){
-            console.log(data.response);
-            // document.cookie = "access-token=" + localStorage.temptoken + "; expires=Mon, 30 Dec 2017 12:00:00 UTC;path=/";
-            //notify him
+            $('.close-button').trigger('click');
+            notifDisplay(1);
             //change view add his sign in
         }
     });
@@ -119,7 +118,7 @@ $(function()
 function getUserDetails(){
         userDetail ={
             name : $('.user-name').val(),
-            gender : $('input:radio[name=sex]:checked').val(),
+            gender : $('input:radio[name=gender]:checked').val(),
             phoneNumber : $('.phone').val(),
             email : $('.email').val(),
             college : $('.college').val(),

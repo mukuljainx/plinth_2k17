@@ -1,75 +1,80 @@
 var express = require('express');
 var router = express.Router();
 var Eventx = require('../models/event');
-
+var Verify = require('./verify');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', Verify.verifyOrdinaryUser ,function(req, res, next) {
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+  }
+  res.render('index', {
+      "isLoggedIn" : isLoggedIn,
+  });
 });
 
-router.get('/competitions', function(req, res) {
+router.get('/competitions', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('competitions');
 });
 
-router.get('/about', function(req, res) {
+router.get('/about', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('about');
 });
 
-router.get('/competitions/astronomy', function(req, res) {
+router.get('/competitions/astronomy', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('astronomy');
 });
 
-router.get('/competitions/coding', function(req, res) {
+router.get('/competitions/coding', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('coding');
 });
 
-router.get('/competitions/literature', function(req, res) {
+router.get('/competitions/literature', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('literature');
 });
 
-router.get('/competitions/quizzing', function(req, res) {
+router.get('/competitions/quizzing', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('quizzing');
 });
 
-router.get('/competitions/robotics', function(req, res) {
+router.get('/competitions/robotics', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('roboticsEvents');
 });
 
-router.get('/competitions/management', function(req, res) {
+router.get('/competitions/management', Verify.verifyOrdinaryUser ,function(req, res) {
 
    res.render('roboticsEvents');
 });
 
-router.get('/contact_us', function(req, res) {
+router.get('/contact_us', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('contact_us');
 });
 
-router.get('/faq', function(req, res) {
+router.get('/faq', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('faq');
 });
 
-router.get('/contact_us', function(req, res) {
+router.get('/contact_us', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('contact_us');
 });
 
-router.get('/sponsors_2k16', function(req, res) {
+router.get('/sponsors_2k16', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('sponsors_2k16');
 });
 
-router.get('/team', function(req, res) {
+router.get('/team', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('team');
 });
 
-router.get('/workshop', function(req, res) {
+router.get('/workshop', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('workshop');
 });
 
-router.get('/profile', function(req, res) {
+router.get('/profile', Verify.verifyOrdinaryUser ,function(req, res) {
    res.render('profile');
 });
 
-router.get('/competitions/astronomy/armageddon', function(req, res) {
+router.get('/competitions/astronomy/armageddon', Verify.verifyOrdinaryUser ,function(req, res) {
     Eventx.findOne({'eventName' : 'armageddon'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
@@ -83,7 +88,7 @@ router.get('/competitions/astronomy/armageddon', function(req, res) {
     });
 });
 
-router.get('/competitions/astronomy/astro_hunt', function(req, res) {
+router.get('/competitions/astronomy/astro_hunt', Verify.verifyOrdinaryUser ,function(req, res) {
    Eventx.findOne({'eventName' : 'astro hunt'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
@@ -97,7 +102,7 @@ router.get('/competitions/astronomy/astro_hunt', function(req, res) {
     });
 });
 
-router.get('/competitions/astronomy/physics_bowl', function(req, res) {
+router.get('/competitions/astronomy/physics_bowl', Verify.verifyOrdinaryUser ,function(req, res) {
    Eventx.findOne({'eventName' : 'physics bowl'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
@@ -111,7 +116,7 @@ router.get('/competitions/astronomy/physics_bowl', function(req, res) {
     });
 });
 
-router.get('/competitions/astronomy/star_trek', function(req, res) {
+router.get('/competitions/astronomy/star_trek', Verify.verifyOrdinaryUser ,function(req, res) {
    Eventx.findOne({'eventName' : 'star trek'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
@@ -125,7 +130,7 @@ router.get('/competitions/astronomy/star_trek', function(req, res) {
     });
 });
 
-router.get('/competitions/coding/fix_the_bug', function(req, res) {
+router.get('/competitions/coding/fix_the_bug', Verify.verifyOrdinaryUser ,function(req, res) {
    Eventx.findOne({'eventName' : 'fix the bug'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
@@ -139,7 +144,7 @@ router.get('/competitions/coding/fix_the_bug', function(req, res) {
     });
 });
 
-router.get('/competitions/coding/iupc', function(req, res) {
+router.get('/competitions/coding/iupc', Verify.verifyOrdinaryUser ,function(req, res) {
    Eventx.findOne({'eventName' : 'iupc'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
@@ -153,7 +158,7 @@ router.get('/competitions/coding/iupc', function(req, res) {
     });
 });
 
-router.get('/competitions/coding/iupc_distraction', function(req, res) {
+router.get('/competitions/coding/iupc_distraction', Verify.verifyOrdinaryUser ,function(req, res) {
    Eventx.findOne({'eventName' : 'iupc distraction'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
@@ -167,7 +172,7 @@ router.get('/competitions/coding/iupc_distraction', function(req, res) {
     });
 });
 
-router.get('/competitions/robotics/lfr', function(req, res) {
+router.get('/competitions/robotics/lfr', Verify.verifyOrdinaryUser ,function(req, res) {
    Eventx.findOne({'eventName' : 'lfr'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
@@ -181,7 +186,7 @@ router.get('/competitions/robotics/lfr', function(req, res) {
     });
 });
 
-router.get('/competitions/robotics/quad', function(req, res) {
+router.get('/competitions/robotics/quad', Verify.verifyOrdinaryUser ,function(req, res) {
    Eventx.findOne({'eventName' : 'quadcopter'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
@@ -195,7 +200,7 @@ router.get('/competitions/robotics/quad', function(req, res) {
     });
 });
 
-router.get('/competitions/robotics/roborace', function(req, res) {
+router.get('/competitions/robotics/roborace', Verify.verifyOrdinaryUser ,function(req, res) {
    Eventx.findOne({'eventName' : 'roborace'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
@@ -209,7 +214,7 @@ router.get('/competitions/robotics/roborace', function(req, res) {
     });
 });
 
-router.get('/competitions/robotics/robosoccer', function(req, res) {
+router.get('/competitions/robotics/robosoccer', Verify.verifyOrdinaryUser ,function(req, res) {
    Eventx.findOne({'eventName' : 'robosoccer'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
@@ -223,7 +228,7 @@ router.get('/competitions/robotics/robosoccer', function(req, res) {
     });
 });
 
-router.get('/competitions/robotics/robowar', function(req, res) {
+router.get('/competitions/robotics/robowar', Verify.verifyOrdinaryUser ,function(req, res) {
    Eventx.findOne({'eventName' : 'robowar'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
@@ -237,7 +242,7 @@ router.get('/competitions/robotics/robowar', function(req, res) {
     });
 });
 
-router.get('/competitions/robotics/transporter', function(req, res) {
+router.get('/competitions/robotics/transporter', Verify.verifyOrdinaryUser ,function(req, res) {
    Eventx.findOne({'eventName' : 'transporter'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
@@ -251,7 +256,7 @@ router.get('/competitions/robotics/transporter', function(req, res) {
     });
 });
 
-router.get('/competitions/management/sif', function(req, res) {
+router.get('/competitions/management/sif', Verify.verifyOrdinaryUser ,function(req, res) {
    Eventx.findOne({'eventName' : 'sif'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
