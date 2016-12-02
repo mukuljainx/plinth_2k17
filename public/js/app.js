@@ -138,3 +138,9 @@ $('.nav-usr-name').mouseover(function() {
 $('.nav-usr-name').mouseout(function() {
     $('.profile-drop-down').css('display','none');
 });
+$('.profile-drop-down').mouseover(function() {
+    $('.profile-drop-down').css('display','block');
+});
+$('.profile-drop-down').mouseout(function() {
+    $('.profile-drop-down').css('display','none');
+});

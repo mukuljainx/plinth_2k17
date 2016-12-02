@@ -18,11 +18,6 @@
     src: url("../font/HelveticaNeue.ttf");
 }
 
-/*
-section{
-    max-width: 1280px;
-}
-*/
 
 nav{
     height: 70px;
@@ -69,11 +64,7 @@ nav{
     box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.1);
     color: black;
 }
-/*
-.fly-left{
-    max-width: 250px;
-}
-*/
+
 
 .ham-content{
     font:normal 1.125em hn;
@@ -116,7 +107,6 @@ nav{
 }
 
 .social{
-/*    border:1px solid white;*/
     max-width: 500px;
 }
 
@@ -212,12 +202,12 @@ nav{
     text-align: right;
     display: none;
     position: fixed;
-    top: 60px;
+    top: 48px;
     right: 20px;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
-    border-radius: 5px;
+    border-radius: 2px;
     font: normal 15px 'Roboto';
-    padding: 20px;
+    padding:20px 10px 20px;
     background-color: white;
     z-index: 999;
 }
@@ -225,10 +215,6 @@ nav{
 .drop-down-ele a{
     font: normal 15px 'Roboto';
     color: black;
-}
-
-.profile-dp{
-
 }
 
 /* registration form */
@@ -240,17 +226,8 @@ nav{
 
 .reg-form{
     background-color: white;
-/*    display: none;*/
-/*
-    position: absolute;
-    left:350px;
-    top:50px;
-    width:680px;
-    height: 550px;
-*/
     box-shadow: 0px 4px 8px 1px rgba(0,0,0,0.2);
     padding:50px 0px;
-/*    overflow: auto;*/
     align-content: center;
 }
 
@@ -288,7 +265,6 @@ nav{
 }
 
 
-
 .reg-social ul{
     margin: 0px;
     padding: 0px;
@@ -312,7 +288,6 @@ nav{
     padding-right: 10px;
 }
 
-
 .group {
   position: relative;
 }
@@ -325,17 +300,20 @@ nav{
   display: block;
   width: 300px;
 }
+
 .group input:focus, .group textarea:focus {
   outline: none;
     border:none;
     box-shadow: none;
     border-bottom: 2px solid #3ca37c;
 }
+
 .group input:focus ~ label, .group input:valid ~ label, .group textarea:focus ~ label, .group textarea:valid ~ label {
   top: -10px;
   font-size: 17px;
   color: #3ca37c;
 }
+
 .group label {
   font:normal 22px cl;
   position: absolute;
@@ -344,7 +322,6 @@ nav{
   -webkit-transition: 0.2s ease all;
   transition: 0.2s ease all;
 }
-
 
 input:focus ~ .bar:before, textarea:focus ~ .bar:before {
   left: 0;
@@ -388,11 +365,18 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
     margin-left: 150px;
 }
 
-
 /*radio button*/
 
 .radButtonWorkload {
-  display: none;
+/*    opacity: 0;*/
+/*    display: none;*/
+/*    visibility: hidden;*/
+    width: 0px;
+}
+
+label[for="radioWorkload1"], label[for="radioWorkload2"], label[for="radioWorkload3"], label[for="radioWorkload4"], label[for="radioWorkload5"], label[for="radioWorkload6"], label[for="radioWorkload7"], label[for="radioWorkload8"], label[for="radioWorkload9"]{
+/*    position: relative;*/
+/*    left: -30px;*/
 }
 
 input[type="radio"] + label span {
