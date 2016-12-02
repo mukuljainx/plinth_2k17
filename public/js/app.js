@@ -76,8 +76,8 @@ function unloadcallback(){
         .done(function( data ) {
             if(!data.response){
                 console.log(data);
-                $('.holax').trigger('click'); // register form
                 $('.close-button').trigger('click'); // old form
+                $('.holax').trigger('click'); // register form
                 $('.reg-social').css("display","none"); // register btn with fb and google
                 $('.user-name').val(data.name);
                 $('.email').val(data.email);
@@ -91,10 +91,16 @@ function unloadcallback(){
 };
 
 function registerUserComplete(){
-    $.post( "/user/user_register_complete", { "token" : getCookie('access-token'), "user" : userDetails })
+    userDetails = getUserDetails();
+    console.log(userDetails);
+    if(userDetails.name === "" || userDetails.gender === undefined || userDetails.phoneNumber === "" || userDetails.email === "" || userDetails.college === "" || userDetails.year === undefined || userDetails.city === "" || userDetails.accomodation === undefined)
+        return;
+
+    $.post( "/user/user_register_complete", { "token" : localStorage.temptoken, "user" : getUserDetails() })
     .done(function( data ) {
         if(data.response){
-            document.cookie = "access-token=" + localStorage.temptoken + "; expires=Mon, 30 Dec 2017 12:00:00 UTC;path=/";
+            console.log(data.response);
+            // document.cookie = "access-token=" + localStorage.temptoken + "; expires=Mon, 30 Dec 2017 12:00:00 UTC;path=/";
             //notify him
             //change view add his sign in
         }
@@ -110,18 +116,20 @@ $(function()
 
 // Reg Form Object
 
-$('.reg-form-btn-register').click(function() {
-    var UserDetail ={
-        name : $('.user-name').val(),
-        gender : $('input:radio[name=sex]:checked').val(),
-        phoneNumber : $('.phone').val(),
-        email : $('.email').val(),
-        college : $('.college').val(),
-        year : $('input:radio[name=year]:checked').val(),
-        city : $('.city').val(),
-        accomodation : $('input:radio[name=acc]:checked').val()
-    };
-});
+function getUserDetails(){
+        userDetail ={
+            name : $('.user-name').val(),
+            gender : $('input:radio[name=sex]:checked').val(),
+            phoneNumber : $('.phone').val(),
+            email : $('.email').val(),
+            college : $('.college').val(),
+            year : $('input:radio[name=year]:checked').val(),
+            city : $('.city').val(),
+            accomodation : $('input:radio[name=acc]:checked').val()
+        }
+
+        return userDetail;
+}
 
 function notifDisplay(status){
     var regMsg = ["Your registration is not successfull !", "Your registration is successfull !"]

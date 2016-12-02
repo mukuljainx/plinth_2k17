@@ -2,7 +2,7 @@
 
 <div class="reveal reg-form" id="regform" data-reveal>
     <div class="form-silver-wrap">
-        <form action="javascript:void(0)" name="registration-form" id="registerForm">
+        <form action="javascript:void(0)" name="registration-form" id="registerForm" >
         <div class="group">
             <input type="text" id="in-name" class="user-name" required>
             <span class="highlight"></span>
@@ -30,12 +30,12 @@
             <div class="reg-gender">
             <span class='radButtonSpanWorkload'>
             <input class="radButtonWorkload" type="radio" id="radioWorkload1" name="gender" value="male" required/>
-            <label for="radioWorkload1"><span></span>Male</label>    
+            <label for="radioWorkload1"><span></span>Male</label>
             </span>
             <span class='radButtonSpanWorkload'>
             <input class="radButtonWorkload" type="radio" id="radioWorkload2" name="gender" value="female" />
             <label for="radioWorkload2"><span></span>Female</label>
-            </span>    
+            </span>
             <b id="itemErrors"></b>
             </div>
             </div>
@@ -55,7 +55,7 @@
             <span class="highlight"></span>
             <label>College</label>
         </div>
-            
+
         <div class="radio-year">
             <span class="reg-gender-h">Year</span>
             <div class="reg-gender">
@@ -81,13 +81,13 @@
                 </span>
             </div>
         </div>
-            
+
         <div class="group">
             <input type="text" id="in-name" class="city" required>
             <span class="highlight"></span>
             <label>City</label>
         </div>
-            
+
         <div class="radio-acc">
             <span class="reg-acc-h">Accomodation</span>
             <div class="reg-acc">
@@ -102,12 +102,12 @@
             </div>
         </div>
 
-        <div class="add-memb">
+        <!-- <div class="add-memb">
             <a class="add" href="javascript:void(0)">+ <span>Add Member</span></a>
-        </div>
+        </div> -->
 
         <div class="reg-form-btn text-center">
-            <input type="submit" value="Register" class="reg-form-btn-register" onclick="registerUserComplete">
+            <input type="submit" value="Register" class="reg-form-btn-register" onclick="registerUserComplete()">
         </div>
     </form>
 </div>
