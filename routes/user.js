@@ -8,7 +8,7 @@ var User = require('../models/user');
 
 
 /* GET users listing. */
-router.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email', 'gender'] }), function(req,res){});
+router.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }), function(req,res){});
 // the callback after google has authenticated the user
 
 router.get('/auth/google/callback', function(req,res,next){

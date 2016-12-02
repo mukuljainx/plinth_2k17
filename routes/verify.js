@@ -26,7 +26,7 @@ exports.verifyOrdinaryUser = function (req, res, next) {
     var tokenx = req.body.token || req.cookies['access-token'];
     if(tokenx === undefined || tokenx === ""){
         decoded = {};
-        sub = "";
+        decoded.sub = "";
         req.decoded = decoded;
         return next();
     }

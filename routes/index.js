@@ -10,6 +10,10 @@ router.get('/', Verify.verifyOrdinaryUser ,function(req, res, next) {
   }
   res.render('index', {
       "isLoggedIn" : isLoggedIn,
+      "user" : {
+          name : "Mukul",
+          gender : "man"
+      }
   });
 });
 
