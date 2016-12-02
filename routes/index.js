@@ -18,12 +18,12 @@ router.get('/', Verify.verifyOrdinaryUser ,function(req, res, next) {
   }
   else {
       isLoggedIn = true;
-      User.findOne({'email' : req.decoded.sub }, function(err, eventx) {
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
           // if there are any errors, return the error
           if (err)
               return done(err);
           // check to see if theres already a user with that email
-          if (eventx){
+          if (user){
               res.render('index',{
                   "isLoggedIn" : isLoggedIn,
                   "user" : {
@@ -94,7 +94,7 @@ router.get('/workshop', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.get('/profile', Verify.verifyOrdinaryUser ,function(req, res) {
-   res.render('profile');
+
 });
 
 router.get('/competitions/astronomy/armageddon', Verify.verifyOrdinaryUser ,function(req, res) {

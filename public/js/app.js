@@ -101,7 +101,7 @@ function registerUserComplete(){
         if(data.response){
             $('.close-button').trigger('click');
             notifDisplay(1);
-            //change view add his sign in
+            location.reload();
         }
     });
 }
