@@ -368,7 +368,15 @@ input:focus ~ .bar:before, textarea:focus ~ .bar:before {
 /*radio button*/
 
 .radButtonWorkload {
-  display: none;
+/*    opacity: 0;*/
+/*    display: none;*/
+/*    visibility: hidden;*/
+    width: 0px;
+}
+
+label[for="radioWorkload1"], label[for="radioWorkload2"], label[for="radioWorkload3"], label[for="radioWorkload4"], label[for="radioWorkload5"], label[for="radioWorkload6"], label[for="radioWorkload7"], label[for="radioWorkload8"], label[for="radioWorkload9"]{
+/*    position: relative;*/
+/*    left: -30px;*/
 }
 
 input[type="radio"] + label span {

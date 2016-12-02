@@ -53,8 +53,8 @@ router.get('/contact_us', function(req, res) {
    res.render('contact_us');
 });
 
-router.get('/sponsors_old', function(req, res) {
-   res.render('sponsors_old');
+router.get('/sponsors_2k16', function(req, res) {
+   res.render('sponsors_2k16');
 });
 
 router.get('/team', function(req, res) {
