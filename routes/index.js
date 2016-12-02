@@ -1,20 +1,39 @@
 var express = require('express');
 var router = express.Router();
 var Eventx = require('../models/event');
+var User = require('../models/user');
 var Verify = require('./verify');
 
 /* GET home page. */
 router.get('/', Verify.verifyOrdinaryUser ,function(req, res, next) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
+      res.render('index', {
+          "isLoggedIn" : isLoggedIn,
+          "user" : {
+              name : "Mukul",
+              gender : "man"
+          }
+      });
   }
-  res.render('index', {
-      "isLoggedIn" : isLoggedIn,
-      "user" : {
-          name : "Mukul",
-          gender : "man"
-      }
-  });
+  else {
+      isLoggedIn = true;
+      User.findOne({'email' : req.decoded.sub }, function(err, eventx) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (eventx){
+              res.render('index',{
+                  "isLoggedIn" : isLoggedIn,
+                  "user" : {
+                      name : user.name,
+                      gender : user.gender,
+                  }
+              });
+          }
+      });
+  }
 });
 
 router.get('/competitions', Verify.verifyOrdinaryUser ,function(req, res) {

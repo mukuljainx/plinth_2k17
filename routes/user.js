@@ -28,6 +28,7 @@ router.get('/auth/google/callback', function(req,res,next){
           err: 'Could not log in user'
         });
     }
+      console.log(user);
       var token = Verify.getToken(user);
       req.flash('access_token',token);
       res.redirect(301,'/user/redirect');
@@ -114,6 +115,7 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
         year           : req.body['user[year]'],
         city           : req.body['user[city]'],
         accommodation  : req.body['user[accommodation]'],
+        gender         : req.body['user[gender]'],
         valid          : true,
     };
     var options = {new: true};
