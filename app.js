@@ -45,6 +45,7 @@ app.use('*/media', express.static(path.join(__dirname, 'public/media')))
 app.use('*/font', express.static(path.join(__dirname, 'public/font')))
 
 app.use(session({ secret: 'somerandomkeytimespread' })); // session secret
+app.use(passport.session());
 app.use(flash());
 
 // uncomment after placing your favicon in /public
