@@ -14,43 +14,36 @@ exports.getToken = function (user) {
     jwt.setExpiration(new Date('2017-01-31'));
 
     var token = jwt.compact();
-    return token
+    var buffer = new Buffer(token);
+    var finalToken = buffer.toString('base64');
+    return finalToken
 
 };
 
 exports.verifyOrdinaryUser = function (req, res, next) {
     // check header or url parameters or post parameters for token
-    function getCookie(cname, cookie) {
-        var name = cname + "=";
-        var ca = cookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length,c.length);
-            }
-        }
-        return "";
+
+    var tokenx = req.body.token || req.cookies['access-token'];
+    if(tokenx === undefined || tokenx === ""){
+        decoded = {};
+        sub = "";
+        req.decoded = decoded;
+        return next();
     }
-
-    cookie = req.headers.cookie;
-    tokenz = getCookie('access-token', cookie);
-
-    var tokenx = req.body.token || req.query.token || tokenz;
-    console.log(tokenx);
-    console.log('**********************');
     var buffer = new Buffer(tokenx, 'base64');
     var token = buffer.toString('ascii');
         // decode token
     if (token) {
         // verifies secret and checks exp
         jwt.verify(token, config.secretKey, function (err, decoded) {
+            console.log('**********************');
+            console.log(decoded);
+            console.log('**********************');
             if (err) {
                 var err = new Error('You are not authenticated!');
                 err.status = 401;
                 return next(err);
+
             } else {
                 // if everything is good, save to request for use in other routes
                 req.decoded = decoded;

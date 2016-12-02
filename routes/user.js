@@ -8,7 +8,7 @@ var User = require('../models/user');
 
 
 /* GET users listing. */
-router.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }), function(req,res){});
+router.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email', 'gender'] }), function(req,res){});
 // the callback after google has authenticated the user
 
 router.get('/auth/google/callback', function(req,res,next){
@@ -28,9 +28,7 @@ router.get('/auth/google/callback', function(req,res,next){
           err: 'Could not log in user'
         });
     }
-      var tokenx = Verify.getToken(user);
-      var buffer = new Buffer(tokenx);
-      var token = buffer.toString('base64');
+      var token = Verify.getToken(user);
       req.flash('access_token',token);
       res.redirect(301,'/user/redirect');
     });
@@ -65,9 +63,7 @@ router.get('/auth/facebook/callback', function(req,res,next){
             err: 'Could not log in user'
             });
         }
-        var tokenx = Verify.getToken(user);
-        var buffer = new Buffer(tokenx);
-        var token = buffer.toString('base64');
+        var token = Verify.getToken(user);
         req.flash('access_token',token);
         res.redirect(301,'/user/redirect');
     });
@@ -87,6 +83,9 @@ router.get('/redirect', function(req, res) {
 });
 
 router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
+    console.log('********************');
+    console.log(req.decoded.sub);
+    console.log('********************');
     User.findOne({ 'email' :  req.decoded.sub }, function(err, user) {
         // if there are any errors, return the error
         if (err){
@@ -109,9 +108,6 @@ router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, res) {
-    console.log('******************')
-    console.log(req.body.jsonify)
-    console.log('******************')
     var update = {
         phoneNumber    : req.body['user[phoneNumber]'],
         college        : req.body['user[college]'],
@@ -127,16 +123,14 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
         }
         // check to see if theres already a user with that email
         if (user) {
-            console.log(user);
+            res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : false });
             res.json({"response" : true});
         }
     });
 });
 
-
 router.get('/random', function(req, res) {
-    console.log(JSON.stringify(req.cookies));
-    res.cookie('mycookie','kkkklsla');
+    console.log(req.cookies['access-token']);
     res.end('asd');
 });
 
