@@ -94,7 +94,25 @@ router.get('/workshop', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.get('/profile', Verify.verifyOrdinaryUser ,function(req, res) {
-
+    if(req.decoded.sub === ""){
+        isLoggedIn = false;
+        res.redirect(301,'/');
+    }
+    else {
+        isLoggedIn = true;
+        User.findOne({'email' : req.decoded.sub }, function(err, user) {
+            // if there are any errors, return the error
+            if (err)
+                return done(err);
+            // check to see if theres already a user with that email
+            if (user){
+                res.render('profile',{
+                    "isLoggedIn" : isLoggedIn,
+                    "user" : user
+                });
+            }
+        });
+    }
 });
 
 router.get('/competitions/astronomy/armageddon', Verify.verifyOrdinaryUser ,function(req, res) {
