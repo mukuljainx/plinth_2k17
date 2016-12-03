@@ -56,10 +56,11 @@
     <span class="reg-status-img"></span><span class="reg-status"></span>
 </div>
 
+<% if (isLoggedIn) {%>
 <div class="profile-drop-down">
     <div class="row">
         <div class="small-4 columns"><span class="profile-dp"><img src="../media/icons/profile/<%- user.gender %>.svg" width="50"/></span></div>
-        <div class="small-8 columns"><div class="drop-down-ele"><a href="/profile" >View Profile <%- user.gender %></a><br /><a href="#">Logout</a></div></div>
+        <div class="small-8 columns"><div class="drop-down-ele"><a href="/profile" >View Profile</a><br /><a onclick="logOut()">Logout</a></div></div>
     </div>
-
 </div>
+<%}%>

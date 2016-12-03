@@ -14,14 +14,13 @@
     <body>
 
         <% include partials/header %>
-        <% include partials/reg-form %>
-        
+
         <div class="row usr-profile-wrap">
             <div class="small-10 small-centered columns">
                 <div class="row">
                     <div class="small-10 small-centered text-center columns">
                         <div class="usr-img-wrap">
-                            <span class="usr-img"><img src="media/icons/profile/man.svg" width="100"/></span>
+                            <span class="usr-img"><img src="media/icons/profile/<%- user.gender %>.svg" width="100"/></span>
                             <br />
                             <br />
                             <span class="usr-name"><%- user.name %></span>
@@ -32,7 +31,7 @@
                 <br />
                 <div class="row">
                     <div class="small-12 medium-6 large-5 columns">
-                        <div class="usr-profile-h"><span>About</span></div>    
+                        <div class="usr-profile-h"><span>About</span></div>
                         <br />
                         <div class="user-profile-subh">Email</div><div class="usr-email"><%- user.email %></div>
                         <br />
@@ -49,7 +48,7 @@
                         <div class="user-profile-subh">IUPC</div><div class="event-date-time">18 Jan 2017 | 10 AM</div><div class="reg-status"><a href="#">Make Payment</a></div>
                         <br />
                         <div class="user-profile-subh">Robowar</div><div class="event-date-time">19 Jan 2017 | 10 AM</div><div class="reg-status">Paid</div>
-                        
+
                         <br />
                         <div class="user-profile-subh">Debate</div><div class="event-date-time">19 Jan 2017 | 10 AM</div><div class="reg-status">Free</div>
                         <br />
@@ -57,7 +56,7 @@
                 </div>
             </div>
         </div>
-        
+
         <% include partials/footer %>
 
     </body>
