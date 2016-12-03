@@ -8,14 +8,14 @@
         <script src="https://use.fontawesome.com/8720ae4a19.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="../css/common.css">
-        <link rel="stylesheet" href="../css/robotics.css" />
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/robotics.css" />
     </head>
     <body>
 
         <% include header %>
 
-        
+
         <div class="content">
             <div class="row">
                 <div class="small-10 small-centered text-center columns">
@@ -55,7 +55,7 @@
 <!--        registeration form modal-->
 
         <%if (!isLoggedIn) { %>
-                <% include partials/reg-form %>
+                <% include reg-form %>
         <% } %>
 
           <div class="card">

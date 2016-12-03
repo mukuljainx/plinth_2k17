@@ -2,6 +2,14 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var Eventx = require('../models/event');
+var User = require('../models/user');
+var Verify = require('./verify');
+var Robotics = require('../models/robotics');
+var Ecell = require('../models/ecell');
+var Quiz = require('../models/quiz');
+var Literary = require('../models/literary');
+var Astronomy = require('../models/astronomy');
+var Cybros = require('../models/cybros');
 
 router.post('/add', function(req, res) {
 
@@ -39,7 +47,6 @@ router.post('/add', function(req, res) {
         res.json({ message: 'value created!' });
   })
 
-  // next();
 });
 
 // router.get('/all',function(req,res,nex){
@@ -57,6 +64,16 @@ router.post('/add', function(req, res) {
 //
 //   });
 // });
+
+
+//user registration
+
+router.post('/registered/add', Verify.verifyOrdinaryUser, function(req, res) {
+
+
+});
+
+
 
 
 module.exports = router;
