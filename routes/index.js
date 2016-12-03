@@ -47,7 +47,7 @@ router.get('/competitions', Verify.verifyOrdinaryUser ,function(req, res) {
               return done(err);
           // check to see if theres already a user with that email
           if (user){
-              res.render('index',{
+              res.render('competitions',{
                   "isLoggedIn" : isLoggedIn,
                   "user" : {
                       name : user.name,
@@ -57,7 +57,7 @@ router.get('/competitions', Verify.verifyOrdinaryUser ,function(req, res) {
           }
       });
   }
-    
+
 });
 
 router.get('/about', Verify.verifyOrdinaryUser ,function(req, res) {
@@ -75,7 +75,7 @@ router.get('/about', Verify.verifyOrdinaryUser ,function(req, res) {
               return done(err);
           // check to see if theres already a user with that email
           if (user){
-              res.render('index',{
+              res.render('competitions',{
                   "isLoggedIn" : isLoggedIn,
                   "user" : {
                       name : user.name,
@@ -127,7 +127,7 @@ router.get('/contact_us', Verify.verifyOrdinaryUser ,function(req, res) {
               return done(err);
           // check to see if theres already a user with that email
           if (user){
-              res.render('index',{
+              res.render('competitions',{
                   "isLoggedIn" : isLoggedIn,
                   "user" : {
                       name : user.name,
@@ -154,7 +154,7 @@ router.get('/faq', Verify.verifyOrdinaryUser ,function(req, res) {
               return done(err);
           // check to see if theres already a user with that email
           if (user){
-              res.render('index',{
+              res.render('competitions',{
                   "isLoggedIn" : isLoggedIn,
                   "user" : {
                       name : user.name,
@@ -170,7 +170,7 @@ router.get('/faq', Verify.verifyOrdinaryUser ,function(req, res) {
 //   res.render('contact_us');
 //});
 
-router.get('/sponsors_2k16', Verify.verifyOrdinaryUser ,function(req, res) {
+router.get('/sponsors2k16', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
       res.render('sponsors_2k16', {
@@ -185,7 +185,7 @@ router.get('/sponsors_2k16', Verify.verifyOrdinaryUser ,function(req, res) {
               return done(err);
           // check to see if theres already a user with that email
           if (user){
-              res.render('index',{
+              res.render('competitions',{
                   "isLoggedIn" : isLoggedIn,
                   "user" : {
                       name : user.name,
@@ -212,7 +212,7 @@ router.get('/team', Verify.verifyOrdinaryUser ,function(req, res) {
               return done(err);
           // check to see if theres already a user with that email
           if (user){
-              res.render('index',{
+              res.render('competitions',{
                   "isLoggedIn" : isLoggedIn,
                   "user" : {
                       name : user.name,
@@ -257,9 +257,32 @@ router.get('/competitions/astronomy/armageddon', Verify.verifyOrdinaryUser ,func
             return done(err);
         // check to see if theres already a user with that email
         if (eventx){
-            res.render('partials/event',{
-                eventDetail : eventx
-            });
+            if(req.decoded.sub === ""){
+                isLoggedIn = false;
+                res.render('partials/event',{
+                    eventDetail : eventx,
+                    isLoggedIn : isLoggedIn
+                });
+            }
+            else {
+                isLoggedIn = true;
+                User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    // if there are any errors, return the error
+                    if (err)
+                        return done(err);
+                    // check to see if theres already a user with that email
+                    if (user){
+                        res.render('partials/event',{
+                            eventDetail : eventx,
+                            isLoggedIn : isLoggedIn,
+                            "user" : {
+                                name : user.name,
+                                gender : user.gender,
+                            }
+                        });
+                    }
+                });
+            }
         }
     });
 });
