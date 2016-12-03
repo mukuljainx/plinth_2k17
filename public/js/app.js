@@ -73,7 +73,7 @@ function unloadcallback(){
         $.post( "/user/user_validate", { "token" : localStorage.temptoken })
         .done(function( data ) {
             if(!data.response){
-                console.log(data);
+//                console.log(data);
                 $('.close-button').trigger('click'); // old form
                 $('.holax').trigger('click'); // register form
                 $('.reg-social').css("display","none"); // register btn with fb and google
@@ -90,7 +90,7 @@ function unloadcallback(){
 
 function registerUserComplete(){
     userDetails = getUserDetails();
-    console.log(userDetails);
+//    console.log(userDetails);
     if(userDetails.name === "" || userDetails.gender === undefined || userDetails.phoneNumber === "" || userDetails.email === "" || userDetails.college === "" || userDetails.year === undefined || userDetails.city === "" || userDetails.accomodation === undefined)
         return;
 

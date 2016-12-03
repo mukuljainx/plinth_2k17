@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Armageddon | Plinth'17</title>
+        <title><%- eventDetail.eventName %> | Plinth'17</title>
         <script src="https://use.fontawesome.com/8720ae4a19.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.min.css" rel="stylesheet">
@@ -15,6 +15,7 @@
 
         <% include header %>
 
+        
         <div class="content">
             <div class="row">
                 <div class="small-10 small-centered text-center columns">
@@ -53,7 +54,9 @@
 
 <!--        registeration form modal-->
 
-        <% include reg-form %>
+        <%if (!isLoggedIn) { %>
+                <% include partials/reg-form %>
+        <% } %>
 
           <div class="card">
               <div class="row">
