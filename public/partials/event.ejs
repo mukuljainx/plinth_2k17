@@ -14,6 +14,9 @@
     <body>
 
         <% include header %>
+        <%if (!isLoggedIn) { %>
+                <% include reg-form %>
+        <% } %>
 
 
         <div class="content">
@@ -54,9 +57,6 @@
 
 <!--        registeration form modal-->
 
-        <%if (!isLoggedIn) { %>
-                <% include reg-form %>
-        <% } %>
 
           <div class="card">
               <div class="row">
@@ -190,6 +190,46 @@
 
         <script src="../js/tab.js"></script>
         <script src="../js/reg-form.js"></script>
+        <script>
+            $.push("/events/registered/add", {"eventName" : "<%- eventDetail.eventName %>", "clubName" : "<%- eventDetail.clubName %>" }){
+                if(data.response){
+                notifDisplay(1);
+                }else{
+                notifDisplay(0);
+                   }
+            }
+        
+            $.push("/events/unregistered/add", {"eventName" : "<%- eventDetail.eventName %>", "clubName" : "<%- eventDetail.clubName %>, getUserDetails(), " }){
+                if(data.response){
+                notifDisplay(1);
+                }else{
+                notifDisplay(0);
+                   }
+            }
+            
+            function eventRegister(link, registration){
+                userDetails = getUserDetails();
+                //    console.log(userDetails);
+                if(userDetails.name === "" || userDetails.gender === undefined || userDetails.phoneNumber === "" || userDetails.email === "" || userDetails.college === "" || userDetails.year === undefined || userDetails.city === "" || userDetails.accomodation === undefined)
+                    return;
+                
+                $.post(link, registration)
+                    .done(function( data ) {
+                    if(data.response){
+//                        $('.close-button').trigger('click');
+                        notifDisplay(1);
+//                        location.reload();
+                    }else{
+                        notifDisplay(0);
+                    }
+                });
+            }
+            
+            var registration = {
+                "clubName" : "<%- eventDetail.clubName %>",
+                "eventName" : "<%- eventDetail.eventName %>",
+            }
+        </script>
 
     </body>
 </html>
