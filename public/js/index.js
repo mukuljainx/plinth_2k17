@@ -10,8 +10,8 @@ $(document).ready(function() {
        else{
          $('footer').removeClass('footer-fixed');
        }
-       console.log("window hiehgt : " + $(window).innerHeight());
-       console.log("footer top : " + footerTop);
+//       console.log("window hiehgt : " + $(window).innerHeight());
+//       console.log("footer top : " + footerTop);
    }
 
    footerHandler();
