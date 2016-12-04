@@ -102,7 +102,9 @@ body{
   margin-left: calc( 50% - 221.5px );
 }
 
-
+#workshop-modal, #lectures-modal{
+    color: black;
+}
 
 @media screen and (max-width: 700px) {
     .logo-clg{
