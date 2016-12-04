@@ -1,16 +1,16 @@
 @font-face {
   font-family: roboto-light;
-  src: url(/public/font/mun/roboto/Roboto-Light.ttf);
+  src: url(public/font/mun/roboto/Roboto-Light.ttf);
 }
 
 @font-face {
   font-family: roboto-boldx;
-  src: url(/public/font/mun/roboto/Roboto-Bold.ttf);
+  src: url(public/font/mun/roboto/Roboto-Bold.ttf);
 }
 
 @font-face {
   font-family: robotox;
-  src: url(/public/font/mun/roboto/Roboto-Regular.ttf);
+  src: url(public/font/mun/roboto/Roboto-Regular.ttf);
 }
 
 body{

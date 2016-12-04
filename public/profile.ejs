@@ -45,13 +45,10 @@
                     <div class="small-12 medium-6 large-5 columns">
                         <div class="usr-profile-h"><span>Events</span></div>
                         <br />
-                        <div class="user-profile-subh">IUPC</div><div class="event-date-time">18 Jan 2017 | 10 AM</div><div class="reg-status"><a href="#">Make Payment</a></div>
+                        <% for(var i=0; i<user.events.length; i++) {%>
+                        <div class="user-profile-subh"><%= events[i] %></div><div class="reg-status"><a href="#">Make Payment</a></div>
                         <br />
-                        <div class="user-profile-subh">Robowar</div><div class="event-date-time">19 Jan 2017 | 10 AM</div><div class="reg-status">Paid</div>
-
-                        <br />
-                        <div class="user-profile-subh">Debate</div><div class="event-date-time">19 Jan 2017 | 10 AM</div><div class="reg-status">Free</div>
-                        <br />
+                        <% } %>
                     </div>
                 </div>
             </div>
