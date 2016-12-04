@@ -18,7 +18,7 @@ passport.deserializeUser(function(id, done) {
 exports.google = passport.use(new GoogleStrategy({
 		clientID        : configAuth.googleAuth.clientID,
         clientSecret    : configAuth.googleAuth.clientSecret,
-        callbackURL     : '/user/auth/google/callback',
+        callbackURL     : configAuth.googleAuth.callbackURL,
 	},
 	function(accessToken, refreshToken, profile, done) {
 		User.findOne({ 'email': profile.emails[0].value }, function(err, user) {
@@ -52,7 +52,7 @@ exports.google = passport.use(new GoogleStrategy({
 exports.facebook = passport.use(new FacebookStrategy({
 		clientID        : configAuth.facebookAuth.clientID,
         clientSecret    : configAuth.facebookAuth.clientSecret,
-        callbackURL     : '/user/auth/facebook/callback',
+        callbackURL     : configAuth.facebookAuth.callbackURL,
 		profileFields   : ['id', 'emails', 'name'],
 	},
 	function(accessToken, refreshToken, profile, done) {
