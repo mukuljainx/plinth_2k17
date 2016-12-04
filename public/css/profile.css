@@ -35,15 +35,12 @@
 /*    background-color: #4a4a4a;*/
     width: 75px;
     display: inline-block;
-} 
+}
 
 .usr-email, .usr-phone, .usr-clg, .usr-city{
     font: normal 15px 'Roboto';
     opacity: 0.8;
     display: inline-block;
-    width: 75px;
-/*    padding-left: 50px;*/
-/*    padding-right: 50px;*/
 }
 
 footer{

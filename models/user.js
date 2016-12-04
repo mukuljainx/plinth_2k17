@@ -15,6 +15,7 @@ var userSchema = mongoose.Schema({
         accommodation  : Boolean,
         valid          : Boolean,
         gender         : String,
+        events         : Array,
 });
 
 // create the model for users and expose it to our app

@@ -7,12 +7,19 @@
         <div class="ham-content text-center">
             <button class="ham-close"><span>X</span></button>
             <ul>
+                <li>
+                <% if(isLoggedIn){ %>
+                    <a class="nav-usr-name"> <%- user.name %> <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                <% } else{ %>
+                    <a data-open="register-pop-up-window">Register</a>
+                <% } %>
+                </li>
                 <li><a href="/">Home</a></li>
                 <li><a href="/competitions">Competitions</a></li>
-                <li><a href="/workshops">Workshops</a></li>
+                <li><a data-open="workshop-modal">Workshops</a></li>
                 <li><a data-open="lectures-modal" >Lectures</a></li>
                 <li><a href="/mun">The LNMIIT MUN</a></li>
-                <li><a data-open="register-pop-up-window">Register</a></li>
+                <li><a href="/wikitolearn">Wiki to Learn</a></li>
             </ul>
         </div>
     </div>
@@ -20,15 +27,15 @@
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/competitions">Competitions</a></li>
-            <li><a href="/workshops">Workshops</a></li>
+            <li><a data-open="workshop-modal">Workshops</a></li>
             <li><a data-open="lectures-modal">Lectures</a></li>
             <li><a href="/mun">The LNMIIT MUN</a></li>
-<!--            <li><a data-open="register-pop-up-window" >Register</a></li>-->
+            <li><a href="/wikitolearn">Wiki to Learn</a></li>
             <li>
                 <% if(isLoggedIn){ %>
                     <a class="nav-usr-name"> <%- user.name %> <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
                 <% } else{ %>
-                    <li><a data-open="register-pop-up-window">Register</a></li>
+                    <a data-open="register-pop-up-window">Register</a>
                 <% } %>
             </li>
         </ul>
@@ -47,8 +54,13 @@
     </button>
 </div>
 
-<div class="reveal" id="lectures-modal" data-reveal>
+<div class="reveal" id="workshop-modal" data-reveal>
     <h5 class="text-center">Lectures</h5>
+    <p class="text-center">Coming Soon !!!</p>
+</div>
+
+<div class="reveal" id="lectures-modal" data-reveal>
+    <h5 class="text-center">Workshops</h5>
     <p class="text-center">Coming Soon !!!</p>
 </div>
 

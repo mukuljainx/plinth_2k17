@@ -3,6 +3,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var Eventx = require('../models/event');
 var User = require('../models/user');
+var UserEvent = require('../models/userevent');
 var Verify = require('./verify');
 var Robotics = require('../models/robotics');
 var Ecell = require('../models/ecell');
@@ -49,31 +50,77 @@ router.post('/add', function(req, res) {
 
 });
 
-// router.get('/all',function(req,res,nex){
-//   MessMenu.find({}, function(err, menu) {
-//     // if there are any errors, return the error
-//     if (err)
-//         return done(err);
-//     // check to see if theres already a user with that email
-//     if (menu[0])
-//       res.json(menu[0].messMenu);
-//     else if(menu)
-//       res.json(menu);
-//
-//     res.end("{response : false}");
-//
-//   });
-// });
-
-
 //user registration
 
-router.post('/registered/add', Verify.verifyOrdinaryUser, function(req, res) {
+router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
 
+    robotics   = new Robotics();
+    ecell      = new Ecell();
+    quiz       = new Quiz();
+    literary   = new Literary();
+    astronomy  = new Astronomy();
+    cybros     = new Cybros();
+    var user   = new User();
+    var userEvent   = new UserEvent();
+
+    switch(req.body.clubName) {
+        case "Astronomy":
+            eventx = astronomy;
+            break;
+        case "coding":
+            eventx = cybros;
+            break;
+        case "literature":
+            eventx = literary;
+            break;
+        case "robotics":
+            eventx = robotics;
+            break;
+        case "management":
+            eventx = ecell;
+            break;
+        case "quizzing":
+            eventx = quiz;
+            break;
+    }
+    newEvent = [];
+
+        eventx.team = req.body.userDetails;
+
+        emails = [];
+        for(var i=0; i<req.body.userDetails.length; i++ ){
+            emails.push(req.body.userDetails[i].email);
+        }
+
+        //bulk
+
+        var bulk = user.collection.initializeOrderedBulkOp();
+
+        bulk.find({'email': {$in: emails}}).update({$push: {events: req.body.eventName}});
+        bulk.execute(function (err,docs) {
+            if(err)
+                return done(err);
+            else{
+                var bulk = userEvent.collection.initializeOrderedBulkOp();
+
+                bulk.find({'email': {$in: emails}}).update({$push: {events: req.body.eventName}});
+                bulk.execute(function (err) {
+                    if(err){
+                        return done(err);
+                    }
+                    eventx.save(function(err) {
+                        if (err){
+                            return done(err);
+                        }
+                        else{
+                            res.json({ "response" : true });
+                        }
+                    })
+                });
+            }
+        });
 
 });
-
-
 
 
 module.exports = router;

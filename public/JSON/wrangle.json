@@ -1,5 +1,5 @@
 {
-    "imageLink" : "images/icons/literary/wrangle.svg",
+    "imageLink" : "media/icons/literary/wrangle.svg",
     "registerLink" : "/registration/literary/wrangle",
     "register0" : "<li><a class='reg-btn' href='#' data-open='regform'>Register ></a></li>",
     "register1" : "<li><a class='reg-btn' href='#' onClick='registerUser('literary', 'wrangle')'>Register ></a></li>",
@@ -8,7 +8,7 @@
     "payment1" : "",
     "memberUpperLimit" : 3,
     "memberLowerLimit" : 1,
-    "clubName" : "literary",
+    "clubName" : "literature",
     "eventName" : "wrangle",
     "eventDate" : "22nd Jan 2016",
     "eventVenue" : "The LNMIIT, Jaipur",

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><%- eventDetail.eventName %> | Plinth'17</title>
+        <title>Competitions | Plinth'17</title>
         <script src="https://use.fontawesome.com/8720ae4a19.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.min.css" rel="stylesheet">
@@ -14,15 +14,28 @@
     <body>
 
         <% include header %>
-        <%if (!isLoggedIn) { %>
-                <% include reg-form %>
-        <% } %>
+        <a data-open="event-registration-form" class="event-registration-form-btn" style="opacity:0; width : 0px; height : 0px;">Register</a>
+
+        <div class="reveal" id="event-registration-form" style="padding: 50px 40px;" data-reveal>
+            <div class="event-registration-form-message">
+                    <p class="text-center" style="margin-bottom : 20px;">Hey, this is a team event, you can from team with <%- eventDetail.memberLowerLimit %> to <%- eventDetail.memberUpperLimit %> </p>
+                    <div class="reg-form-btn text-center" style="margin : 30px 0px 0px 0px">
+                        <a class="reg-form-btn-register proceed-next" onclick="proceedNext()">Next</a>
+                    </div>
+            </div>
+            <div class="event-registration-form-part" style="display : none">
+                <% include reg-form-event %>
+            </div>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
 
 
         <div class="content">
             <div class="row">
                 <div class="small-10 small-centered text-center columns">
-                    <h4><%- eventDetail.clubName %></h4>
+                    <h4 style="text-transform: capitalize;"><%- eventDetail.clubName %></h4>
                 </div>
             </div>
         </div>
@@ -32,7 +45,7 @@
 <!--                    gray circle-->
                     <div class="small-7 small-push-4 medium-5 large-4 large-push-3 columns">
                         <div class="dp-image">
-
+                            <img src="<%- eventDetail.imageLink %>" />
                         </div>
                     </div>
                     <div class="small-10 medium-5 large-5 large-pull-1 columns">
@@ -46,7 +59,15 @@
                             <br />
                             <br />
                             <ul>
-                                <li><a class="reg-btn" href="#" data-open="regform">Register ></a></li>
+                                <%if (isLoggedIn) { %>
+                                    <%if (user.events.indexOf(eventDetail.eventName) !== -1) { %>
+                                        <li><a class="reg-btn" >Registered</a></li>
+                                    <% } else { %>
+                                        <li><a class="reg-btn" onClick="loggedUserRegistration()">Register ></a></li>
+                                    <% } %>
+                                <% } else { %>
+                                    <li><a class="reg-btn" onclick="loggedUserRegistration()">Register ></a></li>
+                                <% } %>
                                 <li><a href="#">Make Payment ></a></li>
                             </ul>
                         </div>
@@ -57,7 +78,7 @@
 
 <!--        registeration form modal-->
 
-
+        <% if(false){ %>
           <div class="card">
               <div class="row">
                   <div class="small-4 small-offset-1 columns">
@@ -73,162 +94,235 @@
                   </div>
               </div>
           </div>
+          <% } %>
+
+        <div class="rows">
+            <div class="column medium-8 small-12 medium-centered custom-column">
+                <ul class="tabs event-tabs-silver text-center" data-tabs id="example-tabs">
+                  <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Synopsis</a></li>
+                  <li class="tabs-title"><a href="#panel2">Event Description</a></li>
+                  <li class="tabs-title"><a href="#panel3">Rules</a></li>
+                  <li class="tabs-title"><a href="#panel4">Judges</a></li>
+                  <li class="tabs-title"><a href="#panel5">Mentors</a></li>
+                  <li class="tabs-title"><a href="#panel6">Sponsors</a></li>
+                </ul>
+
+                <div class="dropdown-pane" style="padding:0px" id="example-dropdown-1" data-dropdown data-hover="true" data-hover-pane="true">
+                    <div class="event-tabs-mobile" data-tabs id="example-tabs">
+                      <div class="tabs-title tabs-title-mobile is-active"><a href="#panel1" aria-selected="true">Synopsis</a></div>
+                      <div class="tabs-title tabs-title-mobile"><a href="#panel2">Event Description</a></div>
+                      <div class="tabs-title tabs-title-mobile"><a href="#panel3">Rules</a></div>
+                      <div class="tabs-title tabs-title-mobile"><a href="#panel4">Judges</a></div>
+                      <div class="tabs-title tabs-title-mobile"><a href="#panel5">Mentors</a></div>
+                      <div class="tabs-title tabs-title-mobile"><a href="#panel6">Sponsors</a></div>
+                  </div>
+                </div>
 
 
-
-        <div class="row">
-            <div class="small-10 small-centered columns">
-                <div class="tab-wrapper">
-                    <ul class="tab">
-                        <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Synopsis')" id="defaultOpen">Synopsis</a></li>
-                        <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'EventDesc')">Event Description</a></li>
-                        <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Rules')">Rules</a></li>
-                        <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Judges')">Judges</a></li>
-                        <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Mentors')">Mentors</a></li>
-                        <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Sponsors')">Sponsors</a></li>
-                    </ul>
-
-                    <ul class="drop-tab">
-                        <a><i class="fa fa-chevron-down fa-lg drop-toggle" aria-hidden="true"></i></a>
-                        <div class="drop-content-wrapper">
-                          <ul class="drop-content">
-                          <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Synopsis')" id="defaultOpen">Synopsis</a></li>
-                          <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'EventDesc')">Event Description</a></li>
-                          <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Rules')">Rules</a></li>
-                          <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Judges')">Judges</a></li>
-                          <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Mentors')">Mentors</a></li>
-                          <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Sponsors')">Sponsors</a></li>
-                          </ul>
-                        </div>
-                    </ul>
-
-                    <div class="big-wrapper">
-                        <div class="wrapper">
-                    <div id="Synopsis" class="tabcontent">
-                        <div class="row content-head">
-                            <div class="small-10 small-centered text-center columns">
-                                <span>Synopsis</span>
-                            </div>
-                        </div>
-                        <div class="row contentdesc">
-                            <div class="small-10 small-centered columns">
-                                <%- eventDetail.synopsis %>
-                            </div>
-                        </div>
+                <div class="tabs-content" data-tabs-content="example-tabs">
+                    <div class="mobile-tab-container">
+                        <a data-toggle="example-dropdown-1" class="mobile-tab-toggler"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
                     </div>
-                    <div id="EventDesc" class="tabcontent">
-                        <div class="row content-head">
-                            <div class="small-10 small-centered text-center columns">
-                                <span>Event Description</span>
-                            </div>
-                        </div>
-                        <div class="row contentdesc">
-                            <div class="small-10 small-centered columns">
-                                <%- eventDetail.eventDescription %>
-                            </div>
-                        </div>
+                    <div class="tabs-panel is-active" id="panel1">
+                        <%- eventDetail.synopsis %>
                     </div>
-
-                    <div id="Rules" class="tabcontent">
-                        <div class="row content-head">
-                            <div class="small-10 small-centered text-center columns">
-                                <span>Rules</span>
-                            </div>
-                        </div>
-                        <div class="row contentdesc">
-                            <div class="small-10 small-centered columns">
-                                <%- eventDetail.rules %>
-                            </div>
-                        </div>
+                    <div class="tabs-panel" id="panel2">
+                        <%- eventDetail.eventDescription %>
                     </div>
-
-                    <div id="Judges" class="tabcontent">
-                        <div class="row content-head">
-                            <div class="small-10 small-centered text-center columns">
-                                <span>Judges</span>
-                            </div>
-                        </div>
-                        <div class="row contentdesc">
-                            <div class="small-10 small-centered columns">
-                                <%- eventDetail.judges %>
-                            </div>
-                        </div>
+                    <div class="tabs-panel" id="panel3">
+                        <%- eventDetail.rules %>
                     </div>
-
-                    <div id="Mentors" class="tabcontent">
-                        <div class="row content-head">
-                            <div class="small-10 small-centered text-center columns">
-                                <span>Mentors</span>
-                            </div>
-                        </div>
-                        <div class="row contentdesc">
-                            <div class="small-10 small-centered columns">
-                                <%- eventDetail.mentors %>
-                            </div>
-                        </div>
+                    <div class="tabs-panel" id="panel4">
+                        <%- eventDetail.judges %>
                     </div>
-
-                    <div id="Sponsors" class="tabcontent">
-                        <div class="row content-head">
-                            <div class="small-10 small-centered text-center columns">
-                                <span>Sponsors</span>
-                            </div>
-                        </div>
-                        <div class="row contentdesc">
-                            <div class="small-10 small-centered columns">
-                                <%- eventDetail.sponsors %>
-                            </div>
-                        </div>
+                    <div class="tabs-panel" id="panel5">
+                        <%- eventDetail.mentors %>
                     </div>
-                        </div>
+                    <div class="tabs-panel" id="panel6">
+                        <%- eventDetail.sponsors %>
                     </div>
                 </div>
             </div>
-        </div>
+        <div>
+        <div class="row" style="margin-top:40px;">
+            <div class="column small-10 small-centered">
+                <div style='font-weight :500; text-align:center; margin-bottom:20px'>For Any Queries Contact</div>
+                <div class="text-center">
+                    <%- eventDetail.query %>
+                    plinth@lnmiit.ac.in
+                </div>
+            </div>
 
+        </div>
         <% include footer %>
 
-        <script src="../js/tab.js"></script>
-        <script src="../js/reg-form.js"></script>
         <script>
-            $.push("/events/registered/add", {"eventName" : "<%- eventDetail.eventName %>", "clubName" : "<%- eventDetail.clubName %>" }){
+        multiUser = [];
+        multiUserCount = 0;
+
+        function formSubmissionEvent(url, datax){
+            data = datax;
+            $.post( {
+                url: url,
+                contentType: 'application/json; charset=utf-8',
+                dataType : 'json',
+                data: JSON.stringify(data)
+            })
+            .done(function( data ) {
                 if(data.response){
-                notifDisplay(1);
-                }else{
-                notifDisplay(0);
-                   }
-            }
-        
-            $.push("/events/unregistered/add", {"eventName" : "<%- eventDetail.eventName %>", "clubName" : "<%- eventDetail.clubName %>, getUserDetails(), " }){
-                if(data.response){
-                notifDisplay(1);
-                }else{
-                notifDisplay(0);
-                   }
-            }
-            
-            function eventRegister(link, registration){
-                userDetails = getUserDetails();
-                //    console.log(userDetails);
-                if(userDetails.name === "" || userDetails.gender === undefined || userDetails.phoneNumber === "" || userDetails.email === "" || userDetails.college === "" || userDetails.year === undefined || userDetails.city === "" || userDetails.accomodation === undefined)
-                    return;
-                
-                $.post(link, registration)
-                    .done(function( data ) {
-                    if(data.response){
-//                        $('.close-button').trigger('click');
-                        notifDisplay(1);
-//                        location.reload();
-                    }else{
-                        notifDisplay(0);
+                    notifDisplay(1);
+                }
+            });
+        }
+
+        function proceedNext(){
+            $('.event-registration-form-message').css('display', 'none');
+            $('.event-registration-form-part').css('display', 'block');
+        }
+        <%if (isLoggedIn) { %>
+            $('.reg-social').css('display', 'none');
+            function loggedUserRegistration(){
+                    if(<%- eventDetail.memberUpperLimit %> === 1 && <%- eventDetail.memberLowerLimit %> === 1){
+                        multiUser = [];
+                        multiUser.push(intialUser);
+                        data = {"eventName" : "<%- eventDetail.eventName %>", "clubName" : "<%- eventDetail.clubName %>" , "userDetails" : multiUser};
+                        $.post( {
+                            url: "/events/register",
+                            contentType: 'application/json; charset=utf-8',
+                            dataType : 'json',
+                            data: JSON.stringify(data)
+                        })
+                        .done(function( data ) {
+                            if(data.response){
+                                notifDisplay(1);
+                            }
+                        });
+                    }else {
+                        $(".event-registration-form-btn").trigger('click');
+                        if(<%- eventDetail.memberLowerLimit %> === 1){
+                            $('.event-registration-form-btnx').removeClass("btn-disabled");
+                        }
                     }
-                });
+                }
+                // function hitting the backend
+                function eventUserComplete(){
+                    if((multiUserCount + 1) < <%- eventDetail.memberLowerLimit %>){
+                        return
+                    }
+                    else{
+                        userx = getUserDetails();
+                        if(!validateUserDetails(userx)) return;
+                        multiUser[multiUserCount] = userx;
+                        $('.close-button').trigger('click');
+                        reqBody = {"eventName" : "<%- eventDetail.eventName %>", "clubName" : "<%- eventDetail.clubName %>" , "userDetails" : multiUser};
+                        formSubmissionEvent("/events/register", reqBody)
+                    }
+                }
+
+                intialUser = {
+                    "name"         : "<%- user.name %>",
+                    "gender"       : "<%- user.gender %>",
+                    "phoneNumber"  : "<%- user.phoneNumber %>",
+                    "email"        : "<%- user.email %>",
+                    "college"      : "<%- user.college %>",
+                    "year"         : "<%- user.year %>",
+                    "city"         : "<%- user.city %>",
+                    "accomodation" : "<%- user.accomodation %>",
+                }
+
+                setFormValue(intialUser);
+        <% } else { %>
+            //when user press register
+            function eventUserComplete(){
+                if((multiUserCount + 1) < <%- eventDetail.memberLowerLimit %>){
+                    return
+                }
+                else{
+                    multiUser[multiUserCount] = getUserDetails();
+                    $('.close-button').trigger('click');
+                    reqBody = {"eventName" : "<%- eventDetail.eventName %>", "clubName" : "<%- eventDetail.clubName %>" , "userDetails" : multiUser};
+                    formSubmissionEvent("/events/register", reqBody);
+                }
             }
-            
-            var registration = {
-                "clubName" : "<%- eventDetail.clubName %>",
-                "eventName" : "<%- eventDetail.eventName %>",
+            //when user opens form
+            function loggedUserRegistration(){
+                $(".event-registration-form-btn").trigger('click');
+                if(<%- eventDetail.memberLowerLimit %>  === 1){
+                    $('.event-registration-form-btnx').removeClass("btn-disabled");
+                }
+
+                if(<%- eventDetail.memberUpperLimit %> === 1 && <%- eventDetail.memberLowerLimit %> === 1){
+                    multiUser = [];
+                    proceedNext();
+                    $('.add-member-btn').css('display', 'none');
+
+                }else {
+                    $(".event-registration-form-btn").trigger('click');
+                    if(<%- eventDetail.memberLowerLimit %> === 1){
+                        $('.event-registration-form-btnx').removeClass("btn-disabled");
+                    }
+                }
             }
+        <% } %>
+        function addMember(){
+            var userx = getUserDetails();
+            if(!validateUserDetails(userx)){
+                console.log(validateUserDetails(userx));
+                return;
+            }
+            if((multiUserCount + 2) === <%- eventDetail.memberUpperLimit %>){
+                $('.add-member-btn').css('display','none');
+            }
+            multiUser[multiUserCount] = userx;
+            multiUserCount++;
+            $('.event-registration-form-member-number').text(multiUserCount + 1);
+            setFormFree();
+            if((multiUserCount + 1) === <%- eventDetail.memberLowerLimit %>){
+                $('.event-registration-form-btnx').removeClass("btn-disabled");
+            }
+        }
+
+        $('.event-registration-form-prev').click(function(){
+            $('.add-member-btn').css('display','inline-block');
+            if(multiUserCount === 0)
+                return
+            else{
+                multiUserCount--;
+                $('.event-registration-form-member-number').text(multiUserCount + 1);
+                setFormValue(multiUser[multiUserCount]);
+            }
+        });
+        $('.event-registration-form-next').click(function(){
+            if(multiUserCount === ( <%- eventDetail.memberUpperLimit %> - 1) || $('.event-registration-form-member-number').text() == multiUser.length || multiUser.length === 0)
+                return
+            else{
+                multiUserCount++;
+                $('.event-registration-form-member-number').text(multiUserCount + 1);
+                if(multiUser[multiUserCount] !== undefined);
+                    setFormValue(multiUser[multiUserCount]);
+            }
+        });
+
+
+        function setFormValue(user){
+            $('.user-name').val(user.name);
+            $('input:radio[name=gender]')[user.gender === "male" ? 0 : 1].checked = true;
+            $('.phone').val(user.phoneNumber);
+            $('.email').val(user.email);
+            $('.college').val(user.college);
+            $('input:radio[name=year]')[user.year - 1].checked = true;
+            $('.city').val(user.city);
+            $('input:radio[name=acc]')[user.accomodation ? 0 : 1].checked = true;
+        }
+        function setFormFree(){
+            $('.user-name').val("");
+            $('.phone').val("");
+            $('.email').val("");
+            $('input:radio[name=gender]').attr('checked',false);
+            $('input:radio[name=year]').attr('checked',false);
+        }
+
+
         </script>
 
     </body>

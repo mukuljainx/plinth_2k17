@@ -63,7 +63,7 @@ function logOut(){
     $.post( "/user/logout")
     .done(function( data ) {
         if(data.response){
-            window.location = "/";
+            location.reload();
         }
     });
 }
@@ -82,7 +82,8 @@ function unloadcallback(){
             }
             else{
                 $('.close-button').trigger('click');
-                //change view add his sign in
+                $('.close-button').trigger('click');
+                location.reload();
             }
         });
     }
@@ -90,16 +91,21 @@ function unloadcallback(){
 
 function registerUserComplete(){
     userDetails = getUserDetails();
-//    console.log(userDetails);
     if(userDetails.name === "" || userDetails.gender === undefined || userDetails.phoneNumber === "" || userDetails.email === "" || userDetails.college === "" || userDetails.year === undefined || userDetails.city === "" || userDetails.accomodation === undefined)
         return;
+    reqBody = { "token" : localStorage.temptoken, "user" : getUserDetails() };
+    formSubmission("/user/user_register_complete", reqBody)
+}
 
-    $.post( "/user/user_register_complete", { "token" : localStorage.temptoken, "user" : getUserDetails() })
+function formSubmission(url,reqBody ){
+    $.post( url, reqBody)
     .done(function( data ) {
         if(data.response){
             $('.close-button').trigger('click');
             notifDisplay(1);
             location.reload();
+        }else{
+            notifDisplay(0);
         }
     });
 }
@@ -114,18 +120,24 @@ $(function()
 // Reg Form Object
 
 function getUserDetails(){
-        userDetail ={
-            name : $('.user-name').val(),
-            gender : $('input:radio[name=gender]:checked').val(),
-            phoneNumber : $('.phone').val(),
-            email : $('.email').val(),
-            college : $('.college').val(),
-            year : $('input:radio[name=year]:checked').val(),
-            city : $('.city').val(),
-            accomodation : $('input:radio[name=acc]:checked').val()
-        }
+    userDetail ={
+        name : $('.user-name').val(),
+        gender : $('input:radio[name=gender]:checked').val(),
+        phoneNumber : $('.phone').val(),
+        email : $('.email').val(),
+        college : $('.college').val(),
+        year : $('input:radio[name=year]:checked').val(),
+        city : $('.city').val(),
+        accomodation : $('input:radio[name=acc]:checked').val()
+    }
+    return userDetail;
+}
 
-        return userDetail;
+function validateUserDetails(data){
+    if(data.name === "" || data.gender === undefined || data.phoneNumber === "" || data.email === "" || data.college === "" || data.year === undefined || data.city === "" || data.accomodation === undefined)
+        return false;
+    else
+        return true;
 }
 
 function notifDisplay(status){
@@ -135,7 +147,6 @@ function notifDisplay(status){
     $(".reg-status").html(regMsg[status]);
     $(".notif").css('display','block').delay(3000).fadeOut();
 }
-
 
 $('.nav-usr-name').mouseover(function() {
     $('.profile-drop-down').css('display','block');

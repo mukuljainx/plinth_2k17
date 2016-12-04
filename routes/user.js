@@ -45,7 +45,7 @@ facebook
 *****************/
 
 
-router.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email'] }),
+router.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email','public_profile' ] }),
   function(req, res){});
 
 router.get('/auth/facebook/callback', function(req,res,next){
@@ -84,9 +84,6 @@ router.get('/redirect', function(req, res) {
 });
 
 router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
-    console.log('********************');
-    console.log(req.decoded.sub);
-    console.log('********************');
     User.findOne({ 'email' :  req.decoded.sub }, function(err, user) {
         // if there are any errors, return the error
         if (err){
@@ -98,8 +95,8 @@ router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
                 res.json({"response" : false, "email" : user.email, "name" : user.name});
             }
             else if(user.valid){
+                res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : false });
                 res.json({"response" : true});
-
             }
             else{
                 res.json({"response" : false});
@@ -116,6 +113,9 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
         city           : req.body['user[city]'],
         accommodation  : req.body['user[accommodation]'],
         gender         : req.body['user[gender]'],
+        name           : req.body['user[name]'],
+        email          : req.body['user[email]'],
+        events         : ['init'],
         valid          : true,
     };
     var options = {new: true};
@@ -133,7 +133,7 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
 
 router.post('/logout', Verify.verifyOrdinaryUser ,function(req, res) {
     res.clearCookie("access-token");
-    res.json({"response" : true});
+    res.json({"response": true})
 });
 
 router.get('/random', function(req, res) {

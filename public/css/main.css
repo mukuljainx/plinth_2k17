@@ -1,7 +1,7 @@
 body{
 /*    background-image: url("../media/bg.png");*/
     color:white;
-    background: url("../media/bg.png") no-repeat center center fixed; 
+    background: url("../media/bg.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -26,9 +26,9 @@ body{
 }
 
 .logo-clg{
-    font: normal 15px cl;
+    font: normal 20px cl;
     position: relative;
-    left:-20px;
+    left:-80px;
 }
 .logo-plinth{
     font: normal 105px rez;
@@ -99,7 +99,7 @@ body{
 .footer-fixed{
   position: absolute;
   bottom: 20px;
-  margin-left: calc( 50% - 300px );
+  margin-left: calc( 50% - 221.5px );
 }
 
 

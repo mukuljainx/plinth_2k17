@@ -15,7 +15,7 @@ h4{
 }
 
 footer{
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .dp-image{
@@ -33,6 +33,7 @@ footer{
 
 .title-workshop{
     font:bold 20px 'Roboto';
+    text-transform: capitalize;
 }
 
 .details ul{
@@ -129,7 +130,7 @@ ul.drop-tab {
     display: none;
     list-style: none;
     margin: 0;
-    padding: 30px;
+    padding: 20px 20px 3px;
     overflow: hidden;
     background-color: #f1f1f1;
 }
@@ -174,23 +175,6 @@ ul.drop-tab {
     color: #606060;
 }
 
-/*
-.tabcontent {
-    -webkit-animation: fadeEffect 1s;
-    animation: fadeEffect 1s;  Fading effect takes 1 second
-}
-
-@-webkit-keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-@keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-*/
-
 .content-head{
     margin-top: 50px;
 }
@@ -222,3 +206,93 @@ ul.drop-tab {
         display: block;
     }
 }
+
+.event-registration-form-prev, .event-registration-form-next{
+    cursor: pointer;
+}
+
+.event-tab-name-silver{
+    display: inline-block;
+}
+
+.event-tabs-silver{
+    background: #f1f1f1;
+    border: 0px;
+    display: table;
+    width: 100%;
+}
+
+.event-tabs-silver li{
+     display: table-cell;
+     float : none;
+}
+
+.event-tabs-silver a{
+    color: #606060;
+    font: bold 15px 'Roboto';
+}
+
+.event-tabs-silver li>a:focus, .event-tabs-silver li>a[aria-selected=true]{
+    background: #f1f1f1;
+    color: black;
+    border-bottom : 4px solid #019B74;
+}
+
+.event-tabs-silver a:hover{
+    background: #f1f1f1;
+    border-bottom : 4px solid #019B74;
+}
+
+.custom-column{
+    box-shadow: 0 0px 1px 1px rgba(0,0,0,0.1);
+    padding: 0;
+}
+
+.custom-column .tabs-panel{
+    padding: 50px;
+}
+
+.mobile-tab-toggler{
+    position: absolute;
+    right: 17px;
+    top: 19px;
+    color: #019B74;
+}
+
+#example-dropdown-1{
+    width: 145px;
+}
+
+.tabs-title-mobile a{
+    color: black;
+    width: 145px;
+}
+
+.mobile-tab-container{
+    height: 60px;
+    background: #f1f1f1;
+    position: relative;
+    display: none;
+}
+
+
+@media screen and (max-width: 1120px){
+    .custom-column{
+        width: 88%;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .event-tabs-silver .tabs-title{
+        display: none;
+    }
+    .mobile-tab-container{
+        display: block;
+    }
+}
+
+/*@media screen and (min-width: 768px){
+    .mobile-tab-container{
+        display: block;
+    }
+}*/

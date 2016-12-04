@@ -63,11 +63,10 @@ exports.facebook = passport.use(new FacebookStrategy({
 		  if (!err && user !== null) {
 		    done(null, user);
 		  } else {
-			// console.log("**************\nCheckpoint\n**************\n New user adding");
 		    user = new User();
 			user.facebookid    = profile.id;
 			user.facebooktoken = accessToken;
-			user.name  		   = profile.displayName;
+			user.name  		   = profile._json.first_name + " " + profile._json.last_name;
 			user.email 		   = profile.emails[0].value; // pull the first email
 
 		    user.save(function(err) {
