@@ -72,19 +72,21 @@ h4{
 }
 
 @media screen and (max-width: 1111px){
+/*
     .card a{
-/*        font-size: 12px;*/
         position: relative;
         top: -20px;
     }
+*/
 }
 
 @media screen and (max-width: 1020px){
+/*
     .card a{
-/*        font-size: 12px;*/
         position: relative;
         top: 20px;
     }
+*/
 
     .card img{
         margin-left: 40px;
@@ -98,11 +100,12 @@ h4{
 }
 
 @media screen and (max-width: 746px){
+/*
     .card a{
-/*        font-size: 12px;*/
         position: relative;
         top: 0px;
     }
+*/
 
     .card img{
         margin-left: 0px;
@@ -110,20 +113,23 @@ h4{
 }
 
 @media screen and (max-width: 674px){
+/*
     .card a{
-/*        font-size: 15px;*/
         position: relative;
         top: -20px;
     }
+*/
 
 }
 
 @media screen and (max-width: 640px){
+/*
     .card a{
-/*        font-size: 15px;*/
+
         position: relative;
         top: 20px;
     }
+*/
     .card img{
 /*        margin-left: 85px;*/
     }
@@ -146,15 +152,6 @@ h4{
     }
 }
 
-/*
-@media screen and (max-width: 533px){
-    .card a{
-        font-size: 12px;
-        position: relative;
-        top: -20px;
-    }
-}
-*/
 
 @media screen and (max-width: 440px){
 
@@ -168,24 +165,15 @@ h4{
         margin-left: 20px;
     }
 
-/*
-    .name{
-        font: bold 12px 'Roboto';
-        opacity: 0.7;
-    }
-
-    .name-desc{
-        font: normal 12px 'Roboto';
-        opacity: 0.7;
-    }
-*/
 }
 
 @media screen and (max-width: 335px){
+/*
     .card a{
         position: relative;
         top: -20px;
     }
+*/
 
     .card img{
         margin-left: 0px;
