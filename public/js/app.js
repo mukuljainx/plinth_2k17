@@ -160,3 +160,8 @@ $('.profile-drop-down').mouseover(function() {
 $('.profile-drop-down').mouseout(function() {
     $('.profile-drop-down').css('display','none');
 });
+
+
+$(document).ready(function() {
+    $('.master-wrapper').delay(700).fadeOut('fast');
+});
