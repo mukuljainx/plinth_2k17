@@ -55,14 +55,14 @@ router.post('/add', function(req, res) {
 
 router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
 
-    robotics   = new Robotics();
-    ecell      = new Ecell();
-    quiz       = new Quiz();
-    literary   = new Literary();
-    astronomy  = new Astronomy();
-    cybros     = new Cybros();
-    var user   = new User();
-    var userEvent   = new UserEvent();
+    var robotics   = new Robotics();
+    var ecell      = new Ecell();
+    var quiz       = new Quiz();
+    var literary   = new Literary();
+    var astronomy  = new Astronomy();
+    var cybros     = new Cybros();
+    var user       = new User();
+    var userEvent  = new UserEvent();
 
     switch(req.body.clubName) {
         case "Astronomy":
@@ -84,11 +84,10 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
             eventx = quiz;
             break;
     }
-    newEvent = [];
 
         eventx.team = req.body.userDetails;
-
-        emails = [];
+        console.log(eventx.team);
+        var emails = [];
         for(var i=0; i<req.body.userDetails.length; i++ ){
             emails.push(req.body.userDetails[i].email);
         }
@@ -101,7 +100,9 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
         }
         bulk.execute();
 
+
         var bulk = userEvent.collection.initializeOrderedBulkOp();
+
         for(var i=0; i < emails.length; i++){
             bulk.find({'email': emails[i]}).upsert().update(
                 {
