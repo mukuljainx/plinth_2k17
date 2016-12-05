@@ -5,6 +5,7 @@ var google = require('../authenticate').google;
 var facebook = require('../authenticate').facebook;
 var Verify = require('./verify');
 var User = require('../models/user');
+var UserEvent = require('../models/userevent');
 
 
 /* GET users listing. */
@@ -95,7 +96,7 @@ router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
                 res.json({"response" : false, "email" : user.email, "name" : user.name});
             }
             else if(user.valid){
-                res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : false });
+                res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : true });
                 res.json({"response" : true});
             }
             else{
@@ -118,18 +119,41 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
         events         : ['init'],
         valid          : true,
     };
-    var options = {new: true};
-    User.findOneAndUpdate({'email' : req.decoded.sub}, update, options, function(err, user) {
+
+    var oldEvents = [];
+
+    UserEvent.findOne({ 'email' :  req.decoded.sub }, function(err, oldUser) {
+        // if there are any errors, return the error
         if (err){
             return done(err);
         }
         // check to see if theres already a user with that email
         if (user) {
-            res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : false });
-            res.json({"response" : true});
+            update.events = update.events.concat(oldUser.events);
+            User.findOneAndUpdate({'email' : req.decoded.sub}, update, {new: true}, function(err, user) {
+                if (err){
+                    return done(err);
+                }
+                if (user) {
+                    res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : true });
+                    res.json({"response" : true});
+                }
+            });
+        }
+        else{
+            User.findOneAndUpdate({'email' : req.decoded.sub}, update, {new: true}, function(err, user) {
+                if (err){
+                    return done(err);
+                }
+                if (user) {
+                    res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : true });
+                    res.json({"response" : true});
+                }
+            });
         }
     });
 });
+
 
 router.post('/logout', Verify.verifyOrdinaryUser ,function(req, res) {
     res.clearCookie("access-token");
