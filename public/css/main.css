@@ -45,7 +45,7 @@ body{
 .logo-desc{
     font:normal 22px caviar;
     position:relative;
-    top:-29px;
+    top:-24px;
     left:15px;
 }
 
@@ -102,7 +102,7 @@ body{
   margin-left: calc( 50% - 221.5px );
 }
 
-#workshop-modal, #lectures-modal{
+#workshop-modal, #lectures-modal, #notif{
     color: black;
 }
 
