@@ -102,7 +102,7 @@ body{
   margin-left: calc( 50% - 221.5px );
 }
 
-#workshop-modal, #lectures-modal, #notif{
+#workshop-modal, #lectures-modal, .notif{
     color: black;
 }
 
