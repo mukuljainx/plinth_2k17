@@ -129,7 +129,10 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
         }
         // check to see if theres already a user with that email
         if (oldUser) {
-            // update.events = update.events.concat(oldUser.events);
+            console.log(1,update.events);
+            update.events = update.events.concat(oldUser.events);
+            console.log(2, oldUser.events);
+            console.log(update.events);
             User.findOneAndUpdate({'email' : req.decoded.sub}, update, {new: true}, function(err, user) {
                 if (err){
                     return done(err);

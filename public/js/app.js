@@ -68,7 +68,6 @@ function logOut(){
 }
 
 function unloadcallback(){
-    console.log("asdasdasda");
     if(localStorage.temptoken !== undefined){
         $.post( "/user/user_validate", { "token" : localStorage.temptoken })
         .done(function( data ) {
