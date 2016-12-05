@@ -11,6 +11,7 @@ var Quiz = require('../models/quiz');
 var Literary = require('../models/literary');
 var Astronomy = require('../models/astronomy');
 var Cybros = require('../models/cybros');
+var mongoose = require('mongoose');
 
 router.post('/add', function(req, res) {
 
@@ -92,34 +93,34 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
             emails.push(req.body.userDetails[i].email);
         }
 
-        //bulk
+        // bulk
 
         var bulk = user.collection.initializeOrderedBulkOp();
+        for(var i=0; i < emails.length; i++){
+            bulk.find({'email': emails[i]}).update({$push: {events: req.body.eventName}});
+        }
+        bulk.execute();
 
-        bulk.find({'email': {$in: emails}}).update({$push: {events: req.body.eventName}});
-        bulk.execute(function (err,docs) {
-            if(err)
-                return done(err);
-            else{
-                var bulk = userEvent.collection.initializeOrderedBulkOp();
+        var bulk = userEvent.collection.initializeOrderedBulkOp();
+        for(var i=0; i < emails.length; i++){
+            bulk.find({'email': emails[i]}).upsert().update(
+                {
+                    $push : {events: req.body.eventName},
+                    $set  : {email : emails[i]}
+                }
+            );
+        }
 
-                bulk.find({'email': {$in: emails}}).update({$push: {events: req.body.eventName}});
-                bulk.execute(function (err) {
-                    if(err){
-                        return done(err);
-                    }
-                    eventx.save(function(err) {
-                        if (err){
-                            return done(err);
-                        }
-                        else{
-                            res.json({ "response" : true });
-                        }
-                    })
-                });
-            }
+        bulk.execute(function(err, docs){
+            eventx.save(function(err) {
+                if (err){
+                    return done(err);
+                }
+                else{
+                    res.json({ "response" : true });
+                }
+            })
         });
-
 });
 
 
