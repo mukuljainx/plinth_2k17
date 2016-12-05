@@ -96,7 +96,7 @@ router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
                 res.json({"response" : false, "email" : user.email, "name" : user.name});
             }
             else if(user.valid){
-                res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : true });
+                res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : false });
                 res.json({"response" : true});
             }
             else{
@@ -135,7 +135,7 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
                     return done(err);
                 }
                 if (user) {
-                    res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : true });
+                    res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : false });
                     res.json({"response" : true});
                 }
             });
@@ -146,7 +146,7 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
                     return done(err);
                 }
                 if (user) {
-                    res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : true });
+                    res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : false });
                     res.json({"response" : true});
                 }
             });
