@@ -69,11 +69,11 @@ function logOut(){
 }
 
 function unloadcallback(){
+    console.log("asdasdasda");
     if(localStorage.temptoken !== undefined){
         $.post( "/user/user_validate", { "token" : localStorage.temptoken })
         .done(function( data ) {
             if(!data.response){
-//                console.log(data);
                 $('.close-button').trigger('click'); // old form
                 $('.holax').trigger('click'); // register form
                 $('.reg-social').css("display","none"); // register btn with fb and google
@@ -102,10 +102,10 @@ function formSubmission(url,reqBody ){
     .done(function( data ) {
         if(data.response){
             $('.close-button').trigger('click');
-            notifDisplay(1);
+            notifDisplay(1,1);
             location.reload();
         }else{
-            notifDisplay(0);
+            notifDisplay(0,0);
         }
     });
 }
@@ -140,11 +140,11 @@ function validateUserDetails(data){
         return true;
 }
 
-function notifDisplay(status){
-    var regMsg = ["Your registration is not successfull !", "Your registration is successfull !"]
+function notifDisplay(status, icon){
+    var regMsg = ["Your registration is not successfull !", "Your registration is successfull !", "Payment will be open soon", "Payment successfull !", "Payment unsuccessfull !"]
     var regIcon = ['<i class="fa fa-times" aria-hidden="true"></i>', '<i class="fa fa-check" aria-hidden="true"></i>']
     $(".reg-status-img").html(regIcon[status]);
-    $(".reg-status").html(regMsg[status]);
+    $(".reg-status").html(regMsg[icon]);
     $(".notif").css('display','block').delay(3000).fadeOut();
 }
 

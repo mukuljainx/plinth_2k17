@@ -170,7 +170,10 @@
             })
             .done(function( data ) {
                 if(data.response){
-                    notifDisplay(1);
+                    notifDisplay(1,1);
+                }
+                else {
+                    notifDisplay(0,0);
                 }
             });
         }
@@ -194,7 +197,10 @@
                         })
                         .done(function( data ) {
                             if(data.response){
-                                notifDisplay(1);
+                                notifDisplay(1,1);
+                            }
+                            else {
+                                notifDisplay(0,0);
                             }
                         });
                     }else {
