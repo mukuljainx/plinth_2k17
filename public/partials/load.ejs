@@ -1,0 +1,135 @@
+        
+        <style>
+            @font-face {
+                font-family: rez;
+                src: url("../font/REZ.ttf");
+            }
+            
+            @font-face {
+                font-family: caviar;
+                src: url("../font/CaviarDreams.ttf");
+            }
+            
+            @font-face {
+                font-family: cl;
+                src: url("../font/ChampagneAndLimousines.ttf");
+            }
+            
+            @font-face {
+                font-family: hn;
+                src: url("../font/HelveticaNeue.ttf");
+            }
+            
+            .master-wrapper{
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                top: 0px;
+                left: 0px;
+            }
+            
+            body{
+                color: black;    
+            }
+            
+            .main-logo{
+/*
+                max-width:600px;
+                height: 400px;
+*/              
+                margin-left:40px;
+                margin-top: 120px;
+                AAborder: 1px solid white;
+                padding: 50px;
+            }
+
+            .logo-content{
+/*
+                position: relative;
+                top: -225px;
+*/
+            }
+            
+            .logo-clg{
+                font: normal 20px cl;
+                margin-left: 80px;
+            }
+            .logo-plinth{
+                font: normal 105px rez;
+                letter-spacing: 2px;
+            }
+            
+            .logo-2017{
+                font: bold 50px hn;
+                letter-spacing: 2px;
+                position: relative;
+                left:15px;
+            }
+            
+            .logo-desc{
+                font:normal 22px caviar;
+                position:relative;
+                top:-25px;
+                left:15px;
+            }
+            
+            .logo-date{
+                font:bold 20px hn;
+                position:relative;
+                top:-25px;
+                left:75px;
+            }
+            
+            
+            .super{
+                vertical-align: super;
+                font:bold 12px hn;
+            }
+            
+            .plinth-logo-img{
+                width: 100px;
+                height: auto;
+                margin-top:100px;
+                margin-left:250px;
+            }
+            
+            .ei-logo-img{
+                margin-left:130px;
+            }
+        </style>
+<!--
+        <div class="row ">
+                <div class="small-12 small-centered column text-center main-logo">
+                        <div class="logo-content">
+                            <img src="../media/logo.svg" alt="plinth"/>
+                        <span class="logo-clg">AET EngineerIndya <span style="font-size: 12px;">presents</span></span>
+                        <br /><span class="logo-plinth">plinth</span>   <span class="logo-2017">2017</span>
+                        <br /><span class="logo-desc">Techno-Management Literary Fest</span>
+                        <br /><span class="logo-date">18<span class="super">th</span> - 19<span class="super">th</span> January, 2017</span>
+                        </div>
+
+                </div>
+            </div> 
+-->
+        <div class="row master-wrapper">
+                <div class="small-12 small-centered column text-center main-logo">
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <img src="../media/logo.svg" alt="plinth" class="plinth-logo-img"/>    
+                        </div>
+                        <div class="small-8 text-left columns">
+                    <img src="../media/ei-logo.svg" alt="plinth" class="ei-logo-img"/>    
+                    <div class="logo-content">
+                        <span class="logo-clg">AET EngineerIndya <span style="font-size: 12px;">presents</span></span>
+                        <br /><span class="logo-plinth">plinth</span>   <span class="logo-2017">2017</span>
+                        <br /><span class="logo-desc">Techno-Management Literary Fest</span>
+                        <br /><span class="logo-date">18<span class="super">th</span> - 19<span class="super">th</span> January, 2017</span>
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $('.master-wrapper').fadeOut(1500);
+        </script>
