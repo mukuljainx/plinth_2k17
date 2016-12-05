@@ -163,5 +163,5 @@ $('.profile-drop-down').mouseout(function() {
 
 
 $(document).ready(function() {
-    $('.master-wrapper').delay(700).fadeOut('fast');
+    $('.master-wrapper').delay(1000).fadeOut('fast');
 });
