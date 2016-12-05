@@ -45,9 +45,14 @@
                     <div class="small-12 medium-6 large-5 columns">
                         <div class="usr-profile-h"><span>Events</span></div>
                         <br />
-                        <% for(var i=0; i<user.events.length; i++) {%>
-                        <div class="user-profile-subh"><%= events[i] %></div><div class="reg-status"><a href="#">Make Payment</a></div>
-                        <br />
+                        <!-- <%- user.events %> -->
+                        <% if(user.events.length === 1) { %>
+                            <div>Registered Events will apear here</div>
+                        <% } else { %>
+                            <% for(var i=1; i<user.events.length; i++) { %>
+                            <div class="user-profile-subh"><%= events[i] %></div><div class="reg-status"><a href="#">Make Payment</a></div>
+                            <br />
+                            <% } %>
                         <% } %>
                     </div>
                 </div>
