@@ -141,7 +141,7 @@ function validateUserDetails(data){
 
 function notifDisplay(status, icon){
     var regMsg = ["Your registration is not successfull !", "Your registration is successfull !", "Payment will be open soon", "Payment successfull !", "Payment unsuccessfull !"]
-    var regIcon = ['<i class="fa fa-times" aria-hidden="true"></i>', '<i class="fa fa-check" aria-hidden="true"></i>']
+    var regIcon = ['<i class="fa fa-times" aria-hidden="true"></i>', '<i class="fa fa-check" aria-hidden="true"></i>', '<i class="fa fa-exclamation" aria-hidden="true"></i>']
     $(".reg-status-img").html(regIcon[status]);
     $(".reg-status").html(regMsg[icon]);
     $(".notif").css('display','block').delay(3000).fadeOut();
@@ -159,7 +159,6 @@ $('.profile-drop-down').mouseover(function() {
 $('.profile-drop-down').mouseout(function() {
     $('.profile-drop-down').css('display','none');
 });
-
 
 $(document).ready(function() {
     $('.master-wrapper').delay(1000).fadeOut('fast');
