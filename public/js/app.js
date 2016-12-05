@@ -17,7 +17,6 @@ $('body').click(function() {
     if(toggle > 0){
         $('.ham-wrapper').animate({width: "0px"}, 200);
         $('.ham-close').css("display","none");
-
     }
 });
 
