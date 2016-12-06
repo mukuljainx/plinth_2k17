@@ -90,8 +90,20 @@ Watch this space for more updates.<p>
 </div>
 <%}%>
 
-<% if(!isLoggedIn){ %>
-    <% include reg-form %>
-<% } %>
+<div class="reveal" id="event-registration-form" style="padding: 50px 40px;" data-reveal>
+    <div class="event-registration-form-message">
+            <p class="text-center" style="margin-bottom : 20px;">Hey, this is a team event, you can from team with <span class="memberLowerLimit" style="display:inline-block"></span> to <span class="memberUpperLimit" style="display:inline-block"></span></p>
+            <div class="reg-form-btn text-center" style="margin : 30px 0px 0px 0px">
+                <a class="reg-form-btn-register proceed-next" onclick="proceedNext()">Next</a>
+            </div>
+    </div>
+    <div class="event-registration-form-part" style="display : none">
+        <% include reg-form-event %>
+    </div>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<a data-open="event-registration-form" class="holaxx" style="visibility : hidden">asda</a>
 
 <% include load %>

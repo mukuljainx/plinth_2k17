@@ -1,5 +1,7 @@
 $(document).foundation();
 
+formReg = 0;
+
 //HAMBURGER
 
 $('.ham-btn').click(function() {
@@ -72,9 +74,14 @@ function unloadcallback(){
         $.post( "/user/user_validate", { "token" : localStorage.temptoken })
         .done(function( data ) {
             if(!data.response){
+                formReg = 1;
+                proceedNext();
                 $('.close-button').trigger('click'); // old form
-                $('.holax').trigger('click'); // register form
+                $('.holaxx').trigger('click'); // register form
+                $('.reg-form-event-pagging').css('display','none');
+                $('.event-registration-form-btnx').removeClass('btn-disabled');
                 $('.reg-social').css("display","none"); // register btn with fb and google
+                $('.add-member-btn').css("display", "none");
                 $('.user-name').val(data.name);
                 $('.email').val(data.email);
             }
@@ -88,15 +95,18 @@ function unloadcallback(){
 };
 
 function registerUserComplete(){
-    userDetails = getUserDetails();
-    if(userDetails.name === "" || userDetails.gender === undefined || userDetails.phoneNumber === "" || userDetails.email === "" || userDetails.college === "" || userDetails.year === undefined || userDetails.city === "" || userDetails.accomodation === undefined)
-        return;
-    reqBody = { "token" : localStorage.temptoken, "user" : getUserDetails() };
-    formSubmission("/user/user_register_complete", reqBody)
-}
-
-function formSubmission(url,reqBody ){
-    $.post( url, reqBody)
+    debugger
+    var x = getUserDetails();
+    if(!validateUserDetails(x)){
+        return
+    }
+    data = {"token" : localStorage.temptoken, "user" : x};
+    $.post( {
+        url: "/user/user_register_complete",
+        contentType: 'application/json; charset=utf-8',
+        dataType : 'json',
+        data: JSON.stringify(data)
+    })
     .done(function( data ) {
         if(data.response){
             $('.close-button').trigger('click');

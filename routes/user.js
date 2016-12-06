@@ -108,19 +108,17 @@ router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
 
 router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, res) {
     var update = {
-        phoneNumber    : req.body['user[phoneNumber]'],
-        college        : req.body['user[college]'],
-        year           : req.body['user[year]'],
-        city           : req.body['user[city]'],
-        accommodation  : req.body['user[accommodation]'],
-        gender         : req.body['user[gender]'],
-        name           : req.body['user[name]'],
-        email          : req.body['user[email]'],
+        phoneNumber    : req.body.user.phoneNumber,
+        college        : req.body.user.college,
+        year           : req.body.user.year,
+        city           : req.body.user.city,
+        accommodation  : req.body.user.accommodation,
+        gender         : req.body.user.gender,
+        name           : req.body.user.name,
+        email          : req.body.user.email,
         events         : ['init'],
         valid          : true,
     };
-
-    var oldEvents = [];
 
     UserEvent.findOne({ 'email' :  req.decoded.sub }, function(err, oldUser) {
         // if there are any errors, return the error
@@ -135,7 +133,7 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
             console.log(update.events);
             User.findOneAndUpdate({'email' : req.decoded.sub}, update, {new: true}, function(err, user) {
                 if (err){
-                    return done(err);
+                    // return done(err);
                 }
                 if (user) {
                     res.cookie('access-token', Verify.getToken(user),{ httpOnly: true, secure : false });
@@ -144,6 +142,9 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
             });
         }
         else{
+            console.log(req.decoded.sub);
+            console.log(update);
+
             User.findOneAndUpdate({'email' : req.decoded.sub}, update, {new: true}, function(err, user) {
                 if (err){
                     return done(err);
