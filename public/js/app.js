@@ -1,5 +1,10 @@
 $(document).foundation();
 
+function proceedNext(){
+    $('.event-registration-form-message').css('display', 'none');
+    $('.event-registration-form-part').css('display', 'block');
+}
+
 formReg = 0;
 
 //HAMBURGER
@@ -95,7 +100,6 @@ function unloadcallback(){
 };
 
 function registerUserComplete(){
-    debugger
     var x = getUserDetails();
     if(!validateUserDetails(x)){
         return

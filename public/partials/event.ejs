@@ -170,10 +170,7 @@
             });
         }
 
-        function proceedNext(){
-            $('.event-registration-form-message').css('display', 'none');
-            $('.event-registration-form-part').css('display', 'block');
-        }
+
         <%if (isLoggedIn) { %>
             $('.reg-social').css('display', 'none');
             function loggedUserRegistration(){
@@ -234,7 +231,6 @@
             //when user press register
             function eventUserComplete(){
                 if(formReg === 1){
-                    debugger
                     registerUserComplete();
                     return;
                 }
@@ -256,7 +252,6 @@
             }
             //when user opens form
             function loggedUserRegistration(){
-                debugger
                 formReg = 0;
                 $('.reg-social').css("display","block"); // register btn with fb and google
                 $('.add-member-btn').css("display", "inline-block");
