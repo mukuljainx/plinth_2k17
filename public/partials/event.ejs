@@ -40,7 +40,7 @@
                             <span class="title-workshop"><%- eventDetail.eventName %></span>
                             <br />
                             <br />
-                            <span>Date : <%- eventDetail.eventDate %></span>
+                            <span>Date : 18 - 19 Jan 2017</span>
                             <br />
                             <span>Venue : <%- eventDetail.eventVenue %></span>
                             <br />
@@ -170,10 +170,7 @@
             });
         }
 
-        function proceedNext(){
-            $('.event-registration-form-message').css('display', 'none');
-            $('.event-registration-form-part').css('display', 'block');
-        }
+        
         <%if (isLoggedIn) { %>
             $('.reg-social').css('display', 'none');
             function loggedUserRegistration(){
