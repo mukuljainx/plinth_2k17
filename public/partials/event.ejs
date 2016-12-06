@@ -28,7 +28,11 @@
                 <div class="row">
                     <div class="small-7 small-push-4 medium-5 large-4 large-push-3 columns">
                         <div class="dp-image">
-                            <img src="<%- eventDetail.imageLink %>" alt="<%- eventDetail.eventName %> representational Image" />
+                            <%if ( eventDetail.eventName === 'armageddon'){ %>
+                                <img src="media/icons/coding/cola.svg" alt="<%- eventDetail.eventName %> representational Image" />
+                            <% } else { %>
+                                <img src="<%- eventDetail.imageLink %>" alt="<%- eventDetail.eventName %> representational Image" />
+                            <% } %>
                         </div>
                     </div>
                     <div class="small-10 medium-5 large-5 large-pull-1 columns">
