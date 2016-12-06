@@ -18,12 +18,9 @@ footer{
     margin-top: 50px;
 }
 
-.dp-image{
-/*    background-color: darkgray;*/
+.dp-image img{
     width:150px;
     height: 150px;
-/*    border-radius: 100px;*/
-/*    margin-left: 220px;*/
 }
 
 .details{
