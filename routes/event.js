@@ -11,6 +11,7 @@ var Quiz = require('../models/quiz');
 var Literary = require('../models/literary');
 var Astronomy = require('../models/astronomy');
 var Cybros = require('../models/cybros');
+var mongoose = require('mongoose');
 
 router.post('/add', function(req, res) {
 
@@ -54,14 +55,14 @@ router.post('/add', function(req, res) {
 
 router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
 
-    robotics   = new Robotics();
-    ecell      = new Ecell();
-    quiz       = new Quiz();
-    literary   = new Literary();
-    astronomy  = new Astronomy();
-    cybros     = new Cybros();
-    var user   = new User();
-    var userEvent   = new UserEvent();
+    var robotics   = new Robotics();
+    var ecell      = new Ecell();
+    var quiz       = new Quiz();
+    var literary   = new Literary();
+    var astronomy  = new Astronomy();
+    var cybros     = new Cybros();
+    var user       = new User();
+    var userEvent  = new UserEvent();
 
     switch(req.body.clubName) {
         case "Astronomy":
@@ -83,43 +84,44 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
             eventx = quiz;
             break;
     }
-    newEvent = [];
 
         eventx.team = req.body.userDetails;
-
-        emails = [];
+        console.log(eventx.team);
+        var emails = [];
         for(var i=0; i<req.body.userDetails.length; i++ ){
             emails.push(req.body.userDetails[i].email);
         }
 
-        //bulk
+        // bulk
 
         var bulk = user.collection.initializeOrderedBulkOp();
+        for(var i=0; i < emails.length; i++){
+            bulk.find({'email': emails[i]}).update({$push: {events: req.body.eventName}});
+        }
+        bulk.execute();
 
-        bulk.find({'email': {$in: emails}}).update({$push: {events: req.body.eventName}});
-        bulk.execute(function (err,docs) {
-            if(err)
-                return done(err);
-            else{
-                var bulk = userEvent.collection.initializeOrderedBulkOp();
 
-                bulk.find({'email': {$in: emails}}).update({$push: {events: req.body.eventName}});
-                bulk.execute(function (err) {
-                    if(err){
-                        return done(err);
-                    }
-                    eventx.save(function(err) {
-                        if (err){
-                            return done(err);
-                        }
-                        else{
-                            res.json({ "response" : true });
-                        }
-                    })
-                });
-            }
+        var bulk = userEvent.collection.initializeOrderedBulkOp();
+
+        for(var i=0; i < emails.length; i++){
+            bulk.find({'email': emails[i]}).upsert().update(
+                {
+                    $push : {events: req.body.eventName},
+                    $set  : {email : emails[i]}
+                }
+            );
+        }
+
+        bulk.execute(function(err, docs){
+            eventx.save(function(err) {
+                if (err){
+                    return done(err);
+                }
+                else{
+                    res.json({ "response" : true });
+                }
+            })
         });
-
 });
 
 

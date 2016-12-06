@@ -16,22 +16,6 @@
         <% include header %>
         <a data-open="event-registration-form" class="event-registration-form-btn" style="opacity:0; width : 0px; height : 0px;">Register</a>
 
-        <div class="reveal" id="event-registration-form" style="padding: 50px 40px;" data-reveal>
-            <div class="event-registration-form-message">
-                    <p class="text-center" style="margin-bottom : 20px;">Hey, this is a team event, you can from team with <%- eventDetail.memberLowerLimit %> to <%- eventDetail.memberUpperLimit %> </p>
-                    <div class="reg-form-btn text-center" style="margin : 30px 0px 0px 0px">
-                        <a class="reg-form-btn-register proceed-next" onclick="proceedNext()">Next</a>
-                    </div>
-            </div>
-            <div class="event-registration-form-part" style="display : none">
-                <% include reg-form-event %>
-            </div>
-            <button class="close-button" data-close aria-label="Close modal" type="button">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-
         <div class="content">
             <div class="row">
                 <div class="small-10 small-centered text-center columns">
@@ -42,10 +26,13 @@
         <div class="row">
             <div class="small-10 small-centered columns">
                 <div class="row">
-<!--                    gray circle-->
                     <div class="small-7 small-push-4 medium-5 large-4 large-push-3 columns">
                         <div class="dp-image">
-                            <img src="<%- eventDetail.imageLink %>" />
+                            <%if ( eventDetail.eventName === 'armageddon'){ %>
+                                <img src="media/icons/coding/cola.svg" alt="<%- eventDetail.eventName %> representational Image" />
+                            <% } else { %>
+                                <img src="<%- eventDetail.imageLink %>" alt="<%- eventDetail.eventName %> representational Image" />
+                            <% } %>
                         </div>
                     </div>
                     <div class="small-10 medium-5 large-5 large-pull-1 columns">
@@ -157,6 +144,10 @@
         <% include footer %>
 
         <script>
+
+        $('.memberUpperLimit').text('<%- eventDetail.memberUpperLimit %>');
+        $('.memberLowerLimit').text('<%- eventDetail.memberLowerLimit %>');
+
         multiUser = [];
         multiUserCount = 0;
 
@@ -171,6 +162,7 @@
             .done(function( data ) {
                 if(data.response){
                     notifDisplay(1,1);
+                    $('.reg-btn').text('Registered');
                 }
                 else {
                     notifDisplay(0,0);
@@ -218,6 +210,7 @@
                     else{
                         userx = getUserDetails();
                         if(!validateUserDetails(userx)) return;
+                        console.log(userx)
                         multiUser[multiUserCount] = userx;
                         $('.close-button').trigger('click');
                         reqBody = {"eventName" : "<%- eventDetail.eventName %>", "clubName" : "<%- eventDetail.clubName %>" , "userDetails" : multiUser};
@@ -240,18 +233,35 @@
         <% } else { %>
             //when user press register
             function eventUserComplete(){
+                if(formReg === 1){
+                    debugger
+                    registerUserComplete();
+                    return;
+                }
                 if((multiUserCount + 1) < <%- eventDetail.memberLowerLimit %>){
                     return
                 }
                 else{
-                    multiUser[multiUserCount] = getUserDetails();
+                    var userx = getUserDetails();
+                    console.log(userx);
+                    if(!validateUserDetails(userx)){
+                        return;
+                    }
+                    multiUser[multiUserCount] = userx;
                     $('.close-button').trigger('click');
                     reqBody = {"eventName" : "<%- eventDetail.eventName %>", "clubName" : "<%- eventDetail.clubName %>" , "userDetails" : multiUser};
                     formSubmissionEvent("/events/register", reqBody);
+
                 }
             }
             //when user opens form
             function loggedUserRegistration(){
+                debugger
+                formReg = 0;
+                $('.reg-social').css("display","block"); // register btn with fb and google
+                $('.add-member-btn').css("display", "inline-block");
+                $('.reg-form-event-pagging').css('display','block');
+                $('.event-registration-form-btnx').addClass('btn-disabled');
                 $(".event-registration-form-btn").trigger('click');
                 if(<%- eventDetail.memberLowerLimit %>  === 1){
                     $('.event-registration-form-btnx').removeClass("btn-disabled");
@@ -273,7 +283,6 @@
         function addMember(){
             var userx = getUserDetails();
             if(!validateUserDetails(userx)){
-                console.log(validateUserDetails(userx));
                 return;
             }
             if((multiUserCount + 2) === <%- eventDetail.memberUpperLimit %>){
@@ -294,6 +303,9 @@
                 return
             else{
                 multiUserCount--;
+                if(multiUserCount+1 < <%- eventDetail.memberUpperLimit %>){
+                    $('.event-registration-form-btnx').addClass('btn-disabled');
+                }
                 $('.event-registration-form-member-number').text(multiUserCount + 1);
                 setFormValue(multiUser[multiUserCount]);
             }

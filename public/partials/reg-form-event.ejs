@@ -85,7 +85,7 @@
         </div>
 
         <div class="reg-form-btn text-center" style="margin : 30px 0px 0px 0px">
-            <span class="event-registration-form-prev"> < </span><p style="display:inline" class="event-registration-form-member-number">1</p> of <%- eventDetail.memberUpperLimit %><span class="event-registration-form-next"> > </span></p>
+            <div class="reg-form-event-pagging"><span class="event-registration-form-prev"> < </span><p style="display:inline" class="event-registration-form-member-number">1</p> of <p class="memberUpperLimit" style="display:inline-block"></p><span class="event-registration-form-next"> > </span></p></div>
             <input type="submit" value="Add Member" class="reg-form-btn-register add-member-btn" onclick="addMember()">
             <input type="submit" value="Register" class="reg-form-btn-register event-registration-form-btnx btn-disabled" style="width : 147px;" onclick="eventUserComplete()">
         </div>
@@ -93,8 +93,8 @@
 </div>
         <div class="reg-social text-center">
             <ul>
-                <li><a class="popupwindow" href="/user/auth/google" rel="windowCallUnload"><i class="fa fa-facebook" aria-hidden="true"></i>Register With Facebook</a></li>
-                <li><a class="popupwindow" href="/user/auth/facebook" rel="windowCallUnload"><i class="fa fa-google-plus" aria-hidden="true"></i>Register With Google</a></li>
+                <li><a class="popupwindow" href="/user/auth/google" rel="windowCallUnload"><i class="fa fa-google-plus" aria-hidden="true"></i>Register With Google</a></li>
+                <li><a class="popupwindow" href="/user/auth/facebook" rel="windowCallUnload"><i class="fa fa-facebook" aria-hidden="true"></i>Register With Facebook</a></li>
             </ul>
         </div>
         <button class="close-button" data-close aria-label="Close modal" type="button">

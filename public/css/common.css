@@ -284,8 +284,7 @@ nav{
     color: black;
     font:normal 18px cl;
     display: inline-block;
-        box-shadow: 0px 4px 8px 1px rgba(0,0,0,0.2);
-    margin-right: 20px;
+    box-shadow: 0px 4px 8px 1px rgba(0,0,0,0.2);
     padding:10px 20px 10px;
 }
 
