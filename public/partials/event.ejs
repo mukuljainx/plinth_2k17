@@ -40,7 +40,7 @@
                             <span class="title-workshop"><%- eventDetail.eventName %></span>
                             <br />
                             <br />
-                            <span>Date : 18 - 19 Jan 2017</span>
+                            <span>Date : <%- eventDetail.eventDate %></span>
                             <br />
                             <span>Venue : <%- eventDetail.eventVenue %></span>
                             <br />
@@ -62,14 +62,6 @@
                 </div>
             </div>
         </div>
-        
-<!--
-        <div class="goback">
-            <div class="goback-card">
-                <a href="#"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-            </div>
-        </div>
--->
 
 <!--        registeration form modal-->
 
@@ -147,6 +139,7 @@
                     plinth@lnmiit.ac.in
                 </div>
             </div>
+
         </div>
         <% include footer %>
 
@@ -177,7 +170,10 @@
             });
         }
 
-        
+        function proceedNext(){
+            $('.event-registration-form-message').css('display', 'none');
+            $('.event-registration-form-part').css('display', 'block');
+        }
         <%if (isLoggedIn) { %>
             $('.reg-social').css('display', 'none');
             function loggedUserRegistration(){

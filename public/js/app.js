@@ -1,10 +1,5 @@
 $(document).foundation();
 
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-
-}
-
-
 formReg = 0;
 
 //HAMBURGER
@@ -153,11 +148,6 @@ function validateUserDetails(data){
         return true;
 }
 
-function proceedNext(){
-    $('.event-registration-form-message').css('display', 'none');
-    $('.event-registration-form-part').css('display', 'block');
-}
-
 function notifDisplay(status, icon){
     var regMsg = ["Your registration is not successfull !", "Your registration is successfull !", "Payment will be open soon", "Payment successfull !", "Payment unsuccessfull !"]
     var regIcon = ['<i class="fa fa-times" aria-hidden="true"></i>', '<i class="fa fa-check" aria-hidden="true"></i>', '<i class="fa fa-exclamation" aria-hidden="true"></i>']
@@ -182,4 +172,3 @@ $('.profile-drop-down').mouseout(function() {
 $(document).ready(function() {
     $('.master-wrapper').delay(1000).fadeOut('fast');
 });
-
