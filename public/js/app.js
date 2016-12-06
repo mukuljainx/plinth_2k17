@@ -1,5 +1,10 @@
 $(document).foundation();
 
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+}
+
+
 formReg = 0;
 
 //HAMBURGER
@@ -146,6 +151,11 @@ function validateUserDetails(data){
         return false;
     else
         return true;
+}
+
+function proceedNext(){
+    $('.event-registration-form-message').css('display', 'none');
+    $('.event-registration-form-part').css('display', 'block');
 }
 
 function notifDisplay(status, icon){
