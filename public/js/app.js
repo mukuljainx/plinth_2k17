@@ -95,6 +95,7 @@ function unloadcallback(){
                 $('.close-button').trigger('click');
                 location.reload();
             }
+            localStorage.temptoken = "";
         });
     }
 };

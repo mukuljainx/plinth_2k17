@@ -87,7 +87,6 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
     }
 
         eventx.team = req.body.userDetails;
-        console.log(eventx.team);
         var emails = [];
         for(var i=0; i<req.body.userDetails.length; i++ ){
             emails.push(req.body.userDetails[i].email);
@@ -127,17 +126,18 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
 
 router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
 
-    var sif   = new Sif();
+    var sif = new Sif();
+    sif.detail = req.body.sifDetails;
 
-        sif = req.body.sifDetails;
-        sif.save(function(err) {
-            if (err){
-                return done(err);
-            }
-            else{
-                res.json({ "response" : true });
-            }
-        })
+    sif.save(function(err) {
+        if (err){
+            console.log(err);
+            return done(err);
+        }
+        else{
+            res.json({ "response" : true });
+        }
+    })
 });
 
 

@@ -14,9 +14,9 @@
     <body>
 
         <% include header %>
-        <% if(eventName === 'sif'){ %>
+        <% if ( eventDetail.eventName === 'sif') { %>
             <% include sifForm %>
-        <% }
+        <% } %>
         <a data-open="event-registration-form" class="event-registration-form-btn" style="opacity:0; width : 0px; height : 0px;">Register</a>
 
         <div class="content">
@@ -59,6 +59,9 @@
                                     <li><a class="reg-btn" onclick="loggedUserRegistration()">Register ></a></li>
                                 <% } %>
                                 <li><a href="#" onclick="notifDisplay(2, 2)">Make Payment ></a></li>
+                                <% if ( eventDetail.eventName === 'sif') { %>
+                                    <li><a href="#" ><a data-open="sif-registration-form" class="sifForm">Startup Register ></a></li>
+                                <% } %>
                             </ul>
                         </div>
                     </div>
