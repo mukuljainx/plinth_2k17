@@ -14,6 +14,9 @@
     <body>
 
         <% include header %>
+        <% if(eventName === 'sif'){ %>
+            <% include sifForm %>
+        <% }
         <a data-open="event-registration-form" class="event-registration-form-btn" style="opacity:0; width : 0px; height : 0px;">Register</a>
 
         <div class="content">

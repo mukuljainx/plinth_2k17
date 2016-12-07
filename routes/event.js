@@ -11,6 +11,7 @@ var Quiz = require('../models/quiz');
 var Literary = require('../models/literary');
 var Astronomy = require('../models/astronomy');
 var Cybros = require('../models/cybros');
+var Sif = require('../models/sif');
 var mongoose = require('mongoose');
 
 router.post('/add', function(req, res) {
@@ -122,6 +123,21 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
                 }
             })
         });
+});
+
+router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
+
+    var sif   = new Sif();
+
+        sif = req.body.sifDetails;
+        sif.save(function(err) {
+            if (err){
+                return done(err);
+            }
+            else{
+                res.json({ "response" : true });
+            }
+        })
 });
 
 

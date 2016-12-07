@@ -1,0 +1,107 @@
+<a data-open="sif-registration-form" class="sifForm" style="visibility : hidden">asda</a>
+
+<div class="reveal" id="sif-registration-form" style="padding: 50px 40px;" data-reveal>
+    <div class="reg-form-event" style="box-shadow : 0 0; padding : 0px">
+        <div class="form-silver-wrap">
+            <form action="javascript:void(0)" name="registration-form" id="registerForm" >
+            <div class="group">
+                <input type="text" id="in-name" class="user-name" required>
+                <span class="highlight"></span>
+                <label>Name</label>
+            </div>
+
+                <div class="radio-gender">
+                <span class="reg-gender-h" style="color: black">Gender</span>
+                <div class="reg-gender">
+                <span class='radButtonSpanWorkload'>
+                <input class="radButtonWorkload" type="radio" id="radioWorkload1" name="gender" value="male" required/>
+                <label for="radioWorkload1"><span></span>Male</label>
+                </span>
+                <span class='radButtonSpanWorkload'>
+                <input class="radButtonWorkload" type="radio" id="radioWorkload2" name="gender" value="female" />
+                <label for="radioWorkload2"><span></span>Female</label>
+                </span>
+                <b id="itemErrors"></b>
+                </div>
+                </div>
+
+            <div class="group">
+                <input type="number" id="in-name" class="phone" required>
+                <span class="highlight"></span>
+                <label>Phone Number</label>
+            </div>
+            <div class="group">
+                <input type="email" id="in-name" class="email" required>
+                <span class="highlight"></span>
+                <label>Email</label>
+            </div>
+            <div class="group">
+                <input type="text" id="in-name" class="college" required>
+                <span class="highlight"></span>
+                <label>College</label>
+            </div>
+
+            <div class="radio-year">
+                <span class="reg-gender-h" style="color: black">Year</span>
+                <div class="reg-gender">
+                    <span class='radButtonSpanWorkload'>
+                      <input class="radButtonWorkload" type="radio" id="radioWorkload3"   name="year" value="1" />
+                      <label for="radioWorkload3"><span></span>1</label>
+                    </span>
+                    <span class='radButtonSpanWorkload'>
+                      <input class="radButtonWorkload" type="radio" id="radioWorkload4"   name="year" value="2" />
+                      <label for="radioWorkload4"><span></span>2</label>
+                    </span>
+                    <span class='radButtonSpanWorkload'>
+                      <input class="radButtonWorkload" type="radio" id="radioWorkload5"   name="year" value="3" />
+                      <label for="radioWorkload5"><span></span>3</label>
+                    </span>
+                    <span class='radButtonSpanWorkload'>
+                      <input class="radButtonWorkload" type="radio" id="radioWorkload6"   name="year" value="4" />
+                      <label for="radioWorkload6"><span></span>4</label>
+                    </span>
+                    <span class='radButtonSpanWorkload'>
+                      <input class="radButtonWorkload" type="radio" id="radioWorkload7"   name="year" value="5" />
+                      <label for="radioWorkload7"><span></span>5</label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="group">
+                <input type="text" id="in-name" class="city" required>
+                <span class="highlight"></span>
+                <label>City</label>
+            </div>
+
+            <div class="radio-acc">
+                <span class="reg-acc-h" style="color: black">Accomodation</span>
+                <div class="reg-acc">
+                    <span class='radButtonSpanWorkload'>
+                      <input class="radButtonWorkload" type="radio" id="radioWorkload8"   name="acc" value="yes" required />
+                      <label for="radioWorkload8"><span></span>Yes</label>
+                    </span>
+                    <span class='radButtonSpanWorkload'>
+                      <input class="radButtonWorkload" type="radio" id="radioWorkload9"   name="acc" value="no"  />
+                      <label for="radioWorkload9"><span></span>No</label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="reg-form-btn text-center" style="margin : 30px 0px 0px 0px">
+                <div class="reg-form-event-pagging"><span class="event-registration-form-prev"> < </span><p style="display:inline" class="event-registration-form-member-number">1</p> of <p class="memberUpperLimit" style="display:inline-block"></p><span class="event-registration-form-next"> > </span></p></div>
+                <input type="submit" value="Add Member" class="reg-form-btn-register add-member-btn" onclick="addMember()">
+                <input type="submit" value="Register" class="reg-form-btn-register event-registration-form-btnx btn-disabled" style="width : 147px;" onclick="eventUserComplete()">
+            </div>
+        </form>
+    </div>
+            <div class="reg-social text-center">
+                <ul>
+                    <li><a class="popupwindow" href="/user/auth/google" rel="windowCallUnload"><i class="fa fa-google-plus" aria-hidden="true"></i>Register With Google</a></li>
+                    <li><a class="popupwindow" href="/user/auth/facebook" rel="windowCallUnload"><i class="fa fa-facebook" aria-hidden="true"></i>Register With Facebook</a></li>
+                </ul>
+            </div>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+</div>
