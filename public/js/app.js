@@ -94,8 +94,8 @@ function unloadcallback(){
                 $('.close-button').trigger('click');
                 $('.close-button').trigger('click');
                 location.reload();
+                localStorage.temptoken = "";
             }
-            localStorage.temptoken = "";
         });
     }
 };
@@ -116,6 +116,7 @@ function registerUserComplete(){
         if(data.response){
             $('.close-button').trigger('click');
             notifDisplay(1,1);
+            localStorage.temptoken = "";
             location.reload();
         }else{
             notifDisplay(0,0);

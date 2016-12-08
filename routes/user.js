@@ -119,11 +119,11 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
         events         : ['init'],
         valid          : true,
     };
-
     UserEvent.findOne({ 'email' :  req.decoded.sub }, function(err, oldUser) {
         // if there are any errors, return the error
         if (err){
             return done(err);
+            console.log(err);
         }
         // check to see if theres already a user with that email
         if (oldUser) {
@@ -147,6 +147,7 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
 
             User.findOneAndUpdate({'email' : req.decoded.sub}, update, {new: true}, function(err, user) {
                 if (err){
+                    console.log('errr');
                     return done(err);
                 }
                 if (user) {
