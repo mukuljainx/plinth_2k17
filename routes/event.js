@@ -65,8 +65,6 @@ console.log('***1');
     var user       = new User();
     var userEvent  = new UserEvent();
 
-<<<<<<< HEAD
-    console.log(req.body)
 
     switch(req.body.clubName) {
         case "astronomy":
