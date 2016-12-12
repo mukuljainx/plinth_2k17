@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Competitions | Plinth'17</title>
+        <script src="https://use.fontawesome.com/8720ae4a19.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/robotics.css" />
+    </head>
+    <body>
+        <% include header %>
+
+        <style>
+            .partial-card{
+                border : 1px solid grey;
+                padding: 10px 5px;
+            }
+        </style>
+
+        <section>
+            <% for(var i=0; i<results.length; i++) { %>
+                <div class="row">
+                    <div class="column small-12 partial-card medium-4">
+                        name : <%= results[i].detail.name %>
+                    </div>
+                    <div class="column small-12 partial-card medium-4">
+                        website : <%= results[i].detail.website %>
+                    </div>
+                    <div class="column small-12 partial-card medium-4">
+                        representativeName : <%= results[i].detail.representativeName %>
+                    </div>
+                    <div class="column small-12 partial-card medium-4">
+                        representativeEmail : <%= results[i].detail.representativeEmail %>
+                    </div>
+                    <div class="column small-12 partial-card medium-4">
+                        representativeContact : <%= results[i].detail.representativeContact %>
+                    </div>
+                    <div class="column small-12 partial-card medium-4">
+                        numberofOpening : <%= results[i].detail.numberofOpening %>
+                    </div>
+                    <div class="column small-12 partial-card medium-4">
+                        stipend : <%= results[i].detail.stipend %>
+                    </div>
+                    <% for(var j=0; j<results[i].detail.flieds; j++) { %>
+                    <div class="column small-12 partial-card medium-4">
+                        flieds : <%= results[i].detail.flieds[j] %>
+                    </div>
+                    <% } %>
+                    <div class="column small-12 partial-card medium-12">
+                        description : <%= results[i].detail.description %>
+                    </div>
+                </div>
+                <br>
+            <% } %>
+        </section>
+
+        <div class="row" style="margin-top:40px;">
+            <div class="column small-10 small-centered">
+                <div style='font-weight :500; text-align:center; margin-bottom:20px'>For Any Queries Contact</div>
+                <div class="text-center">
+                    plinth@lnmiit.ac.in
+                </div>
+            </div>
+
+        </div>
+
+        <% include footer %>
+
+    </body>
+</html>
