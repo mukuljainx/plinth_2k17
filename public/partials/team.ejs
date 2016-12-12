@@ -23,48 +23,34 @@
 
         <section>
             <% for(var i=0; i<results.length; i++) { %>
+                <div class="text-center"><b>Team <%= i %></b></div>
+
+                <% for(var j=0; j<results[i].team.length; j++) { %>
                 <div class="row">
                     <div class="column small-12 partial-card medium-4">
-                        name : <%= results[i].detail.name %>
+                        name : <%= results[i].team[j].name %>
                     </div>
                     <div class="column small-12 partial-card medium-4">
-                        website : <%= results[i].detail.website %>
+                        website : <%= results[i].team[j].phoneNumber %>
                     </div>
                     <div class="column small-12 partial-card medium-4">
-                        representativeName : <%= results[i].detail.representativeName %>
+                        representativeName : <%= results[i].team[j].email %>
                     </div>
                     <div class="column small-12 partial-card medium-4">
-                        representativeEmail : <%= results[i].detail.representativeEmail %>
+                        representativeEmail : <%= results[i].team[j].college %>
                     </div>
                     <div class="column small-12 partial-card medium-4">
-                        representativeContact : <%= results[i].detail.representativeContact %>
+                        representativeContact : <%= results[i].team[j].year %>
                     </div>
                     <div class="column small-12 partial-card medium-4">
-                        numberofOpening : <%= results[i].detail.numberofOpening %>
-                    </div>
-                    <div class="column small-12 partial-card medium-4">
-                        stipend : <%= results[i].detail.stipend %>
-                    </div>
-                    <div class="column small-12 partial-card medium-4">
-                        fields : <%= results[i].detail.field %>
-                    </div>
-                    <div class="column small-12 partial-card medium-12">
-                        description : <%= results[i].detail.description %>
+                        numberofOpening : <%= results[i].team[j].city %>
                     </div>
                 </div>
                 <br>
+                <% } %>
             <% } %>
         </section>
 
-        <div class="row" style="margin-top:40px;">
-            <div class="column small-10 small-centered">
-                <div style='font-weight :500; text-align:center; margin-bottom:20px'>For Any Queries Contact</div>
-                <div class="text-center">
-                    plinth@lnmiit.ac.in
-                </div>
-            </div>
-
-        </div>
 
         <% include footer %>
 

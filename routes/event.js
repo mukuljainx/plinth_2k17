@@ -65,7 +65,12 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
     var user       = new User();
     var userEvent  = new UserEvent();
 
+    console.log(req.body)
+
     switch(req.body.clubName) {
+        case "astronomy":
+            eventx = astronomy;
+            break;
         case "Astronomy":
             eventx = astronomy;
             break;
@@ -87,6 +92,8 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
     }
 
         eventx.team = req.body.userDetails;
+        eventx.eventName = req.body.eventName;
+
         var emails = [];
         for(var i=0; i<req.body.userDetails.length; i++ ){
             emails.push(req.body.userDetails[i].email);

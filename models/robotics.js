@@ -13,7 +13,8 @@ var roboticsRegistrationSchema = mongoose.Schema({
                 accommodation  : Boolean,
                 eventName      : String,
             }
-        ]
+        ],
+        eventName : String
 });
 
 // create the model for users and expose it to our app
