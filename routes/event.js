@@ -55,7 +55,6 @@ router.post('/add', function(req, res) {
 //user registration
 
 router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
-console.log('***1');
     var robotics   = new Robotics();
     var ecell      = new Ecell();
     var quiz       = new Quiz();

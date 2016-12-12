@@ -31,7 +31,6 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
                     return done(err);
                 // check to see if theres already a user with that email
                 if (user){
-                    console.log(results[0]);
                     res.render('partials/startup',{
                         results : results,
                         isLoggedIn : true,
@@ -49,13 +48,11 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
          isLoggedIn = false;
          res.redirect('../../../');
      }
-     console.log('*****1');
     Sif.find(function (err, results) {
         if (err){
             return console.error(err);
         }
         else{
-            console.log('*****2');
             User.findOne({'email' : req.decoded.sub }, function(err, user) {
                 // if there are any errors, return the error
                 if (err)
@@ -75,8 +72,6 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
-    console.log(req.params['0']);
-    console.log(req.query.event)
     var poc = process.env.POC;
 
     var poc = process.env.POC;
