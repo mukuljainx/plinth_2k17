@@ -118,13 +118,15 @@ function getSifDetails(){
             sifDetail.field.push(fieldOption[i]);
         }
     }
-    console.log(sifDetail);
     return sifDetail;
 }
 
 function validateSifDetails(data){
-    if(data.name === "" || data.description === "" || data.location === "" || data.website === "" || data.representativeName === "" || data.representativeEmail === "" || data.representativeContact === "" || data.numberofOpening === "")
+    notifDisplay(5,2);
+    if(data.name === "" || data.description === "" || data.location === "" || data.website === "" || data.representativeName === "" || data.representativeEmail === "" || data.representativeContact === "" || data.numberofOpening === "" || data.field.length === 0){
+        if(data.field.length === 0) notifDisplay(2,5);
         return false;
+    }
     else
         return true;
 }
