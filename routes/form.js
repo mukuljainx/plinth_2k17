@@ -49,18 +49,20 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
          isLoggedIn = false;
          res.redirect('../../../');
      }
+     console.log('*****1');
     Sif.find(function (err, results) {
         if (err){
             return console.error(err);
         }
         else{
+            console.log('*****2');
             User.findOne({'email' : req.decoded.sub }, function(err, user) {
                 // if there are any errors, return the error
                 if (err)
                     return done(err);
                 // check to see if theres already a user with that email
                 if (user){
-                    console.log(results[0]);
+                    console.log('*****3');
                     res.render('partials/startup',{
                         results : results,
                         isLoggedIn : true,

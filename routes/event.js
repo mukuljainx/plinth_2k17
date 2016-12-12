@@ -55,7 +55,7 @@ router.post('/add', function(req, res) {
 //user registration
 
 router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
-
+console.log('***1');
     var robotics   = new Robotics();
     var ecell      = new Ecell();
     var quiz       = new Quiz();
@@ -65,6 +65,7 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
     var user       = new User();
     var userEvent  = new UserEvent();
 
+<<<<<<< HEAD
     console.log(req.body)
 
     switch(req.body.clubName) {
@@ -90,7 +91,6 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
             eventx = quiz;
             break;
     }
-
         eventx.team = req.body.userDetails;
         eventx.eventName = req.body.eventName;
 
@@ -98,7 +98,6 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
         for(var i=0; i<req.body.userDetails.length; i++ ){
             emails.push(req.body.userDetails[i].email);
         }
-
         // bulk
 
         var bulk = user.collection.initializeOrderedBulkOp();
@@ -106,7 +105,6 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
             bulk.find({'email': emails[i]}).update({$push: {events: req.body.eventName}});
         }
         bulk.execute();
-
 
         var bulk = userEvent.collection.initializeOrderedBulkOp();
 
