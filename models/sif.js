@@ -11,7 +11,7 @@ var sifSchema = mongoose.Schema({
             representativeName      : String,
             representativeEmail     : String,
             representativeContact   : String,
-            flieds                  : Array,
+            field                  : Array,
             stipend                 : Boolean,
             numberofOpening         : Number
         }

@@ -23,7 +23,7 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
             return console.error(err);
         }
         else{
-	
+
             User.findOne({'email' : req.decoded.sub }, function(err, user) {
                 // if there are any errors, return the error
                 if (err)

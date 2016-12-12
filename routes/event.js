@@ -128,7 +128,6 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
 
     var sif = new Sif();
     sif.detail = req.body.sifDetails;
-
     sif.save(function(err) {
         if (err){
             console.log(err);

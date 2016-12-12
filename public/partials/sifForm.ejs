@@ -113,12 +113,12 @@ function getSifDetails(){
         field : [],
         stipend : $('.sif-checkbox-stipend').is(":checked"),
     }
-    debugger
     for(var i=0; i<4; i++){
         if($('.sif-checkbox-' + i).is(":checked")){
             sifDetail.field.push(fieldOption[i]);
         }
     }
+    console.log(sifDetail);
     return sifDetail;
 }
 
@@ -130,6 +130,7 @@ function validateSifDetails(data){
 }
 
 function sifComplete(){
+
     sifData = getSifDetails();
     if(!validateSifDetails(sifData)) return;
     data = {"sifDetails" : sifData};
