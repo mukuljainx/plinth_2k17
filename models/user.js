@@ -12,7 +12,7 @@ var userSchema = mongoose.Schema({
         college        : String,
         year           : Number,
         city           : String,
-        accommodation  : Boolean,
+        accommodation  : String,
         valid          : Boolean,
         gender         : String,
         events         : Array,

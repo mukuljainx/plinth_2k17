@@ -142,13 +142,13 @@ function getUserDetails(){
         college : $('.college').val(),
         year : $('input:radio[name=year]:checked').val(),
         city : $('.city').val(),
-        accomodation : $('input:radio[name=acc]:checked').val()
+        accommodation : $('input:radio[name=acc]:checked').val()
     }
     return userDetail;
 }
 
 function validateUserDetails(data){
-    if(data.name === "" || data.gender === undefined || data.phoneNumber === "" || data.email === "" || data.college === "" || data.year === undefined || data.city === "" || data.accomodation === undefined)
+    if(data.name === "" || data.gender === undefined || data.phoneNumber === "" || data.email === "" || data.college === "" || data.year === undefined || data.city === "" || data.accommodation === undefined)
         return false;
     else
         return true;

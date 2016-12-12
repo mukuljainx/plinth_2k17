@@ -229,7 +229,7 @@
                     "college"      : "<%- user.college %>",
                     "year"         : "<%- user.year %>",
                     "city"         : "<%- user.city %>",
-                    "accomodation" : "<%- user.accomodation %>",
+                    "accommodation" : "<%- user.accommodation %>",
                 }
 
                 setFormValue(intialUser);
@@ -331,7 +331,7 @@
             $('.college').val(user.college);
             $('input:radio[name=year]')[user.year - 1].checked = true;
             $('.city').val(user.city);
-            $('input:radio[name=acc]')[user.accomodation ? 0 : 1].checked = true;
+            $('input:radio[name=acc]')[user.accommodation ? 0 : 1].checked = true;
         }
         function setFormFree(){
             $('.user-name').val("");

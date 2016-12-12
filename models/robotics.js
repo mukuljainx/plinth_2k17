@@ -10,7 +10,7 @@ var roboticsRegistrationSchema = mongoose.Schema({
                 college        : String,
                 year           : Number,
                 city           : String,
-                accommodation  : Boolean,
+                accommodation  : String,
                 eventName      : String,
             }
         ],
