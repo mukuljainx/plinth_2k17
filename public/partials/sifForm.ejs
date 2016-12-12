@@ -136,6 +136,7 @@ function sifComplete(){
     sifData = getSifDetails();
     if(!validateSifDetails(sifData)) return;
     data = {"sifDetails" : sifData};
+    activateLoader();
     $.post( {
         url: "/events/register/sif",
         contentType: 'application/json; charset=utf-8',
@@ -143,6 +144,7 @@ function sifComplete(){
         data: JSON.stringify(data)
     })
     .done(function( data ) {
+        deactivateLoader();
         if(data.response){
             notifDisplay(1,1);
             $('.close-button').trigger('click'); // old form
