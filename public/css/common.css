@@ -193,6 +193,7 @@ nav{
     z-index: 999;
 }
 
+
 .reg-status{
     padding-left: 15px;
 }
@@ -441,4 +442,76 @@ input[type="radio"]:checked + label span {
 .btn-disabled{
     color: rgba(0,0,0,0.2);
     cursor: default !important;
+}
+
+
+/*loader*/
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+}
+.loader {
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 5px solid rgba(33,153,232, 0.2);
+  border-right: 5px solid rgba(33,153,232, 0.2);
+  border-bottom: 5px solid rgba(33,153,232, 0.2);
+  border-left: 5px solid #2199e8;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+  margin-right: 10px;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.notif-loader{
+    display: none;
+    text-align: right;
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    font: normal 15px 'Roboto';
+    padding: 20px 14px;
+    background-color: white;
+    z-index: 99999999999;
+    height: 70px;
+}
+
+.notif-loader div{
+    display: inline-block;
+}
+
+.notif-loader-text{
+    position: relative;
+    top: -12px;
+    font-size: 16px;
 }

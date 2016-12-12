@@ -76,8 +76,10 @@ function logOut(){
 
 function unloadcallback(){
     if(localStorage.temptoken !== undefined){
+        activateLoader();
         $.post( "/user/user_validate", { "token" : localStorage.temptoken })
         .done(function( data ) {
+            deactivateLoader();
             if(!data.response){
                 formReg = 1;
                 proceedNext();
@@ -106,6 +108,7 @@ function registerUserComplete(){
         return
     }
     data = {"token" : localStorage.temptoken, "user" : x};
+    activateLoader();
     $.post( {
         url: "/user/user_register_complete",
         contentType: 'application/json; charset=utf-8',
@@ -113,6 +116,7 @@ function registerUserComplete(){
         data: JSON.stringify(data)
     })
     .done(function( data ) {
+        deactivateLoader();
         if(data.response){
             $('.close-button').trigger('click');
             notifDisplay(1,1);
@@ -160,6 +164,14 @@ function notifDisplay(status, icon){
     $(".reg-status-img").html(regIcon[status]);
     $(".reg-status").html(regMsg[icon]);
     $(".notif").css('display','block').delay(3000).fadeOut();
+}
+
+function activateLoader(){
+    $('.notif-loader').css('display','block');
+}
+
+function deactivateLoader(){
+    $('.notif-loader').css('display','none');
 }
 
 $('.nav-usr-name').mouseover(function() {
