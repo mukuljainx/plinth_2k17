@@ -57,6 +57,7 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
          res.redirect('../../../');
      }
 
+
     switch(req.params['0']) {
         case "astronomy":
             eventx = Astronomy;
@@ -82,7 +83,7 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
     }
 
 
-    eventx.find({'eventName' : 'armageddon'},function (err, results) {
+    eventx.find({'eventName' : req.query.event},function (err, results) {
         if (err){
             return console.error(err);
         }
@@ -136,7 +137,7 @@ router.get('/user/all', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.get('/user/registered', Verify.verifyOrdinaryUser ,function(req, res) {
-    var poc = process.env.POC;
+    var poc = authUser.poc;
 
     if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1)){
          isLoggedIn = false;
