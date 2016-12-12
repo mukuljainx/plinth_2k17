@@ -14,22 +14,30 @@ var Cybros = require('../models/cybros');
 
 
 router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
-    ecell = process.env.ECELL;
+console.log('****0');   
+ ecell = process.env.ECELL;
     poc = process.env.POC;
+console.log(ecell);
+console.log(poc);
     if(req.decoded.sub === "" || (ecell.indexOf(req.decoded.sub) === -1 && poc.indexOf(req.decoded.sub) === -1)){
          isLoggedIn = false;
          res.redirect('../../../');
      }
-    Sif.find(function (err, results) {
+    Sif.find({},function (err, results) {
+console.log('**********00');
         if (err){
+		console.log('***********************1');
             return console.error(err);
         }
         else{
 
             User.findOne({'email' : req.decoded.sub }, function(err, user) {
                 // if there are any errors, return the error
-                if (err)
+                if (err){
                     return done(err);
+		console.log('**********2');	
+	}
+console.log('**********3');
                 // check to see if theres already a user with that email
                 if (user){
                     res.render('partials/startup',{
