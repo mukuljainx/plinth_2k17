@@ -11,9 +11,11 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
     ecell = process.env.ECELL;
     poc = process.env.POC;
 
+
+
     if(req.decoded.sub === "" || (ecell.indexOf(req.decoded.sub) === -1 && poc.indexOf(req.decoded.sub) === -1)){
          isLoggedIn = false;
-         res.redirect('../');
+         res.redirect('../../../');
      }
 
     Sif.find(function (err, results) {
@@ -21,6 +23,7 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
             return console.error(err);
         }
         else{
+	
             User.findOne({'email' : req.decoded.sub }, function(err, user) {
                 // if there are any errors, return the error
                 if (err)
