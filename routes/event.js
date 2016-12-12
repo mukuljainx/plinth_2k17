@@ -55,7 +55,7 @@ router.post('/add', function(req, res) {
 //user registration
 
 router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
-
+console.log('***1');
     var robotics   = new Robotics();
     var ecell      = new Ecell();
     var quiz       = new Quiz();
@@ -65,17 +65,24 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
     var user       = new User();
     var userEvent  = new UserEvent();
 
+console.log('********2')
+console.log(req.decoded);
+
     switch(req.body.clubName) {
-        case "Astronomy":
+        case "astronomy":
+	console.log('1');
             eventx = astronomy;
             break;
         case "coding":
+console.log('2');
             eventx = cybros;
             break;
         case "literature":
+console.log('3')
             eventx = literary;
             break;
         case "robotics":
+console.log('4')
             eventx = robotics;
             break;
         case "management":
@@ -85,13 +92,15 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
             eventx = quiz;
             break;
     }
-
+console.log('*******3');
+console.log(eventx);
         eventx.team = req.body.userDetails;
-        var emails = [];
+       
+	console.log(eventx.team);
+	 var emails = [];
         for(var i=0; i<req.body.userDetails.length; i++ ){
             emails.push(req.body.userDetails[i].email);
         }
-
         // bulk
 
         var bulk = user.collection.initializeOrderedBulkOp();
@@ -99,7 +108,7 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
             bulk.find({'email': emails[i]}).update({$push: {events: req.body.eventName}});
         }
         bulk.execute();
-
+console.log('************5');
 
         var bulk = userEvent.collection.initializeOrderedBulkOp();
 
@@ -112,6 +121,7 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
             );
         }
 
+console.log('****6');
         bulk.execute(function(err, docs){
             eventx.save(function(err) {
                 if (err){
