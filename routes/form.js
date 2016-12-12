@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Eventx = require('../models/event');
 var User = require('../models/user');
+var UserEvent = require('../models/userevent');
 var Verify = require('./verify');
 var Sif = require('../models/sif');
 var Robotics = require('../models/robotics');
@@ -44,6 +45,7 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
 
 router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
     var poc = process.env.POC;
+    var ecell = process.env.ECELL;
     if(req.decoded.sub === "" || (ecell.indexOf(req.decoded.sub) === -1 && poc.indexOf(req.decoded.sub) === -1)){
          isLoggedIn = false;
          res.redirect('../../../');
@@ -74,7 +76,6 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
 router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
     var poc = process.env.POC;
 
-    var poc = process.env.POC;
     if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1)){
          isLoggedIn = false;
          res.redirect('../../../');
@@ -128,7 +129,65 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
     });
 });
 
+router.get('/user/all', Verify.verifyOrdinaryUser ,function(req, res) {
+    var poc = process.env.POC;
 
+    if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1)){
+         isLoggedIn = false;
+         res.redirect('../../../');
+     }
+    UserEvent.find(function (err, results) {
+        if (err){
+            return console.error(err);
+        }
+        else{
+            User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                // if there are any errors, return the error
+                if (err)
+                    return done(err);
+                // check to see if theres already a user with that email
+                if (user){
+                    console.log('*****3');
+                    res.render('partials/users',{
+                        results : results,
+                        isLoggedIn : true,
+                        user : user,
+                    });
+                }
+            });
+        }
+    });
+});
+
+router.get('/user/registered', Verify.verifyOrdinaryUser ,function(req, res) {
+    var poc = process.env.POC;
+
+    if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1)){
+         isLoggedIn = false;
+         res.redirect('../../../');
+     }
+    User.find(function (err, results) {
+        if (err){
+            return console.error(err);
+        }
+        else{
+            User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                // if there are any errors, return the error
+                if (err)
+                    return done(err);
+                // check to see if theres already a user with that email
+                if (user){
+                    console.log('*****3');
+                    res.render('partials/users',{
+                        results : results,
+                        isLoggedIn : true,
+                        user : user,
+                    });
+                }
+            });
+        }
+    });
+});
 
 
 module.exports = router;
