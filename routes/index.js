@@ -87,6 +87,60 @@ router.get('/about', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
+router.get('/termsandconditions', Verify.verifyOrdinaryUser ,function(req, res) {
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('terms', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
+  else {
+      isLoggedIn = true;
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('terms',{
+                  "isLoggedIn" : isLoggedIn,
+                  "user" : {
+                      name : user.name,
+                      gender : user.gender,
+                  }
+              });
+          }
+      });
+  }
+});
+
+router.get('/serviceflow', Verify.verifyOrdinaryUser ,function(req, res) {
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('service_flow', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
+  else {
+      isLoggedIn = true;
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('service_flow',{
+                  "isLoggedIn" : isLoggedIn,
+                  "user" : {
+                      name : user.name,
+                      gender : user.gender,
+                  }
+              });
+          }
+      });
+  }
+});
+
 router.get('/competitions/astronomy', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
