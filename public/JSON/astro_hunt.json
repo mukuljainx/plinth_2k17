@@ -1,16 +1,15 @@
 {
-    "imageLink" : "images/icons/astronomy/astro_hunt.svg",
-    "registerLink" : "/registration/astronomy/astro_hunt",
-    "register0" : "<li><a class='reg-btn' href='#' data-open='regform'>Register ></a></li>",
-    "register1" : "<li><a class='reg-btn' href='#' onClick='registerUser('astronomy', 'astroHunt')'>Register ></a></li>",
+    "imageLink" : "media/icons/coding/astro_hunt.svg",
+    "registerLink" : "/registration/coding/astro_hunt",
     "paymentLink" : "",
     "payment0" : "<li><a href='#' data-open='paymentpop'>Make Payment></a></li>",
     "payment1" : "",
     "memberUpperLimit" : 5,
     "memberLowerLimit" : 3,
-    "clubName" : "astronomy",
+    "clubName" : "Astronomy",
     "eventName" : "astro hunt",
-    "eventDate" : "22nd Jan 2016",
+    "displayName" : "astro hunt",
+    "eventDate" : "17th - 18th Jan 2017",
     "eventVenue" : "The LNMIIT, Jaipur",
     "prizeWorth" : "INR. 30,000",
     "synopsis" : " <p>Foresee the unfathomable and explore the mysteries of the universe. Only the sharp, intelligent and astronomy enthusiasts will make it to the end. The route to solve the mysteries of the universe lies within the depths of the dark sky and your imagination. It’s time to bring out the Galileo Galilee in you and look into the infinite cosmic depths.</p>",
@@ -18,5 +17,7 @@
     "rules" : "<p><b>General Rules </b><ol><li>Members per team: 3 -5</li><li>Each team should have unique participants i.e. no two teams can have even one common name registered</li><li>The participants have to reach the starting point 15 minutes before the event schedule.</li><li>All the team members should be present at each check point while receiving a token.</li><li>Decision of the volunteers at each check point will be final.</li><li>Usage of Internet is allowed.</li></ol></p>",
     "judges" : "<p>Details will be Updated soon</p>",
     "mentors" : "<p>Details will be Updated soon</p>",
-    "sponsors" : "<p>Details will be Updated soon</p>"
+    "sponsors" : "<p>Details will be Updated soon</p>",
+    "query" : "Smriti Jha: +91-7742603667 | smritijha369@gmail.com<br>Kushagra Garg: +91-8561801305 | kushrulesu@gmail.com<br>astronomy.lnmiit@gmail.com<br>",
+
 }

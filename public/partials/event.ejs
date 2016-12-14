@@ -41,7 +41,7 @@
                     </div>
                     <div class="small-10 medium-5 large-5 large-pull-1 columns">
                         <div class="details">
-                            <span class="title-workshop"><%- eventDetail.eventName %></span>
+                            <span class="title-workshop"><%- eventDetail.displayName %></span>
                             <br />
                             <br />
                             <span>Date : <%- eventDetail.eventDate %></span>
@@ -96,9 +96,8 @@
                   <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Synopsis</a></li>
                   <li class="tabs-title"><a href="#panel2">Event Description</a></li>
                   <li class="tabs-title"><a href="#panel3">Rules</a></li>
-                  <li class="tabs-title"><a href="#panel4">Judges</a></li>
-                  <li class="tabs-title"><a href="#panel5">Mentors</a></li>
-                  <li class="tabs-title"><a href="#panel6">Sponsors</a></li>
+                  <li class="tabs-title" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Judges</a></li>
+                  <li class="tabs-title" <% if(eventDetail.sponsors=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel6">Sponsors</a></li>
                 </ul>
 
                 <div class="dropdown-pane" style="padding:0px" id="example-dropdown-1" data-dropdown data-hover="true" data-hover-pane="true">
@@ -106,9 +105,8 @@
                       <div class="tabs-title tabs-title-mobile is-active"><a href="#panel1" aria-selected="true">Synopsis</a></div>
                       <div class="tabs-title tabs-title-mobile"><a href="#panel2">Event Description</a></div>
                       <div class="tabs-title tabs-title-mobile"><a href="#panel3">Rules</a></div>
-                      <div class="tabs-title tabs-title-mobile"><a href="#panel4">Judges</a></div>
-                      <div class="tabs-title tabs-title-mobile"><a href="#panel5">Mentors</a></div>
-                      <div class="tabs-title tabs-title-mobile"><a href="#panel6">Sponsors</a></div>
+                      <div class="tabs-title tabs-title-mobile" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Judges</a></div>
+                      <div class="tabs-title tabs-title-mobile" <% if(eventDetail.sponsors=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel6">Sponsors</a></div>
                   </div>
                 </div>
 
@@ -126,13 +124,10 @@
                     <div class="tabs-panel" id="panel3">
                         <%- eventDetail.rules %>
                     </div>
-                    <div class="tabs-panel" id="panel4">
+                    <div class="tabs-panel" id="panel4" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  >
                         <%- eventDetail.judges %>
                     </div>
-                    <div class="tabs-panel" id="panel5">
-                        <%- eventDetail.mentors %>
-                    </div>
-                    <div class="tabs-panel" id="panel6">
+                    <div class="tabs-panel" id="panel6" <% if(eventDetail.sponsors =="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %> >
                         <%- eventDetail.sponsors %>
                     </div>
                 </div>
@@ -142,8 +137,7 @@
             <div class="column small-10 small-centered">
                 <div style='font-weight :500; text-align:center; margin-bottom:20px'>For Any Queries Contact</div>
                 <div class="text-center">
-                    <%- eventDetail.query %>
-                    plinth@lnmiit.ac.in</p>
+                    <p><%- eventDetail.query %></p>
                 </div>
             </div>
 
