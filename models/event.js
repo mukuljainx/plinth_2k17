@@ -21,6 +21,7 @@ var eventSchema = mongoose.Schema({
         judges            : String,
         mentors           : String,
         sponsors          : String,
+        displayName       : String,
 });
 
 // create the model for users and expose it to our app
