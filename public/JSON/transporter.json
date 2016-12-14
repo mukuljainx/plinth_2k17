@@ -1,4 +1,4 @@
-{
+db.events.insert({
     "imageLink" : "media/icons/robotics/transporter.svg",
     "registerLink" : "/registration/robotics/transporter",
     "paymentLink" : "",
@@ -19,4 +19,4 @@
     "mentors" : "<p>Details will be Updated soon</p>",
     "query" : "plinth@Lnmiit.ac.in",
     "sponsors" : "<p>Details will be Updated soon</p>"
-}
+})

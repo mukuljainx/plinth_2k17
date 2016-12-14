@@ -1,5 +1,5 @@
 {
-    "imageLink" : "images/icons/robotics/quadcopter.svg",
+    "imageLink" : "media/icons/robotics/quadcopter.svg",
     "registerLink" : "/registration/robotics/quadcopter",
     "paymentLink" : "",
     "payment0" : "<li><a href='#' data-open='paymentpop'>Make Payment></a></li>",
@@ -20,3 +20,5 @@
     "query" : "plinth@Lnmiit.ac.in",   
     "sponsors" : "<p>Details will be Updated soon</p>"
 }
+
+db.events.update({'eventName' : 'quadcopter'}, {$set : { 'imageLink' : 'media/icons/robotics/quadcopter.svg'}})

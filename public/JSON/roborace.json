@@ -1,5 +1,5 @@
 {
-    "imageLink" : "images/icons/robotics/roborace.svg",
+    "imageLink" : "media/icons/robotics/roborace.svg",
     "registerLink" : "/registration/robotics/roborace",
     "paymentLink" : "",
     "payment0" : "<li><a href='#' data-open='paymentpop'>Make Payment></a></li>",
@@ -20,3 +20,4 @@
     "query" : "plinth@Lnmiit.ac.in",
     "sponsors" : "<p>Details will be Updated soon</p>"
 }
+

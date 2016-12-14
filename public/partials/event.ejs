@@ -12,6 +12,12 @@
         <link rel="stylesheet" href="css/robotics.css" />
     </head>
     <body>
+    <style>
+    .sponsor-pannel img{
+        width: 400px;
+        margin-bottom: 20px;
+    }
+    </style>
 
         <% include header %>
         <% if ( eventDetail.eventName === 'sif') { %>
@@ -127,7 +133,7 @@
                     <div class="tabs-panel" id="panel4" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  >
                         <%- eventDetail.judges %>
                     </div>
-                    <div class="tabs-panel" id="panel6" <% if(eventDetail.sponsors =="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %> >
+                    <div class="tabs-panel sponsor-pannel" id="panel6" <% if(eventDetail.sponsors =="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %> >
                         <%- eventDetail.sponsors %>
                     </div>
                 </div>

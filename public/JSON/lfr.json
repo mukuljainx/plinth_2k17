@@ -1,5 +1,5 @@
 {
-    "imageLink" : "images/icons/robotics/lfr.svg",
+    "imageLink" : "media/icons/robotics/lfr.svg",
     "registerLink" : "/registration/robotics/lfr",
     "paymentLink" : "",
     "payment0" : "<li><a href='#' data-open='paymentpop'>Make Payment></a></li>",
