@@ -1,4 +1,4 @@
-db.events.insert({
+{
     "imageLink" : "media/icons/robotics/transporter.svg",
     "registerLink" : "/registration/robotics/transporter",
     "paymentLink" : "",
@@ -9,7 +9,7 @@ db.events.insert({
     "clubName" : "robotics",
     "eventName" : "transporter",
     "displayName" : "transporter",
-    "eventDate" : "17th - 18th Jan 2017",
+    "eventDate" : "18th - 19th Jan 2017",
     "eventVenue" : "The LNMIIT, Jaipur",
     "prizeWorth" : "INR. 30,000",
     "synopsis" : "<p>Assume you are in a virtual gaming world. Virtual reality gaming is where a person can experience being in a three-dimensional environment and interact with that environment during a game. This is an essential part of the game.</p><p>Think that there is sudden attack by foe army on a castle and here king, some courtier, some other people are trapped inside the castle. Our aim is to design a transporter robot which has to save all the trapped people from castle. The task is mammoth and the time is minimal.</p>",
@@ -19,4 +19,4 @@ db.events.insert({
     "mentors" : "<p>Details will be Updated soon</p>",
     "query" : "plinth@Lnmiit.ac.in",
     "sponsors" : "<p>Details will be Updated soon</p>"
-})
+}

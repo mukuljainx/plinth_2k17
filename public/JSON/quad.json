@@ -9,7 +9,7 @@
     "clubName" : "robotics",
     "eventName" : "quadcopter",
     "displayName" : "quadcopter",
-    "eventDate" : "17th - 18th Jan 2017",
+    "eventDate" : "18th - 19th Jan 2017",
     "eventVenue" : "The LNMIIT, Jaipur",
     "prizeWorth" : "INR. 30,000",
     "synopsis" : " <p>Details will be Updated soon</p>",
@@ -20,5 +20,3 @@
     "query" : "plinth@Lnmiit.ac.in",   
     "sponsors" : "<p>Details will be Updated soon</p>"
 }
-
-db.events.update({'eventName' : 'quadcopter'}, {$set : { 'imageLink' : 'media/icons/robotics/quadcopter.svg'}})

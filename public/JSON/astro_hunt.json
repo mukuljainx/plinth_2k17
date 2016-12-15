@@ -9,7 +9,7 @@
     "clubName" : "astronomy",
     "eventName" : "astro hunt",
     "displayName" : "astro hunt",
-    "eventDate" : "17th - 18th Jan 2017",
+    "eventDate" : "18th Jan 2017",
     "eventVenue" : "The LNMIIT, Jaipur",
     "prizeWorth" : "INR. 30,000",
     "synopsis" : " <p>Foresee the unfathomable and explore the mysteries of the universe. Only the sharp, intelligent and astronomy enthusiasts will make it to the end. The route to solve the mysteries of the universe lies within the depths of the dark sky and your imagination. It’s time to bring out the Galileo Galilee in you and look into the infinite cosmic depths.</p>",
@@ -21,6 +21,3 @@
     "query" : "Smriti Jha: +91-7742603667 | smritijha369@gmail.com<br>Kushagra Garg: +91-8561801305 | kushrulesu@gmail.com<br>astronomy.lnmiit@gmail.com<br>"
 
 }
-
-db.events.update({"clubName" : "astronomy"}, {$set : {"query" : "Dheeraj Gupta: 91-8387042427 | dheerajlnmiitcs@gmail.com"}})
-db.events.update({"clubName" : "Astronomy"},{$set : {"clubName" : "astronomy"}})

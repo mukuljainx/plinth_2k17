@@ -98,6 +98,12 @@ function unloadcallback(){
                 location.reload();
                 localStorage.temptoken = "";
             }
+        })
+        .fail(function(response) {
+            deactivateLoader();
+            console.log(response.status);
+            console.log('Reach me at jainmukul1996@gmail.com with above number and url');
+            alert(response.statusText + ' : ' + response.status + '\nSorry for trobule caused please mail us at jainmukul1996@gmail.com along with above status, code & url, we will fix this as soon as possible');
         });
     }
 };
@@ -125,6 +131,12 @@ function registerUserComplete(){
         }else{
             notifDisplay(0,0);
         }
+    })
+    .fail(function(response) {
+        deactivateLoader();
+        console.log(response.status);
+        console.log('Reach me at jainmukul1996@gmail.com with above number and url');
+        alert(response.statusText + ' : ' + response.status + '\nSorry for trobule caused please mail us at jainmukul1996@gmail.com along with above status, code & url, we will fix this as soon as possible');
     });
 }
 
