@@ -1,8 +1,6 @@
 {
-    "imageLink" : "images/icons/astronomy/star_trek.svg",
-    "registerLink" : "/registration/astronomy/star_trek",
-    "register0" : "<li><a class='reg-btn' href='#' data-open='regform'>Register ></a></li>",
-    "register1" : "<li><a class='reg-btn' href='#' onClick='registerUser('astronomy', 'starTrek')'>Register ></a></li>",
+    "imageLink" : "media/icons/coding/star_trek.svg",
+    "registerLink" : "/registration/coding/star_trek",
     "paymentLink" : "",
     "payment0" : "<li><a href='#' data-open='paymentpop'>Make Payment></a></li>",
     "payment1" : "",
@@ -10,7 +8,8 @@
     "memberLowerLimit" : 1,
     "clubName" : "astronomy",
     "eventName" : "star trek",
-    "eventDate" : "22nd Jan 2016",
+    "displayName" : "star trek",
+    "eventDate" : "18th - 19th Jan 2017",
     "eventVenue" : "The LNMIIT, Jaipur",
     "prizeWorth" : "INR. 30,000",
     "synopsis" : " <p>This event consists of 2 rounds: Spacewalk and Messier marathon. Detailed description of the event are as follows.</p><p><b>1st Round: Spacewalk</b></p><p>It will be an audio-visual quiz related to astronomy.Pictures and videos would be projected in front and participants have to answer the questions that follow.</p><p><b>2nd Round: Messier Marathon</b></p><p>So are you one of those who sneak out of your rooms during night hours and wander long gazing at the sky, trying to build up your imagination. Well folks then this is a perfect game for you to play, a hunt for the stars. Participants need to set themselves on a voyage of different celestial bodies and conquer to best of their capabilities. So, are you ready for this mission to get kicked off? See you at the battle field . A basic tutorial session would be held on handling of telescope and any further enhancements of the skills would be student’s personal interest.</p>",
@@ -18,5 +17,6 @@
     "rules" : "<p><b>General Rules </b><ol><li>Participants can form team of up to three.</li><li>Individual participants are also allowed.</li><li>Using mobile phones is not allowed.</li></ol></p>",
     "judges" : "<p>Details will be Updated soon</p>",
     "mentors" : "<p>Details will be Updated soon</p>",
+    "query" : "Smriti Jha: +91-7742603667 | smritijha369@gmail.com<br>Kushagra Garg: +91-8561801305 | kushrulesu@gmail.com<br>astronomy.lnmiit@gmail.com<br>",
     "sponsors" : "<p>Details will be Updated soon</p>"
 }

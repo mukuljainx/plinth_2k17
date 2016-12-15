@@ -29,6 +29,7 @@ router.post('/add', function(req, res) {
     eventx.memberLowerLimit  = req.body.memberLowerLimit;
     eventx.clubName          = req.body.clubName;
     eventx.eventName         = req.body.eventName;
+    eventx.displayName       = req.body.displayName;
     eventx.eventDate         = req.body.eventDate;
     eventx.eventVenue        = req.body.eventVenue;
     eventx.prizeWorth        = req.body.prizeWorth;
@@ -38,6 +39,7 @@ router.post('/add', function(req, res) {
     eventx.judges            = req.body.judges;
     eventx.mentors           = req.body.mentors;
     eventx.sponsors          = req.body.sponsors;
+    eventx.query             = req.body.query;
 
 
   eventx.save(function(err) {
