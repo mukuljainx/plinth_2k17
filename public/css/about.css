@@ -73,17 +73,33 @@ iframe{
         margin-top: 10px;
         margin-left: 1px;
     }
-    
+
     .two-one, .two-two, .three-one, .three-two{
         height: 400px;
     }
-    
+
     .three{
         margin-left: 1px;
     }
-    
+
 }
 
+.one{
+    position: relative;
+}
 
-
-
+.text-div{
+    position: absolute;
+    bottom: 0px;
+    z-index: 99;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    /* left: 10px; */
+    height: 45px;
+    background: rgba(0,0,0,0.8);
+    width: 100%;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 4px;
+}
