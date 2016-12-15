@@ -39,6 +39,7 @@ router.post('/add', function(req, res) {
     eventx.judges            = req.body.judges;
     eventx.mentors           = req.body.mentors;
     eventx.sponsors          = req.body.sponsors;
+    eventx.query             = req.body.query;
 
 
   eventx.save(function(err) {

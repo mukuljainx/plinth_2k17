@@ -6,7 +6,7 @@
     "payment1" : "",
     "memberUpperLimit" : 5,
     "memberLowerLimit" : 3,
-    "clubName" : "Astronomy",
+    "clubName" : "astronomy",
     "eventName" : "astro hunt",
     "displayName" : "astro hunt",
     "eventDate" : "17th - 18th Jan 2017",
@@ -21,3 +21,6 @@
     "query" : "Smriti Jha: +91-7742603667 | smritijha369@gmail.com<br>Kushagra Garg: +91-8561801305 | kushrulesu@gmail.com<br>astronomy.lnmiit@gmail.com<br>"
 
 }
+
+db.events.update({"clubName" : "astronomy"}, {$set : {"query" : "Dheeraj Gupta: 91-8387042427 | dheerajlnmiitcs@gmail.com"}})
+db.events.update({"clubName" : "Astronomy"},{$set : {"clubName" : "astronomy"}})

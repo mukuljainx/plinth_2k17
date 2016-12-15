@@ -1,5 +1,5 @@
 {
-    "imageLink" : "images/icons/quiz/quest.svg",
+    "imageLink" : "media/icons/quiz/quest.svg",
     "registerLink" : "/registration/quiz/quest",
     "paymentLink" : "",
     "payment0" : "<li><a href='#' data-open='paymentpop'>Make Payment></a></li>",
@@ -20,3 +20,6 @@
     "query" : "Dheeraj Gupta: 91-8387042427 | dheerajlnmiitcs@gmail.com",
     "sponsors" : "<p>Details will be Updated soon</p>"
 }
+
+db.events.update({"clubName" : "quizzinga"}, {$set : {"query" : "Dheeraj Gupta: 91-8387042427 | dheerajlnmiitcs@gmail.com"}})
+db.events.update({"clubName" : "quizzing"}, {$set : {"imageLink" : "media/icons/quiz/quest.svg"}})
