@@ -420,40 +420,11 @@ body{
 }
 
 @media screen and (max-width: 320px) {
-    .logo-clg{
-        font: normal 12px cl;
-        position: relative;
-        left:8px;
-    }
-    .logo-plinth{
-        font: normal 60px rez;
-    }
-
-    .logo-2017{
-        font: bold 25px hn;
-    }
-
-    .logo-desc{
-        font:normal 12px caviar;
-        position: relative;
-        left:3px;
-    }
-
-    .logo-date{
-        font:bold 10px hn;
-    }
-    .main-logo{
-        text-align: center;
-        max-width:800px;
-        height: 600px;
-        AAborder: 1px solid white;
-        padding: 50px;
-    }
+  
      .logo-content{
         position: relative;
-        top: -145px;
+        top: -100px;
     }
-    #logo-svg{
-        max-width: 300px;
-    }
+    
 }
+
