@@ -63,3 +63,8 @@ h4{
 .big-wrapper{
     margin-bottom: 100px;
 }
+
+.fa-long-arrow-left{
+    float: left;
+    margin-left: 50px;
+}
