@@ -159,6 +159,7 @@
 
         multiUser = [];
         multiUserCount = 0;
+        teamMail = []; // email of all member will be here so no two member can have same email
 
         function formSubmissionEvent(url, datax){
             data = datax;
@@ -229,6 +230,10 @@
                     if((multiUserCount + 1) < <%- eventDetail.memberLowerLimit %>){
                         return
                     }
+                    if(teamMail.indexOf(userx.email) !== -1){ // will not allow two member two have same email
+                        notifDisplay(2,6);
+                        return;
+                    }
                     else{
                         userx = getUserDetails();
                         if(!validateUserDetails(userx)) return;
@@ -264,7 +269,10 @@
                 }
                 else{
                     var userx = getUserDetails();
-                    console.log(userx);
+                    if(teamMail.indexOf(userx.email) !== -1){ // will not allow two member two have same email
+                        notifDisplay(2,6);
+                        return;
+                    }
                     if(!validateUserDetails(userx)){
                         return;
                     }
@@ -302,13 +310,19 @@
         <% } %>
         function addMember(){
             var userx = getUserDetails();
-            if(!validateUserDetails(userx)){
+            if(!validateUserDetails(userx) || multiUserCount === ( <%- eventDetail.memberUpperLimit %> - 1)){
                 return;
             }
-            if((multiUserCount + 2) === <%- eventDetail.memberUpperLimit %>){
+            debugger
+            if(teamMail.indexOf(userx.email) !== -1){ // will not allow two member two have same email
+                notifDisplay(2,6);
+                return;
+            }
+            if((multiUserCount + 2) === <%- eventDetail.memberUpperLimit %>){ //reached team limit
                 $('.add-member-btn').css('display','none');
             }
             multiUser[multiUserCount] = userx;
+            teamMail[multiUserCount] = userx.email;
             multiUserCount++;
             $('.event-registration-form-member-number').text(multiUserCount + 1);
             setFormFree();
@@ -318,6 +332,7 @@
         }
 
         $('.event-registration-form-prev').click(function(){
+            debugger
             $('.add-member-btn').css('display','inline-block');
             if(multiUserCount === 0)
                 return
@@ -331,7 +346,8 @@
             }
         });
         $('.event-registration-form-next').click(function(){
-            if(multiUserCount === ( <%- eventDetail.memberUpperLimit %> - 1) || $('.event-registration-form-member-number').text() == multiUser.length || multiUser.length === 0)
+            debugger
+            if(multiUserCount === ( <%- eventDetail.memberUpperLimit %> - 1) || $('.event-registration-form-member-number').text() == multiUser.length + 1 || multiUser.length === 0)
                 return
             else{
                 multiUserCount++;

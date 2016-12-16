@@ -14,7 +14,9 @@ var literaryRegistrationSchema = mongoose.Schema({
             eventName      : String,
         }
     ],
-    eventName : String
+    eventName : String,
+    teamEmail  : String,
+    teamNumber  : Number,
 });
 
 // create the model for users and expose it to our app

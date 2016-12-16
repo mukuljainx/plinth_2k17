@@ -92,6 +92,8 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
     }
         eventx.team = req.body.userDetails;
         eventx.eventName = req.body.eventName;
+        eventx.teamEmail = req.body.userDetails[0].email;
+        eventx.teamNumber = req.body.userDetails[0].phoneNumber;
 
         var emails = [];
         for(var i=0; i<req.body.userDetails.length; i++ ){
@@ -108,9 +110,15 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
         var bulk = userEvent.collection.initializeOrderedBulkOp();
 
         for(var i=0; i < emails.length; i++){
+            userEventDetail = {
+                name : body.req.eventName,
+                feeStatus : "Not Paid", // Pait, Not Paid, Pending(stuck with gateway)
+                unique_id : "undefined",
+                team  : emails
+            }
             bulk.find({'email': emails[i]}).upsert().update(
                 {
-                    $push : {events: req.body.eventName},
+                    $push : {events: userEventDetail},
                     $set  : {email : emails[i]}
                 }
             );
@@ -132,6 +140,8 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
 
     var sif = new Sif();
     sif.detail = req.body.sifDetails;
+    sif.teamEmail  = req.body.sifDetails.representativeEmail;
+    si.teamNumber  = req.body.sifDetails.representativeContact;
     sif.save(function(err) {
         if (err){
             console.log(err);

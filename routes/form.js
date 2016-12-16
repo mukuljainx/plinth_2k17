@@ -80,7 +80,7 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
             allowedUser = authUser.quiz;
             break;
     }
-
+    console.log(123,req.query.event)
     if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1 && allowedUser.indexOf(req.decoded.sub) === -1)){
          isLoggedIn = false;
          res.redirect('../../../');
