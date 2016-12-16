@@ -94,6 +94,7 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
         eventx.eventName = req.body.eventName;
         eventx.teamEmail = req.body.userDetails[0].email;
         eventx.teamNumber = req.body.userDetails[0].phoneNumber;
+        eventx.payment = "Not Paid";
 
         var emails = [];
         for(var i=0; i<req.body.userDetails.length; i++ ){
@@ -141,7 +142,8 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
     var sif = new Sif();
     sif.detail = req.body.sifDetails;
     sif.teamEmail  = req.body.sifDetails.representativeEmail;
-    si.teamNumber  = req.body.sifDetails.representativeContact;
+    sif.teamNumber  = req.body.sifDetails.representativeContact;
+    sif.payment = "Not Paid";
     sif.save(function(err) {
         if (err){
             console.log(err);

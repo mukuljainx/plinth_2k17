@@ -17,6 +17,7 @@ var ecellRegistrationSchema = mongoose.Schema({
     eventName : String,
     teamEmail  : String,
     teamNumber  : Number,
+    payment : String,
 });
 
 // create the model for users and expose it to our app
