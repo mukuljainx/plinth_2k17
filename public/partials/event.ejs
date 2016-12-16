@@ -21,7 +21,17 @@
     }
     .payment-get-email .group{
         width: 300px;
-        margin: 10px auto 35px;
+        margin: 10px auto 10px;
+    }
+    .total-amount{
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .email-not-foun-error-msg{
+        font-size: 12px;
+        color: red;
+        margin: 0px;
+        opacity: 0;
     }
     </style>
 
@@ -34,25 +44,36 @@
 
         <!-- Payment Modal -->
 
-        <div class="reveal" id="payment-modal" data-reveal>
+        <div class="reveal" id="payment-modal" data-reveal style="padding : 30px;">
             <h5 class="text-center">Payment</h5>
-            <div class="payment-get-email text-center">
-                <div class="group">
-                    <input type="email" id="in-name" class="payment-email" required>
-                    <span class="highlight"></span>
-                    <label>Email</label>
-                </div>
-                <a class="reg-form-btn-register get-email-proceed-next" onclick="getEmailProceedNext()">Next</a>
-                <br>
+            <div class="payment-get-email">
+                <form action="javascript:void(0)">
+                    <div class="group">
+                        <input type="email" id="in-name" class="payment-email">
+                        <span class="highlight"></span>
+                        <label>Email</label>
+                    </div>
+                    <div class="text-center">
+                        <p class="email-not-foun-error-msg">Email not found please try Again. Make Sure you are entering Email of member 1</p>
+                        <input type="submit" value="Next" class="reg-form-btn-register get-email-proceed-next" onclick="fetchAmountAndMember()">
+                    </div>
+                </form>
             </div>
-            <div class="payment-get-email text-center">
-                <div class="group">
-                    <input type="email" id="in-name" class="payment-email" required>
-                    <span class="highlight"></span>
-                    <label>Email</label>
+            <div class="payment-list-email" style="display:none">
+                <div class="row">
+                    <div class="column small-12 medium-10 medium-centered">
+                        <p>
+                            Event Name : <%- eventDetail.displayName %><br>
+                            Team Members :
+                        </p>
+                        <ol class="team-member-list">
+                        </ol>
+                        <p class="total-amount text-right"></p>
+                        <div class="text-right">
+                            <a class="reg-form-btn-register get-email-proceed-next" onclick="makePayment()">Pay Now</a>
+                        </div>
+                    </div>
                 </div>
-                <a class="reg-form-btn-register get-email-proceed-next" onclick="getEmailProceedNext()">Pay</a>
-                <br>
             </div>
             <button class="close-button" data-close aria-label="Close modal" type="button">
                 <span aria-hidden="true">&times;</span>
@@ -184,7 +205,6 @@
         <% include footer %>
 
         <script>
-
         $('.memberUpperLimit').text('<%- eventDetail.memberUpperLimit %>');
         $('.memberLowerLimit').text('<%- eventDetail.memberLowerLimit %>');
 
@@ -407,6 +427,24 @@
             $('input:radio[name=year]').attr('checked',false);
         }
 
+        function fetchAmountAndMember(){
+            var email = $('.payment-email').val()
+            if(email ==="" || email.indexOf('@') === -1){
+                return;
+            }
+            $('.email-not-foun-error-msg').css("opacity","1");
+            // $('.payment-get-email').hide()
+            $('.payment-list-email').show()
+            var teamMember = ["james@blunt.com","behl@vipul.com","asai@shobit.com"];
+            var teamMemberList = "";
+            var totalAmount = 300;
+            var oneMemberAmount =100;
+            for(var i=0; i<teamMember.length; i++){
+                teamMemberList = teamMemberList + "<li>" + teamMember[i] + "</li>";
+            }
+            $(".team-member-list").html(teamMemberList);
+            $(".total-amount").html("Total Amount : &#8377; " + totalAmount + '/-<br><span style="font-size: 12px; font-weight: 400; top: -10px; position: relative;">(&#8377; ' + oneMemberAmount + "/- per Member )");
+        }
 
         </script>
 
