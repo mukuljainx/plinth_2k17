@@ -44,8 +44,6 @@ router.post('/add', function(req, res) {
 
   eventx.save(function(err) {
     if (err){
-        console.log('**************************');
-        console.log("fraeky error");
         res.send(err);
       }
      else
@@ -90,10 +88,12 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
             eventx = quiz;
             break;
     }
+
         eventx.team = req.body.userDetails;
         eventx.eventName = req.body.eventName;
         eventx.teamEmail = req.body.userDetails[0].email;
         eventx.teamNumber = req.body.userDetails[0].phoneNumber;
+        eventx.payment = "Not Paid";
 
         var emails = [];
         for(var i=0; i<req.body.userDetails.length; i++ ){
@@ -111,7 +111,7 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
 
         for(var i=0; i < emails.length; i++){
             userEventDetail = {
-                name : body.req.eventName,
+                name : req.body.eventName,
                 feeStatus : "Not Paid", // Pait, Not Paid, Pending(stuck with gateway)
                 unique_id : "undefined",
                 team  : emails
@@ -141,10 +141,10 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
     var sif = new Sif();
     sif.detail = req.body.sifDetails;
     sif.teamEmail  = req.body.sifDetails.representativeEmail;
-    si.teamNumber  = req.body.sifDetails.representativeContact;
+    sif.teamNumber  = req.body.sifDetails.representativeContact;
+    sif.payment = "Not Paid";
     sif.save(function(err) {
         if (err){
-            console.log(err);
             return done(err);
         }
         else{
