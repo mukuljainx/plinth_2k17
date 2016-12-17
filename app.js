@@ -62,7 +62,7 @@ app.use('/', routes);
 app.use('/user', user);
 app.use('/events', events);
 app.use('/results', results);
-app.use('/payment', payment);
+// app.use('/payment', payment); //closed for now
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
