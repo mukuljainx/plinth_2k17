@@ -368,7 +368,7 @@ body{
         font:normal 12px caviar;
         position: relative;
         left: 0px;
-        top:-22px;
+        top:-18px;
     }
 
     .logo-date{
@@ -420,11 +420,10 @@ body{
 }
 
 @media screen and (max-width: 320px) {
-  
+
      .logo-content{
         position: relative;
         top: -100px;
     }
-    
-}
 
+}
