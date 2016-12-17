@@ -12,28 +12,6 @@
         <link rel="stylesheet" href="css/robotics.css" />
     </head>
     <body>
-    <style>
-    .sponsor-pannel img{
-    margin: 25px;
-    border: 1px solid gray;
-    padding: 10px;
-    height: 150px;
-    }
-    .payment-get-email .group{
-        width: 300px;
-        margin: 10px auto 10px;
-    }
-    .total-amount{
-        font-size: 16px;
-        font-weight: 600;
-    }
-    .email-not-foun-error-msg{
-        font-size: 12px;
-        color: red;
-        margin: 0px;
-        opacity: 0;
-    }
-    </style>
 
         <% include header %>
         <% if ( eventDetail.eventName === 'sif') { %>
@@ -46,7 +24,7 @@
         <!-- Payment Modal -->
 
         <div class="reveal" id="payment-modal" data-reveal style="padding : 30px;">
-            <h5 class="text-center">Payment</h5>
+            <h5 class="text-center" style="color: #00b9f5; font-weight: 300;">Payment</h5>
             <div class="payment-get-email">
                 <form action="javascript:void(0)">
                     <div class="group">
@@ -63,16 +41,8 @@
             <div class="payment-list-email" style="display:none">
                 <div class="row">
                     <div class="column small-12 medium-10 medium-centered">
-                        <p>
-                            Event Name : <%- eventDetail.displayName %><br>
-                            Team Members :
-                        </p>
-                        <ol class="team-member-list">
-                        </ol>
+                        <div class="team-member-list"></div>
                         <p class="total-amount text-right"></p>
-                        <div class="text-right">
-                            <a class="reg-form-btn-register get-email-proceed-next" onclick="makePayment()">Pay Now</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -233,10 +203,7 @@
                 }
             })
             .fail(function(response) {
-                deactivateLoader();
-                console.log(response.status);
-                console.log('Reach me at jainmukul1996@gmail.com with above number and url');
-                alert(response.statusText + ' : ' + response.status + '\nSorry for trobule caused please mail us at jainmukul1996@gmail.com along with above status, code & url, we will fix this as soon as possible');
+                apiCallFail(response);
             });
         }
 
@@ -265,10 +232,7 @@
                             }
                         })
                         .fail(function(response) {
-                            deactivateLoader();
-                            console.log(response.status);
-                            console.log('Reach me at jainmukul1996@gmail.com with above number and url');
-                            alert(response.statusText + ' : ' + response.status + '\nSorry for trobule caused please mail us at jainmukul1996@gmail.com along with above status, code & url, we will fix this as soon as possible');
+                            apiCallFail(response);
                         });
                     }else {
                         $(".event-registration-form-btn").trigger('click');
@@ -365,7 +329,6 @@
             if(!validateUserDetails(userx) || multiUserCount === ( <%- eventDetail.memberUpperLimit %> - 1)){
                 return;
             }
-            debugger
             if(teamMail.indexOf(userx.email) !== -1){ // will not allow two member two have same email
                 notifDisplay(2,6);
                 return;
@@ -384,7 +347,6 @@
         }
 
         $('.event-registration-form-prev').click(function(){
-            debugger
             $('.add-member-btn').css('display','inline-block');
             if(multiUserCount === 0)
                 return
@@ -398,7 +360,6 @@
             }
         });
         $('.event-registration-form-next').click(function(){
-            debugger
             if(multiUserCount === ( <%- eventDetail.memberUpperLimit %> - 1) || $('.event-registration-form-member-number').text() == multiUser.length + 1 || multiUser.length === 0)
                 return
             else{
@@ -429,24 +390,73 @@
         }
 
         function fetchAmountAndMember(){
-            var email = $('.payment-email').val()
+            <%if (isLoggedIn) { %>
+                var email = "<%- user.email %>"
+            <% }else{ %>
+                var email = $('.payment-email').val()
+            <% } %>
             if(email ==="" || email.indexOf('@') === -1){
                 return;
             }
-            $('.email-not-foun-error-msg').css("opacity","1");
-            // $('.payment-get-email').hide()
-            $('.payment-list-email').show()
-            var teamMember = ["james@blunt.com","behl@vipul.com","asai@shobit.com"];
-            var teamMemberList = "";
-            var totalAmount = 300;
-            var oneMemberAmount =100;
-            for(var i=0; i<teamMember.length; i++){
-                teamMemberList = teamMemberList + "<li>" + teamMember[i] + "</li>";
+            var data ={
+                eventName : "<%- eventDetail.eventName %>",
+                clubName  : "<%- eventDetail.clubName %>",
+                email     : email
             }
-            $(".team-member-list").html(teamMemberList);
-            $(".total-amount").html("Total Amount : &#8377; " + totalAmount + '/-<br><span style="font-size: 12px; font-weight: 400; top: -10px; position: relative;">(&#8377; ' + oneMemberAmount + "/- per Member )");
+            activateLoader();
+            $.post( {
+                url: '/payment/fetchData',
+                contentType: 'application/json; charset=utf-8',
+                dataType : 'json',
+                data: JSON.stringify(data)
+            })
+            .done(function( response ) {
+                deactivateLoader();
+                if(response.data.length === 0){
+                    $('.email-not-foun-error-msg').css("opacity","1");
+                    return;
+                }
+                var oneMemberAmount = response.oneMemberAmount;
+                $('.payment-get-email').hide()
+                $('.payment-list-email').show()
+                if(response.data.length > 1){
+                    var totalListHTML ="<p class='text-center'>We found mulitple registration with this email, you can choose any particular and attend the event with that team other registration will be discarded."
+                }
+                else{
+                    var totalListHTML = "";
+                }
+                for(var i=0; i<response.data.length; i++){
+                    var team = response.data[i].team;
+                    var renderHTML = "<div class='team-box-gray'>Registration " + (i + 1) + " :<ol>"
+                    for(var j=0; j<team.length; j++ ){
+                        renderHTML = renderHTML + "<li><span>" + team[j].name + "</span> | <span style='margin-left:10px'>" +
+                        team[j].email + "</span></li>";
+                    }
+                    renderHTML = renderHTML + "</ol>"
+                    + "<div class='row'>"
+                    + "<div class='column small-6'>"
+                    + "<div class='total-amount text-left'> Total Amount : &#8377; " + (oneMemberAmount * team.length)
+                    + '/-<br><span style="font-size: 12px; font-weight: 400; top: -10px; position: relative; width:120px;">(&#8377; '
+                    + oneMemberAmount + "/- per Member )</div>"
+                    + "</div>"
+                    + "<div class='column small-6' style='padding-top : 10px;'>"
+                    + "<div class='text-right pay-now-div'>"
+                    + "<a class='reg-form-btn-register get-email-proceed-next' onclick='makePayment(\"" + response.data[i]._id + "\")'>Pay Now</a></div></div>"
+                    + "</div>"
+                    + "</div>"
+                    totalListHTML = totalListHTML + renderHTML;
+                }
+                $(".team-member-list").html(totalListHTML);
+            })
+            .fail(function(response) {
+                apiCallFail(response);
+                return;
+            });
         }
 
+        function makePayment(id){
+            window.location.replace( location.origin + "/payment/initiatepayment?id=" + id + "&clubName=<%-eventDetail.clubName %>&eventName=<%- eventDetail.eventName %>");
+        }
         </script>
 
     </body>

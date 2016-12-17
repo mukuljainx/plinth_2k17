@@ -93,7 +93,10 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
         eventx.eventName = req.body.eventName;
         eventx.teamEmail = req.body.userDetails[0].email;
         eventx.teamNumber = req.body.userDetails[0].phoneNumber;
-        eventx.payment = "Not Paid";
+        eventx.payment = {
+            status   : 'TXN_FAILURE',
+            order_id : 'undefined'
+        }
 
         var emails = [];
         for(var i=0; i<req.body.userDetails.length; i++ ){
@@ -108,17 +111,10 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
         bulk.execute();
 
         var bulk = userEvent.collection.initializeOrderedBulkOp();
-
         for(var i=0; i < emails.length; i++){
-            userEventDetail = {
-                name : req.body.eventName,
-                feeStatus : "Not Paid", // Pait, Not Paid, Pending(stuck with gateway)
-                unique_id : "undefined",
-                team  : emails
-            }
             bulk.find({'email': emails[i]}).upsert().update(
                 {
-                    $push : {events: userEventDetail},
+                    $push : {events: req.body.eventName},
                     $set  : {email : emails[i]}
                 }
             );

@@ -3,14 +3,8 @@ var mongoose = require('mongoose');
 
 var userEventSchema = mongoose.Schema({
         email          : String,
-        events         : [
-            {
-                name      : String,
-                feeStatus : String,
-                unique_id : String,
-                team      : Array
-            }
-        ],
+        events         : Array,
+        paidEvents     : Array,
 });
 
 // create the model for users and expose it to our app

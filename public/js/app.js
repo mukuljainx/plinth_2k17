@@ -100,10 +100,7 @@ function unloadcallback(){
             }
         })
         .fail(function(response) {
-            deactivateLoader();
-            console.log(response.status);
-            console.log('Reach me at jainmukul1996@gmail.com with above number and url');
-            alert(response.statusText + ' : ' + response.status + '\nSorry for trobule caused please mail us at jainmukul1996@gmail.com along with above status, code & url, we will fix this as soon as possible');
+            apiCallFail(response);
         });
     }
 };
@@ -133,10 +130,7 @@ function registerUserComplete(){
         }
     })
     .fail(function(response) {
-        deactivateLoader();
-        console.log(response.status);
-        console.log('Reach me at jainmukul1996@gmail.com with above number and url');
-        alert(response.statusText + ' : ' + response.status + '\nSorry for trobule caused please mail us at jainmukul1996@gmail.com along with above status, code & url, we will fix this as soon as possible');
+        apiCallFail(response);
     });
 }
 
@@ -184,6 +178,13 @@ function activateLoader(){
 
 function deactivateLoader(){
     $('.notif-loader').css('display','none');
+}
+
+function apiCallFail(response){
+    deactivateLoader();
+    console.log(response.status);
+    console.log('Reach me at jainmukul1996@gmail.com with above number and url');
+    alert(response.statusText + ' : ' + response.status + '\nSorry for trobule caused please mail us at jainmukul1996@gmail.com along with above status, code & url, we will fix this as soon as possible');
 }
 
 $('.nav-usr-name').mouseover(function() {
