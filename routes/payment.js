@@ -144,7 +144,7 @@ router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
             }
             else{
 
-                if(paramlist.STATUS === "TXN_FAILED"){
+                if(paramlist.STATUS === "TXN_FAILURE"){
                     res.render('payment_failed', {
                         clubName : result.clubName,
                     });

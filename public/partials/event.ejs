@@ -87,10 +87,11 @@
                                     <% } else { %>
                                         <li><a class="reg-btn" onClick="loggedUserRegistration()">Register ></a></li>
                                     <% } %>
+                                    <li><a data-open="payment-modal" onclick="fetchAmountAndMember()">Make Payment ></a></li>
                                 <% } else { %>
                                     <li><a class="reg-btn" onclick="loggedUserRegistration()">Register ></a></li>
+                                    <li><a data-open="payment-modal">Make Payment ></a></li>
                                 <% } %>
-                                <li><a data-open="payment-modal">Make Payment ></a></li>
                                 <% if ( eventDetail.eventName === 'sif') { %>
                                     <li><a href="#" ><a data-open="sif-registration-form" class="sifForm">Startup Register ></a></li>
                                 <% } %>
@@ -246,13 +247,13 @@
                     if((multiUserCount + 1) < <%- eventDetail.memberLowerLimit %>){
                         return
                     }
-                    if(teamMail.indexOf(userx.email) !== -1){ // will not allow two member two have same email
-                        notifDisplay(2,6);
-                        return;
-                    }
                     else{
                         userx = getUserDetails();
                         if(!validateUserDetails(userx)) return;
+                        if(teamMail.indexOf(userx.email) !== -1){ // will not allow two member two have same email
+                            notifDisplay(2,6);
+                            return;
+                        }
                         console.log(userx)
                         multiUser[multiUserCount] = userx;
                         $('.close-button').trigger('click');
@@ -440,10 +441,18 @@
                     + oneMemberAmount + "/- per Member )</div>"
                     + "</div>"
                     + "<div class='column small-6' style='padding-top : 10px;'>"
-                    + "<div class='text-right pay-now-div'>"
-                    + "<a class='reg-form-btn-register get-email-proceed-next' onclick='makePayment(\"" + response.data[i]._id + "\")'>Pay Now</a></div></div>"
-                    + "</div>"
-                    + "</div>"
+                    + "<div class='text-right pay-now-div'>";
+
+
+
+                    if(response.data[i].payment.status === "TXN_SUCCESS"){
+                        renderHTML = renderHTML + "<a class='reg-form-btn-register get-email-proceed-next' style='background: #2ECC71; cursor: default;'>Paid</a></div></div>"
+                    }
+                    else{
+                        renderHTML = renderHTML + "<a class='reg-form-btn-register get-email-proceed-next' onclick='makePayment(\"" + response.data[i]._id + "\")'>Pay Now</a></div></div>"
+                    }
+
+                    renderHTML = renderHTML + "</div></div>"
                     totalListHTML = totalListHTML + renderHTML;
                 }
                 $(".team-member-list").html(totalListHTML);

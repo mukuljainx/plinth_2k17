@@ -183,8 +183,8 @@ function deactivateLoader(){
 function apiCallFail(response){
     deactivateLoader();
     console.log(response.status);
-    console.log('Reach me at jainmukul1996@gmail.com with above number and url');
-    alert(response.statusText + ' : ' + response.status + '\nSorry for trobule caused please mail us at jainmukul1996@gmail.com along with above status, code & url, we will fix this as soon as possible');
+    console.log('Reach me at help.plinth@gmail.com with above number and url');
+    alert(response.statusText + ' : ' + response.status + '\nSorry for trobule caused please mail us at help.plinth@gmail.com along with above status, code & url, we will fix this as soon as possible');
 }
 
 $('.nav-usr-name').mouseover(function() {
