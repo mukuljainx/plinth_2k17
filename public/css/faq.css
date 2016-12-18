@@ -30,3 +30,9 @@ h4{
 footer{
     margin-top: 100px;
 }
+
+/*For payment_faq*/
+
+.ans li{
+    list-style: decimal;
+}
