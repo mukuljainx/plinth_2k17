@@ -44,8 +44,6 @@ router.post('/add', function(req, res) {
 
   eventx.save(function(err) {
     if (err){
-        console.log('**************************');
-        console.log("fraeky error");
         res.send(err);
       }
      else
@@ -90,8 +88,15 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
             eventx = quiz;
             break;
     }
+
         eventx.team = req.body.userDetails;
         eventx.eventName = req.body.eventName;
+        eventx.teamEmail = req.body.userDetails[0].email;
+        eventx.teamNumber = req.body.userDetails[0].phoneNumber;
+        eventx.payment = {
+            status   : 'TXN_FAILURE',
+            order_id : 'undefined'
+        }
 
         var emails = [];
         for(var i=0; i<req.body.userDetails.length; i++ ){
@@ -106,7 +111,6 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
         bulk.execute();
 
         var bulk = userEvent.collection.initializeOrderedBulkOp();
-
         for(var i=0; i < emails.length; i++){
             bulk.find({'email': emails[i]}).upsert().update(
                 {
@@ -132,9 +136,11 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
 
     var sif = new Sif();
     sif.detail = req.body.sifDetails;
+    sif.teamEmail  = req.body.sifDetails.representativeEmail;
+    sif.teamNumber  = req.body.sifDetails.representativeContact;
+    sif.payment = "Not Paid";
     sif.save(function(err) {
         if (err){
-            console.log(err);
             return done(err);
         }
         else{
