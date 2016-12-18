@@ -515,7 +515,7 @@ router.get('/workshop', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.get('/profile', Verify.verifyOrdinaryUser ,function(req, res) {
-    if(req.decoded.sub === ""){
+	if(req.decoded.sub === ""){
         isLoggedIn = false;
         res.redirect(301,'/');
     }
