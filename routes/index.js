@@ -997,7 +997,7 @@ router.get('/mun' ,function(req, res) {
 });
 
 router.get('/wikitolearn' ,function(req, res) {
-    res.render('wiki');
+    res.redirect('wiki');
 });
 
 
