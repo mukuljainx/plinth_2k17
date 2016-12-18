@@ -136,8 +136,7 @@ router.get('/initiatepayment', function(req, res) {
 });
 
 router.post('/mun/initiatepayment', function(req, res) {
-    paymentmun = new PaymentMUN();
-
+    paymentmun = new PaymentMUN;
     if((req.body.type !== "delegate" && req.body.type !== "ip")){
         res.json({status : false, message : "Data Tempered"});
     }
@@ -152,6 +151,8 @@ router.post('/mun/initiatepayment', function(req, res) {
             paymentmun.phoneNumber = req.body.user.phoneNumber;
             paymentmun.institute   = req.body.user.institute;
             paymentmun.amount      = amount;
+            paymentmun.status      = "";
+
 
             paymentmun.save(function(err) {
                 if (err){
@@ -167,6 +168,7 @@ router.post('/mun/initiatepayment', function(req, res) {
 
 router.get('/mun/initiatepayment', function(req, res) {
     var order_id = req.query.order_id;
+    console.log(hostURL)
     PaymentMUN.findOne({'order_id' : order_id },function (err, result) {
             paramaters ={
                 REQUEST_TYPE     : "DEFAULT",
@@ -294,14 +296,14 @@ router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
 
 router.post('/mun/response', Verify.verifyOrdinaryUser,function(req,res){
     var paramlist = req.body;
-    console.log('**************************************');
     if(checksum.verifychecksum(paramlist, paytm.key)){
-        PaymentMUN.findOne({'order_id' : paramlist.ORDERID}, function(err, result){
+        PaymentMUN.findOneAndUpdate({'order_id' : paramlist.ORDERID}, {$set : {'status' : paramlist.STATUS }},{new: true}, function(err, result){
             if(err){
                 console.log(err)
                 return;
             }
             else{
+                console.log(paramlist);
                 if(paramlist.STATUS === "OPEN"){
                     res.render('payment_open',{
                         amount   : doc.payment.amount,
