@@ -13,11 +13,12 @@ var Astronomy = require('../models/astronomy');
 var Cybros = require('../models/cybros');
 var Sif = require('../models/sif');
 var PaymentDB = require('../models/payment');
+var PaymentMUN = require('../models/paymentMUN');
 var mongoose = require('mongoose');
 var paytm = require('../config/paytm');
 var checksum = require('../checksum/checksum');
 
-//user registration
+var hostURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://plinth.in'
 
 router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
 
@@ -63,7 +64,7 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
 
 
 router.get('/initiatepayment', function(req, res) {
-    paymentdb = new PaymentDB()
+    paymentdb = new PaymentDB();
     var oneMemberAmount = 100;
     var id = req.query.id;
 
@@ -112,7 +113,7 @@ router.get('/initiatepayment', function(req, res) {
                     WEBSITE         : paytm.website,
                     MOBILE_NO       : resultone.teamNumber,
                     EMAIL           : resultone.teamEmail,
-                    CALLBACK_URL: 'http://localhost:3000/payment/response',
+                    CALLBACK_URL    : hostURL +  '/payment/response',
                 }
                     checksum.genchecksum(paramaters, paytm.key, function (err, result) {
                         paymentdb.order_id = result.ORDER_ID;
@@ -134,8 +135,68 @@ router.get('/initiatepayment', function(req, res) {
 
 });
 
+router.post('/mun/initiatepayment', function(req, res) {
+    paymentmun = new PaymentMUN();
+
+    if((req.body.type !== "delegate" && req.body.type !== "ip")){
+        res.json({status : false, message : "Data Tempered"});
+    }
+    else{
+        amount = req.body.type === "delegate" ? 1300 : 750;
+        PaymentMUN.count({}, function(err, count){
+            var order_id = "MUN-" + req.body.type + "-" + (count + 1);
+            paymentmun.order_id    = order_id;
+            paymentmun.type        = req.body.type;
+            paymentmun.name        = req.body.user.name;
+            paymentmun.email       = req.body.user.email;
+            paymentmun.phoneNumber = req.body.user.phoneNumber;
+            paymentmun.institute   = req.body.user.institute;
+            paymentmun.amount      = amount;
+
+            paymentmun.save(function(err) {
+                if (err){
+                    return done(err);
+                }
+                else{
+                    res.json({ order_id : order_id, status : true})
+                }
+            });
+        });
+    }
+});
+
+router.get('/mun/initiatepayment', function(req, res) {
+    var order_id = req.query.order_id;
+    PaymentMUN.findOne({'order_id' : order_id },function (err, result) {
+            paramaters ={
+                REQUEST_TYPE     : "DEFAULT",
+                ORDER_ID         : order_id,
+                CUST_ID          : result.email,
+                TXN_AMOUNT       : result.amount,
+                CHANNEL_ID       :'WEB',
+                INDUSTRY_TYPE_ID : paytm.industryID,
+                MID              : paytm.mid,
+                WEBSITE          : paytm.website,
+                MOBILE_NO        : result.phoneNumber,
+                EMAIL            : result.email,
+                CALLBACK_URL     : hostURL + '/payment/mun/response',
+            }
+            checksum.genchecksum(paramaters, paytm.key, function (err, result) {
+                paymentmun.save(function(err) {
+                    if (err){
+                        return done(err);
+                    }
+                    else{
+                        res.render('pgredirect.ejs',{ 'restdata' : result });
+                    }
+                })
+            });
+        });
+});
+
 router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
     var paramlist = req.body;
+
     if(checksum.verifychecksum(paramlist, paytm.key)){
         PaymentDB.findOne({'order_id' : paramlist.ORDERID}, function(err, result){
             if(err){
@@ -226,6 +287,59 @@ router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
     else{
         res.render('payment_failed', {
             clubName : result.clubName,
+        });
+    };
+});
+
+
+router.post('/mun/response', Verify.verifyOrdinaryUser,function(req,res){
+    var paramlist = req.body;
+    console.log('**************************************');
+    if(checksum.verifychecksum(paramlist, paytm.key)){
+        PaymentMUN.findOne({'order_id' : paramlist.ORDERID}, function(err, result){
+            if(err){
+                console.log(err)
+                return;
+            }
+            else{
+                if(paramlist.STATUS === "OPEN"){
+                    res.render('payment_open',{
+                        amount   : doc.payment.amount,
+                        order_id : doc.payment.order_id,
+                        eventName : doc.eventName
+                    })
+                }
+                else if(paramlist.STATUS === 'TXN_SUCCESS'){
+                    doc ={
+                        team : [
+                            {
+                                name : result.name,
+                                email : result.email,
+                                phoneNumber : result.phoneNumber,
+                            }
+                        ],
+                        payment :{
+                            order_id : result.order_id,
+                            date : paramlist.TXNDATE,
+                            amount : paramlist.TXNAMOUNT,
+                        },
+                        eventName : "MUN 2017"
+                    }
+                    res.render('payment_succeed',{
+                        details : doc
+                    })
+                }
+                else{
+                    res.render('payment_failed', {
+                        clubName : "",
+                    });
+                }
+            }
+        });
+    }
+    else{
+        res.render('payment_failed', {
+            clubName : "",
         });
     };
 });

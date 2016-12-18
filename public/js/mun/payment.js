@@ -1,0 +1,71 @@
+"use strict"
+var option = "";
+
+function fillIP(){
+    $('.btn-11').removeClass('btn-selectecd-payment');
+    $('.btn-ip').addClass('btn-selectecd-payment');
+    $('.amount-mun-total').text("Amount : 750/-")
+    $('#mun-payment-form').show();
+    option = "ip";
+}
+
+function fillDelegate(){
+    $('.btn-11').removeClass('btn-selectecd-payment');
+    $('.btn-delegate').addClass('btn-selectecd-payment');
+    $('.amount-mun-total').text("Amount : 1300/-")
+    $('#mun-payment-form').show();
+    option = "delegate";
+}
+
+
+function getUserDetailsMUN(){
+    var userDetail ={
+        name : $('.user-name').val(),
+        phoneNumber : $('.phone').val(),
+        email : $('.email').val(),
+        college : $('.college').val(),
+    }
+    return userDetail;
+}
+
+function validateUserDetailsMUN(data){
+    if(data.name === "" || data.phoneNumber === "" || data.email === "" || data.college === "")
+        return false;
+    else
+        return true;
+}
+
+
+function registerUserCompleteMUN(){
+    var x = getUserDetailsMUN();
+    if(!validateUserDetailsMUN(x)){
+        return
+    }
+
+    var data = {
+        user : x,
+        type : option
+    };
+
+    activateLoader();
+
+    $.post({
+        url: "/payment/mun/initiatepayment",
+        contentType: 'application/json; charset=utf-8',
+        dataType : 'json',
+        data: JSON.stringify(data)
+    })
+    .done(function( data ) {
+        deactivateLoader();
+        if(!data.status){
+            alert('something wrong please try again');
+        }
+        else{
+            window.location.replace( location.origin + "/payment/mun/initiatepayment?order_id=" + data.order_id);
+        }
+    })
+    .fail(function(response) {
+        deactivateLoader()
+        apiCallFail(response);
+    });
+};
