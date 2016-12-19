@@ -1000,6 +1000,7 @@ router.get('/wikitolearn' ,function(req, res) {
     res.render('wiki');
 });
 
+
 router.get('/mun/pay', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
