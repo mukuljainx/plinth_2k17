@@ -1,0 +1,39 @@
+body{
+
+}
+.aboutUs,.organizer,.committees,.register,.contactUS{
+	margin: 50px;
+}
+.heading{
+	font-family: 'Exo 2', sans-serif;
+	text-align: center;
+	font-size: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+.organizerImage{
+	text-align: center;
+	line-height: 18px;
+}
+.card {
+    transition: 0.3s;
+    box-shadow: 1px 2px 3px 0 rgba(0,0,0,.10);
+    margin-left: 12px;
+    margin-right: 12px;
+    padding: 20px;    
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card>img{
+	width: 200px;
+	height: 120px;
+
+}
+.cardText{
+	text-align: center;
+	padding-top: 20px;	
+}
+a{
+	color: black;
+}
