@@ -180,6 +180,7 @@ nav{
 }
 
 .notif{
+    z-index: 9999999;
     text-align: right;
     display: none;
     position: fixed;
@@ -190,7 +191,6 @@ nav{
     font: normal 15px 'Roboto';
     padding: 20px;
     background-color: white;
-    z-index: 999;
 }
 
 
