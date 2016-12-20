@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var authenticate = require('./authenticate');
-var session = require('express-session');
-var flash = require('express-flash');
+// var session = require('express-session');
+// var flash = require('express-flash');
 
 // data base connection
 var DBconfig = require('./config/dbconfig')
@@ -29,6 +29,7 @@ var routes = require('./routes/index');
 var user = require('./routes/user');
 var events = require('./routes/event');
 var results = require('./routes/form');
+var payment = require('./routes/payment');
 
 var app = express();
 
@@ -45,9 +46,9 @@ app.use('*/css', express.static(path.join(__dirname, 'public/css')))
 app.use('*/media', express.static(path.join(__dirname, 'public/media')))
 app.use('*/font', express.static(path.join(__dirname, 'public/font')))
 
-app.use(session({ secret: 'somerandomkeytimespread' })); // session secret
-app.use(passport.session());
-app.use(flash());
+// app.use(session({ secret: 'somerandomkeytimespread' })); // session secret
+// app.use(passport.session());
+// app.use(flash());
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -61,6 +62,7 @@ app.use('/', routes);
 app.use('/user', user);
 app.use('/events', events);
 app.use('/results', results);
+app.use('/payment', payment);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -73,16 +75,17 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-// if (app.get('env') === 'development') {
-//   app.use(function(err, req, res, next) {
-//     res.status(err.status || 500);
-//     res.render('error', {
-//       message: err.message,
-//       error: err
-//     });
-//   });
-// }
-//
+
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
 // // production error handler
 // // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
