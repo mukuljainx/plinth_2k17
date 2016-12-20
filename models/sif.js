@@ -11,10 +11,18 @@ var sifSchema = mongoose.Schema({
             representativeName      : String,
             representativeEmail     : String,
             representativeContact   : String,
-            field                  : Array,
+            field                   : Array,
             stipend                 : Boolean,
             numberofOpening         : Number
-        }
+        },
+        teamEmail  : String,
+        teamNumber  : Number,
+        payment    : {
+            status   : String,
+            order_id : String,
+            date     : String,
+            amount   : String,
+        },
 });
 
 // create the model for users and expose it to our app

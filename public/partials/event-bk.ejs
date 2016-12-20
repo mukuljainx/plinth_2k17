@@ -87,10 +87,11 @@
                                     <% } else { %>
                                         <li><a class="reg-btn" onClick="loggedUserRegistration()">Register ></a></li>
                                     <% } %>
+                                    <li><a data-open="payment-modal" onclick="fetchAmountAndMember()">Make Payment ></a></li>
                                 <% } else { %>
                                     <li><a class="reg-btn" onclick="loggedUserRegistration()">Register ></a></li>
+                                    <li><a data-open="payment-modal">Make Payment ></a></li>
                                 <% } %>
-                                <li><a style="color:gray;">Make Payment ></a></li>
                                 <% if ( eventDetail.eventName === 'sif') { %>
                                     <li><a href="#" ><a data-open="sif-registration-form" class="sifForm">Startup Register ></a></li>
                                 <% } %>

@@ -51,19 +51,16 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
 
 router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
     var poc   = authUser.poc;
-
-    if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1)){
-         isLoggedIn = false;
-         res.redirect('../../../');
-     }
-
+    var allowedUser = ['jainmukul1996@gmail.com'];
 
     switch(req.params['0']) {
         case "astronomy":
             eventx = Astronomy;
+            allowedUser = authUser.astronomy;
             break;
         case "Astronomy":
             eventx = Astronomy;
+            allowedUser = authUser.astronomy;
             break;
         case "coding":
             eventx = Cybros;
@@ -76,11 +73,18 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
             break;
         case "management":
             eventx = Ecell;
+            allowedUser = authUser.ecell;
             break;
         case "quizzing":
             eventx = Quiz;
+            allowedUser = authUser.quiz;
             break;
     }
+    
+    if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1 && allowedUser.indexOf(req.decoded.sub) === -1)){
+         isLoggedIn = false;
+         res.redirect('../../../');
+     }
 
 
     eventx.find({'eventName' : req.query.event},function (err, results) {

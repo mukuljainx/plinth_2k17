@@ -100,10 +100,7 @@ function unloadcallback(){
             }
         })
         .fail(function(response) {
-            deactivateLoader();
-            console.log(response.status);
-            console.log('Reach me at jainmukul1996@gmail.com with above number and url');
-            alert(response.statusText + ' : ' + response.status + '\nSorry for trobule caused please mail us at jainmukul1996@gmail.com along with above status, code & url, we will fix this as soon as possible');
+            apiCallFail(response);
         });
     }
 };
@@ -133,10 +130,7 @@ function registerUserComplete(){
         }
     })
     .fail(function(response) {
-        deactivateLoader();
-        console.log(response.status);
-        console.log('Reach me at jainmukul1996@gmail.com with above number and url');
-        alert(response.statusText + ' : ' + response.status + '\nSorry for trobule caused please mail us at jainmukul1996@gmail.com along with above status, code & url, we will fix this as soon as possible');
+        apiCallFail(response);
     });
 }
 
@@ -171,8 +165,8 @@ function validateUserDetails(data){
 }
 
 function notifDisplay(status, icon){
-    var regMsg = ["Your registration is not successfull !", "Your registration is successfull !", "Payment will be open soon", "Payment successfull !", "Payment unsuccessfull !", "Please select fields"]
-    var regIcon = ['<i class="fa fa-times" aria-hidden="true"></i>', '<i class="fa fa-check" aria-hidden="true"></i>', '<i class="fa fa-exclamation" aria-hidden="true"></i>']
+    var regMsg = ["Your registration is not successfull !", "Your registration is successfull !", "Payment will be open soon", "Payment successfull !", "Payment unsuccessfull !", "Please select fields","Two or more team member can't have same mail id"]
+    var regIcon = ['<i class="fa fa-times" aria-hidden="true"></i>', '<i class="fa fa-check" aria-hidden="true"></i>', '<i class="fa fa-exclamation" aria-hidden="true" style="width: 14px; height: 14px; padding-right: 4px;"></i>']
     $(".reg-status-img").html(regIcon[status]);
     $(".reg-status").html(regMsg[icon]);
     $(".notif").css('display','block').delay(3000).fadeOut();
@@ -184,6 +178,13 @@ function activateLoader(){
 
 function deactivateLoader(){
     $('.notif-loader').css('display','none');
+}
+
+function apiCallFail(response){
+    deactivateLoader();
+    console.log(response.status);
+    console.log('Reach me at help.plinth@gmail.com with above number and url');
+    alert(response.statusText + ' : ' + response.status + '\nSorry for trobule caused please mail us at help.plinth@gmail.com along with above status, code & url, we will fix this as soon as possible');
 }
 
 $('.nav-usr-name').mouseover(function() {
