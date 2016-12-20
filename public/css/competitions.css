@@ -60,6 +60,15 @@ h4{
     color:#0431B4;
 }
 
+.fa-long-arrow-left{
+    color: #0431B4;
+}
+
 .big-wrapper{
     margin-bottom: 100px;
+}
+
+.fa-long-arrow-left{
+    float: left;
+    margin-left: 50px;
 }

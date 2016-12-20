@@ -1,10 +1,11 @@
 .details{
     font:normal 16px 'Roboto';
+    margin-top: 20px; 
 }
 
 h4{
     font: normal 40px 'Roboto';
-    color:#c90ceb;
+    color:#b5001d;
     padding-bottom: 10px;
 }
 
@@ -28,30 +29,17 @@ h4{
 /*    margin-left: 220px;*/
 }
 
-.title-workshop{
+.title-speaker{
     font:bold 20px 'Roboto';
 }
 
-.by-workshop{
+.by-speaker{
     font:normal 16px 'Roboto';
     color:#4a4a4a;
 }
 
-.details ul{
-    list-style: none;
-    margin: 0px;
-}
 
-.details li{
-    display: inline-block;
-    padding-right: 30px;
-}
-.details a{
-    font:normal 20px 'Roboto';
-    color:#c90ceb;
-}
-
-.workshop-desc{
+.speaker-desc{
     font:normal 16px 'Roboto';
     color:#4a4a4a;
     margin-top: 50px;
@@ -81,6 +69,7 @@ footer{
     margin-right: 20px;    
 }
 
+/*
 .prev-card{
     position: fixed;
     top:250px;
@@ -117,4 +106,4 @@ footer{
 
 .next-card a{
     color: #c90ceb;
-}
+}*/
