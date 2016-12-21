@@ -9,9 +9,11 @@ $(window).scroll(function (event) {
 
     if(scroll > homeHeight){
         $('.navitem a').css('color','black');
+        $('.fa-bars').css('color','black');
         $('nav').addClass('nav-white');
     }
     else {
+        $('.fa-bars').css('color','white');
         $('.navitem a').css('color','white');
         $('nav').removeClass('nav-white');
     }
