@@ -16,37 +16,35 @@
                 <div class="ham-content text-center">
                     <button class="ham-close"><span>X</span></button>
                     <ul>
-                        <li>
                         <% if(isLoggedIn){ %>
+                        <li>
                             <a class="nav-usr-name"> <%- user.name %> <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
-                        <% } else{ %>
-                            <a data-open="register-pop-up-window">Register</a>
-                        <% } %>
                         </li>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/competitions">About</a></li>
-                        <li><a data-open="workshop-modal">Organizer’s Desk</a></li>
-                        <li><a data-open="lectures-modal" >Committees</a></li>
-                        <li><a href="/mun">Contact Us</a></li>
-                        <li><a href="/wikitolearn">Plinth</a></li>
+                        <% } %>
+                        <li><a class="mun-scroll" href="#top">Home</a></li>
+                        <li><a class="mun-scroll" href="#about-us">About</a></li>
+                        <li><a class="mun-scroll" href="#organizer-desk">Organizer’s Desk</a></li>
+                        <li><a class="mun-scroll" href="#committees-id">Committees</a></li>
+                        <li><a class="mun-scroll" href="#contact-us">Contact Us</a></li>
+                        <li><a href="/">Plinth</a></li>
                     </ul>
                 </div>
             </div>
             <div class="navitem text-right">
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/competitions">About</a></li>
-                    <li><a data-open="workshop-modal">Organizer’s Desk</a></li>
-                    <li><a data-open="lectures-modal">Committees</a></li>
-                    <li><a href="/mun">Contact Us</a></li>
-                    <li><a href="/wikitolearn">Plinth</a></li>
+                    <li><a class="mun-scroll" href="#top">Home</a></li>
+                    <li><a class="mun-scroll" href="#about-us">About</a></li>
+                    <li><a class="mun-scroll" href="#organizer-desk">Organizer’s Desk</a></li>
+                    <li><a class="mun-scroll" href="#committees-id">Committees</a></li>
+                    <li><a class="mun-scroll" href="#contact-us">Contact Us</a></li>
+                    <li><a href="/">Plinth</a></li>
                     <% if(isLoggedIn){ %>
-                    <li><a href="/profile" class="nav-usr-name"> <%- user.name %></a></li>
+                    <li><a class="mun-scroll" href="/profile" class="nav-usr-name"> <%- user.name %></a></li>
                     <% } %>
                 </ul>
             </div>
         </nav>
-	<div class="home">
+	<div class="home" id="top">
         <div class="row">
             <div class="column small-12 small-centered text-center mun-header">
                 <div class="plinth-logo-content">
@@ -66,11 +64,11 @@
 
         <div class="row">
             <div class="small-10 small-centered text-center">
-                <a class="mun-home-button">Register Now</a>
+                <a href="#register-now" class="mun-home-button">Register Now</a>
             </div>
         </div>
 	</div>
-	<div class="row aboutUs">
+	<div class="row aboutUs" id="about-us">
 		<div class="small-10 small-centered columns">
 			<h4 class="heading">About Us</h4>
 			<div class="content">
@@ -82,7 +80,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row organizer">
+	<div class="row organizer" id="organizer-desk">
 		<div class="small-10 small-centered columns">
 			<h4 class="heading">Organizer's Desk</h4>
 			<div class="organizerImage">
@@ -95,79 +93,98 @@
 			</div>
 		</div>
 	</div>
-	<div class="row committees">
+	<div class="row committees" id="committees-id">
 		<div class="small-10 small-centered columns">
             <h4 class="heading">Committees</h4>
             <div class="row committees-card-row">
     			<div class="large-2 medium-4 small-8 small-centered medium-uncentered columns large-offset-1 medium-offset-2">
                     <div class="card text-center">
-                        <a href="http://bit.ly/LNMIIT-MUN-17-UNGA-BG" target="_blank" >
+                        <!-- <a href="http://bit.ly/LNMIIT-MUN-17-UNGA-BG" target="_blank" > -->
                             <img src="media/mun/images/1.png" class="committees-img">
-                            <div class="cardText">UNGA DISEC</div>
+                            <p class="cardText">UNGA DISEC</p>
+                            <a class="know-more" target="_blank" href="http://bit.ly/LNMIIT-MUN-17-UNGA-BG">Know More ></a>
                         </a>
                     </div>
                 </div>
     			<div class="large-2 medium-4 small-8 small-centered medium-uncentered columns">
                     <div class="card text-center">
-                        <a href="http://bit.ly/LNMIIT-MUN-17-HRC-BG" target="_blank">
+                        <!-- <a href="http://bit.ly/LNMIIT-MUN-17-HRC-BG" target="_blank"> -->
         	                <img src="media/mun/images/unhrc.png" class="committees-img">
-                            <div class="cardText">UNHRC</div>
+                            <p class="cardText">UNHRC</p>
+                            <a class="know-more" target="_blank" href="http://bit.ly/LNMIIT-MUN-17-HRC-BG">Know More ></a>
         			    </a>
                     </div>
                 </div>
     			<div class="large-2 medium-4 small-8 small-centered medium-uncentered medium-offset-2 columns">
                     <div class="card text-center">
-                        <a href="http://bit.ly/LNMIIT-MUN-17-LOKSABHA-BG" target="_blank">
+                        <!-- <a href="http://bit.ly/LNMIIT-MUN-17-LOKSABHA-BG" target="_blank"> -->
         	                <img src="media/mun/images/emb.png" class="committees-img">
-        	                <div class="cardText">LOK SABHA</div>
+        	                <p class="cardText">LOK SABHA</p>
+                            <a class="know-more" target="_blank" href="http://bit.ly/LNMIIT-MUN-17-LOKSABHA-BG">Know More ></a>
         			    </a>
                     </div>
                 </div>
     			<div class="large-2 medium-4 small-8 small-centered medium-uncentered columns">
                     <div class="card text-center">
-                        <a href="http://bit.ly/LNMIIT-MUN-17-WHO-BG" target="_blank">
+                        <!-- <a href="http://bit.ly/LNMIIT-MUN-17-WHO-BG" target="_blank"> -->
         	                <img src="media/mun/images/who.jpeg" class="committees-img">
-        	                <div class="cardText">WHO</div>
+        	                <p class="cardText">WHO</p>
+                            <a class="know-more" target="_blank" href="http://bit.ly/LNMIIT-MUN-17-WHO-BG">Know More ></a>
         	            </a>
                     </div>
                 </div>
     			<div class="large-2 medium-4 small-8 small-offset-2 medium-uncentered columns medium-offset-4 end">
                     <div class="card text-center">
                         <img src="media/mun/images/unodc.jpg" class="committees-img">
-                        <div class="cardText">UNODC</div>
+                        <p class="cardText">UNODC</p>
+                        <!-- <a class="know-more" target="_blank" href="">Know More ></a> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-	<div class="row register">
-		<div class="small-10 small-centered columns">
+	<div class="row register" id="register-now">
+		<div class="small-10 small-centered columns text-center">
 			<h4 class="heading">Register</h4>
+            <a class="mun-blue-button" style="padding: 11px 57px;" href="https://docs.google.com/forms/d/1JlwoY94rcNpfu-no7ihyqQ98mjzMdwEvP8z8_pZb0kQ/viewform?edit_requested=true">Delegate</a>
+            <a class="mun-blue-button" href="https://goo.gl/forms/v4lsYvtst4HkbEDl1">International Press</a>
 		</div>
 	</div>
-	<div class="row contactUs">
+	<div class="row contactUs" id="contact-us">
 		<div class="small-10 small-centered columns">
 			<h4 class="heading">Contact Us</h4>
-			</div>
+            <div class="row">
+                <div class="small-6 columns text-right">
+                    <p><i class="fa fa-phone" aria-hidden="true"></i> +91-8560027723<br>
+                       <i class="fa fa-envelope" aria-hidden="true"></i> lnmiit.mun@gmail.com</p>
+                </div>
+                <div class="small-6 columns">
+                    <p>The LNM Institute of Information Technology<br>
+                        Rupa ki Nangal, Post-Sumel, Via-Jamdoli<br>
+                        Jaipur-302031,<br>
+                        (Rajasthan) INDIA
+                    </p>
+                </div>
+            </div>
 		</div>
 	</div>
-	</body>
+    <br>
+    <br>
     <footer>
         <div class="row social-wrapper">
             <div class="small-12 small-centered column text-center social">
                 <ul>
-                    <li><a href="https://www.facebook.com/Plinth.LNMIIT/" target="_blank"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.facebook.com/LNMIITMUNSociety/" target="_blank"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
                     <li><a href="https://twitter.com/PlinthLNMIIT" target="_blank"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
                     <li><a href="https://plus.google.com/+PLINTHLNMIIT/posts" target="_blank"><i class="fa fa-google-plus fa-lg" aria-hidden="true"></i></a></li>
                     <li><a href="https://www.youtube.com/user/PlinthLNMIITJaipur" target="_blank"><i class="fa fa-youtube-play fa-lg" aria-hidden="true" ></i></a></li>
-                    <li><a href="#" target="_blank"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
         </div>
         <div class="row footer-wrapper footer-posi">
             <div class="small-12 small-centered column text-center footer-text">
                 <ul>
-                    <a href="/about"><li>About Us</li></a>
+                    <a href="/about"><li>About Plinth</li></a>
                     <a href="/sponsors/2016"><li>Sponsors</li></a>
                     <!-- <a href="/team"><li>Our Team</li></a> -->
                     <a href="/faq"><li>FAQs</li></a>
@@ -183,4 +200,5 @@
     <script src="js/vendor/popwind.js"></script>
     <script src="js/app.js"></script>
     <script src="js/mun/app.js"></script>
+</body>
 </html>

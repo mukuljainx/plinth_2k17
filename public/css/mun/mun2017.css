@@ -64,9 +64,16 @@
     margin-right: 12px;
     padding: 20px;
 	width: 100%;
+    position: relative;
 }
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.know-more{
+    position: absolute;
+    color : #02B9EF;
+    bottom: 4px;
+    right: 8px;
 }
 .committees-img{
 	height: 120px;
@@ -86,6 +93,12 @@ nav{
     height: 70px;
     padding: 20px 20px 0px ;
 	position: fixed;
+    width: 100%;
+}
+.nav-white{
+    box-shadow: 0 0px 16px 2px rgba(0,0,0,0.1);
+    background: white;
+    z-index: 2;
 }
 
 .header-logo{
@@ -243,6 +256,7 @@ nav{
     margin-top: 250px;
 	margin-bottom: -15px;
 	color: white;
+    transition: 0.4s;
 }
 .plinth-logo-plinth{
     font: normal 48px rez;
@@ -267,19 +281,22 @@ nav{
 }
 .mun-inline{
     display: inline-block;
+    transition: 0.4s;
 }
 .mun-logo-content img{
 	width: 82px;
 	margin-right: 4px;
 	position: relative;
 	top: -71px;
-	transition: 0.2s;
+	transition: 0.4s;
 }
-/*.mun-img-top-send{
-	position: fixed !important;
-	top :10px !important;
-	left: 10px !important;
-}*/
+.mun-img-top-send{
+    position: fixed !important;
+    top: -1px !important;
+    left: 7px !important;
+    width: 70px !important;
+    z-index: 2;
+}
 
 .mun-head-lnmiit{
     font-size: 20px;
@@ -382,4 +399,14 @@ nav{
 	.mun-home-button{
 		margin-top: 60px;
 	}
+}
+.mun-blue-button{
+    padding: 11px 22px;
+    width: 100px;
+    color: white;
+    background: #02B9EF;
+    border-radius: 2px;
+}
+.mun-blue-button:hover{
+    color: white;
 }
