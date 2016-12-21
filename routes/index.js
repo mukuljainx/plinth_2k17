@@ -1019,9 +1019,9 @@ router.get('/competitions/astronomy/armAgeddon', Verify.verifyOrdinaryUser ,func
     });
 });
 
-router.get('/mun' ,function(req, res) {
-    res.render('mun');
-});
+// router.get('/mun' ,function(req, res) {
+//     res.render('mun');
+// });
 
 router.get('/wikitolearn' ,function(req, res) {
     res.render('wiki');
@@ -1055,7 +1055,7 @@ router.get('/mun/pay', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
-router.get('/2017mun', Verify.verifyOrdinaryUser ,function(req, res) {
+router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
       res.render('mun2017', {
