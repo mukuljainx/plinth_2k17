@@ -137,13 +137,14 @@ router.get('/initiatepayment', function(req, res) {
 
 router.post('/mun/initiatepayment', function(req, res) {
     paymentmun = new PaymentMUN;
+    var id_tag = process.env.NODE_ENV === 'development' ? 'dev' : '2017'
     if((req.body.type !== "delegate" && req.body.type !== "ip")){
         res.json({status : false, message : "Data Tempered"});
     }
     else{
         amount = req.body.type === "delegate" ? 1300 : 750;
         PaymentMUN.count({}, function(err, count){
-            var order_id = "MUN-" + req.body.type + "-" + (count + 1);
+            var order_id = "MUN-" + req.body.type + "-" + (count + 1) + "-" + id_tag;
             paymentmun.order_id    = order_id;
             paymentmun.type        = req.body.type;
             paymentmun.name        = req.body.user.name;
