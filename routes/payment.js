@@ -22,21 +22,21 @@ var hostURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' :
 
 router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
 
-    var oneMemberAmount = 100;
-
-    switch(req.body.clubName) {
+    var totalAmount = 100;
+    switch(req.query.clubName) {
         case "astronomy":
             eventx = Astronomy;
             break;
         case "coding":
             eventx = Cybros;
+            var totalAmount = 150;
             break;
         case "literature":
             eventx = Literary;
             break;
         case "robotics":
             eventx = Robotics;
-            oneMemberAmount = 200;
+            totalAmount = 200;
             break;
         case "management":
             eventx = Ecell;
@@ -45,6 +45,9 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
             eventx = Quiz;
             break;
     }
+
+    if(eventName === "robowar") totalAmount = 700;
+    if(eventName === "quadcopter") totalAmount = 600;
 
     eventx.find({ 'eventName' : req.body.eventName , 'teamEmail' : req.body.email },function (err, result) {
         if (err){
@@ -54,7 +57,7 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
             console.log(result);
             response = {
                 data : result,
-                oneMemberAmount : oneMemberAmount,
+                totalAmount : totalAmount,
             }
             res.json(response);
         }
@@ -62,10 +65,9 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
 
 });
 
-
 router.get('/initiatepayment', function(req, res) {
     paymentdb = new PaymentDB();
-    var oneMemberAmount = 100;
+    var totalAmount = 100;
     var id = req.query.id;
 
     switch(req.query.clubName) {
@@ -74,13 +76,14 @@ router.get('/initiatepayment', function(req, res) {
             break;
         case "coding":
             eventx = Cybros;
+            var totalAmount = 150;
             break;
         case "literature":
             eventx = Literary;
             break;
         case "robotics":
             eventx = Robotics;
-            oneMemberAmount = 200;
+            totalAmount = 200;
             break;
         case "management":
             eventx = Ecell;
@@ -89,6 +92,9 @@ router.get('/initiatepayment', function(req, res) {
             eventx = Quiz;
             break;
     }
+
+    if(eventName === "robowar") totalAmount = 700;
+    if(eventName === "quadcopter") totalAmount = 600;
 
     eventx.find({'_id' : id },function (err, results) {
         if (err){
@@ -106,7 +112,7 @@ router.get('/initiatepayment', function(req, res) {
                     REQUEST_TYPE    : "DEFAULT",
                     ORDER_ID        : id + timestamp,
                     CUST_ID         : resultone.teamEmail,
-                    TXN_AMOUNT      : oneMemberAmount * resultone.team.length,
+                    TXN_AMOUNT      : totalAmount,
                     CHANNEL_ID      :'WEB',
                     INDUSTRY_TYPE_ID : paytm.industryID,
                     MID             : paytm.mid,
@@ -132,8 +138,8 @@ router.get('/initiatepayment', function(req, res) {
                 }
             }
     });
-
 });
+
 
 router.post('/mun/initiatepayment', function(req, res) {
     paymentmun = new PaymentMUN;

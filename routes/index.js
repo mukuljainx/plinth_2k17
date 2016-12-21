@@ -514,7 +514,7 @@ router.get('/team', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
-router.get('/workshop', Verify.verifyOrdinaryUser ,function(req, res) {
+router.get('/workshops', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
       res.render('workshop', {

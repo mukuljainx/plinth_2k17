@@ -12,6 +12,7 @@ var Literary = require('../models/literary');
 var Astronomy = require('../models/astronomy');
 var Cybros = require('../models/cybros');
 var Sif = require('../models/sif');
+var Workshop = require('../models/workshop');
 var mongoose = require('mongoose');
 
 router.post('/add', function(req, res) {
@@ -140,6 +141,35 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
     sif.teamNumber  = req.body.sifDetails.representativeContact;
     sif.payment = "Not Paid";
     sif.save(function(err) {
+        if (err){
+            return done(err);
+        }
+        else{
+            res.json({ "response" : true });
+        }
+    })
+});
+
+//workshop routes
+
+router.post('/register/workshop', Verify.verifyOrdinaryUser, function(req, res) {
+
+    var workshop = new Workshop();
+
+    workshop.email = req.body.user.email;
+    workshop.name  = req.body.user.name;
+    workshop.phoneNumbe = req.body.user.honeNumber;
+    workshop.college   = req.body.user.college;
+    workshop.year  = req.body.user.year;
+    workshop.city  = req.body.user.city;
+    workshop.accommodation = req.body.user.accommodation;
+    workshop.eventName = req.body.eventName;
+    workshop.payment = {
+        status   : 'TXN_FAILURE',
+        order_id : 'undefined'
+    }
+
+    workshop.save(function(err) {
         if (err){
             return done(err);
         }
