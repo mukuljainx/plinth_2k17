@@ -24,12 +24,13 @@ function getUserDetailsMUN(){
         phoneNumber : $('.phone').val(),
         email : $('.email').val(),
         college : $('.college').val(),
+        accommodation : $('.accommodation').val(),
     }
     return userDetail;
 }
 
 function validateUserDetailsMUN(data){
-    if(data.name === "" || data.phoneNumber === "" || data.email === "" || data.college === "")
+    if(data.name === "" || data.phoneNumber === "" || data.email === "" || data.college === "" || data.accommodation === "" || data.accommodation > 2 || data.accommodation < 0)
         return false;
     else
         return true;
