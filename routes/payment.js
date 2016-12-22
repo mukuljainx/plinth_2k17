@@ -162,7 +162,7 @@ router.post('/mun/initiatepayment', function(req, res) {
         var accommodation = req.body.user.accommodation;
         var amount = req.body.type === "delegate" ? 1300 : 750;
         amount = amount + (200 * accommodation)
-        
+
         PaymentMUN.count({}, function(err, count){
             var order_id = "MUN-" + req.body.type + "-" + (count + 1) + "-" + id_tag;
             paymentmun.order_id       = order_id;
