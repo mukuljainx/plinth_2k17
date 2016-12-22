@@ -12,8 +12,6 @@
         <link rel="stylesheet" href="css/robotics.css" />
     </head>
     <body>
-        <li><a data-open="payment-modal" onclick="fetchAmountAndMember()">Make Payment ></a></li>
-
 
         <% include header %>
         <% if ( eventDetail.eventName === 'sif') { %>
@@ -21,7 +19,6 @@
         <% } %>
 
         <a data-open="event-registration-form" class="event-registration-form-btn" style="opacity:0; width : 0px; height : 0px;">Register</a>
-
 
         <!-- Payment Modal -->
 
@@ -89,10 +86,11 @@
                                     <% } else { %>
                                         <li><a class="reg-btn" onClick="loggedUserRegistration()">Register ></a></li>
                                     <% } %>
+                                    <li><a data-open="payment-modal" onclick="fetchAmountAndMember()">Make Payment ></a></li>
                                 <% } else { %>
                                     <li><a class="reg-btn" onclick="loggedUserRegistration()">Register ></a></li>
+                                    <li><a data-open="payment-modal">Make Payment ></a></li>
                                 <% } %>
-                                <li><a style="color:gray;">Make Payment ></a></li>
                                 <% if ( eventDetail.eventName === 'sif') { %>
                                     <li><a href="#" ><a data-open="sif-registration-form" class="sifForm">Startup Register ></a></li>
                                 <% } %>
@@ -405,7 +403,6 @@
                 clubName  : "<%- eventDetail.clubName %>",
                 email     : email
             }
-
             activateLoader();
             $.post( {
                 url: '/payment/fetchData',
@@ -419,7 +416,7 @@
                     $('.email-not-foun-error-msg').css("opacity","1");
                     return;
                 }
-                var totalAmount = response.totalAmount;
+                var oneMemberAmount = response.oneMemberAmount;
                 $('.payment-get-email').hide()
                 $('.payment-list-email').show()
                 if(response.data.length > 1){
@@ -438,8 +435,9 @@
                     renderHTML = renderHTML + "</ol>"
                     + "<div class='row'>"
                     + "<div class='column small-6'>"
-                    + "<div class='total-amount text-left'> Total Amount : &#8377; " + totalAmount
-                    + "/-</div>"
+                    + "<div class='total-amount text-left'> Total Amount : &#8377; " + (oneMemberAmount * team.length)
+                    + '/-<br><span style="font-size: 12px; font-weight: 400; top: -10px; position: relative; width:120px;">(&#8377; '
+                    + oneMemberAmount + "/- per Member )</div>"
                     + "</div>"
                     + "<div class='column small-6' style='padding-top : 10px;'>"
                     + "<div class='text-right pay-now-div'>";

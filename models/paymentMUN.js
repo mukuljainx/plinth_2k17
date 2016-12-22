@@ -9,6 +9,7 @@ var paymentMUNSchema = mongoose.Schema({
         email       : String,
         phoneNumber : Number,
         institute   : String,
+        status      : String,
     },
     {
         timestamps: { createdAt: 'created_at' }

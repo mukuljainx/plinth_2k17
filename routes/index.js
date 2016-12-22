@@ -429,6 +429,33 @@ router.get('/faq', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
+router.get('/faq/payment', Verify.verifyOrdinaryUser ,function(req, res) {
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('payment_faq', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
+  else {
+      isLoggedIn = true;
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('payment_faq',{
+                  "isLoggedIn" : isLoggedIn,
+                  "user" : {
+                      name : user.name,
+                      gender : user.gender,
+                  }
+              });
+          }
+      });
+  }
+});
+
 //router.get('/contact_us', Verify.verifyOrdinaryUser ,function(req, res) {
 //   res.render('contact_us');
 //});
@@ -487,7 +514,7 @@ router.get('/team', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
-router.get('/workshop', Verify.verifyOrdinaryUser ,function(req, res) {
+router.get('/workshops', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
       res.render('workshop', {
@@ -515,7 +542,7 @@ router.get('/workshop', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.get('/profile', Verify.verifyOrdinaryUser ,function(req, res) {
-    if(req.decoded.sub === ""){
+	if(req.decoded.sub === ""){
         isLoggedIn = false;
         res.redirect(301,'/');
     }
@@ -992,13 +1019,14 @@ router.get('/competitions/astronomy/armAgeddon', Verify.verifyOrdinaryUser ,func
     });
 });
 
-router.get('/mun' ,function(req, res) {
-    res.render('mun');
-});
+// router.get('/mun' ,function(req, res) {
+//     res.render('mun');
+// });
 
 router.get('/wikitolearn' ,function(req, res) {
     res.render('wiki');
 });
+
 
 router.get('/mun/pay', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
@@ -1016,6 +1044,33 @@ router.get('/mun/pay', Verify.verifyOrdinaryUser ,function(req, res) {
           // check to see if theres already a user with that email
           if (user){
               res.render('payment_mun',{
+                  "isLoggedIn" : isLoggedIn,
+                  "user" : {
+                      name : user.name,
+                      gender : user.gender,
+                  }
+              });
+          }
+      });
+  }
+});
+
+router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('mun2017', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
+  else {
+      isLoggedIn = true;
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('mun2017',{
                   "isLoggedIn" : isLoggedIn,
                   "user" : {
                       name : user.name,

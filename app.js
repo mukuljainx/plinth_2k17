@@ -7,8 +7,6 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var authenticate = require('./authenticate');
-var session = require('express-session');
-var flash = require('express-flash');
 
 // data base connection
 var DBconfig = require('./config/dbconfig')
@@ -46,11 +44,7 @@ app.use('*/css', express.static(path.join(__dirname, 'public/css')))
 app.use('*/media', express.static(path.join(__dirname, 'public/media')))
 app.use('*/font', express.static(path.join(__dirname, 'public/font')))
 
-app.use(session({ secret: 'somerandomkeytimespread' })); // session secret
-app.use(passport.session());
-app.use(flash());
 
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -90,10 +84,11 @@ if (app.get('env') === 'development') {
 // // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+  // res.render('error', {
+  //   message: err.message,
+  //   error: {}
+  // });
+  res.redirect('/');
 });
 
 

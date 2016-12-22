@@ -31,8 +31,9 @@ router.get('/auth/google/callback', function(req,res,next){
     }
       console.log(user);
       var token = Verify.getToken(user);
-      req.flash('access_token',token);
-      res.redirect(301,'/user/redirect');
+      res.render('redirect',{
+          token : token
+      });
     });
   })(req,res,next);
 });
@@ -66,23 +67,13 @@ router.get('/auth/facebook/callback', function(req,res,next){
             });
         }
         var token = Verify.getToken(user);
-        req.flash('access_token',token);
-        res.redirect(301,'/user/redirect');
+        res.render('redirect',{
+            token : token
+        });
     });
   })(req,res,next);
 });
 
-/*******************
-
-Redirect
-
-********************/
-
-router.get('/redirect', function(req, res) {
-   res.render('redirect',{
-       token : req.flash('access_token'),
-   });
-});
 
 router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
     User.findOne({ 'email' :  req.decoded.sub }, function(err, user) {
