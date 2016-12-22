@@ -308,6 +308,7 @@ router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
     else{
         res.render('payment_failed', {
             clubName : result.clubName,
+            backURL : "/mun"
         });
     };
 });
@@ -348,6 +349,7 @@ router.post('/mun/response', Verify.verifyOrdinaryUser,function(req,res){
                     }
                     res.render('payment_succeed',{
                         details : doc
+                        backURL : "/"
                     })
                 }
                 else{
