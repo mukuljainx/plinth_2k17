@@ -16,6 +16,7 @@ var PaymentDB = require('../models/payment');
 var PaymentMUN = require('../models/paymentMUN');
 var mongoose = require('mongoose');
 var paytm = require('../config/paytm');
+var eventURL = require('../config/eventURL');
 var checksum = require('../checksum/checksum');
 
 var hostURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://plinth.in'
@@ -133,7 +134,7 @@ router.get('/initiatepayment', function(req, res) {
                                     return done(err);
                                 }
                                 else{
-                                    result['PAYTM_URL'] = "https://pguat.paytm.com/oltp-web/processTransaction";
+                                    result['PAYTM_URL'] = "https://secure.paytm.in/oltp-web/processTransaction";
                                     res.render('pgredirect2.ejs',{ 'restdata' : result});
                                 }
                             })
@@ -156,7 +157,7 @@ router.post('/mun/initiatepayment', function(req, res) {
         res.json({status : false, message : "Data Tempered"});
     }
     else{
-        amount = req.body.type === "delegate" ? 1300 : 750;
+        amount = req.body.type === "delegate" ? 1 : 1;
         PaymentMUN.count({}, function(err, count){
             var order_id = "MUN-" + req.body.type + "-" + (count + 1) + "-" + id_tag;
             paymentmun.order_id    = order_id;
@@ -206,7 +207,7 @@ router.get('/mun/initiatepayment', function(req, res) {
                         return done(err);
                     }
                     else{
-                        result['PAYTM_URL'] = "https://pguat.paytm.com/oltp-web/processTransaction";
+                        result['PAYTM_URL'] = "https://secure.paytm.in/oltp-web/processTransaction";
                         console.log(result);
                         res.render('pgredirect2.ejs',{ 'restdata' : result});
                     }
@@ -229,6 +230,7 @@ router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
                 if(paramlist.STATUS === "TXN_FAILURE"){
                     res.render('payment_failed', {
                         clubName : result.clubName,
+                        backURL : eventURL[doc.eventName],
                     });
                 }
 
@@ -288,16 +290,17 @@ router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
                                 bulk.find({'email': emails[i]}).update({$push: {paidEvents: result.eventName}});
                             }
                             bulk.execute();
-
                             res.render('payment_succeed',{
-                                details : doc
+                                details : doc,
+                                backURL : eventURL[doc.eventName],
                             })
                         }
                         else{
                             res.render('payment_open',{
                                 amount   : doc.payment.amount,
                                 order_id : doc.payment.order_id,
-                                eventName : doc.eventName
+                                eventName : doc.eventName,
+                                backURL : eventURL[doc.eventName],
                             })
                         }
                     }
@@ -308,7 +311,7 @@ router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
     else{
         res.render('payment_failed', {
             clubName : result.clubName,
-            backURL : "/mun"
+            backURL : eventURL[doc.eventName],
         });
     };
 });
@@ -348,13 +351,14 @@ router.post('/mun/response', Verify.verifyOrdinaryUser,function(req,res){
                         eventName : "MUN 2017"
                     }
                     res.render('payment_succeed',{
-                        details : doc
-                        backURL : "/"
+                        details : doc,
+                        backURL : "/mun"
                     })
                 }
                 else{
                     res.render('payment_failed', {
                         clubName : "",
+                        backURL : "/mun/pay",
                     });
                 }
             }
@@ -366,6 +370,14 @@ router.post('/mun/response', Verify.verifyOrdinaryUser,function(req,res){
         });
     };
 });
+
+router.get('/check', Verify.verifyOrdinaryUser,function(req,res){
+    console.log(paytm)
+    res.end('awds');
+})
+
+
+
 
 
 module.exports = router;
