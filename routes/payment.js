@@ -20,6 +20,7 @@ var eventURL = require('../config/eventURL');
 var checksum = require('../checksum/checksum');
 
 var hostURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://plinth.in'
+var paytmURL = 'https://secure.paytm.in/oltp-web/processTransaction';
 
 router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
     console.log('*******')
@@ -104,7 +105,7 @@ router.get('/initiatepayment', function(req, res) {
         }
         else{
             if(results){
-                PaymentDB.count({}, function(err, count){
+                DB.count({}, function(err, count){
                     if (err){
                         return console.error(err);
                     }
@@ -134,7 +135,7 @@ router.get('/initiatepayment', function(req, res) {
                                     return done(err);
                                 }
                                 else{
-                                    result['PAYTM_URL'] = "https://secure.paytm.in/oltp-web/processTransaction";
+                                    result['PAYTM_URL'] = paytmURL;
                                     res.render('pgredirect2.ejs',{ 'restdata' : result});
                                 }
                             })
@@ -151,27 +152,34 @@ router.get('/initiatepayment', function(req, res) {
 
 
 router.post('/mun/initiatepayment', function(req, res) {
-    var paymentmun = new PaymentMUN;
+    var paymentmun = new PaymentMUN();
+    console.log(req.body.user)
     var id_tag = process.env.NODE_ENV === 'development' ? 'dev' : '2017'
-    if((req.body.type !== "delegate" && req.body.type !== "ip")){
+    if((req.body.type !== "delegate" && req.body.type !== "ip") || req.body.accommodation < 0){
         res.json({status : false, message : "Data Tempered"});
     }
     else{
-        amount = req.body.type === "delegate" ? 1 : 1;
+        var accommodation = req.body.user.accommodation;
+        var amount = req.body.type === "delegate" ? 1300 : 750;
+        amount = amount + (200 * accommodation)
+        
         PaymentMUN.count({}, function(err, count){
             var order_id = "MUN-" + req.body.type + "-" + (count + 1) + "-" + id_tag;
-            paymentmun.order_id    = order_id;
-            paymentmun.type        = req.body.type;
-            paymentmun.name        = req.body.user.name;
-            paymentmun.email       = req.body.user.email;
-            paymentmun.phoneNumber = req.body.user.phoneNumber;
-            paymentmun.institute   = req.body.user.institute;
-            paymentmun.amount      = amount;
-            paymentmun.status      = "";
+            paymentmun.order_id       = order_id;
+            paymentmun.type           = req.body.type;
+            paymentmun.name           = req.body.user.name;
+            paymentmun.email          = req.body.user.email;
+            paymentmun.phoneNumber    = req.body.user.phoneNumber;
+            paymentmun.institute      = req.body.user.institute;
+            paymentmun.accommodation  = accommodation;
+            paymentmun.amount         = amount;
+            paymentmun.status         = "";
+
 
             paymentmun.save(function(err) {
                 if (err){
-                    return done(err);
+                    console.log(err);
+                    return;
                 }
                 else{
                     res.json({ order_id : order_id, status : true})
@@ -207,7 +215,7 @@ router.get('/mun/initiatepayment', function(req, res) {
                         return done(err);
                     }
                     else{
-                        result['PAYTM_URL'] = "https://secure.paytm.in/oltp-web/processTransaction";
+                        result['PAYTM_URL'] = paytmURL;
                         console.log(result);
                         res.render('pgredirect2.ejs',{ 'restdata' : result});
                     }
