@@ -515,17 +515,17 @@ router.get('/workshops', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.get('/workshops/web-o-master', Verify.verifyOrdinaryUser ,function(req, res) {
-    console.log('******1')
+    var eventDetail = require('../public/workshops/web-o-master-data');
+
   if(req.decoded.sub === ""){
       isLoggedIn = false;
-      console.log('******3')
       res.render('workshops/web-o-master', {
           "isLoggedIn" : isLoggedIn,
+          eventDetail : eventDetail
       });
   }
   else {
       isLoggedIn = true;
-      console.log('******2')
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
           // if there are any errors, return the error
           if (err)
@@ -535,6 +535,7 @@ router.get('/workshops/web-o-master', Verify.verifyOrdinaryUser ,function(req, r
               res.render('workshops/web-o-master',{
                   "isLoggedIn" : isLoggedIn,
                   user : user,
+                  eventDetail : eventDetail
               });
           }
       });
@@ -542,10 +543,13 @@ router.get('/workshops/web-o-master', Verify.verifyOrdinaryUser ,function(req, r
 });
 
 router.get('/workshops/vehicle-dynamics', Verify.verifyOrdinaryUser ,function(req, res) {
+    var eventDetail = require('../public/workshops/vehicle-dynamics-data');
+
   if(req.decoded.sub === ""){
       isLoggedIn = false;
-      res.render('workshop/vehicle-dynamics', {
+      res.render('workshops/web-o-master', {
           "isLoggedIn" : isLoggedIn,
+          eventDetail : eventDetail
       });
   }
   else {
@@ -556,9 +560,10 @@ router.get('/workshops/vehicle-dynamics', Verify.verifyOrdinaryUser ,function(re
               return done(err);
           // check to see if theres already a user with that email
           if (user){
-              res.render('workshop/vehicle-dynamics',{
+              res.render('workshops/web-o-master',{
                   "isLoggedIn" : isLoggedIn,
                   user : user,
+                  eventDetail : eventDetail
               });
           }
       });
