@@ -176,6 +176,8 @@
         <% include footer %>
 
         <script>
+        workshopProceedNext(); //to hide workshop message
+        $('.event-registration-form-part').css('display', 'none'); //to hide from
         $('.memberUpperLimit').text('<%- eventDetail.memberUpperLimit %>');
         $('.memberLowerLimit').text('<%- eventDetail.memberLowerLimit %>');
 
@@ -276,6 +278,7 @@
         <% } else { %>
             //when user press register
             function eventUserComplete(){
+                debugger
                 if(formReg === 1){
                     registerUserComplete();
                     return;
@@ -352,7 +355,7 @@
                 return
             else{
                 multiUserCount--;
-                if(multiUserCount+1 < <%- eventDetail.memberUpperLimit %>){
+                if(multiUserCount + 1 < <%- eventDetail.memberLowerLimit %>){
                     $('.event-registration-form-btnx').addClass('btn-disabled');
                 }
                 $('.event-registration-form-member-number').text(multiUserCount + 1);
@@ -365,8 +368,8 @@
             else{
                 multiUserCount++;
                 $('.event-registration-form-member-number').text(multiUserCount + 1);
-                if(multiUser[multiUserCount] !== undefined);
-                    setFormValue(multiUser[multiUserCount]);
+                if(multiUser[multiUserCount] !== undefined) setFormValue(multiUser[multiUserCount]);
+                else setFormFree();
             }
         });
 

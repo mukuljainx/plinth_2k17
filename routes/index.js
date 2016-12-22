@@ -487,7 +487,7 @@ router.get('/team', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
-router.get('/workshop', Verify.verifyOrdinaryUser ,function(req, res) {
+router.get('/workshops', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
       res.render('workshop', {
@@ -508,6 +508,57 @@ router.get('/workshop', Verify.verifyOrdinaryUser ,function(req, res) {
                       name : user.name,
                       gender : user.gender,
                   }
+              });
+          }
+      });
+  }
+});
+
+router.get('/workshops/web-o-master', Verify.verifyOrdinaryUser ,function(req, res) {
+    console.log('******1')
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      console.log('******3')
+      res.render('workshops/web-o-master', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
+  else {
+      isLoggedIn = true;
+      console.log('******2')
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('workshops/web-o-master',{
+                  "isLoggedIn" : isLoggedIn,
+                  user : user,
+              });
+          }
+      });
+  }
+});
+
+router.get('/workshops/vehicle-dynamics', Verify.verifyOrdinaryUser ,function(req, res) {
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('workshop/vehicle-dynamics', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
+  else {
+      isLoggedIn = true;
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('workshop/vehicle-dynamics',{
+                  "isLoggedIn" : isLoggedIn,
+                  user : user,
               });
           }
       });

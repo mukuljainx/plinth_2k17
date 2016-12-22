@@ -13,9 +13,9 @@
     </head>
     <body>
 
-        <% include partials/header %>
+        <% include ../partials/header %>
         <%if (!isLoggedIn) { %>
-                <% include partials/reg-form %>
+                <% include ../partials/reg-form %>
         <% } %>
 
         <div class="content">
@@ -48,13 +48,13 @@
                             <span class="by-workshop">presented by Engineer Indya</span>
                             <br />
                             <br />
-                            <span>Date : 18<sup>nd</sup> Jan 2017</span>
+                            <span>Date : 18<sup>th</sup> - 19<sup>th</sup> Jan 2017</span>
                             <br />
                             <span>Venue : The LNMIIT, Jaipur </span>
                             <br />
                             <br />
                             <ul>
-                                <li><a href="#">Register ></a></li>
+                                <li><a data-open="event-registration-form">Register ></a></li>
                                 <li><a href="#">Make Payment ></a></li>
                             </ul>
                         </div>
@@ -74,44 +74,7 @@
                     <div class="content-head">About Workshop</div>
                     <br>
                     <span><p>This is a comprehensive course designed for people who have little IT (Information Technology) knowledge to help individuals gain a good grounding in the fundamentals of this popular open source Content Management System (CMS) & latest web technologies. So that they can create, manage and promote their website. Only a little IT knowledge is necessary to attend this Workshop.</p>
-<!--                    <p>The workshop is not just about Web designing using JOOMLA (a content management system) but also includes Search Engine Optimization(SEO) that enables our website to get listed on top of Search Engines like Google, Yahoo etc when keywords are used for searching. Creating a website might not be as appealing to some as it might be to see it even being listed on top. This workshop also covers Social Media Optimization (SMO), that is, how to brand your products on social media like Facebook, Google+ etc and includes a session on Google and Facebook Analytics. Workshop also cover brief about Web Security & how to secure your website from being hacked by someone. Also learn to build a Mobile App. So, by the end of the workshop, one would get to know how to design a website, launch it, how to do search engine optimization (SEO) of it, how to do social media optimization & marketing, building Mobile App & Web Security.</p>-->
-<!--                    <p>Also get a chance to work on a Live Project based on Professional Social Networking Community site for Engineers of India. In coming months many of the engineering students will be using that site for information related to Jobs, Projects, Seminar Projects, Research Papers, Interaction with corporate people, sharing information with others engineering students & professionals, fest details etc.</p>-->
-                    </span>
-                </div>
-            </div>
-            <div class="row content">
-                <div class="small-8 small-centered columns">
-                    <div class="content-head">Objective of the Workshop</div>
-                    <br /><ul>
-                    <li>Introduction about Web Technologies & CMS</li>
-                    <li>Describe Joomla key CMS features</li>
-                    <li>Administer website content using Joomla back-end functions</li>
-                    <li>Learn to manage own hosting & creating professional email-ids.</li>
-                    <li>Promoting website on Social Media like Facebook, LinkedIn etc.</li>
-                    <li>Understanding Search Engine Optimization (SEO) & how to bring your site on top search engine like Google, Yahoo etc</li>
-                </div>
-            </div>
-            <div class="row content">
-                <div class="small-8 small-centered columns">
-                    <div class="content-head">Topics to be covered in this Workshop:</div>
-                    <br />
 
-                    <ul>
-                    <li>Introduction to web application, server & Domain</li>
-                    <li>HTML Foundation and trends</li>
-                    <li>Client side & Server side Scripting</li>
-                    <li>Introduction to PHP and first code in PHP</li>
-                    <li>My SQL, PHP My Admin & Connectivity</li>
-<!--
-                    <li> What is MySQL?</li>
-                    <li> Introduction of SQL</li>
-                    <li> First Code run of SQL</li>
-                    <li> What is phpMyAdmin?</li>
-                    <li> Understanding Interface</li>
-                    <li> Creating Database in local MySQL Server</li>
-                    <li> Creating User & its Acces Rights in phpMyAdmin</li>
-                    <li> MySQL Connectivity using PHP</li>
--->
                     <li>Forms using HTML & PHP</li>
 <!--
                     <li> What is a Form?</li>
@@ -217,7 +180,22 @@
             </div>
         </div>
 
-        <% include partials/footer %>
+
+
+        <% include ../partials/footer %>
+        <script>
+            proceedNext(); //to hide event notice
+            $('.event-registration-form-part').css('display', 'none'); //to hide from
+            var minMember = 0;
+            var maxMember = 10;
+            $('.memberUpperLimit').text(maxMember);
+            $('.memberLowerLimit').text(minMember);
+
+
+
+
+
+        </script>
 
     </body>
 </html>
