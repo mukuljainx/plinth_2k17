@@ -4,7 +4,7 @@ var option = "";
 function fillIP(){
     $('.btn-11').removeClass('btn-selectecd-payment');
     $('.btn-ip').addClass('btn-selectecd-payment');
-    $('.amount-mun-total').text("Amount : 750/- + Accommodation Charges")
+    $('.amount-mun-total').text("Amount : 750/- + Accommodation (200/- per day)")
     $('#mun-payment-form').show();
     option = "ip";
 }
@@ -12,7 +12,7 @@ function fillIP(){
 function fillDelegate(){
     $('.btn-11').removeClass('btn-selectecd-payment');
     $('.btn-delegate').addClass('btn-selectecd-payment');
-    $('.amount-mun-total').text("Amount : 1300/- + Accommodation Charges")
+    $('.amount-mun-total').text("Amount : 1300/- + Accommodation (200/- per day)")
     $('#mun-payment-form').show();
     option = "delegate";
 }
