@@ -21,9 +21,10 @@ var checksum = require('../checksum/checksum');
 var hostURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://plinth.in'
 
 router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
-
+    console.log('*******')
+    console.log(req.body.clubName)
     var totalAmount = 100;
-    switch(req.query.clubName) {
+    switch(req.body.clubName) {
         case "astronomy":
             eventx = Astronomy;
             break;
@@ -46,15 +47,15 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
             break;
     }
 
-    if(eventName === "robowar") totalAmount = 700;
-    if(eventName === "quadcopter") totalAmount = 600;
-
+    if(req.body.eventName === "robowar") totalAmount = 700;
+    if(req.body.eventName === "quadcopter") totalAmount = 600;
+console.log(req.body.eventName);
     eventx.find({ 'eventName' : req.body.eventName , 'teamEmail' : req.body.email },function (err, result) {
         if (err){
             return console.error(err);
         }
         else{
-            console.log(result);
+            console.log(2,result);
             response = {
                 data : result,
                 totalAmount : totalAmount,
@@ -93,56 +94,63 @@ router.get('/initiatepayment', function(req, res) {
             break;
     }
 
-    if(eventName === "robowar") totalAmount = 700;
-    if(eventName === "quadcopter") totalAmount = 600;
+    if(req.query.eventName === "robowar") totalAmount = 700;
+    if(req.query.eventName === "quadcopter") totalAmount = 600;
 
-    eventx.find({'_id' : id },function (err, results) {
+    eventx.findOne({'_id' : id },function (err, results) {
         if (err){
             return console.error(err);
         }
         else{
             if(results){
-                paymentdb.id = id;
-                paymentdb.clubName = req.query.clubName;
-                paymentdb.eventName = req.query.eventName;
-                console.log(results)
-                var resultone = results[0];
-                timestamp = + new Date();
-                paramaters ={
-                    REQUEST_TYPE    : "DEFAULT",
-                    ORDER_ID        : id + timestamp,
-                    CUST_ID         : resultone.teamEmail,
-                    TXN_AMOUNT      : totalAmount,
-                    CHANNEL_ID      :'WEB',
-                    INDUSTRY_TYPE_ID : paytm.industryID,
-                    MID             : paytm.mid,
-                    WEBSITE         : paytm.website,
-                    MOBILE_NO       : resultone.teamNumber,
-                    EMAIL           : resultone.teamEmail,
-                    CALLBACK_URL    : hostURL +  '/payment/response',
-                }
-                    checksum.genchecksum(paramaters, paytm.key, function (err, result) {
-                        paymentdb.order_id = result.ORDER_ID;
-                        paymentdb.save(function(err) {
-                            if (err){
-                                return done(err);
-                            }
-                            else{
-                                res.render('pgredirect.ejs',{ 'restdata' : result });
-                            }
-                        })
-                    });
-                }
-                else{
-                    res.json({status : false});
-                }
+                PaymentDB.count({}, function(err, count){
+                    if (err){
+                        return console.error(err);
+                    }
+                    else{
+                        var id_tag = process.env.NODE_ENV === 'development' ? 'dev' : '2017'
+                        var event_order_id = "Plinth-" + req.query.eventName + "-" + (count + 1) + "-" + id_tag;
+                        paymentdb.id = id;
+                        paymentdb.clubName = req.query.clubName;
+                        paymentdb.eventName = req.query.eventName;
+                        console.log(results)
+                        timestamp = + new Date();
+                        paramaters ={
+                            REQUEST_TYPE    : "DEFAULT",
+                            ORDER_ID        : event_order_id,
+                            CUST_ID         : "plinth-" + results.teamEmail,
+                            TXN_AMOUNT      : totalAmount,
+                            CHANNEL_ID      :'WEB',
+                            INDUSTRY_TYPE_ID : paytm.industryID,
+                            MID             : paytm.mid,
+                            WEBSITE         : paytm.website,
+                            CALLBACK_URL    : hostURL +  '/payment/response',
+                        }
+                        checksum.genchecksum(paramaters, paytm.key, function (err, result) {
+                            paymentdb.order_id = result.ORDER_ID;
+                            paymentdb.save(function(err) {
+                                if (err){
+                                    return done(err);
+                                }
+                                else{
+                                    result['PAYTM_URL'] = "https://pguat.paytm.com/oltp-web/processTransaction";
+                                    res.render('pgredirect2.ejs',{ 'restdata' : result});
+                                }
+                            })
+                        });
+                    }
+                });
             }
+            else{
+                res.json({status : false});
+            }
+        }
     });
 });
 
 
 router.post('/mun/initiatepayment', function(req, res) {
-    paymentmun = new PaymentMUN;
+    var paymentmun = new PaymentMUN;
     var id_tag = process.env.NODE_ENV === 'development' ? 'dev' : '2017'
     if((req.body.type !== "delegate" && req.body.type !== "ip")){
         res.json({status : false, message : "Data Tempered"});
@@ -160,7 +168,6 @@ router.post('/mun/initiatepayment', function(req, res) {
             paymentmun.amount      = amount;
             paymentmun.status      = "";
 
-
             paymentmun.save(function(err) {
                 if (err){
                     return done(err);
@@ -174,29 +181,34 @@ router.post('/mun/initiatepayment', function(req, res) {
 });
 
 router.get('/mun/initiatepayment', function(req, res) {
+    var paymentmun = new PaymentMUN()
     var order_id = req.query.order_id;
     console.log(hostURL)
     PaymentMUN.findOne({'order_id' : order_id },function (err, result) {
             paramaters ={
                 REQUEST_TYPE     : "DEFAULT",
                 ORDER_ID         : order_id,
-                CUST_ID          : result.email,
+                CUST_ID          : "plinth-" + result.email,
                 TXN_AMOUNT       : result.amount,
                 CHANNEL_ID       :'WEB',
                 INDUSTRY_TYPE_ID : paytm.industryID,
                 MID              : paytm.mid,
                 WEBSITE          : paytm.website,
-                MOBILE_NO        : result.phoneNumber,
-                EMAIL            : result.email,
+                // MOBILE_NO        : result.phoneNumber,
+                // EMAIL            : result.email,
                 CALLBACK_URL     : hostURL + '/payment/mun/response',
             }
+
+            // Create an array having all required parameters for creating checksum.
             checksum.genchecksum(paramaters, paytm.key, function (err, result) {
                 paymentmun.save(function(err) {
                     if (err){
                         return done(err);
                     }
                     else{
-                        res.render('pgredirect.ejs',{ 'restdata' : result });
+                        result['PAYTM_URL'] = "https://pguat.paytm.com/oltp-web/processTransaction";
+                        console.log(result);
+                        res.render('pgredirect2.ejs',{ 'restdata' : result});
                     }
                 })
             });

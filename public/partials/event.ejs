@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="css/robotics.css" />
     </head>
     <body>
+        <li><a data-open="payment-modal" onclick="fetchAmountAndMember()">Make Payment ></a></li>
+
 
         <% include header %>
         <% if ( eventDetail.eventName === 'sif') { %>
@@ -403,6 +405,7 @@
                 clubName  : "<%- eventDetail.clubName %>",
                 email     : email
             }
+
             activateLoader();
             $.post( {
                 url: '/payment/fetchData',
