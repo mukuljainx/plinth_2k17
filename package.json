@@ -1,6 +1,6 @@
 {
   "name": "Plinth-2017",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www"
@@ -23,8 +23,6 @@
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
-    "q": "^1.4.1",
-    "request": "^2.79.0",
     "serve-favicon": "~2.3.0"
   },
   "author": "Mukul Jain",
