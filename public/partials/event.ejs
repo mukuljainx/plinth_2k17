@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="css/robotics.css" />
     </head>
     <body>
+        <li style="display:none"><a data-open="payment-modal" onclick="fetchAmountAndMember()">Make Payment ></a></li>
+
 
         <% include header %>
         <% if ( eventDetail.eventName === 'sif') { %>
@@ -406,6 +408,7 @@
                 clubName  : "<%- eventDetail.clubName %>",
                 email     : email
             }
+
             activateLoader();
             $.post( {
                 url: '/payment/fetchData',
@@ -419,7 +422,7 @@
                     $('.email-not-foun-error-msg').css("opacity","1");
                     return;
                 }
-                var oneMemberAmount = response.oneMemberAmount;
+                var totalAmount = response.totalAmount;
                 $('.payment-get-email').hide()
                 $('.payment-list-email').show()
                 if(response.data.length > 1){
@@ -438,9 +441,8 @@
                     renderHTML = renderHTML + "</ol>"
                     + "<div class='row'>"
                     + "<div class='column small-6'>"
-                    + "<div class='total-amount text-left'> Total Amount : &#8377; " + (oneMemberAmount * team.length)
-                    + '/-<br><span style="font-size: 12px; font-weight: 400; top: -10px; position: relative; width:120px;">(&#8377; '
-                    + oneMemberAmount + "/- per Member )</div>"
+                    + "<div class='total-amount text-left'> Total Amount : &#8377; " + totalAmount
+                    + "/-</div>"
                     + "</div>"
                     + "<div class='column small-6' style='padding-top : 10px;'>"
                     + "<div class='text-right pay-now-div'>";

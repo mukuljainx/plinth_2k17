@@ -12,6 +12,7 @@ var Literary = require('../models/literary');
 var Astronomy = require('../models/astronomy');
 var Cybros = require('../models/cybros');
 var Sif = require('../models/sif');
+var Workshop = require('../models/workshop');
 var mongoose = require('mongoose');
 
 router.post('/add', function(req, res) {
@@ -147,6 +148,55 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
             res.json({ "response" : true });
         }
     })
+});
+
+router.post('/workshop/register', Verify.verifyOrdinaryUser, function(req, res) {
+    var user       = new User();
+    var userEvent  = new UserEvent();
+    var workshop   = new Workshop();
+
+    workshop.team = req.body.userDetails;
+    workshop.eventName = req.body.eventName;
+    workshop.teamEmail = req.body.userDetails[0].email;
+    workshop.teamNumber = req.body.userDetails[0].phoneNumber;
+    workshop.payment = {
+        status   : 'TXN_FAILURE',
+        order_id : 'undefined'
+    }
+
+    var emails = [];
+    for(var i=0; i<req.body.userDetails.length; i++ ){
+        emails.push(req.body.userDetails[i].email);
+    }
+    // bulk
+
+    var bulk = user.collection.initializeOrderedBulkOp();
+    for(var i=0; i < emails.length; i++){
+        bulk.find({'email': emails[i]}).update({$push: {events: req.body.eventName}});
+    }
+
+    bulk.execute();
+
+    var bulk = userEvent.collection.initializeOrderedBulkOp();
+    for(var i=0; i < emails.length; i++){
+        bulk.find({'email': emails[i]}).upsert().update(
+            {
+                $push : {events: req.body.eventName},
+                $set  : {email : emails[i]}
+            }
+        );
+    }
+
+    bulk.execute(function(err, docs){
+        workshop.save(function(err) {
+            if (err){
+                return done(err);
+            }
+            else{
+                res.json({ "response" : true });
+            }
+        })
+    });
 });
 
 

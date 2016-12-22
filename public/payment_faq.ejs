@@ -13,20 +13,20 @@
         <link rel="stylesheet" href="css/faq.css" />
     </head>
     <body>
-        
+
         <% include partials/header %>
         <%if (!isLoggedIn) { %>
                 <% include partials/reg-form %>
         <% } %>
-        
+
         <div class="row head">
             <div class="small-10 small-centered columns text-center">
                 <h4>Payment FAQ</h4>
             </div>
         </div>
-        
+
         <div class="text-center"><h5>There are two types of events : Individual and Team</h5></div>
-        
+
 <!--
         <div class="row">
             <div class="small-10 small-centered columns">
@@ -92,7 +92,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="small-12 small-centered columns ">
                 <div class="wrapper">
@@ -113,20 +113,8 @@
                 </div>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="small-12 small-centered columns ">
-                <div class="wrapper">
-                    <div class="ques"><p>*Paying fee for multiple items is not available at the moment.</p></div>
-                </div>
-            </div>
-        </div>
 
-        
-
-
-        
         <% include partials/footer %>
-            
+
     </body>
 </html>

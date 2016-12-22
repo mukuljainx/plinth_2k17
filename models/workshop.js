@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-
 var workshopRegistrationSchema = mongoose.Schema({
     team : [
         {

@@ -4,7 +4,7 @@ var option = "";
 function fillIP(){
     $('.btn-11').removeClass('btn-selectecd-payment');
     $('.btn-ip').addClass('btn-selectecd-payment');
-    $('.amount-mun-total').text("Amount : 750/-")
+    $('.amount-mun-total').text("Amount : 750/- + Accommodation (200/- per day)")
     $('#mun-payment-form').show();
     option = "ip";
 }
@@ -12,7 +12,7 @@ function fillIP(){
 function fillDelegate(){
     $('.btn-11').removeClass('btn-selectecd-payment');
     $('.btn-delegate').addClass('btn-selectecd-payment');
-    $('.amount-mun-total').text("Amount : 1300/-")
+    $('.amount-mun-total').text("Amount : 1300/- + Accommodation (200/- per day)")
     $('#mun-payment-form').show();
     option = "delegate";
 }
@@ -24,12 +24,13 @@ function getUserDetailsMUN(){
         phoneNumber : $('.phone').val(),
         email : $('.email').val(),
         college : $('.college').val(),
+        accommodation : $('.accommodation').val(),
     }
     return userDetail;
 }
 
 function validateUserDetailsMUN(data){
-    if(data.name === "" || data.phoneNumber === "" || data.email === "" || data.college === "")
+    if(data.name === "" || data.phoneNumber === "" || data.email === "" || data.college === "" || data.accommodation === "" || data.accommodation > 2 || data.accommodation < 0)
         return false;
     else
         return true;
