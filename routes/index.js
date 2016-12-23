@@ -1110,7 +1110,7 @@ router.get('/mun/pay', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
 });
-/*
+
 router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
@@ -1136,7 +1136,8 @@ router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
           }
       });
   }
-});*/
+});
+
 
 
 module.exports = router;

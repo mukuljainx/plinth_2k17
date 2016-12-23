@@ -1,23 +1,6 @@
 "use strict"
 var option = "";
 
-function fillIP(){
-    $('.btn-11').removeClass('btn-selectecd-payment');
-    $('.btn-ip').addClass('btn-selectecd-payment');
-    $('.amount-mun-total').text("Amount : 750/- + Accommodation (200/- per day)")
-    $('#mun-payment-form').show();
-    option = "ip";
-}
-
-function fillDelegate(){
-    $('.btn-11').removeClass('btn-selectecd-payment');
-    $('.btn-delegate').addClass('btn-selectecd-payment');
-    $('.amount-mun-total').text("Amount : 1300/- + Accommodation (200/- per day)")
-    $('#mun-payment-form').show();
-    option = "delegate";
-}
-
-
 function getUserDetailsMUN(){
     var userDetail ={
         name : $('.user-name').val(),
@@ -37,13 +20,24 @@ function validateUserDetailsMUN(data){
 }
 
 
-function registerUserCompleteMUN(extra){
+function registerUserCompleteMUN(){
     var x = getUserDetailsMUN();
     if(!validateUserDetailsMUN(x)){
         return
     }
-    if(extra === "accommodation") option = "accommodation";
-    
+
+    var data = {
+        user : x
+    };
+
+    activateLoader();
+
+    function registerUserCompleteMUN(){
+    var x = getUserDetailsMUN();
+    if(!validateUserDetailsMUN(x)){
+        return
+    }
+
     var data = {
         user : x,
         type : option
