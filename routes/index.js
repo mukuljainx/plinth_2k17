@@ -1110,11 +1110,11 @@ router.get('/mun/pay', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
 });
-/*
+
 router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
-      res.render('mun2017', {
+      res.render('payment_mun', {
           "isLoggedIn" : isLoggedIn,
       });
   }
@@ -1126,7 +1126,7 @@ router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
               return done(err);
           // check to see if theres already a user with that email
           if (user){
-              res.render('mun2017',{
+              res.render('payment_mun',{
                   "isLoggedIn" : isLoggedIn,
                   "user" : {
                       name : user.name,
@@ -1136,7 +1136,7 @@ router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
           }
       });
   }
-});*/
+});
 
 
 module.exports = router;
