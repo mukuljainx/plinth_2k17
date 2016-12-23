@@ -16,6 +16,38 @@
         <% include header %>
         <% if ( eventDetail.eventName === 'sif') { %>
             <% include sifForm %>
+
+            <!-- form for startup payment -->
+
+            <div class="reveal" id="startup-payment-modal" data-reveal style="padding : 30px;">
+                <h5 class="text-center" style="color: #00b9f5; font-weight: 300;">Payment</h5>
+                <div class="payment-get-email">
+                    <form action="javascript:void(0)">
+                        <div class="group">
+                            <input type="email" id="in-name" class="sif-payment-email">
+                            <span class="highlight"></span>
+                            <label>Representative Email</label>
+                        </div>
+                        <div class="text-center">
+                            <p class="email-not-foun-error-msg sif-error-msg">Email not found please try Again. Make Sure you are entering Email of member 1</p>
+                            <input type="submit" value="Pay" class="reg-form-btn-register sif-pay-email-proceed-next" onclick="fetchMemberAndPay()">
+                        </div>
+                    </form>
+                </div>
+                <div class="payment-list-email" style="display:none">
+                    <div class="row">
+                        <div class="column small-12 medium-10 medium-centered">
+                            <div class="team-member-list"></div>
+                            <p class="total-amount text-right"></p>
+                        </div>
+                    </div>
+                </div>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
         <% } %>
 
         <a data-open="event-registration-form" class="event-registration-form-btn" style="opacity:0; width : 0px; height : 0px;">Register</a>
@@ -94,6 +126,7 @@
                                 <% } %>
                                 <% if ( eventDetail.eventName === 'sif') { %>
                                     <li><a href="#" ><a data-open="sif-registration-form" class="sifForm">Startup Register ></a></li>
+                                    <li><a href="#" ><a data-open="startup-payment-modal" class="sifForm">Startup Payment ></a></li>
                                 <% } %>
                             </ul>
                         </div>
@@ -505,6 +538,50 @@
         function makePayment(id){
             window.location.replace( location.origin + "/payment/initiatepayment?id=" + id + "&clubName=<%-eventDetail.clubName %>&eventName=<%- eventDetail.eventName %>");
         }
+
+        // for startup
+        <% if(eventDetail.eventName === 'sif'){ %>
+            function fetchMemberAndPay(){
+                <%if (isLoggedIn) { %>
+                    var email = "<%- user.email %>"
+                <% }else{ %>
+                    var email = $('.sif-payment-email').val()
+                <% } %>
+                debugger
+                if($('.sif-payment-email').val() !== ''){
+                    email = $('.sif-payment-email').val();
+                }
+                if(email ==="" || email.indexOf('@') === -1){
+                    return;
+                }
+                var data ={
+                    email : email
+                }
+
+                activateLoader();
+                $.post( {
+                    url: '/payment/sif/fetchData',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType : 'json',
+                    data: JSON.stringify(data)
+                })
+                .done(function( response ) {
+                    deactivateLoader();
+                    if(response.status === false){
+                        $('.sif-error-msg').css("opacity","1");
+                        return;
+                    }
+                    else{
+                        window.location.replace( location.origin + "/payment/sif/initiatepayment?id=" + response.id);
+                    }
+                })
+                .fail(function(response) {
+                    apiCallFail(response);
+                    return;
+                });
+
+            }
+        <% } %>
         </script>
 
     </body>

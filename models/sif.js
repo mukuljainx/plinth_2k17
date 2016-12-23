@@ -21,7 +21,7 @@ var sifSchema = mongoose.Schema({
             status   : String,
             order_id : String,
             date     : String,
-            amount   : String,
+            amount   : Number,
         },
 });
 

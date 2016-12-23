@@ -139,7 +139,10 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
     sif.detail = req.body.sifDetails;
     sif.teamEmail  = req.body.sifDetails.representativeEmail;
     sif.teamNumber  = req.body.sifDetails.representativeContact;
-    sif.payment = "Not Paid";
+    sif.payment   = {
+        status   : "TXN_FAILURE",
+        amount   : 500,
+    },
     sif.save(function(err) {
         if (err){
             return done(err);
