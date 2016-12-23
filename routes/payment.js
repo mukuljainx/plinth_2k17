@@ -166,12 +166,13 @@ router.get('/initiatepayment', function(req, res) {
 router.post('/mun/initiatepayment', function(req, res) {
     var paymentmun = new PaymentMUN();
     var id_tag = process.env.NODE_ENV === 'development' ? 'dev' : '2017'
-    if((req.body.type !== "delegate" && req.body.type !== "ip") || req.body.accommodation < 0){
+    if((req.body.type !== "delegate" && req.body.type !== "ip" && req.body.type !== "accommodation") || req.body.accommodation < 0){
         res.json({status : false, message : "Data Tempered"});
     }
     else{
         var accommodation = req.body.user.accommodation;
-        var amount = req.body.type === "delegate" ? 1300 : 750;
+        if(req.body.type !== "accommodation") var amount = req.body.type === "delegate" ? 1300 : 750;
+        else var amount = 0;
         amount = amount + (200 * accommodation)
 
         PaymentMUN.count({}, function(err, count){
@@ -220,15 +221,8 @@ router.get('/mun/initiatepayment', function(req, res) {
 
             // Create an array having all required parameters for creating checksum.
             checksum.genchecksum(paramaters, paytm.key, function (err, result) {
-                paymentmun.save(function(err) {
-                    if (err){
-                        return done(err);
-                    }
-                    else{
-                        result['PAYTM_URL'] = paytmURL;
-                        res.render('pgredirect2.ejs',{ 'restdata' : result});
-                    }
-                })
+                result['PAYTM_URL'] = paytmURL;
+                res.render('pgredirect2.ejs',{ 'restdata' : result});
             });
         });
 });

@@ -1138,5 +1138,4 @@ router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
-
 module.exports = router;

@@ -50,35 +50,36 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
     });
 });
 
-// router.get('/mun/payments', Verify.verifyOrdinaryUser ,function(req, res) {
-//     var poc   = authUser.poc;
-//     if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1)){
-//          isLoggedIn = false;
-//          res.redirect('../../../');
-//      }
-//     Payments.find({},function (err, results) {
-//         if (err){
-//             return console.error(err);
-//         }
-//         else{
-//
-//             User.findOne({'email' : req.decoded.sub }, function(err, user) {
-//                 // if there are any errors, return the error
-//                 if (err){
-//                     return done(err);
-// 	               }
-//                 // check to see if theres already a user with that email
-//                 if (user){
-//                     res.render('partials/startup',{
-//                         results : results,
-//                         isLoggedIn : true,
-//                         user : user,
-//                     });
-//                 }
-//             });
-//         }
-//     });
-// });
+router.get('/mun/payments', Verify.verifyOrdinaryUser ,function(req, res) {
+    var poc = authUser.poc;
+    if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1)){
+         isLoggedIn = false;
+         res.redirect('../../../');
+     }
+     else{
+        PaymentMUN.find({},function (err, results) {
+            if (err){
+                return console.error(err);
+            }
+            else{
+                User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    // if there are any errors, return the error
+                    if (err){
+                        return done(err);
+    	               }
+                    // check to see if theres already a user with that email
+                    if (user){
+                        res.render('partials/mun',{
+                            results : results,
+                            isLoggedIn : true,
+                            user : user,
+                        });
+                    }
+                });
+            }
+        });
+    }
+});
 
 
 router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
