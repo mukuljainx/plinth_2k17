@@ -460,7 +460,7 @@ router.get('/faq/payment', Verify.verifyOrdinaryUser ,function(req, res) {
 //   res.render('contact_us');
 //});
 
-router.get('/sponsors/2016', Verify.verifyOrdinaryUser ,function(req, res) {
+router.get('/sponsors', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
       res.render('sponsors_2k16', {
