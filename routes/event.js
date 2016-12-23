@@ -176,7 +176,6 @@ router.post('/workshop/register', Verify.verifyOrdinaryUser, function(req, res) 
     }
 
     bulk.execute();
-
     var bulk = userEvent.collection.initializeOrderedBulkOp();
     for(var i=0; i < emails.length; i++){
         bulk.find({'email': emails[i]}).upsert().update(

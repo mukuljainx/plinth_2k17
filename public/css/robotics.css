@@ -330,3 +330,14 @@ height: 150px;
     padding: 10px 20px;
     box-shadow: 0 0 0 0;
 }
+
+.student-sif-checkbox label{
+    font: normal 22px cl;
+}
+.student-sif-checkbox{
+    font-family: cl;
+}
+.student-sif-checkbox span{
+    width: 100px;
+    display: inline-block;
+}

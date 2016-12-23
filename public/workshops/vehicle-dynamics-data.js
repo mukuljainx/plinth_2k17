@@ -5,6 +5,7 @@ module.exports = {
     eventCompany : "Engineer Indya ",
     memberUpperLimit : 10,
     memberLowerLimit : 1,
+    clubName : "workshop",
     data : [
         {
             title : "Workshop Content",
@@ -72,6 +73,6 @@ module.exports = {
         <li>User Manual</li>
         <li>1x Booklet</li>
     </ul>`,
-    imageLink : "images/icons/coding/cola.svg",
+    imageLink : "media/icons/workshop/w2.svg",
     fee : 1050,
 };

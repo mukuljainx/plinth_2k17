@@ -16,16 +16,13 @@ h4{
 /*
 .columns{
     background-color: darkgray;
-    
+
 }
 */
 
-.dp-image{
-    background-color: darkgray;
-    width:150px;
+.dp-image img {
+    width: 150px;
     height: 150px;
-    border-radius: 100px;
-/*    margin-left: 220px;*/
 }
 
 .title-workshop{
@@ -78,7 +75,7 @@ footer{
 
 .pipe-2{
     margin-left: 20px;
-    margin-right: 20px;    
+    margin-right: 20px;
 }
 
 .prev-card{
@@ -116,5 +113,74 @@ footer{
 }
 
 .next-card a{
+    color: #c90ceb;
+}
+
+.payment-get-email .group{
+    width: 300px;
+    margin: 10px auto 10px;
+}
+.total-amount{
+    font-size: 16px;
+    font-weight: 600;
+}
+.email-not-foun-error-msg{
+    font-size: 12px;
+    color: red;
+    margin: 0px;
+    opacity: 0;
+}
+.team-box-gray{
+    padding: 25px 15px 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 6px 0px rgba(0, 0, 0, 0.1);
+}
+
+.team-box-gray ol{
+    margin-top: 10px;
+}
+.team-box-gray span{
+    width: 100px;
+    display: inline-block;
+}
+
+.team-box-gray .reg-form-btn-register{
+    background: #00b9f5;
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    box-shadow: 0 0 0 0;
+}
+
+.card {
+    font: bold 15px 'Roboto';
+    padding: 20px;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    height: 300px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.card img{
+        height: 100px;
+        margin-bottom: 20px;
+}
+
+.name {
+    font: bold 15px 'Roboto';
+    opacity: 0.7;
+}
+.name-desc {
+    font: normal 15px 'Roboto';
+    opacity: 0.7;
+}
+.know-more {
+    color: #c90ceb;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+.know-more:hover{
     color: #c90ceb;
 }

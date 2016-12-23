@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="css/workshop.css" />
     </head>
     <body>
-        
+
         <% include partials/header %>
         <%if (!isLoggedIn) { %>
                 <% include partials/reg-form %>
@@ -25,82 +25,40 @@
                 </div>
             </div>
         </div>
-        
-        <div class="prev-card">
-            <a><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a>
-        </div>
-        <div class="next-card">
-            <a><i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i></a>
-        </div>
-        
+
         <div class="row">
-            <div class="small-10 small-centered columns">
+            <div class="large-8 large-centered small-10 small-centered columns">
                 <div class="row">
-                    <div class="small-7 small-push-3 medium-5 large-4 large-push-3 columns">
-                        <div class="dp-image">
-                            
+                    <div class="small-10 medium-4 large-4 medium-offset-2 large-offset-2 small-offset-1 columns">
+                        <div class="card text-center">
+                            <img src="media/icons/workshop/w2.svg" />
+                            <br>
+                            <div class="container">
+                                <p class="name">Vehicle Design and Dynamics</p>
+                                <p class="name-desc">Do vehicles excite you? Learn principles, simulation, design and manufacturing a prototype of an automobile!</p>
+                            </div>
+                            <a href="/workshops/vehicle-dynamics" class="know-more">Know More ></a>
                         </div>
-                    </div>
-                    <div class="small-10 medium-5 large-5 large-pull-1 columns">
-                        <div class="details">
-                            <span class="title-workshop">A workshop on "IOT"</span>
-                            <br />
-                            <span class="by-workshop">presented by Texas Instuments</span>
-                            <br />
-                            <br />
-                            <span>Date : 22<sup>nd</sup> Jan 2016</span>
-                            <br />
-                            <span>Venue : The LNMIIT, Jaipur </span>
-                            <br />
-                            <br />
-                            <ul>
-                                <li><a href="#">Register ></a></li>
-                                <li><a href="#">Make Payment ></a></li>
-                            </ul>
+                      </div>
+                      <div class="small-10 medium-4 large-4 small-offset-1 medium-offset-0 end columns">
+                        <div class="card text-center">
+                          <img src="media/icons/workshop/w1.svg" />
+                          <br>
+                          <div class="container">
+                            <p class="name">Web O Master</p>
+                            <p class="name-desc">Learn and master the secrets of web technologies, Content Managment and Search Engine Optimization.</p>
+                          </div>
+                          <a href="/workshops/web-o-master" class="know-more">Know More ></a>
                         </div>
-                    </div>
-                </div>
+                      </div>
+                  </div>
             </div>
         </div>
 
-        <div class="workshop-desc">
-            <div class="row">
-                <div class="small-8 small-centered text-center columns">
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet mattis ex. Morbi pharetra, tellus quis luctus tincidunt, elit libero iaculis ex, ac euismod eros ligula eget ipsum. Cras consequat varius venenatis. Vivamus auctor lorem tristique mi eleifend, id imperdiet erat faucibus. Nunc semper, orci ut dignissim varius, mauris augue placerat leo, vel sagittis enim erat ac dui.</span>
-                </div>
-            </div>
-            <div class="row content">
-                <div class="small-8 small-centered text-center columns">
-                    <span class="content-head">Workshop Content</span>
-                    <br />
-                    <br />
-                    <span>Lorem ipsum dolor sit amet</span>
-                    <br />
-                    <span>consectetur adipiscing elit</span>
-                    <br />
-                    <span>Phasellus sit amet mattis</span>
-                    <br />
-                    <span>ligula eget ipsum</span>
-                    <br />
-                    <span>Cras consequat varius venenatis</span>
-                    <br />
-                    <span>Nunc semper, orci ut dignissim varius</span>
-                    <br />
-                </div>
-            </div>
-            <div class="row content">
-                <div class="small-8 small-centered text-center columns">
-                    <span class="content-head">For Any Queries Contact</span>
-                    <br />
-                    <br />
-                    <span>Kapil Matani : +91-9462317503 <span class="pipe-1">|</span> kapilmatani03@gmail.com</span>
-                    <br />
-                    <span>Deepika Singhal : +91-9461481539 <span class="pipe-2">|</span> deepikasinghal07@gmail.com</span>
-                </div>
-            </div>
-        </div>
-        
+
+
+
         <% include partials/footer %>
-        
+
     </body>
 </html>

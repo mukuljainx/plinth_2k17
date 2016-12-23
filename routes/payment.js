@@ -11,6 +11,7 @@ var Quiz = require('../models/quiz');
 var Literary = require('../models/literary');
 var Astronomy = require('../models/astronomy');
 var Cybros = require('../models/cybros');
+var Workshop = require('../models/workshop');
 var Sif = require('../models/sif');
 var PaymentDB = require('../models/payment');
 var PaymentMUN = require('../models/paymentMUN');
@@ -23,8 +24,6 @@ var hostURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' :
 var paytmURL = 'https://secure.paytm.in/oltp-web/processTransaction';
 
 router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
-    console.log('*******')
-    console.log(req.body.clubName)
     var totalAmount = 100;
     switch(req.body.clubName) {
         case "astronomy":
@@ -47,17 +46,22 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
         case "quizzing":
             eventx = Quiz;
             break;
+        case "workshop":
+            eventx = Workshop;
+            break;
     }
 
     if(req.body.eventName === "robowar") totalAmount = 700;
     if(req.body.eventName === "quadcopter") totalAmount = 600;
-console.log(req.body.eventName);
+    if(req.body.eventName === "web-o-master") totalAmount = 1050;
+
+    console.log(req.body);
+
     eventx.find({ 'eventName' : req.body.eventName , 'teamEmail' : req.body.email },function (err, result) {
         if (err){
             return console.error(err);
         }
         else{
-            console.log(2,result);
             response = {
                 data : result,
                 totalAmount : totalAmount,
@@ -94,10 +98,14 @@ router.get('/initiatepayment', function(req, res) {
         case "quizzing":
             eventx = Quiz;
             break;
+        case "workshop":
+            eventx = Workshop;
+            break;
     }
 
     if(req.query.eventName === "robowar") totalAmount = 700;
     if(req.query.eventName === "quadcopter") totalAmount = 600;
+    if(req.query.eventName === "web-o-master") totalAmount = 1050;
 
     eventx.findOne({'_id' : id },function (err, results) {
         if (err){
@@ -105,13 +113,16 @@ router.get('/initiatepayment', function(req, res) {
         }
         else{
             if(results){
-                DB.count({}, function(err, count){
+                PaymentDB.count({}, function(err, count){
                     if (err){
                         return console.error(err);
                     }
                     else{
                         var id_tag = process.env.NODE_ENV === 'development' ? 'dev' : '2017'
                         var event_order_id = "Plinth-" + req.query.eventName + "-" + (count + 1) + "-" + id_tag;
+
+                        if(req.query.eventName === "web-o-master") totalAmount = 1050 * results.team.length; //workshop
+
                         paymentdb.id = id;
                         paymentdb.clubName = req.query.clubName;
                         paymentdb.eventName = req.query.eventName;
@@ -238,7 +249,7 @@ router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
                 if(paramlist.STATUS === "TXN_FAILURE"){
                     res.render('payment_failed', {
                         clubName : result.clubName,
-                        backURL : eventURL[doc.eventName],
+                        backURL : eventURL[result.eventName],
                     });
                 }
 
@@ -380,12 +391,7 @@ router.post('/mun/response', Verify.verifyOrdinaryUser,function(req,res){
 });
 
 router.get('/check', Verify.verifyOrdinaryUser,function(req,res){
-    console.log(paytm)
-    res.end('awds');
+    res.end('aws');
 })
-
-
-
-
 
 module.exports = router;
