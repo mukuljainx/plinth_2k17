@@ -12,8 +12,6 @@
         <link rel="stylesheet" href="css/robotics.css" />
     </head>
     <body>
-        <li style="display:none"><a data-open="payment-modal" onclick="fetchAmountAndMember()">Make Payment ></a></li>
-
 
         <% include header %>
         <% if ( eventDetail.eventName === 'sif') { %>
@@ -89,10 +87,11 @@
                                     <% } else { %>
                                         <li><a class="reg-btn" onClick="loggedUserRegistration()">Register ></a></li>
                                     <% } %>
+                                    <li><a data-open="payment-modal" onclick="fetchAmountAndMember()">Make Payment ></a></li>
                                 <% } else { %>
                                     <li><a class="reg-btn" onclick="loggedUserRegistration()">Register ></a></li>
+                                    <li><a data-open="payment-modal">Make Payment ></a></li>
                                 <% } %>
-                                <li><a style="color:gray;">Make Payment ></a></li>
                                 <% if ( eventDetail.eventName === 'sif') { %>
                                     <li><a href="#" ><a data-open="sif-registration-form" class="sifForm">Startup Register ></a></li>
                                 <% } %>
@@ -178,8 +177,15 @@
         <% include footer %>
 
         <script>
+        workshopProceedNext(); //to hide workshop message
+        $('.event-registration-form-part').css('display', 'none'); //to hide from
         $('.memberUpperLimit').text('<%- eventDetail.memberUpperLimit %>');
         $('.memberLowerLimit').text('<%- eventDetail.memberLowerLimit %>');
+
+        if("<%- eventDetail.eventName %>" === "sif"){
+            $('.student-sif-checkbox').show();
+            $('.student-resume').show();
+        }
 
         multiUser = [];
         multiUserCount = 0;
@@ -216,6 +222,11 @@
                     if(<%- eventDetail.memberUpperLimit %> === 1 && <%- eventDetail.memberLowerLimit %> === 1){
                         multiUser = [];
                         multiUser.push(intialUser);
+                        if("<%- eventDetail.eventName %>" === 'sif'){
+                            $(".event-registration-form-btn").trigger('click');
+                            $('.event-registration-form-btnx').removeClass("btn-disabled");
+                            return;
+                        }
                         data = {"eventName" : "<%- eventDetail.eventName %>", "clubName" : "<%- eventDetail.clubName %>" , "userDetails" : multiUser};
                         activateLoader();
                         $.post( {
@@ -250,6 +261,19 @@
                     }
                     else{
                         userx = getUserDetails();
+                        if("<%- eventDetail.eventName %>" === "sif" ){
+                            userx.field = [];
+                            for(var i=0; i<4; i++){
+                                if($('.student-sif-checkbox-' + i).is(":checked")){
+                                    sifDetail.field.push(fieldOption[i]);
+                                }
+                            }
+                            if(data.field.length === 0){
+                                notifDisplay(2,5);
+                                return;
+                             };
+                             userx.resume = $('.resume').val();
+                         }
                         if(!validateUserDetails(userx)) return;
                         if(teamMail.indexOf(userx.email) !== -1){ // will not allow two member two have same email
                             notifDisplay(2,6);
@@ -278,6 +302,7 @@
         <% } else { %>
             //when user press register
             function eventUserComplete(){
+                debugger
                 if(formReg === 1){
                     registerUserComplete();
                     return;
@@ -294,11 +319,23 @@
                     if(!validateUserDetails(userx)){
                         return;
                     }
+                    if("<%- eventDetail.eventName %>" === "sif" ){
+                        userx.field = [];
+                        for(var i=0; i<4; i++){
+                            if($('.student-sif-checkbox-' + i).is(":checked")){
+                                sifDetail.field.push(fieldOption[i]);
+                            }
+                        }
+                        if(data.field.length === 0){
+                            notifDisplay(2,5);
+                            return;
+                        };
+                        userx.resume = $('.resume').val();
+                    }
                     multiUser[multiUserCount] = userx;
                     $('.close-button').trigger('click');
                     reqBody = {"eventName" : "<%- eventDetail.eventName %>", "clubName" : "<%- eventDetail.clubName %>" , "userDetails" : multiUser};
                     formSubmissionEvent("/events/register", reqBody);
-
                 }
             }
             //when user opens form
@@ -335,6 +372,7 @@
                 notifDisplay(2,6);
                 return;
             }
+
             if((multiUserCount + 2) === <%- eventDetail.memberUpperLimit %>){ //reached team limit
                 $('.add-member-btn').css('display','none');
             }
@@ -354,7 +392,7 @@
                 return
             else{
                 multiUserCount--;
-                if(multiUserCount+1 < <%- eventDetail.memberUpperLimit %>){
+                if(multiUserCount + 1 < <%- eventDetail.memberLowerLimit %>){
                     $('.event-registration-form-btnx').addClass('btn-disabled');
                 }
                 $('.event-registration-form-member-number').text(multiUserCount + 1);
@@ -367,8 +405,8 @@
             else{
                 multiUserCount++;
                 $('.event-registration-form-member-number').text(multiUserCount + 1);
-                if(multiUser[multiUserCount] !== undefined);
-                    setFormValue(multiUser[multiUserCount]);
+                if(multiUser[multiUserCount] !== undefined) setFormValue(multiUser[multiUserCount]);
+                else setFormFree();
             }
         });
 
@@ -463,7 +501,6 @@
                 return;
             });
         }
-
         function makePayment(id){
             window.location.replace( location.origin + "/payment/initiatepayment?id=" + id + "&clubName=<%-eventDetail.clubName %>&eventName=<%- eventDetail.eventName %>");
         }

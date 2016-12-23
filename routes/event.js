@@ -150,33 +150,52 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
     })
 });
 
-//workshop routes
+router.post('/workshop/register', Verify.verifyOrdinaryUser, function(req, res) {
+    var user       = new User();
+    var userEvent  = new UserEvent();
+    var workshop   = new Workshop();
 
-router.post('/register/workshop', Verify.verifyOrdinaryUser, function(req, res) {
-
-    var workshop = new Workshop();
-
-    workshop.email = req.body.user.email;
-    workshop.name  = req.body.user.name;
-    workshop.phoneNumbe = req.body.user.honeNumber;
-    workshop.college   = req.body.user.college;
-    workshop.year  = req.body.user.year;
-    workshop.city  = req.body.user.city;
-    workshop.accommodation = req.body.user.accommodation;
+    workshop.team = req.body.userDetails;
     workshop.eventName = req.body.eventName;
+    workshop.teamEmail = req.body.userDetails[0].email;
+    workshop.teamNumber = req.body.userDetails[0].phoneNumber;
     workshop.payment = {
         status   : 'TXN_FAILURE',
         order_id : 'undefined'
     }
 
-    workshop.save(function(err) {
-        if (err){
-            return done(err);
-        }
-        else{
-            res.json({ "response" : true });
-        }
-    })
+    var emails = [];
+    for(var i=0; i<req.body.userDetails.length; i++ ){
+        emails.push(req.body.userDetails[i].email);
+    }
+    // bulk
+
+    var bulk = user.collection.initializeOrderedBulkOp();
+    for(var i=0; i < emails.length; i++){
+        bulk.find({'email': emails[i]}).update({$push: {events: req.body.eventName}});
+    }
+
+    bulk.execute();
+    var bulk = userEvent.collection.initializeOrderedBulkOp();
+    for(var i=0; i < emails.length; i++){
+        bulk.find({'email': emails[i]}).upsert().update(
+            {
+                $push : {events: req.body.eventName},
+                $set  : {email : emails[i]}
+            }
+        );
+    }
+
+    bulk.execute(function(err, docs){
+        workshop.save(function(err) {
+            if (err){
+                return done(err);
+            }
+            else{
+                res.json({ "response" : true });
+            }
+        })
+    });
 });
 
 

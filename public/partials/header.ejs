@@ -16,12 +16,9 @@
                 </li>
                 <li><a href="/">Home</a></li>
                 <li><a href="/competitions">Competitions</a></li>
-<!--
-                <li><a data-open="workshop-modal">Workshops</a></li>
                 <li><a data-open="lectures-modal" >Lectures</a></li>
--->
-                <li><a href="/workshop_c.ejs">Workshops</a></li>
-                <li><a href="/talks_c.ejs">Lectures</a></li>
+                <li><a href="/workshops">Workshops</a></li>
+                <!-- <li><a href="/talks_c">Lectures</a></li> -->
                 <li><a href="/mun">The LNMIIT MUN</a></li>
                 <li><a href="/wikitolearn">WikiToLearn</a></li>
             </ul>
@@ -31,10 +28,9 @@
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/competitions">Competitions</a></li>
-<!--            <li><a data-open="workshop-modal">Workshops</a></li>-->
-            <li><a href="/workshop_c.ejs">Workshops</a></li>
-<!--            <li><a data-open="lectures-modal">Lectures</a></li>-->
-            <li><a href="/talks_c.ejs">Lectures</a></li>
+            <li><a href="/workshops">Workshops</a></li>
+            <li><a data-open="lectures-modal">Lectures</a></li>
+            <!-- <li><a href="/talks_c.ejs">Lectures</a></li> -->
             <li><a href="/mun">The LNMIIT MUN</a></li>
             <li><a href="/wikitolearn">WikiToLearn</a></li>
             <li>
@@ -106,10 +102,19 @@ Watch this space for more updates.<p>
 <div class="reveal" id="event-registration-form" style="padding: 50px 40px;" data-reveal>
     <div class="event-registration-form-message">
             <p class="text-center" style="margin-bottom : 20px;">Hey, this is a team event, you can from team with <span class="memberLowerLimit" style="display:inline-block"></span> to <span class="memberUpperLimit" style="display:inline-block"></span><br>
-            Note : Email ID or Mobile No. of <b>first member</b> will be used for payment.<br>
+            Note : Email of <b>first member</b> will be used for payment.<br>
             For more information click <a href="/faq/payment" target="_blank">here.</a></p>
             <div class="reg-form-btn text-center" style="margin : 30px 0px 0px 0px">
                 <a class="reg-form-btn-register proceed-next" onclick="proceedNext()">Next</a>
+            </div>
+    </div>
+    <div class="workshop-registration-form-message">
+            <p class="text-center" style="margin-bottom : 20px;">Hey, This is a workshop event and you can register upto 10 members at a time and pay for the same<br>
+            Note : Email of <b>first member</b> will be used for payment.<br>
+            For more information click <a href="/faq/payment" target="_blank">here.</a></p>
+            </p>
+            <div class="reg-form-btn text-center" style="margin : 30px 0px 0px 0px">
+                <a class="reg-form-btn-register workshop-roceed-next" onclick="workshopProceedNext()">Next</a>
             </div>
     </div>
     <div class="event-registration-form-part" style="display : none">

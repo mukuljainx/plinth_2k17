@@ -13,5 +13,6 @@ module.exports = {
     "transporter" : "/competitions/robotics/transporter",
     "roborace" : "/competitions/robotics/roborace",
     "robowar" : "/competitions/robotics/robowar",
-    "robosoccer" : "/competitions/robotics/robosoccer"
+    "robosoccer" : "/competitions/robotics/robosoccer",
+    "web-o-master" : "/workshops/web-o-master"
 }
