@@ -231,7 +231,7 @@ router.get('/competitions/literature/wrangle', Verify.verifyOrdinaryUser ,functi
 });
 
 router.get('/competitions/quizzing/quest', Verify.verifyOrdinaryUser ,function(req, res) {
-    Eventx.findOne({'eventName' : 'the quest'}, function(err, eventx) {
+    Eventx.findOne({'eventName' : 'quest'}, function(err, eventx) {
          // if there are any errors, return the error
          if (err)
              return done(err);
@@ -620,7 +620,7 @@ router.get('/profile', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.get('/competitions/astronomy/astro_hunt', Verify.verifyOrdinaryUser ,function(req, res) {
-   Eventx.findOne({'eventName' : 'astro hunt'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'astro-hunt'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);
@@ -654,7 +654,7 @@ router.get('/competitions/astronomy/astro_hunt', Verify.verifyOrdinaryUser ,func
 });
 
 router.get('/competitions/astronomy/star_trek', Verify.verifyOrdinaryUser ,function(req, res) {
-   Eventx.findOne({'eventName' : 'star trek'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'star-trek'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);
@@ -689,7 +689,7 @@ router.get('/competitions/astronomy/star_trek', Verify.verifyOrdinaryUser ,funct
 });
 
 router.get('/competitions/coding/fix_the_bug', Verify.verifyOrdinaryUser ,function(req, res) {
-   Eventx.findOne({'eventName' : 'fix the bug'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'fix-the-bug'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);
@@ -762,7 +762,7 @@ router.get('/competitions/coding/iupc', Verify.verifyOrdinaryUser ,function(req,
 });
 
 router.get('/competitions/coding/iupc_distraction', Verify.verifyOrdinaryUser ,function(req, res) {
-   Eventx.findOne({'eventName' : 'iupc distraction'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'iupc-distraction'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);

@@ -55,7 +55,6 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
     if(req.body.eventName === "quadcopter") totalAmount = 600;
     if(req.body.eventName === "web-o-master") totalAmount = 1050;
 
-    console.log(req.body);
 
     eventx.find({ 'eventName' : req.body.eventName , 'teamEmail' : req.body.email },function (err, result) {
         if (err){
@@ -126,7 +125,6 @@ router.get('/initiatepayment', function(req, res) {
                         paymentdb.id = id;
                         paymentdb.clubName = req.query.clubName;
                         paymentdb.eventName = req.query.eventName;
-                        console.log(results)
                         timestamp = + new Date();
                         paramaters ={
                             REQUEST_TYPE    : "DEFAULT",
@@ -146,6 +144,8 @@ router.get('/initiatepayment', function(req, res) {
                                     return done(err);
                                 }
                                 else{
+                                    console.log('*****************');
+                                    console.log(result);
                                     result['PAYTM_URL'] = paytmURL;
                                     res.render('pgredirect2.ejs',{ 'restdata' : result});
                                 }
@@ -164,7 +164,6 @@ router.get('/initiatepayment', function(req, res) {
 
 router.post('/mun/initiatepayment', function(req, res) {
     var paymentmun = new PaymentMUN();
-    console.log(req.body.user)
     var id_tag = process.env.NODE_ENV === 'development' ? 'dev' : '2017'
     if((req.body.type !== "delegate" && req.body.type !== "ip") || req.body.accommodation < 0){
         res.json({status : false, message : "Data Tempered"});
@@ -203,7 +202,6 @@ router.post('/mun/initiatepayment', function(req, res) {
 router.get('/mun/initiatepayment', function(req, res) {
     var paymentmun = new PaymentMUN()
     var order_id = req.query.order_id;
-    console.log(hostURL)
     PaymentMUN.findOne({'order_id' : order_id },function (err, result) {
             paramaters ={
                 REQUEST_TYPE     : "DEFAULT",
@@ -227,7 +225,6 @@ router.get('/mun/initiatepayment', function(req, res) {
                     }
                     else{
                         result['PAYTM_URL'] = paytmURL;
-                        console.log(result);
                         res.render('pgredirect2.ejs',{ 'restdata' : result});
                     }
                 })
@@ -345,7 +342,6 @@ router.post('/mun/response', Verify.verifyOrdinaryUser,function(req,res){
                 return;
             }
             else{
-                console.log(paramlist);
                 if(paramlist.STATUS === "OPEN"){
                     res.render('payment_open',{
                         amount   : doc.payment.amount,
