@@ -1114,7 +1114,7 @@ router.get('/mun/pay', Verify.verifyOrdinaryUser ,function(req, res) {
 router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
-      res.render('payment_mun', {
+      res.render('mun2017', {
           "isLoggedIn" : isLoggedIn,
       });
   }
@@ -1126,7 +1126,7 @@ router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
               return done(err);
           // check to see if theres already a user with that email
           if (user){
-              res.render('payment_mun',{
+              res.render('mun2017',{
                   "isLoggedIn" : isLoggedIn,
                   "user" : {
                       name : user.name,
