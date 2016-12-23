@@ -12,7 +12,9 @@ var Literary = require('../models/literary');
 var Astronomy = require('../models/astronomy');
 var Cybros = require('../models/cybros');
 var authUser = require('../config/authuser');
-
+var PaymentDB = require('../models/payment');
+var PaymentMUN = require('../models/paymentMUN');
+var PaymentSIF = require('../models/paymentSIF');
 
 
 router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
@@ -48,6 +50,36 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
     });
 });
 
+// router.get('/mun/payments', Verify.verifyOrdinaryUser ,function(req, res) {
+//     var poc   = authUser.poc;
+//     if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1)){
+//          isLoggedIn = false;
+//          res.redirect('../../../');
+//      }
+//     Payments.find({},function (err, results) {
+//         if (err){
+//             return console.error(err);
+//         }
+//         else{
+//
+//             User.findOne({'email' : req.decoded.sub }, function(err, user) {
+//                 // if there are any errors, return the error
+//                 if (err){
+//                     return done(err);
+// 	               }
+//                 // check to see if theres already a user with that email
+//                 if (user){
+//                     res.render('partials/startup',{
+//                         results : results,
+//                         isLoggedIn : true,
+//                         user : user,
+//                     });
+//                 }
+//             });
+//         }
+//     });
+// });
+
 
 router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
     var poc   = authUser.poc;
@@ -80,7 +112,7 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
             allowedUser = authUser.quiz;
             break;
     }
-    
+
     if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1 && allowedUser.indexOf(req.decoded.sub) === -1)){
          isLoggedIn = false;
          res.redirect('../../../');
