@@ -30,7 +30,7 @@ function getUserDetailsMUN(){
 }
 
 function validateUserDetailsMUN(data){
-    if(data.name === "" || data.phoneNumber === "" || data.email === "" || data.college === "" || data.accommodation === "" || data.accommodation > 2 || data.accommodation < 0)
+    if(data.name === "" || data.phoneNumber === "" || data.email === "" || data.college === "" || data.accommodation === "" || data.accommodation > 4 || data.accommodation < 0)
         return false;
     else
         return true;
