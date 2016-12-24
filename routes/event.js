@@ -14,6 +14,7 @@ var Cybros = require('../models/cybros');
 var Sif = require('../models/sif');
 var Workshop = require('../models/workshop');
 var mongoose = require('mongoose');
+var EventURL = require('../config/eventURL')
 
 router.post('/add', function(req, res) {
 
@@ -195,5 +196,68 @@ router.post('/workshop/register', Verify.verifyOrdinaryUser, function(req, res) 
     });
 });
 
+router.get('/edit', Verify.verifyOrdinaryUser, function(req, res) {
+    if(req.decoded.sub !== "jainmukul1996@gmail.com"){
+         res.end("You are not authorized.");
+         return;
+     }
+     else{
+         if(EventURL[req.query.event] === undefined){
+             res.end('Please Check the link once again there may some typo in event name');
+             return;
+         }
+         Eventx.findOne({'eventName' : req.query.event}, function(err, eventx){
+             if(err){
+                 console.log(err);
+                 return;
+             }
+             else{
+                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                     // if there are any errors, return the error
+                     if (err){
+                         return done(err);
+     	               }
+                     // check to see if theres already a user with that email
+                     if (user){
+                         var nameArray = ["imageLink" ,"memberUpperLimit" , "memberLowerLimit","clubName", "eventName", "displayName", "eventDate", "eventVenue", "prizeWorth", "synopsis", "rules", "judges", "query", "sponsors"];
+                         res.render('partials/event-edit',{
+                             eventData : eventx,
+                             nameArray : nameArray,
+                             isLoggedIn : true,
+                             user : user,
+                         });
+                     }
+                 });
+             }
+         })
+     }
+})
+
+router.post('/update', Verify.verifyOrdinaryUser, function(req, res) {
+    if(req.decoded.sub !== "jainmukul1996@gmail.com"){
+         res.end("You are not authorized.");
+         return;
+     }
+     else{
+
+        var eventx = {};
+        for (name in req.body){
+            eventx[name] = req.body[name];
+        }
+
+
+         Eventx.findOneAndUpdate({'eventName' : eventx['eventName']}, eventx, {new: true}, function(err, eventx){
+             if(err){
+                 console.log(err);
+                 res.json({response : false})
+                 return;
+             }
+             else{
+                 console.log(eventx);
+                 res.json({response : true})
+             }
+         })
+     }
+})
 
 module.exports = router;

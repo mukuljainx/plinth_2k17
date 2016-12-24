@@ -15,7 +15,7 @@ var authUser = require('../config/authuser');
 var PaymentDB = require('../models/payment');
 var PaymentMUN = require('../models/paymentMUN');
 var PaymentSIF = require('../models/paymentSIF');
-var EventURL = require('../config/eventURL')
+var EventURL = require('../config/eventURL');
 
 
 router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
