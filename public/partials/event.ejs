@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Competitions | Plinth'17</title>
+        <title><%- eventDetail.displayName %> | Plinth'17</title>
         <script src="https://use.fontawesome.com/8720ae4a19.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.min.css" rel="stylesheet">
@@ -137,12 +137,10 @@
 
 <!--        registeration form modal-->
 
-        <% if(false){ %>
-          <div class="card">
+          <div class="card" style="margin-bottom:25px;box-shadow: 0px 4px 8px 1px rgba(0,0,0,0.06)">
               <div class="row">
                   <div class="small-4 small-offset-1 columns">
-                      <div class="card-img">
-                      </div>
+                      <img src="media/icons/trophy.svg" / style="padding: 10px;">
                   </div>
                   <div class="small-6 columns end">
                       <div class="prize">
@@ -153,7 +151,6 @@
                   </div>
               </div>
           </div>
-          <% } %>
 
         <div class="rows">
             <div class="column medium-8 small-12 medium-centered custom-column">
