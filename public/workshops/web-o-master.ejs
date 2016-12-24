@@ -393,6 +393,10 @@
                         window.location.href = "https://www.payumoney.com/events/#/buyTickets/QBDC";
                         return;
                     }
+                    if("<%- eventDetail.eventName %>" === 'web-o-master'){
+                        window.location.href = "https://www.payumoney.com/events/#/buyTickets/webomaster";
+                        return;
+                    }
                     var totalAmount = response.totalAmount;
                     $('.payment-get-email').hide()
                     $('.payment-list-email').show()

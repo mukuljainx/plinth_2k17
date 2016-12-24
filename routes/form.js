@@ -22,6 +22,7 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
     var allowedUser = authUser.ecell;
     var poc   = authUser.poc;
 
+
     if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1 && allowedUser.indexOf(req.decoded.sub) === -1)){
          res.end("You are not authorized. Login and try");
          return;
@@ -31,7 +32,6 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
             return console.error(err);
         }
         else{
-
             User.findOne({'email' : req.decoded.sub }, function(err, user) {
                 // if there are any errors, return the error
                 if (err){
@@ -88,7 +88,6 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
     var poc   = authUser.poc;
     var allowedUser = ['jainmukul1996@gmail.com'];
 
-    console.log(req.query);
 
     if(EventURL[req.query.event] === undefined){
         res.end('Please Check the link once again there may some typo in event name');
@@ -109,6 +108,7 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
             break;
         case "robotics":
             eventx = Robotics;
+            allowedUser = authUser.robotics;
             break;
         case "management":
             eventx = Ecell;
@@ -171,7 +171,6 @@ router.get('/user/all', Verify.verifyOrdinaryUser ,function(req, res) {
                     return done(err);
                 // check to see if theres already a user with that email
                 if (user){
-                    console.log('*****3');
                     res.render('partials/users',{
                         results : results,
                         isLoggedIn : true,

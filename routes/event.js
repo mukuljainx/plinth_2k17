@@ -70,9 +70,6 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
         case "astronomy":
             eventx = astronomy;
             break;
-        case "Astronomy":
-            eventx = astronomy;
-            break;
         case "coding":
             eventx = cybros;
             break;
@@ -98,19 +95,16 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
             status   : 'TXN_FAILURE',
             order_id : 'undefined'
         }
-
         var emails = [];
         for(var i=0; i<req.body.userDetails.length; i++ ){
             emails.push(req.body.userDetails[i].email);
         }
         // bulk
-
         var bulk = user.collection.initializeOrderedBulkOp();
         for(var i=0; i < emails.length; i++){
             bulk.find({'email': emails[i]}).update({$push: {events: req.body.eventName}});
         }
         bulk.execute();
-
         var bulk = userEvent.collection.initializeOrderedBulkOp();
         for(var i=0; i < emails.length; i++){
             bulk.find({'email': emails[i]}).upsert().update(

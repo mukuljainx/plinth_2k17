@@ -28,6 +28,9 @@
                         name : <%= results[i].detail.name %>
                     </div>
                     <div class="column small-12 partial-card medium-4">
+                        fee status : <%= results[i].payment.status %>
+                    </div>
+                    <div class="column small-12 partial-card medium-4">
                         website : <a href="http://<%= results[i].detail.website %>"><%= results[i].detail.website %></a>
                     </div>
                     <div class="column small-12 partial-card medium-4">
@@ -50,9 +53,6 @@
                     </div>
                     <div class="column small-12 partial-card medium-12">
                         description : <%= results[i].detail.description %>
-                    </div>
-                    <div class="column small-12 partial-card medium-12">
-                        fee status : <%= results[i].detail.payment.status %>
                     </div>
                 </div>
                 <br>
