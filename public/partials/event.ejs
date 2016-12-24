@@ -136,7 +136,7 @@
         </div>
 
 <!--        registeration form modal-->
-
+        <% if ( eventDetail.eventName !== 'sif') { %>
           <div class="card" style="margin-bottom:25px;box-shadow: 0px 4px 8px 1px rgba(0,0,0,0.06)">
               <div class="row">
                   <div class="small-4 small-offset-1 columns">
@@ -151,7 +151,7 @@
                   </div>
               </div>
           </div>
-
+          <% } %>
         <div class="rows">
             <div class="column medium-8 small-12 medium-centered custom-column">
                 <ul class="tabs event-tabs-silver text-center" data-tabs id="example-tabs">
