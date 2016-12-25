@@ -414,3 +414,12 @@ nav{
 .mun-blue-button:hover{
     color: white;
 }
+
+.eb-btns{
+    margin: auto;
+}
+
+.eb-cardText{
+	text-align: center;
+	padding-top: 20px;
+}
