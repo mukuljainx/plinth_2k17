@@ -122,7 +122,7 @@ router.get('/initiatepayment', function(req, res) {
                         var event_order_id = "Plinth-" + req.query.eventName + "-" + (count + 1) + "-" + id_tag;
 
                         if(req.query.eventName === "web-o-master") totalAmount = 1050 * results.team.length; //workshop
-
+                        if(results.teamEmail === "jainmukul1996@gmail.com") totalAmount = 0.10;
                         paymentdb.id = id;
                         paymentdb.clubName = req.query.clubName;
                         paymentdb.eventName = req.query.eventName;
