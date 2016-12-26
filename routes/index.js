@@ -624,7 +624,8 @@ router.get('/workshops/touch-augmented-realities', Verify.verifyOrdinaryUser ,fu
       });
   }
 });
-router.get('/profile', Verify.verifyOrdinaryUser ,function(req, res) {
+
+router.get('/myprofile', Verify.verifyOrdinaryUser ,function(req, res) {
 	if(req.decoded.sub === ""){
         isLoggedIn = false;
         res.redirect(301,'/');
@@ -776,9 +777,7 @@ router.get('/competitions/coding/iupc', Verify.verifyOrdinaryUser ,function(req,
                             eventDetail : eventx,
                             isLoggedIn : isLoggedIn,
                             "user" : {
-                                name : user.name,
-                                gender : user.gender,
-                                events : user.events,
+                                name : user,
                             }
                         });
                     }
