@@ -54,7 +54,7 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
 
     if(req.body.eventName === "robowar") totalAmount = 700;
     if(req.body.eventName === "quadcopter") totalAmount = 600;
-    if(req.body.eventName === "web-o-master") totalAmount = 1050;
+    if(req.body.eventName === "touch-augmented-realities") totalAmount = 750;
 
 
     eventx.find({ 'eventName' : req.body.eventName , 'teamEmail' : req.body.email },function (err, result) {
@@ -105,7 +105,7 @@ router.get('/initiatepayment', function(req, res) {
 
     if(req.query.eventName === "robowar") totalAmount = 700;
     if(req.query.eventName === "quadcopter") totalAmount = 600;
-    if(req.query.eventName === "web-o-master") totalAmount = 1050;
+    if(req.query.eventName === "touch-augmented-realities") totalAmount = 750;
 
     eventx.findOne({'_id' : id },function (err, results) {
         if (err){
@@ -121,7 +121,7 @@ router.get('/initiatepayment', function(req, res) {
                         var id_tag = process.env.NODE_ENV === 'development' ? 'dev' : '2017'
                         var event_order_id = "Plinth-" + req.query.eventName + "-" + (count + 1) + "-" + id_tag;
 
-                        if(req.query.eventName === "web-o-master") totalAmount = 1050 * results.team.length; //workshop
+                        if(req.query.eventName === "touch-augmented-realities") totalAmount = 750 * results.team.length; //workshop
                         if(results.teamEmail === "jainmukul1996@gmail.com") totalAmount = 0.10;
                         paymentdb.id = id;
                         paymentdb.clubName = req.query.clubName;
