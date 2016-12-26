@@ -146,6 +146,7 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
                         results : results,
                         isLoggedIn : true,
                         user : user,
+                        paymentUser : poc
                     });
                 }
             });
