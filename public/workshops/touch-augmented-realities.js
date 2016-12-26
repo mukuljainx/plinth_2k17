@@ -1,7 +1,7 @@
 module.exports = {
     eventName : "touch-augmented-realities",
     displayName : "Touch and Augmented Realities",
-    eventDate : "7<sup>th</sup> - 8<sup>th</sup> Jan 2017",
+    eventDate : "18<sup>th</sup> - 19<sup>th</sup> Jan 2017",
     eventCompany : "RoboFlux",
     memberUpperLimit : 10,
     memberLowerLimit : 1,
