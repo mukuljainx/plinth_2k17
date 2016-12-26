@@ -776,9 +776,7 @@ router.get('/competitions/coding/iupc', Verify.verifyOrdinaryUser ,function(req,
                         res.render('partials/event',{
                             eventDetail : eventx,
                             isLoggedIn : isLoggedIn,
-                            "user" : {
-                                name : user,
-                            }
+                            user : user 
                         });
                     }
                 });
