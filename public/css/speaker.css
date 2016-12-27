@@ -1,6 +1,22 @@
 .details{
     font:normal 16px 'Roboto';
-    margin-top: 20px; 
+    margin-top: 10px; 
+}
+
+.details ul{
+    margin: 0px;
+}
+
+
+.details li{
+    display: inline-block;
+    list-style: none;
+    padding-left: 10px;
+    color: #b5001d;
+}
+
+.details a{
+    color: #b5001d;
 }
 
 h4{
@@ -21,13 +37,13 @@ h4{
 }
 */
 
-.dp-image{
-    background-color: darkgray;
+.dp-image img{
     width:150px;
     height: 150px;
-    border-radius: 100px;
+    border-radius: 100%;
 /*    margin-left: 220px;*/
 }
+
 
 .title-speaker{
     font:bold 20px 'Roboto';
