@@ -3,7 +3,7 @@ module.exports = {
     displayName : "Web-O-Master",
     eventDate : "18<sup>th</sup> - 19<sup>th</sup> Jan 2017",
     eventCompany : "Engineer Indya ",
-    memberUpperLimit : 10,
+    memberUpperLimit : 1,
     memberLowerLimit : 1,
     clubName : "workshop",
     data : [

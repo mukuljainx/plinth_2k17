@@ -84,6 +84,8 @@
                             <span class="by-workshop">presented by <%- eventDetail.eventCompany %></span>
                             <br />
                             <br />
+                            <span>Fee : INR. <%- eventDetail.fee %>/- per person</span>
+                            <br>
                             <span><%- eventDetail.eventDate %></span>
                             <br />
                             <span>Venue : The LNMIIT, Jaipur </span>
@@ -144,6 +146,7 @@
         <script>
             proceedNext(); //to hide event notice
             $('.event-registration-form-part').css('display', 'none'); //to hide from
+            workshopProceedNext(); //to hide event notice
             var minMember = 0;
             var maxMember = 10;
             $('.memberUpperLimit').text('<%- eventDetail.memberUpperLimit %>');
