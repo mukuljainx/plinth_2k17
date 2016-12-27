@@ -15,6 +15,7 @@ var Sif = require('../models/sif');
 var Workshop = require('../models/workshop');
 var mongoose = require('mongoose');
 var EventURL = require('../config/eventURL')
+var authUser = require('../config/authuser')
 
 router.post('/add', function(req, res) {
 
@@ -197,7 +198,7 @@ router.post('/workshop/register', Verify.verifyOrdinaryUser, function(req, res) 
 });
 
 router.get('/edit', Verify.verifyOrdinaryUser, function(req, res) {
-    if(req.decoded.sub !== "jainmukul1996@gmail.com"){
+                if(req.decoded.sub !== "jainmukul1996@gmail.com"){
          res.end("You are not authorized.");
          return;
      }

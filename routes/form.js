@@ -71,10 +71,29 @@ router.get('/mun/payments', Verify.verifyOrdinaryUser ,function(req, res) {
     	               }
                     // check to see if theres already a user with that email
                     if (user){
+
+                        var accommodation_x = 0;
+                        var delegate_x = 0;
+                        var ip_x = 0;
+
+
+                        for(var i=0; i<results.length; i++){
+                            if(results[i].status === 'TXN_SUCCESS'){
+                                if(results[i].type === 'accommodation') accommodation_x++;
+                                if(results[i].type === 'delegate') delegate_x++;
+                                if(results[i].type === 'ip') ip_x++;
+                            }
+                        }
+
+
+
                         res.render('partials/mun',{
                             results : results,
                             isLoggedIn : true,
                             user : user,
+                            accommodation_x : accommodation_x,
+                            delegate_x : delegate_x,
+                            ip_x : ip_x,
                         });
                     }
                 });
