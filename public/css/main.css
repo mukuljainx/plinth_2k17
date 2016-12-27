@@ -53,7 +53,7 @@ body{
     font:bold 20px hn;
     position:relative;
     top:-25px;
-    left:75px;
+    left:96px;
 }
 
 
@@ -153,6 +153,7 @@ body{
 
     .logo-date{
         font:bold 15px hn;
+        left:90px;
     }
 }
 
@@ -179,6 +180,7 @@ body{
 
     .logo-date{
         font:bold 15px hn;
+        left: 85px;
     }
 
     .logo-content{
@@ -210,6 +212,7 @@ body{
 
     .logo-date{
         font:bold 13px hn;
+        left: 80px;
     }
 
     .logo-content{
@@ -241,6 +244,7 @@ body{
 
     .logo-date{
         font:bold 10px hn;
+        left: 75px;
     }
 
     .logo-content{
@@ -306,7 +310,6 @@ body{
     .logo-date{
         font:bold 10px hn;
         position: relative;
-        left: 60px;
     }
 
     .logo-content{
@@ -340,7 +343,7 @@ body{
     .logo-date{
         font:bold 10px hn;
         position: relative;
-        left: 50px;
+        left: 65px;
     }
 
     .logo-content{
@@ -374,7 +377,7 @@ body{
     .logo-date{
         font:bold 10px hn;
         position: relative;
-        left: 50px;
+        left: 65px;
     }
 
     .logo-content{
@@ -410,7 +413,7 @@ body{
     .logo-date{
         font:bold 9px hn;
         position: relative;
-        left: 30px;
+        left: 40px;
     }
 
     .logo-content{
