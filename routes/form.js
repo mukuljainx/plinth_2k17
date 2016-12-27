@@ -146,7 +146,8 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
             return;
             break;
     }
-
+    console.log(1,req.decoded.sub);
+    console.log(2,allowedUser);
     if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1 && allowedUser.indexOf(req.decoded.sub) === -1)){
          res.end("You are not authorized. Login and try");
          return;

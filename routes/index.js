@@ -776,7 +776,7 @@ router.get('/competitions/coding/iupc', Verify.verifyOrdinaryUser ,function(req,
                         res.render('partials/event',{
                             eventDetail : eventx,
                             isLoggedIn : isLoggedIn,
-                            user : user 
+                            user : user
                         });
                     }
                 });
@@ -1098,10 +1098,6 @@ router.get('/competitions/astronomy/armAgeddon', Verify.verifyOrdinaryUser ,func
         }
     });
 });
-
-// router.get('/mun' ,function(req, res) {
-//     res.render('mun');
-// });
 
 router.get('/wikitolearn' ,function(req, res) {
     res.render('wiki');
