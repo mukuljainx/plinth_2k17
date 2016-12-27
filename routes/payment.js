@@ -434,7 +434,6 @@ router.get('/sif/initiatepayment', function(req, res) {
                     CALLBACK_URL     : hostURL + '/payment/sif/response',
                 }
                 if(doc.teamEmail === "jainmukul1996@gmail.com") paramaters.TXN_AMOUNT = 0.10;
-                console.log(paramaters.TXN_AMOUNT);
 
                 // Create an array having all required parameters for creating checksum.
                 checksum.genchecksum(paramaters, paytm.key, function (err, result) {
