@@ -625,7 +625,7 @@ router.get('/workshops/touch-augmented-realities', Verify.verifyOrdinaryUser ,fu
   }
 });
 
-router.get('/myprofile', Verify.verifyOrdinaryUser ,function(req, res) {
+router.get('/profile', Verify.verifyOrdinaryUser ,function(req, res) {
 	if(req.decoded.sub === ""){
         isLoggedIn = false;
         res.redirect(301,'/');
