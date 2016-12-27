@@ -35,7 +35,7 @@ h4{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
     height:270px;
-    max-width: 237px;
+/*    max-width: 237px;*/
     text-align: center;
     margin-bottom: 30px;
     padding-top: 20px;
@@ -58,6 +58,7 @@ h4{
 .profile-content{
     font:normal 15px 'Roboto';
     color:#626262;
+    height: 40px;
 }
 
 .profile-social ul{
@@ -66,10 +67,7 @@ h4{
     margin-top: 5px;
     margin-bottom: 15px;
 */
-
-    position: absolute;
-    bottom: 5px;
-    left: 75px;
+    margin-top: 10px;
 }
 
 .profile-social li{
