@@ -1099,7 +1099,6 @@ router.get('/competitions/astronomy/armAgeddon', Verify.verifyOrdinaryUser ,func
     });
 });
 
-
 router.get('/wikitolearn' ,function(req, res) {
     res.render('wiki');
 });
