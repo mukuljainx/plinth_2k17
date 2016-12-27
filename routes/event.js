@@ -12,7 +12,10 @@ var Literary = require('../models/literary');
 var Astronomy = require('../models/astronomy');
 var Cybros = require('../models/cybros');
 var Sif = require('../models/sif');
+var Workshop = require('../models/workshop');
 var mongoose = require('mongoose');
+var EventURL = require('../config/eventURL')
+var authUser = require('../config/authuser')
 
 router.post('/add', function(req, res) {
 
@@ -69,9 +72,6 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
         case "astronomy":
             eventx = astronomy;
             break;
-        case "Astronomy":
-            eventx = astronomy;
-            break;
         case "coding":
             eventx = cybros;
             break;
@@ -97,19 +97,16 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
             status   : 'TXN_FAILURE',
             order_id : 'undefined'
         }
-
         var emails = [];
         for(var i=0; i<req.body.userDetails.length; i++ ){
             emails.push(req.body.userDetails[i].email);
         }
         // bulk
-
         var bulk = user.collection.initializeOrderedBulkOp();
         for(var i=0; i < emails.length; i++){
             bulk.find({'email': emails[i]}).update({$push: {events: req.body.eventName}});
         }
         bulk.execute();
-
         var bulk = userEvent.collection.initializeOrderedBulkOp();
         for(var i=0; i < emails.length; i++){
             bulk.find({'email': emails[i]}).upsert().update(
@@ -138,7 +135,10 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
     sif.detail = req.body.sifDetails;
     sif.teamEmail  = req.body.sifDetails.representativeEmail;
     sif.teamNumber  = req.body.sifDetails.representativeContact;
-    sif.payment = "Not Paid";
+    sif.payment   = {
+        status   : "TXN_FAILURE",
+        amount   : 500,
+    },
     sif.save(function(err) {
         if (err){
             return done(err);
@@ -149,5 +149,116 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
     })
 });
 
+router.post('/workshop/register', Verify.verifyOrdinaryUser, function(req, res) {
+    var user       = new User();
+    var userEvent  = new UserEvent();
+    var workshop   = new Workshop();
+
+    workshop.team = req.body.userDetails;
+    workshop.eventName = req.body.eventName;
+    workshop.teamEmail = req.body.userDetails[0].email;
+    workshop.teamNumber = req.body.userDetails[0].phoneNumber;
+    workshop.payment = {
+        status   : 'TXN_FAILURE',
+        order_id : 'undefined'
+    }
+
+    var emails = [];
+    for(var i=0; i<req.body.userDetails.length; i++ ){
+        emails.push(req.body.userDetails[i].email);
+    }
+    // bulk
+
+    var bulk = user.collection.initializeOrderedBulkOp();
+    for(var i=0; i < emails.length; i++){
+        bulk.find({'email': emails[i]}).update({$push: {events: req.body.eventName}});
+    }
+
+    bulk.execute();
+    var bulk = userEvent.collection.initializeOrderedBulkOp();
+    for(var i=0; i < emails.length; i++){
+        bulk.find({'email': emails[i]}).upsert().update(
+            {
+                $push : {events: req.body.eventName},
+                $set  : {email : emails[i]}
+            }
+        );
+    }
+
+    bulk.execute(function(err, docs){
+        workshop.save(function(err) {
+            if (err){
+                return done(err);
+            }
+            else{
+                res.json({ "response" : true });
+            }
+        })
+    });
+});
+
+router.get('/edit', Verify.verifyOrdinaryUser, function(req, res) {
+        if(authUser.dev.indexOf(req.decoded.sub) === -1){
+         res.end("You are not authorized.");
+         return;
+     }
+     else{
+         if(EventURL[req.query.event] === undefined){
+             res.end('Please Check the link once again there may some typo in event name');
+             return;
+         }
+         Eventx.findOne({'eventName' : req.query.event}, function(err, eventx){
+             if(err){
+                 console.log(err);
+                 return;
+             }
+             else{
+                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                     // if there are any errors, return the error
+                     if (err){
+                         return done(err);
+     	               }
+                     // check to see if theres already a user with that email
+                     if (user){
+                         var nameArray = ["imageLink" ,"memberUpperLimit" , "memberLowerLimit","clubName", "eventName", "displayName", "eventDate", "eventVenue", "prizeWorth", "synopsis", "eventDescription" ,"rules", "judges", "query", "sponsors"];
+                         res.render('partials/event-edit',{
+                             eventData : eventx,
+                             nameArray : nameArray,
+                             isLoggedIn : true,
+                             user : user,
+                         });
+                     }
+                 });
+             }
+         })
+     }
+})
+
+router.post('/update', Verify.verifyOrdinaryUser, function(req, res) {
+    if(authUser.dev.indexOf(req.decoded.sub) === -1){
+         res.end("You are not authorized.");
+         return;
+     }
+     else{
+
+        var eventx = {};
+        for (name in req.body){
+            eventx[name] = req.body[name];
+        }
+
+
+         Eventx.findOneAndUpdate({'eventName' : eventx['eventName']}, eventx, {new: true}, function(err, eventx){
+             if(err){
+                 console.log(err);
+                 res.json({response : false})
+                 return;
+             }
+             else{
+                 console.log(eventx);
+                 res.json({response : true})
+             }
+         })
+     }
+})
 
 module.exports = router;

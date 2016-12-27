@@ -12,11 +12,47 @@
         <link rel="stylesheet" href="../css/workshop.css" />
     </head>
     <body>
-        
-        <% include partials/header %>
+        <% include ../partials/header %>
         <%if (!isLoggedIn) { %>
-                <% include partials/reg-form %>
+                <% include ../partials/reg-form %>
         <% } %>
+
+
+
+        <a data-open="event-registration-form" class="event-registration-form-btn" style="opacity:0; width : 0px; height : 0px;">Register</a>
+
+
+        <!-- Payment Modal -->
+
+        <div class="reveal" id="payment-modal" data-reveal style="padding : 30px;">
+            <h5 class="text-center" style="color: #00b9f5; font-weight: 300;">Payment</h5>
+            <div class="payment-get-email">
+                <form action="javascript:void(0)">
+                    <div class="group">
+                        <input type="email" id="in-name" class="payment-email">
+                        <span class="highlight"></span>
+                        <label>Email</label>
+                    </div>
+                    <div class="text-center">
+                        <p class="email-not-foun-error-msg">Email not found please try Again. Make Sure you are entering Email of member 1</p>
+                        <input type="submit" value="Next" class="reg-form-btn-register get-email-proceed-next" onclick="fetchAmountAndMember()">
+                    </div>
+                </form>
+            </div>
+            <div class="payment-list-email" style="display:none">
+                <div class="row">
+                    <div class="column small-12 medium-10 medium-centered">
+                        <div class="team-member-list"></div>
+                        <p class="total-amount text-right"></p>
+                    </div>
+                </div>
+            </div>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+
 
         <div class="content">
             <div class="row">
@@ -25,29 +61,51 @@
                 </div>
             </div>
         </div>
+
+        <!-- <div class="prev-card">
+            <a><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a>
+        </div>
+        <div class="next-card">
+            <a><i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i></a>
+        </div> -->
+
         <div class="row">
             <div class="small-10 small-centered columns">
                 <div class="row">
                     <div class="small-7 small-push-3 medium-5 large-4 large-push-3 columns">
                         <div class="dp-image">
-                            
+                            <img src=" <%- eventDetail.imageLink %>" alt="<%- eventDetail.eventName %> representational Image" />
                         </div>
                     </div>
                     <div class="small-10 medium-5 large-5 large-pull-1 columns">
                         <div class="details">
-                            <span class="title-workshop">A workshop on "Web-O-Master"</span>
+                            <span class="title-workshop"><%- eventDetail.displayName %></span>
                             <br />
-                            <span class="by-workshop">presented by Engineer Indya</span>
+                            <span class="by-workshop">presented by <%- eventDetail.eventCompany %></span>
                             <br />
                             <br />
-                            <span>Date : 18<sup>nd</sup> Jan 2017</span>
+                            <span>Fee : INR. <%- eventDetail.fee %>/- per person</span>
+                            <br>
+                            <span><%- eventDetail.eventDate %></span>
                             <br />
                             <span>Venue : The LNMIIT, Jaipur </span>
                             <br />
                             <br />
                             <ul>
-                                <li><a href="#">Register ></a></li>
-                                <li><a href="#">Make Payment ></a></li>
+                                <!-- <li><a data-open="event-registration-form">Register ></a></li> -->
+                                <!-- <li><a data-open="payment-modal">Make Payment ></a></li> -->
+
+                                <%if (isLoggedIn) { %>
+                                    <%if (user.events.indexOf(eventDetail.eventName) !== -1) { %>
+                                        <li><a class="reg-btn" >Registered</a></li>
+                                    <% } else { %>
+                                        <li><a class="reg-btn" onClick="loggedUserRegistration()">Register ></a></li>
+                                    <% } %>
+                                    <li><a data-open="payment-modal" onclick="fetchAmountAndMember()">Make Payment ></a></li>
+                                <% } else { %>
+                                    <li><a class="reg-btn" onclick="loggedUserRegistration()">Register ></a></li>
+                                    <li><a data-open="payment-modal">Make Payment ></a></li>
+                                <% } %>
                             </ul>
                         </div>
                     </div>
@@ -57,160 +115,342 @@
 
         <div class="workshop-desc">
             <div class="row">
-                <div class="small-8 small-centered text-center columns">
-                    <span><b>Engineer Indya</b> in association with <b>EI Transporation</b> presents India's Unique two days Combo Workshop on <b>Web-O-Master</b> with a <b>Live Project</b>. It's a two days workshop based on Web Development, Joomla CMS, Search Engine Optimization(SEO), Social Media Optimization (SMO), App Development & Web Security. Also get a chance to work on a Live Project based on a Social Networking Community Site for Engineers of India. All participants will be awarded with a dual certificate for attending this workshop i.e. <b>Certificate of Merit</b> & <b>Live Project Completion Certificate</b>.</span>
+                <div class="small-8 small-centered columns">
+                    <%- eventDetail.eventDesc %>
                 </div>
             </div>
+            <% for(var i=0; i<eventDetail.data.length; i++){ %>
             <div class="row content">
-                <div class="small-8 small-centered text-center columns">
-                    <span class="content-head">About Workshop</span>
+                <div class="small-8 small-centered columns">
+                    <div class="content-head"><%- eventDetail.data[i].title %></div>
                     <br>
-                    <span><p>This is a comprehensive course designed for people who have little IT (Information Technology) knowledge to help individuals gain a good grounding in the fundamentals of this popular open source Content Management System (CMS) & latest web technologies. So that they can create, manage and promote their website. Only a little IT knowledge is necessary to attend this Workshop.</p>
-                    <p>The workshop is not just about Web designing using JOOMLA (a content management system) but also includes Search Engine Optimization(SEO) that enables our website to get listed on top of Search Engines like Google, Yahoo etc when keywords are used for searching. Creating a website might not be as appealing to some as it might be to see it even being listed on top. This workshop also covers Social Media Optimization (SMO), that is, how to brand your products on social media like Facebook, Google+ etc and includes a session on Google and Facebook Analytics. Workshop also cover brief about Web Security & how to secure your website from being hacked by someone. Also learn to build a Mobile App. So, by the end of the workshop, one would get to know how to design a website, launch it, how to do search engine optimization (SEO) of it, how to do social media optimization & marketing, building Mobile App & Web Security.</p>
-                    <p>Also get a chance to work on a Live Project based on Professional Social Networking Community site for Engineers of India. In coming months many of the engineering students will be using that site for information related to Jobs, Projects, Seminar Projects, Research Papers, Interaction with corporate people, sharing information with others engineering students & professionals, fest details etc.</p>
-                    </span>
+                    <%- eventDetail.data[i].content %>
                 </div>
             </div>
-            <div class="row content">
-                <div class="small-8 small-centered text-center columns">
-                    <span class="content-head">Objective of the Workshop</span>
-                    <br />
-                    <br /><ul>
-                    <li>Introduction about Web Technologies & CMS</li>
-                    <li>Describe Joomla key CMS features</li>
-                    <li>Administer website content using Joomla back-end functions</li>
-                    <li>Learn to manage own hosting & creating professional email-ids.</li>
-                    <li>Promoting website on Social Media like Facebook, LinkedIn etc.</li>
-                    <li>Understanding Search Engine Optimization (SEO) & how to bring your site on top search engine like Google, Yahoo etc</li>
-                </div>
-            </div>
-            <div class="row content">
-                <div class="small-8 small-centered text-center columns">
-                    <span class="content-head">Topics to be covered in this Workshop:</span>
-                    <br />
-                    <br />
-                    <span><b>Introduction</b></span>
-                    
-                    <ul>
-                    <li> What is web application?</li>
-                    <li> Basics of Web Development</li>
-                    <li> Types of Script languages</li>
-                    <li> Difference between Server & Client Side Scripts</li>
-                    <li> Local Web Development Setup ( Wamp, Xampp etc. )</li>
-                    <li> Testing Local Environment</li>
-                    <span><b>Web Server & Domain</b></span>
-                    <li> What is web server?</li>
-                    <li> What is domain name?</li>
-                    <li> Is it free?</li>
-                    <li> How to register Domain Name?</li>
-                    <li> Local Web Development Setup ( Wamp, Xampp etc. )</li>
-                    <li> How to purchase space in Web Server?</li>
-                    <span><b>HTML</b></span>
-                    <li> What is HTML?</li>
-                    <li> First web page</li>
-                    <li> Common Tags introduction</li>
-                    <li> Tag structure to be followed</li>
-                    <li> HTML Trends</li>
-                    <span><b>Scripting</b></span>
-                    <li> What are Client Side Scripts?</li>
-                    <li> What are Server Side Scripts?</li>
-                    <li> Introduction to PHP</li>
-                    <li> Basic code run of PHP</li>
-                    <span><b>My SQL, PHP My Admin & Connectivity:</b></span>
-                    <li> What is MySQL?</li>
-                    <li> Introduction of SQL</li>
-                    <li> First Code run of SQL</li>
-                    <li> What is phpMyAdmin?</li>
-                    <li> Understanding Interface</li>
-                    <li> Creating Database in local MySQL Server</li>
-                    <li> Creating User & its Acces Rights in phpMyAdmin</li>
-                    <li> MySQL Connectivity using PHP</li>
-                    <span><b>Forms using HTML & PHP</b></span>
-                    <li> What is a Form?</li>
-                    <li> Get and post methods</li>
-                    <li> Google Forms</li>
-                    <li> Embedded Google Form in own Page</li>
-                    <span><b>Uploading Web site to Server (FTP Access)</b></span>
-                    <li> What is FTP Client?</li>
-                    <li> What is FileZilla?</li>
-                    <li> Uploading website to a webserver.</li>
-                    <span><b>Web Development & CMS</b></span>
-                    <li> Introduction to Web Designing.</li>
-                    <li> CMS, Web System & Planning</li>
-                    <li> Understanding different Web Technologies.</li>
-                    <li> Understanding Web Layout.</li>
-                    <li> Understanding Joomla CMS.</li>
-                    <span><b>Web Designing using Joomla CMS</b></span>
-                    <li> Basic about Database (MySQL).</li>
-                    <li> Installing & Configuring Joomla.</li>
-                    <li> Choosing & Editing Template.</li>
-                    <li> Working with Menus.</li>
-                    <li> Extending Joomla: Modules, Components & Plugins.</li>
-                    <li> Creating Web Pages in Joomla.</li>
-                    <li> Launching Joomla Site.</li>
-                    <span><b>cPanel & Hosting Administration</b></span>
-                    <li> What is cPanel ?</li>
-                    <li> Hosting Administration with CPanel.</li>
-                    <li> Creating Back Ups.</li>
-                    <li> Publishing Website</li>
-                    <li> Creating Professional Email-Id (e.g: raj@abc.com )</li>
-                    <span><b>Search Engine Optimization (SEO)</b></span>
-                    <li> Introduction about SEO (Search Engine Optimization).</li>
-                    <li> SEO on HTML Websites.</li>
-                    <li> SEO in Joomla.</li>
-                    <li> Google Analytics Session</li>
-                    <li> Joomla Advance Parameters.</li>
-                    <span><b>Social Networking Session</b></span>
-                    <li> Social Media Optimization (SMO)</li>
-                    <li>Defining Marketing Strategies</li>
-                    <li>Favicon.</li>
-                    <li>Facebook Analytics</li>
-                    <span><b>Web Security</b></span>
-                    <li>Introduction to Web Security.</li>
-                    <span><b>App Development using jQuery Mobile</b></span>
-                    <li>Introduction to jQuery : Mobile, UI etc.</li>
-                    <li>Introduction to jQuery Mobile</li>
-                    <li>Making Mobile Based Web Applications</li>
-                    <li>Building an app using jQuery mobile</li>
-                    <span><b>Project Work</b>   </span>
-                    <li>Project Discussion</li>
-                    <li>Understanding Project Work</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row content">
-                <div class="small-8 small-centered text-center columns">
-                    <span class="content-head">Eligibility</span>
-                    <br>
-                    The are no prerequisites for joining this workshop. Any one interested, can join this workshop. While a basic understanding of HTML would be helpful, it is not compulsory. <b>Student from any branch can attend this workshop.</b>
-                    <br><br>
-                    <span class="content-head">Certification Policy</span>
-                    <br>
-                    Certificate of Merit for all the workshop participants from Engineer Indya .
-                    Live Project Completion Certificate from EIT to all participants.Certificate of Coordination for the coordinators of the campus workshops.
-                    <br><br>
-                    <span class="content-head">Duration</span>
-                    <br>
-                    2 Days ( 16 Hours, 7-8 Hours /Day)
-                    <br><br>
-                    <span class="content-head">Fees</span>
-                    <br>Rs. 1050/- per participant (inclusive of all Taxes)
-                    <br>* This fee include workshop training, study material & software tool Kit, certification, government taxes and other human resources charges.
-                </div>
-            </div>
+            <% } %>
             <div class="row content">
                 <div class="small-8 small-centered text-center columns">
                     <span class="content-head">For Any Queries Contact</span>
                     <br />
                     <br />
-                    <span>Kapil Matani : +91-9462317503 <span class="pipe-1">|</span> kapilmatani03@gmail.com</span>
+                    <span>Vipul Behl : +91-9468590302 <span class="pipe-1">|</span> vbehl03@gmail.com</span>
                     <br />
-                    <span>Deepika Singhal : +91-9461481539 <span class="pipe-2">|</span> deepikasinghal07@gmail.com</span>
+                    <span>Romit Jain : +91-9549037612 <span class="pipe-2">|</span> romit.73@gmail.com</span>
                 </div>
             </div>
         </div>
-        
-        <% include partials/footer %>
-        
+
+
+
+        <% include ../partials/footer %>
+        <script>
+            proceedNext(); //to hide event notice
+            $('.event-registration-form-part').css('display', 'none'); //to hide from
+            workshopProceedNext(); //to hide event notice
+            var minMember = 0;
+            var maxMember = 10;
+            $('.memberUpperLimit').text('<%- eventDetail.memberUpperLimit %>');
+            $('.memberLowerLimit').text('<%- eventDetail.memberLowerLimit %>');
+            if(<%- eventDetail.memberLowerLimit %>  === 1){
+                $('.event-registration-form-btnx').removeClass("btn-disabled");
+            }
+            multiUser = [];
+            multiUserCount = 0;
+            teamMail = []; // email of all member will be here so no two member can have same email
+
+            function formSubmissionEvent(url, datax){
+                data = datax;
+                activateLoader();
+                $.post( {
+                    url: url,
+                    contentType: 'application/json; charset=utf-8',
+                    dataType : 'json',
+                    data: JSON.stringify(data)
+                })
+                .done(function( data ) {
+                    deactivateLoader();
+                    if(data.response){
+                        notifDisplay(1,1);
+                        $('.reg-btn').text('Registered');
+                    }
+                    else {
+                        notifDisplay(0,0);
+                    }
+                })
+                .fail(function(response) {
+                    apiCallFail(response);
+                });
+            }
+
+
+            <%if (isLoggedIn) { %>
+                $('.reg-social').css('display', 'none');
+                function loggedUserRegistration(){
+                        if(<%- eventDetail.memberUpperLimit %> === 1 && <%- eventDetail.memberLowerLimit %> === 1){
+                            multiUser = [];
+                            multiUser.push(intialUser);
+                            data = {"eventName" : "<%- eventDetail.eventName %>", "userDetails" : multiUser};
+                            activateLoader();
+                            $.post( {
+                                url: "/events/workshop/register",
+                                contentType: 'application/json; charset=utf-8',
+                                dataType : 'json',
+                                data: JSON.stringify(data)
+                            })
+                            .done(function( data ) {
+                                deactivateLoader();
+                                if(data.response){
+                                    notifDisplay(1,1);
+                                }
+                                else {
+                                    notifDisplay(0,0);
+                                }
+                            })
+                            .fail(function(response) {
+                                apiCallFail(response);
+                            });
+                        }else {
+                            $(".event-registration-form-btn").trigger('click');
+                            if(<%- eventDetail.memberLowerLimit %> === 1){
+                                $('.event-registration-form-btnx').removeClass("btn-disabled");
+                            }
+                        }
+                    }
+                    // function hitting the backend
+                    function eventUserComplete(){
+                        if((multiUserCount + 1) < <%- eventDetail.memberLowerLimit %>){
+                            return
+                        }
+                        else{
+                            userx = getUserDetails();
+                            if(!validateUserDetails(userx)) return;
+                            if(teamMail.indexOf(userx.email) !== -1){ // will not allow two member two have same email
+                                notifDisplay(2,6);
+                                return;
+                            }
+                            console.log(userx)
+                            multiUser[multiUserCount] = userx;
+                            $('.close-button').trigger('click');
+                            reqBody = {"eventName" : "<%- eventDetail.eventName %>" , "userDetails" : multiUser};
+                            formSubmissionEvent("/events/workshop/register", reqBody)
+                        }
+                    }
+
+                    intialUser = {
+                        "name"         : "<%- user.name %>",
+                        "gender"       : "<%- user.gender %>",
+                        "phoneNumber"  : "<%- user.phoneNumber %>",
+                        "email"        : "<%- user.email %>",
+                        "college"      : "<%- user.college %>",
+                        "year"         : "<%- user.year %>",
+                        "city"         : "<%- user.city %>",
+                        "accommodation" : "<%- user.accommodation %>",
+                    }
+
+                    setFormValue(intialUser);
+            <% } else { %>
+                //when user press register
+                function eventUserComplete(){
+                    if(formReg === 1){
+                        registerUserComplete();
+                        return;
+                    }
+                    if((multiUserCount + 1) < <%- eventDetail.memberLowerLimit %>){
+                        return
+                    }
+                    else{
+                        var userx = getUserDetails();
+                        if(teamMail.indexOf(userx.email) !== -1){ // will not allow two member two have same email
+                            notifDisplay(2,6);
+                            return;
+                        }
+                        if(!validateUserDetails(userx)){
+                            return;
+                        }
+                        multiUser[multiUserCount] = userx;
+                        $('.close-button').trigger('click');
+                        reqBody = {"eventName" : "<%- eventDetail.eventName %>", "userDetails" : multiUser};
+                        formSubmissionEvent("/events/workshop/register", reqBody);
+
+                    }
+                }
+                //when user opens form
+                function loggedUserRegistration(){
+                    formReg = 0;
+                    $('.reg-social').css("display","block"); // register btn with fb and google
+                    $('.add-member-btn').css("display", "inline-block");
+                    $('.reg-form-event-pagging').css('display','block');
+                    $('.event-registration-form-btnx').addClass('btn-disabled');
+                    $(".event-registration-form-btn").trigger('click');
+                    if(<%- eventDetail.memberLowerLimit %>  === 1){
+                        $('.event-registration-form-btnx').removeClass("btn-disabled");
+                    }
+
+                    if(<%- eventDetail.memberUpperLimit %> === 1 && <%- eventDetail.memberLowerLimit %> === 1){
+                        multiUser = [];
+                        proceedNext();
+                        $('.add-member-btn').css('display', 'none');
+
+                    }else {
+                        $(".event-registration-form-btn").trigger('click');
+                        if(<%- eventDetail.memberLowerLimit %> === 1){
+                            $('.event-registration-form-btnx').removeClass("btn-disabled");
+                        }
+                    }
+                }
+            <% } %>
+            function addMember(){
+                var userx = getUserDetails();
+                if(!validateUserDetails(userx) || multiUserCount === ( <%- eventDetail.memberUpperLimit %> - 1)){
+                    return;
+                }
+                if(teamMail.indexOf(userx.email) !== -1){ // will not allow two member two have same email
+                    notifDisplay(2,6);
+                    return;
+                }
+                if((multiUserCount + 2) === <%- eventDetail.memberUpperLimit %>){ //reached team limit
+                    $('.add-member-btn').css('display','none');
+                }
+                multiUser[multiUserCount] = userx;
+                teamMail[multiUserCount] = userx.email;
+                multiUserCount++;
+                $('.event-registration-form-member-number').text(multiUserCount + 1);
+                setFormFree();
+                if((multiUserCount + 1) === <%- eventDetail.memberLowerLimit %>){
+                    $('.event-registration-form-btnx').removeClass("btn-disabled");
+                }
+            }
+
+            $('.event-registration-form-prev').click(function(){
+                $('.add-member-btn').css('display','inline-block');
+                if(multiUserCount === 0)
+                    return
+                else{
+                    multiUserCount--;
+                    if(multiUserCount + 1 < <%- eventDetail.memberLowerLimit %>){
+                        $('.event-registration-form-btnx').addClass('btn-disabled');
+                    }
+                    $('.event-registration-form-member-number').text(multiUserCount + 1);
+                    setFormValue(multiUser[multiUserCount]);
+                }
+            });
+            $('.event-registration-form-next').click(function(){
+                if(multiUserCount === ( <%- eventDetail.memberUpperLimit %> - 1) || $('.event-registration-form-member-number').text() == multiUser.length + 1 || multiUser.length === 0)
+                    return
+                else{
+                    multiUserCount++;
+                    $('.event-registration-form-member-number').text(multiUserCount + 1);
+                    if(multiUser[multiUserCount] !== undefined) setFormValue(multiUser[multiUserCount]);
+                    else setFormFree();
+                }
+            });
+
+
+            function setFormValue(user){
+                $('.user-name').val(user.name);
+                $('input:radio[name=gender]')[user.gender === "male" ? 0 : 1].checked = true;
+                $('.phone').val(user.phoneNumber);
+                $('.email').val(user.email);
+                $('.college').val(user.college);
+                $('input:radio[name=year]')[user.year - 1].checked = true;
+                $('.city').val(user.city);
+                $('input:radio[name=acc]')[user.accommodation ? 0 : 1].checked = true;
+            }
+            function setFormFree(){
+                $('.user-name').val("");
+                $('.phone').val("");
+                $('.email').val("");
+                $('input:radio[name=gender]').attr('checked',false);
+                $('input:radio[name=year]').attr('checked',false);
+            }
+
+            function fetchAmountAndMember(){
+                <%if (isLoggedIn) { %>
+                    var email = "<%- user.email %>"
+                <% }else{ %>
+                    var email = $('.payment-email').val()
+                <% } %>
+                if(email ==="" || email.indexOf('@') === -1){
+                    return;
+                }
+                var data ={
+                    eventName : "<%- eventDetail.eventName %>",
+                    clubName  : "<%- eventDetail.clubName %>",
+                    email     : email
+                }
+
+                activateLoader();
+                $.post( {
+                    url: '/payment/fetchData',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType : 'json',
+                    data: JSON.stringify(data)
+                })
+                .done(function( response ) {
+                    deactivateLoader();
+                    if(response.data.length === 0){
+                        $('.email-not-foun-error-msg').css("opacity","1");
+                        return;
+                    }
+                    if("<%- eventDetail.eventName %>" === 'vehicle-dynamics'){
+                        window.location.href = "https://www.payumoney.com/events/#/buyTickets/QBDC";
+                        return;
+                    }
+                    if("<%- eventDetail.eventName %>" === 'web-o-master'){
+                        window.location.href = "https://www.payumoney.com/events/#/buyTickets/webomaster";
+                        return;
+                    }
+                    var totalAmount = response.totalAmount;
+                    $('.payment-get-email').hide()
+                    $('.payment-list-email').show()
+                    if(response.data.length > 1){
+                        var totalListHTML ="<p class='text-center'>We found mulitple registration with this email, you can choose any particular and attend the event with that team other registration will be discarded."
+                    }
+                    else{
+                        var totalListHTML = "";
+                    }
+                    for(var i=0; i<response.data.length; i++){
+                        var team = response.data[i].team;
+                        var renderHTML = "<div class='team-box-gray'>Registration " + (i + 1) + " :<ol>"
+                        for(var j=0; j<team.length; j++ ){
+                            renderHTML = renderHTML + "<li><span>" + team[j].name + "</span> | <span style='margin-left:10px'>" +
+                            team[j].email + "</span></li>";
+                        }
+                        renderHTML = renderHTML + "</ol>"
+                        + "<div class='row'>"
+                        + "<div class='column small-6'>"
+                        + "<div class='total-amount text-left'> Total Amount : &#8377; " + totalAmount * team.length
+                        + '/-<br><span style="font-size: 12px; font-weight: 400; top: -10px; position: relative; width:120px;">&#8377; '
+                        + totalAmount + "/- per Member</span></div>"
+                        + "</div>"
+                        + "<div class='column small-6' style='padding-top : 10px;'>"
+                        + "<div class='text-right pay-now-div'>";
+
+
+
+                        if(response.data[i].payment.status === "TXN_SUCCESS"){
+                            renderHTML = renderHTML + "<a class='reg-form-btn-register get-email-proceed-next' style='background: #2ECC71; cursor: default;'>Paid</a></div></div>"
+                        }
+                        else{
+                            renderHTML = renderHTML + "<a class='reg-form-btn-register get-email-proceed-next' onclick='makePayment(\"" + response.data[i]._id + "\")'>Pay Now</a></div></div>"
+                        }
+
+                        renderHTML = renderHTML + "</div></div>"
+                        totalListHTML = totalListHTML + renderHTML;
+                    }
+                    $(".team-member-list").html(totalListHTML);
+                })
+                .fail(function(response) {
+                    apiCallFail(response);
+                    return;
+                });
+            }
+
+            function makePayment(id){
+                window.location.replace( location.origin + "/payment/initiatepayment?id=" + id + "&clubName=<%-eventDetail.clubName %>&eventName=<%- eventDetail.eventName %>");
+            }
+
+        </script>
+
     </body>
 </html>

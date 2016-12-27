@@ -19,9 +19,24 @@ h4{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
     height:200px;
+    max-width: 170px;
     transition: 0.3s;
     text-align: center;
+    margin: auto;
     margin-bottom: 30px;
+}
+
+.spons-content-big{
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    height:250px;
+    max-width: 270px;
+    transition: 0.3s;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 30px;
+    padding-top: 15px;
 }
 
 .spons-content:hover{
@@ -45,13 +60,60 @@ h4{
 */
 }
 
+.name-big span{
+    text-align: center;
+    font:normal 22px 'Roboto';
+}
+
+.name-big{
+    margin-top: 18px;
+}
+
 .wrapper{
     padding-bottom: 80px;
 }
 
-.fa-long-arrow-left{
-    color: #0431B4;
+
+.ei{
+    margin-top: 10px;
+    height: auto;
+    width: 120px;
 }
+
+.grab{
+    margin-top: 35px;
+}
+
+.oyo{
+    margin-top: 50px;
+    height: auto;
+    width: 130px;
+}
+
+.zoom{
+    margin-top: 45px;
+    height: auto;
+    width: 150px;
+}
+
+.zoo{
+    margin-top: 55px;
+}
+
+.go{
+    margin-top: 35px;
+}
+
+.oy{
+    margin-top: 57px;
+}
+
+footer{
+    margin-top: 100px;
+}
+
+/*sponsors 16*/
+
 
 img[src="media/sponsors/sap.gif"]{
     margin-top: 20px;
@@ -361,4 +423,8 @@ img[src="media/sponsors/ae.png"]{
 
 .big-wrapper{
     margin-bottom: 100px;
+}
+
+.large-offset-1-5 {
+    margin-left: 12.63333%;
 }

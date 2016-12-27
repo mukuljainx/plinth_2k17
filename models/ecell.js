@@ -11,7 +11,9 @@ var ecellRegistrationSchema = mongoose.Schema({
             year           : Number,
             city           : String,
             accommodation  : String,
+            resume         : String,
             eventName      : String,
+            field          : Array,
         }
     ],
     eventName : String,

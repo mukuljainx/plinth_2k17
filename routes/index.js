@@ -231,7 +231,7 @@ router.get('/competitions/literature/wrangle', Verify.verifyOrdinaryUser ,functi
 });
 
 router.get('/competitions/quizzing/quest', Verify.verifyOrdinaryUser ,function(req, res) {
-    Eventx.findOne({'eventName' : 'the quest'}, function(err, eventx) {
+    Eventx.findOne({'eventName' : 'quest'}, function(err, eventx) {
          // if there are any errors, return the error
          if (err)
              return done(err);
@@ -429,11 +429,38 @@ router.get('/faq', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
+router.get('/faq/payment', Verify.verifyOrdinaryUser ,function(req, res) {
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('payment_faq', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
+  else {
+      isLoggedIn = true;
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('payment_faq',{
+                  "isLoggedIn" : isLoggedIn,
+                  "user" : {
+                      name : user.name,
+                      gender : user.gender,
+                  }
+              });
+          }
+      });
+  }
+});
+
 //router.get('/contact_us', Verify.verifyOrdinaryUser ,function(req, res) {
 //   res.render('contact_us');
 //});
 
-router.get('/sponsors/2016', Verify.verifyOrdinaryUser ,function(req, res) {
+router.get('/sponsors', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
       res.render('sponsors_2k16', {
@@ -487,7 +514,7 @@ router.get('/team', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
-router.get('/workshop', Verify.verifyOrdinaryUser ,function(req, res) {
+router.get('/workshops', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
       res.render('workshop', {
@@ -514,7 +541,91 @@ router.get('/workshop', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
-router.get('/profile', Verify.verifyOrdinaryUser ,function(req, res) {
+router.get('/workshops/web-o-master', Verify.verifyOrdinaryUser ,function(req, res) {
+    var eventDetail = require('../public/workshops/web-o-master-data');
+
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('workshops/web-o-master', {
+          "isLoggedIn" : isLoggedIn,
+          eventDetail : eventDetail
+      });
+  }
+  else {
+      isLoggedIn = true;
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('workshops/web-o-master',{
+                  "isLoggedIn" : isLoggedIn,
+                  user : user,
+                  eventDetail : eventDetail
+              });
+          }
+      });
+  }
+});
+
+router.get('/workshops/vehicle-dynamics', Verify.verifyOrdinaryUser ,function(req, res) {
+    var eventDetail = require('../public/workshops/vehicle-dynamics-data');
+
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('workshops/web-o-master', {
+          "isLoggedIn" : isLoggedIn,
+          eventDetail : eventDetail
+      });
+  }
+  else {
+      isLoggedIn = true;
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('workshops/web-o-master',{
+                  "isLoggedIn" : isLoggedIn,
+                  user : user,
+                  eventDetail : eventDetail
+              });
+          }
+      });
+  }
+});
+
+router.get('/workshops/touch-augmented-realities', Verify.verifyOrdinaryUser ,function(req, res) {
+    var eventDetail = require('../public/workshops/touch-augmented-realities');
+
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('workshops/web-o-master', {
+          "isLoggedIn" : isLoggedIn,
+          eventDetail : eventDetail
+      });
+  }
+  else {
+      isLoggedIn = true;
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('workshops/web-o-master',{
+                  "isLoggedIn" : isLoggedIn,
+                  user : user,
+                  eventDetail : eventDetail
+              });
+          }
+      });
+  }
+});
+
+router.get('/myprofile', Verify.verifyOrdinaryUser ,function(req, res) {
 	if(req.decoded.sub === ""){
         isLoggedIn = false;
         res.redirect(301,'/');
@@ -537,7 +648,7 @@ router.get('/profile', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.get('/competitions/astronomy/astro_hunt', Verify.verifyOrdinaryUser ,function(req, res) {
-   Eventx.findOne({'eventName' : 'astro hunt'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'astro-hunt'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);
@@ -571,7 +682,7 @@ router.get('/competitions/astronomy/astro_hunt', Verify.verifyOrdinaryUser ,func
 });
 
 router.get('/competitions/astronomy/star_trek', Verify.verifyOrdinaryUser ,function(req, res) {
-   Eventx.findOne({'eventName' : 'star trek'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'star-trek'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);
@@ -606,7 +717,7 @@ router.get('/competitions/astronomy/star_trek', Verify.verifyOrdinaryUser ,funct
 });
 
 router.get('/competitions/coding/fix_the_bug', Verify.verifyOrdinaryUser ,function(req, res) {
-   Eventx.findOne({'eventName' : 'fix the bug'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'fix-the-bug'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);
@@ -665,11 +776,7 @@ router.get('/competitions/coding/iupc', Verify.verifyOrdinaryUser ,function(req,
                         res.render('partials/event',{
                             eventDetail : eventx,
                             isLoggedIn : isLoggedIn,
-                            "user" : {
-                                name : user.name,
-                                gender : user.gender,
-                                events : user.events,
-                            }
+                            user : user
                         });
                     }
                 });
@@ -679,7 +786,7 @@ router.get('/competitions/coding/iupc', Verify.verifyOrdinaryUser ,function(req,
 });
 
 router.get('/competitions/coding/iupc_distraction', Verify.verifyOrdinaryUser ,function(req, res) {
-   Eventx.findOne({'eventName' : 'iupc distraction'}, function(err, eventx) {
+   Eventx.findOne({'eventName' : 'iupc-distraction'}, function(err, eventx) {
         // if there are any errors, return the error
         if (err)
             return done(err);
@@ -992,10 +1099,6 @@ router.get('/competitions/astronomy/armAgeddon', Verify.verifyOrdinaryUser ,func
     });
 });
 
-router.get('/mun' ,function(req, res) {
-    res.render('mun');
-});
-
 router.get('/wikitolearn' ,function(req, res) {
     res.render('wiki');
 });
@@ -1028,5 +1131,31 @@ router.get('/mun/pay', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
+router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('mun2017', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
+  else {
+      isLoggedIn = true;
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('mun2017',{
+                  "isLoggedIn" : isLoggedIn,
+                  "user" : {
+                      name : user.name,
+                      gender : user.gender,
+                  }
+              });
+          }
+      });
+  }
+});
 
 module.exports = router;

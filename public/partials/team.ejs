@@ -24,6 +24,11 @@
         <section>
             <% for(var i=0; i<results.length; i++) { %>
                 <div class="text-center"><b>Team <%= i %></b></div>
+                <% if (paymentUser.indexOf(user.email) !== -1){ %>
+                <div class="text-center">
+                    Payment : <%= results[i].payment.status %>
+                </div>
+                <% } %>
 
                 <% for(var j=0; j<results[i].team.length; j++) { %>
                 <div class="row">
@@ -48,6 +53,7 @@
                     <div class="column small-12 partial-card medium-3">
                         accommodation : <%= results[i].team[j].accommodation %>
                     </div>
+                    <%- results[i].team[j].field %>
                 </div>
                 <br>
                 <% } %>

@@ -5,6 +5,11 @@ function proceedNext(){
     $('.event-registration-form-part').css('display', 'block');
 }
 
+function workshopProceedNext(){
+    $('.workshop-registration-form-message').css('display', 'none');
+    $('.event-registration-form-part').css('display', 'block');
+}
+
 formReg = 0;
 
 //HAMBURGER
@@ -82,6 +87,7 @@ function unloadcallback(){
             deactivateLoader();
             if(!data.response){
                 formReg = 1;
+                workshopProceedNext();
                 proceedNext();
                 $('.close-button').trigger('click'); // old form
                 $('.holaxx').trigger('click'); // register form
@@ -139,6 +145,7 @@ $(function()
 {
     $(".popupwindow").popupwindow(profiles);
 });
+
 
 
 // Reg Form Object

@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Startups | Plinth'17</title>
+        <script src="https://use.fontawesome.com/8720ae4a19.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/robotics.css" />
+    </head>
+    <body>
+        <% include header %>
+
+        <style>
+            .partial-card{
+                border : 1px solid grey;
+                padding: 10px 5px;
+            }
+        </style>
+
+        <section>
+            accommodation : <%= accommodation_x %>
+            delegate : <%= delegate_x %>
+            ip : <%= ip_x %>
+            <% for(var i=0; i<results.length; i++) { %>
+                <div class="row">
+                    <div class="column small-12 partial-card medium-3">
+                        name : <%= results[i].name %>
+                    </div>
+                    <div class="column small-12 partial-card medium-3">
+                        email : <%= results[i].email %></a>
+                    </div>
+                    <div class="column small-12 partial-card medium-3">
+                        mobile : <%= results[i].phoneNumber %>
+                    </div>
+                    <div class="column small-12 partial-card medium-3">
+                        type : <%= results[i].type %>
+                    </div>
+                    <div class="column small-12 partial-card medium-3">
+                        order-id : <%= results[i].order_id %>
+                    </div>
+                    <div class="column small-12 partial-card medium-3 end">
+                        status : <%= results[i].status %>
+                    </div>
+
+                </div>
+                <br>
+            <% } %>
+        </section>
+
+        <div class="row" style="margin-top:40px;">
+            <div class="column small-10 small-centered">
+                <div style='font-weight :500; text-align:center; margin-bottom:20px'>For Any Queries Contact</div>
+                <div class="text-center">
+                    plinth@lnmiit.ac.in
+                </div>
+            </div>
+
+        </div>
+
+        <% include footer %>
+
+    </body>
+</html>
