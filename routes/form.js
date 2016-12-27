@@ -51,6 +51,34 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
     });
 });
 
+router.get('/sif/startup/payments', Verify.verifyOrdinaryUser ,function(req, res) {
+    var allowedUser = authUser.ecell;
+    var poc   = authUser.poc;
+
+
+    if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1 && allowedUser.indexOf(req.decoded.sub) === -1)){
+         res.end("You are not authorized. Login and try");
+         return;
+     }
+    PaymentSIF.find({},function (err, results) {
+        if (err){
+            return console.error(err);
+        }
+        else{
+            User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                // if there are any errors, return the error
+                if (err){
+                    return done(err);
+	               }
+                // check to see if theres already a user with that email
+                if (user){
+                    res.json(results);
+                }
+            });
+        }
+    });
+});
+
 router.get('/mun/payments', Verify.verifyOrdinaryUser ,function(req, res) {
     var poc = authUser.poc;
     var allowedUser = authUser.mun;
