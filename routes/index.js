@@ -625,8 +625,6 @@ router.get('/workshops/touch-augmented-realities', Verify.verifyOrdinaryUser ,fu
   }
 });
 
-<<<<<<< HEAD
-=======
 router.get('/talks', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
@@ -763,7 +761,6 @@ router.get('/talks/balaji-vishwanathan', Verify.verifyOrdinaryUser ,function(req
   }
 });
 
->>>>>>> 2bee080fb785de08a84db4f74d5e2b34e6d75649
 router.get('/profile', Verify.verifyOrdinaryUser ,function(req, res) {
 	if(req.decoded.sub === ""){
         isLoggedIn = false;
