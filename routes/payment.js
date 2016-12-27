@@ -419,7 +419,7 @@ router.get('/sif/initiatepayment', function(req, res) {
             paymentsif.name =  doc.detail.name;
             paymentsif.number =  doc.teamNumber;
             paymentsif.status  = 'TXN_FAILURE';
-            console.log(123,doc)
+
                 paramaters ={
                     REQUEST_TYPE     : "DEFAULT",
                     ORDER_ID         : order_id,
@@ -433,6 +433,8 @@ router.get('/sif/initiatepayment', function(req, res) {
                     // EMAIL            : result.email,
                     CALLBACK_URL     : hostURL + '/payment/sif/response',
                 }
+                if(doc.teamEmail === "jainmukul1996@gmail.com") parameters.TXN_AMOUNT = 0.10;
+                console.log(parameters);
 
                 // Create an array having all required parameters for creating checksum.
                 checksum.genchecksum(paramaters, paytm.key, function (err, result) {
