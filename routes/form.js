@@ -10,6 +10,7 @@ var Ecell = require('../models/ecell');
 var Quiz = require('../models/quiz');
 var Literary = require('../models/literary');
 var Astronomy = require('../models/astronomy');
+var Workshop = require('../models/workshop');
 var Cybros = require('../models/cybros');
 var authUser = require('../config/authuser');
 var PaymentDB = require('../models/payment');
@@ -136,6 +137,9 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
         case "quizzing":
             eventx = Quiz;
             allowedUser = authUser.quiz;
+        case "workshop":
+            eventx = Workshop;
+            allowedUser = authUser.admin;
             break;
             default:
             res.end('Please Check the link once again there may some typo in club name');

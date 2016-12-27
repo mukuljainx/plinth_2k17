@@ -14,5 +14,7 @@ module.exports = {
     "roborace" : "/competitions/robotics/roborace",
     "robowar" : "/competitions/robotics/robowar",
     "robosoccer" : "/competitions/robotics/robosoccer",
-    "web-o-master" : "/workshops/web-o-master"
+    "web-o-master" : "/workshops/web-o-master",
+    "touch-augmented-realities" : "/workshops/touch-augmented-realities",
+    "vehicle-dynamics" : "/workshops/vehicle-dynamics",
 }
