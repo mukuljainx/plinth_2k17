@@ -1,0 +1,105 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lectures | Plinth'17</title>
+        <script src="https://use.fontawesome.com/8720ae4a19.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/speaker.css" />
+    </head>
+    <body>
+        
+        <% include partials/header %>
+        <%if (!isLoggedIn) { %>
+                <% include partials/reg-form %>
+        <% } %>
+
+        <div class="content">
+            <div class="row">
+                <div class="small-10 small-centered text-center columns">
+                    <h4>Lecture Series</h4>
+                </div>
+            </div>
+        </div>
+        
+<!--
+        <div class="prev-card">
+            <a><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></a>
+        </div>
+        <div class="next-card">
+            <a><i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i></a>
+        </div>
+-->
+        
+        <div class="row">
+            <div class="small-10 small-centered columns">
+                <div class="row">
+                    <div class="small-7 small-push-3 medium-5 large-4 large-push-3 columns">
+                        <div class="dp-image">
+                            <img src="media/speakers_2k17/sangram.jpg">
+                        </div>
+                    </div>
+                    <div class="small-10 medium-5 large-5 large-pull-1 columns">
+                        <div class="details">
+                            <span class="title-speaker">Dr. Sangram Ganguly</span>
+                            <br />
+                            <span class="by-speaker">Senior Research Scientist, NASA</span>
+                            <br />
+                            <br />
+                            <span>Date : 18<sup>th</sup> - 19<sup>th</sup> Jan 2016</span>
+                            <br />
+                            <span>Venue : The LNMIIT, Jaipur </span>
+                            <br />
+                            <br />
+                            <ul>
+                                <li><a href="https://www.facebook.com/sangramganguly" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="https://twitter.com/sangramganguly" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+<!--                                <li><a href="https://www.quora.com/profile/Balaji-Viswanathan-2" target="_blank"><i class="fa fa-quora" aria-hidden="true"></i></i></a></li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="speaker-desc">
+            <div class="row">
+                <div class="small-8 small-centered columns">
+                    <span>Dr. Sangram Ganguly is a research scientist at the Biosphere Science Branch at NASA Ames Research Center, Moffett Field, California and at the Bay Area Environmental Research Institute. My work leverages expertise across a range of disciplines, including cloud computing solutions for big data science and analytics, machine learning, advanced satellite remote sensing and image analytics and climate sciences.</span>
+                </div>
+            </div>
+<!--
+            <div class="row content">
+                <div class="small-8 small-centered columns">
+                    <div class="content-head">Highlights</div>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>consectetur adipiscing elit</li>
+                        <li>Phasellus sit amet mattis</li>
+                        <li>ligula eget ipsum</li>
+                        <li>Cras consequat varius venenatis</li>
+                        <li>Nunc semper, orci ut dignissim varius</li>
+                    </ul>
+                </div>
+            </div>
+-->
+            <div class="row content">
+                <div class="small-8 small-centered text-center columns">
+                    <span class="content-head">For Any Queries Contact</span>
+                    <br />
+                    <br />
+                    <span>Kapil Matani : +91-9462317503 <span class="pipe-1">|</span> kapilmatani03@gmail.com</span>
+                    <br />
+                    <span>Deepika Singhal : +91-9461481539 <span class="pipe-2">|</span> deepikasinghal07@gmail.com</span>
+                </div>
+            </div>
+        </div>
+        
+        <% include partials/footer %>
+        
+    </body>
+</html>
