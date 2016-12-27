@@ -137,6 +137,7 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
         case "quizzing":
             eventx = Quiz;
             allowedUser = authUser.quiz;
+            break;
         case "workshop":
             eventx = Workshop;
             allowedUser = authUser.admin;
