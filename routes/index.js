@@ -1075,10 +1075,6 @@ router.get('/competitions/astronomy/armAgeddon', Verify.verifyOrdinaryUser ,func
     });
 });
 
-router.get('/mun' ,function(req, res) {
-    res.render('mun2017');
-});
-
 router.get('/wikitolearn' ,function(req, res) {
     res.render('wiki');
 });
@@ -1110,7 +1106,7 @@ router.get('/mun/pay', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
 });
-/*
+
 router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
@@ -1136,7 +1132,7 @@ router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
           }
       });
   }
-});*/
+});
 
 
 module.exports = router;

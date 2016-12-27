@@ -431,7 +431,7 @@ nav{
 
 .button.hollow:hover{
     background-color: #02B9EF;
-    border: 1px solid white;
+    border: 1px solid #02B9EF;
     color: white;
 }
 
@@ -461,7 +461,7 @@ nav{
 
 .eb-btn-active{
     background-color: #02B9EF !important;
-    border: 1px solid white !important;
+    border: 1px solid #02B9EF !important;
     color: white !important;
 }
 
@@ -496,7 +496,7 @@ nav{
     margin: auto;
 }
 
-.small-foot{  
+.small-foot{
     display: none;
     position: fixed;
     bottom: 0px;
