@@ -198,7 +198,7 @@ router.post('/workshop/register', Verify.verifyOrdinaryUser, function(req, res) 
 });
 
 router.get('/edit', Verify.verifyOrdinaryUser, function(req, res) {
-                if(req.decoded.sub !== "jainmukul1996@gmail.com"){
+        if(authUser.dev.indexOf(req.decoded.sub) === -1){
          res.end("You are not authorized.");
          return;
      }
@@ -235,7 +235,7 @@ router.get('/edit', Verify.verifyOrdinaryUser, function(req, res) {
 })
 
 router.post('/update', Verify.verifyOrdinaryUser, function(req, res) {
-    if(req.decoded.sub !== "jainmukul1996@gmail.com"){
+    if(authUser.dev.indexOf(req.decoded.sub) === -1){
          res.end("You are not authorized.");
          return;
      }
