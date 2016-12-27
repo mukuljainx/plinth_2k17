@@ -1075,9 +1075,9 @@ router.get('/competitions/astronomy/armAgeddon', Verify.verifyOrdinaryUser ,func
     });
 });
 
-// router.get('/mun' ,function(req, res) {
-//     res.render('mun');
-// });
+router.get('/mun' ,function(req, res) {
+    res.render('mun2017');
+});
 
 router.get('/wikitolearn' ,function(req, res) {
     res.render('wiki');
