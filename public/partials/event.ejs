@@ -160,8 +160,8 @@
                   <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Synopsis</a></li>
                   <li class="tabs-title"><a href="#panel2">Event Description</a></li>
                   <li class="tabs-title"><a href="#panel3">Rules</a></li>
-                  <% if( eventDetail.clubName === 'robotics'){ %><li class="tabs-title" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Arena</a></li><% } %>
-                  <li class="tabs-title" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Judges</a></li>
+                  <% if( eventDetail.clubName === 'robotics'){ %><li class="tabs-title" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Arena</a></li><% }else{ %>
+                  <li class="tabs-title" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Judges</a></li><% } %>
                   <li class="tabs-title" <% if(eventDetail.sponsors=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel6">Sponsors</a></li>
                 </ul>
 
@@ -170,9 +170,9 @@
                       <div class="tabs-title tabs-title-mobile is-active"><a href="#panel1" aria-selected="true">Synopsis</a></div>
                       <div class="tabs-title tabs-title-mobile"><a href="#panel2">Event Description</a></div>
                       <div class="tabs-title tabs-title-mobile"><a href="#panel3">Rules</a></div>
-                      <div class="tabs-title tabs-title-mobile" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Judges</a></div>
                       <% if( eventDetail.clubName === 'robotics'){ %><div class="tabs-title tabs-title-mobile"
-                      <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Arena</a></div><% } %>
+                      <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Arena</a></div><% }else{ %>
+                      <div class="tabs-title tabs-title-mobile" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Judges</a></div><% } %>
                       <div class="tabs-title tabs-title-mobile" <% if(eventDetail.sponsors=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel6">Sponsors</a></div>
                   </div>
                 </div>
