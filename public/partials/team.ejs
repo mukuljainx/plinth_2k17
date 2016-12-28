@@ -43,7 +43,8 @@
     <body>
         <% include header %>
         <div class="row">
-        	<div class="small-12 columns">Robotics</div>
+        	<h3 style="text-transform: capitalize;"><%= results[0].eventName %></h3>
+            <br>
         </div>
         <% for(var i=0; i<results.length; i++) { %>
     	    <div class="row content">
