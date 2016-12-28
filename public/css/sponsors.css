@@ -95,11 +95,25 @@ h4{
     height: auto;
     width: 150px;
 }
-
+.mwc{
+    margin-top: 55px;
+    height: auto;
+    width: 150px;
+}
+.pizza{
+    margin-top: 20px;
+    height: auto;
+    width: 120px;
+}
 .zoo{
     margin-top: 55px;
 }
-
+.pizz{
+    margin-top: -5px;
+}
+.roboflu{
+    margin-top: 60px;
+}
 .go{
     margin-top: 35px;
 }
