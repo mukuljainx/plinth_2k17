@@ -382,60 +382,6 @@ router.post('/mun/response', Verify.verifyOrdinaryUser,function(req,res){
 });
 
 
-//collect recepit
-
-router.get('/collect', Verify.verifyOrdinaryUser,function(req,res){
-    if(checksum.verifychecksum(paramlist, paytm.key)){
-        PaymentMUN.findOneAndUpdate({'order_id' : paramlist.ORDERID}, {$set : {'status' : paramlist.STATUS }},{new: true}, function(err, result){
-            if(err){
-                console.log(err)
-                return;
-            }
-            else{
-                if(paramlist.STATUS === "OPEN"){
-                    res.render('payment_open',{
-                        amount   : doc.payment.amount,
-                        order_id : doc.payment.order_id,
-                        eventName : doc.eventName
-                    })
-                }
-                else if(paramlist.STATUS === 'TXN_SUCCESS'){
-                    doc ={
-                        team : [
-                            {
-                                name : result.name,
-                                email : result.email,
-                                phoneNumber : result.phoneNumber,
-                            }
-                        ],
-                        payment :{
-                            order_id : result.order_id,
-                            date : paramlist.TXNDATE,
-                            amount : paramlist.TXNAMOUNT,
-                        },
-                        eventName : "MUN 2017"
-                    }
-                    res.render('payment_succeed',{
-                        details : doc,
-                        backURL : "/mun"
-                    })
-                }
-                else{
-                    res.render('payment_failed', {
-                        clubName : "",
-                        backURL : "/mun/pay",
-                    });
-                }
-            }
-        });
-    }
-    else{
-        res.render('payment_failed', {
-            clubName : "",
-        });
-    };
-});
-
 //startup
 
 router.post('/sif/fetchData', Verify.verifyOrdinaryUser, function(req, res){

@@ -12,6 +12,7 @@ var eventSchema = mongoose.Schema({
         memberLowerLimit  : Number,
         clubName          : String,
         eventName         : String,
+        eventFee          : Number,
         eventDate         : String,
         eventVenue        : String,
         prizeWorth        : String,
