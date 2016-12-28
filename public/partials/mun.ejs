@@ -78,7 +78,11 @@
                                     Accommodation : <%= results[i].accommodation %><br>
                                 </div>
                                 <div class="small-12 medium-4 large-3 columns end">
-                                    Status : <span class="status"><%= results[i].status %></span><br>
+                                    <% if(results[i].status === 'TXN_SUCCESS'){ %>
+                                        Status : <span style="color : green"><%= results[i].status %></span><br>
+                                    <% }else{ %>
+                                        Status : <span style="color : red"><%= results[i].status %></span><br>
+                                    <% } %>
                                     Amount : <%= results[i].amount - results[i].accommodation*200 %> + <%= results[i].accommodation*200 %> <br>
                                 </div>
             		        </div>
