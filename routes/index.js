@@ -761,7 +761,7 @@ router.get('/talks/balaji-vishwanathan', Verify.verifyOrdinaryUser ,function(req
   }
 });
 
-router.get('/profile', Verify.verifyOrdinaryUser ,function(req, res) {
+router.get('/myprofile', Verify.verifyOrdinaryUser ,function(req, res) {
 	if(req.decoded.sub === ""){
         isLoggedIn = false;
         res.redirect(301,'/');
