@@ -72,7 +72,14 @@ router.get('/sif/startup/payments', Verify.verifyOrdinaryUser ,function(req, res
 	               }
                 // check to see if theres already a user with that email
                 if (user){
-                    res.json(results);
+                    var responseData = [];
+                    for(var i=0; i<results.length; i++){
+                        responseData[i] = {
+                            name : results[i].name,
+                            status : results[i].status
+                        }
+                    }
+                    res.json(responseData);
                 }
             });
         }
@@ -107,6 +114,7 @@ router.get('/mun/payments', Verify.verifyOrdinaryUser ,function(req, res) {
 
 
                         for(var i=0; i<results.length; i++){
+                            if(results[i].email === '123@123.co' || results[i].email === 'jainmukul1996@gmail.com' || results[i].email === undefined) continue;
                             if(results[i].status === 'TXN_SUCCESS'){
                                 if(results[i].type === 'accommodation') accommodation_x++;
                                 if(results[i].type === 'delegate') delegate_x++;
