@@ -38,6 +38,9 @@
             .content:hover {
                 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
             }
+            .status{
+                color : red;
+            }
         </style>
     </head>
     <body>
@@ -46,17 +49,23 @@
         	<div class="small-12 columns">Robotics</div>
         </div>
         <% for(var i=0; i<results.length; i++) { %>
+            <% if(results[i].payment.status === 'TXN_SUCCESS'){ %>
+                <style>
+                    .status{
+                        color : green;
+                    }
+                </style>
+            <% } %>
     	    <div class="row content">
     	    	<div class="small-12 columns">
     		        <div class="row">
     		        	<div class="small-12 large-10 columns">
     		        	College : <%= results[i].team[0].college %><br>
                         <% if (paymentUser.indexOf(user.email) !== -1){ %>
-                            Payment: <%= results[i].payment.status %>
+                            Payment: <span class="status"><%= results[i].payment.status %></span>
                         <% }else{ %>
                             Payment: NA
                         <% } %>
-
     		        	</div>
     		        	<div class="small-12 large-2 columns">Team #<%= i+1 %></div>
     		        	<br><br>
