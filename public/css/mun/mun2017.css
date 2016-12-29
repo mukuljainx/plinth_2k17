@@ -406,7 +406,7 @@ nav{
 }
 .mun-blue-button{
     padding: 11px 22px;
-    width: 100px;
+    max-width: 200px;
     color: white;
     background: #02B9EF;
     border-radius: 2px;
@@ -435,6 +435,15 @@ nav{
     color: white;
 }
 
+.register .button.hollow a{
+    color: #02B9EF;
+    
+}
+
+.register .button.hollow:hover a{
+    color: white;
+}
+
 
 .eb-cardText{
 	text-align: center;
@@ -455,9 +464,15 @@ nav{
     color: gray;
 }
 
-.hollow{
+.eb-btns .hollow{
     max-width: 120px ;
 }
+
+
+.register .button.hollow{
+    width: 180px;
+}
+
 
 .eb-btn-active{
     background-color: #02B9EF !important;
@@ -505,4 +520,10 @@ nav{
     text-align: justify;
     width: 100%;
     padding: 15px;
+}
+
+@media screen and (max-width: 640px){
+    .contactUs p{
+        text-align: center !important;
+    }
 }
