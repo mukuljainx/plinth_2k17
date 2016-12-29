@@ -51,6 +51,41 @@ router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
     });
 });
 
+router.get('/sif/startup/payments', Verify.verifyOrdinaryUser ,function(req, res) {
+    var allowedUser = authUser.ecell;
+    var poc   = authUser.poc;
+
+
+    if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1 && allowedUser.indexOf(req.decoded.sub) === -1)){
+         res.end("You are not authorized. Login and try");
+         return;
+     }
+    PaymentSIF.find({},function (err, results) {
+        if (err){
+            return console.error(err);
+        }
+        else{
+            User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                // if there are any errors, return the error
+                if (err){
+                    return done(err);
+	               }
+                // check to see if theres already a user with that email
+                if (user){
+                    var responseData = [];
+                    for(var i=0; i<results.length; i++){
+                        responseData[i] = {
+                            name : results[i].name,
+                            status : results[i].status
+                        }
+                    }
+                    res.json(responseData);
+                }
+            });
+        }
+    });
+});
+
 router.get('/mun/payments', Verify.verifyOrdinaryUser ,function(req, res) {
     var poc = authUser.poc;
     var allowedUser = authUser.mun;
@@ -79,6 +114,7 @@ router.get('/mun/payments', Verify.verifyOrdinaryUser ,function(req, res) {
 
 
                         for(var i=0; i<results.length; i++){
+                            if(results[i].email === '123@123.co' || results[i].email === 'jainmukul1996@gmail.com' || results[i].email === undefined) continue;
                             if(results[i].status === 'TXN_SUCCESS'){
                                 if(results[i].type === 'accommodation') accommodation_x++;
                                 if(results[i].type === 'delegate') delegate_x++;
@@ -107,7 +143,7 @@ router.get('/mun/payments', Verify.verifyOrdinaryUser ,function(req, res) {
 router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
     var poc   = authUser.poc;
     var allowedUser = ['jainmukul1996@gmail.com'];
-
+    var paymentUser = poc.slice(0);
 
     if(EventURL[req.query.event] === undefined){
         res.end('Please Check the link once again there may some typo in event name');
@@ -118,10 +154,12 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
         case "astronomy":
             eventx = Astronomy;
             allowedUser = authUser.astronomy;
+            paymentUser = paymentUser.concat(allowedUser[0]);
             break;
         case "coding":
             eventx = Cybros;
             allowedUser = authUser.cybros;
+            paymentUser = paymentUser.concat(allowedUser[0]);
             break;
         case "literature":
             eventx = Literary;
@@ -129,14 +167,17 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
         case "robotics":
             eventx = Robotics;
             allowedUser = authUser.robotics;
+            paymentUser = paymentUser.concat(allowedUser[0]);
             break;
         case "management":
             eventx = Ecell;
             allowedUser = authUser.ecell;
+            paymentUser = paymentUser.concat(allowedUser[0]);
             break;
         case "quizzing":
             eventx = Quiz;
             allowedUser = authUser.quiz;
+            paymentUser = paymentUser.concat(allowedUser[0]);
             break;
         case "workshop":
             eventx = Workshop;
@@ -171,7 +212,7 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
                         results : results,
                         isLoggedIn : true,
                         user : user,
-                        paymentUser : poc
+                        paymentUser : paymentUser
                     });
                 }
             });

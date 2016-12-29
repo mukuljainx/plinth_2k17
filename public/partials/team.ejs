@@ -9,58 +9,78 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/common.css">
-        <link rel="stylesheet" href="css/robotics.css" />
+        <style type="text/css">
+        	body{
+        		background-color: #EFEEEF;
+		    	font-family: 'Roboto', sans-serif;
+        	}
+            nav {
+                height: 78px;
+                background: #4B7CE7;
+            }
+            footer{
+                background: #4B7CE7;
+                padding-top: 20px;
+            }
+            footer a{
+                color: white !important;
+            }
+            .navitem a {
+                color: white;
+            }
+        	.content{
+                transition: 0.3s;
+                box-shadow: 1px 2px 3px 0 rgba(0,0,0,.10);
+        		background-color: white;
+        		padding: 20px;
+        		margin-bottom: 20px;
+        	}
+            .content:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+        </style>
     </head>
     <body>
         <% include header %>
-
-        <style>
-            .partial-card{
-                border : 1px solid grey;
-                padding: 10px 5px;
-            }
-        </style>
-
-        <section>
-            <% for(var i=0; i<results.length; i++) { %>
-                <div class="text-center"><b>Team <%= i %></b></div>
-                <% if (paymentUser.indexOf(user.email) !== -1){ %>
-                <div class="text-center">
-                    Payment : <%= results[i].payment.status %>
-                </div>
-                <% } %>
-
-                <% for(var j=0; j<results[i].team.length; j++) { %>
-                <div class="row">
-                    <div class="column small-12 partial-card medium-4">
-                        name : <%= results[i].team[j].name %>
-                    </div>
-                    <div class="column small-12 partial-card medium-4">
-                        phone : <%= results[i].team[j].phoneNumber %>
-                    </div>
-                    <div class="column small-12 partial-card medium-4">
-                        email : <%= results[i].team[j].email %>
-                    </div>
-                    <div class="column small-12 partial-card medium-4">
-                        college : <%= results[i].team[j].college %>
-                    </div>
-                    <div class="column small-12 partial-card medium-2">
-                        representativeContact : <%= results[i].team[j].year %>
-                    </div>
-                    <div class="column small-12 partial-card medium-3">
-                        city : <%= results[i].team[j].city %>
-                    </div>
-                    <div class="column small-12 partial-card medium-3">
-                        accommodation : <%= results[i].team[j].accommodation %>
-                    </div>
-                    <%- results[i].team[j].field %>
-                </div>
-                <br>
-                <% } %>
-            <% } %>
-        </section>
-
-
+        <div class="row">
+        	<h3 style="text-transform: capitalize;"><%= results[0].eventName %></h3>
+            <br>
+        </div>
+        <% for(var i=0; i<results.length; i++) { %>
+    	    <div class="row content">
+    	    	<div class="small-12 columns">
+    		        <div class="row">
+    		        	<div class="small-12 large-10 columns">
+    		        	College : <%= results[i].team[0].college %><br>
+                        <% if (paymentUser.indexOf(user.email) !== -1){ %>
+                            <% if(results[i].payment.status === 'TXN_SUCCESS'){ %>
+                                Payment: <span style="color : green"><%= results[i].payment.status %></span>
+                            <% }else{ %>
+                                Payment: <span style="color : red"><%= results[i].payment.status %></span>
+                            <% } %>
+                        <% }else{ %>
+                            Payment: NA
+                        <% } %>
+    		        	</div>
+    		        	<div class="small-12 large-2 columns">Team #<%= i+1 %></div>
+    		        	<br><br>
+    		        	<hr>
+    		        </div>
+    		        <div class="row">
+                        <% for(var j=0; j<results[i].team.length; j++) { %>
+    		        	<div class="small-12 medium-4 large-3 columns end">
+    		        		<b>Member #<%= j+1 %></b><br style="line-height: 40px;">
+    		        		Name: <%= results[i].team[j].name %><br>
+    		        		Email : <%= results[i].team[j].email %><br>
+    		        		Phone : <%= results[i].team[j].phoneNumber %><br>
+    		        		Year : <%= results[i].team[j].year %>
+    		        	</div>
+                        <% } %>
+    		        </div>
+    		    </div>
+    	    </div>
+        <% } %>
+        <br>
         <% include footer %>
 
     </body>

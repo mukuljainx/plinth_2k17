@@ -55,6 +55,23 @@ router.post('/add', function(req, res) {
 
 });
 
+
+router.post('/competition', function(req, res) {
+    console.log(req.body);
+    Eventx.findOne({'eventName' : req.body.eventName}, function(err, result){
+            if(err){
+                console.log(err);
+                return;
+            }
+            else if(result){
+                res.json(result);
+                return;
+            }
+            else{
+                res.json({'response' : false});
+            }
+    })
+});
 //user registration
 
 router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
@@ -220,7 +237,7 @@ router.get('/edit', Verify.verifyOrdinaryUser, function(req, res) {
      	               }
                      // check to see if theres already a user with that email
                      if (user){
-                         var nameArray = ["imageLink" ,"memberUpperLimit" , "memberLowerLimit","clubName", "eventName", "displayName", "eventDate", "eventVenue", "prizeWorth", "synopsis", "eventDescription" ,"rules", "judges", "query", "sponsors"];
+                         var nameArray = ["imageLink" ,"memberUpperLimit" , "memberLowerLimit","clubName", "eventName", "displayName", "eventDate", "eventFee" ,"eventVenue", "prizeWorth", "synopsis", "eventDescription" ,"rules", "judges", "query", "sponsors"];
                          res.render('partials/event-edit',{
                              eventData : eventx,
                              nameArray : nameArray,

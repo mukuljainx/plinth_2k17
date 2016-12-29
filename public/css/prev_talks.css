@@ -84,7 +84,12 @@ footer{
     margin-top: 100px;
 }
 
-.prev-btn{
-        margin-top: 50px;
+.button.hollow.alert{
+    color: #b5001d;
+    border: 1px solid;
 }
 
+.button.hollow.alert:focus, .button.hollow.alert:hover {
+    background: #b5001d;
+    color: white;
+}

@@ -52,6 +52,7 @@
 
         <a data-open="event-registration-form" class="event-registration-form-btn" style="opacity:0; width : 0px; height : 0px;">Register</a>
 
+
         <!-- Payment Modal -->
 
         <div class="reveal" id="payment-modal" data-reveal style="padding : 30px;">
@@ -84,10 +85,7 @@
 
         <div class="content">
             <div class="row">
-                <div class="small-2 columns">
-                    <a href="/competitions/<%- eventDetail.clubName %>"><i class="fa fa-long-arrow-left fa-2x" style="color:#3ca37c" aria-hidden="true"></i></a>
-                </div>
-                <div class="small-8 text-center columns end">
+                <div class="small-10 small-centered text-center columns">
                     <h4 style="text-transform: capitalize;"><%- eventDetail.clubName %></h4>
                 </div>
             </div>
@@ -108,8 +106,6 @@
                         <div class="details">
                             <span class="title-workshop"><%- eventDetail.displayName %></span>
                             <br />
-                            <br />
-                            <span>Fee INR. : <%- eventDetail.eventFee %></span>
                             <br />
                             <span>Date : <%- eventDetail.eventDate %></span>
                             <br />
@@ -163,8 +159,7 @@
                   <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Synopsis</a></li>
                   <li class="tabs-title"><a href="#panel2">Event Description</a></li>
                   <li class="tabs-title"><a href="#panel3">Rules</a></li>
-                  <% if( eventDetail.clubName === 'robotics'){ %><li class="tabs-title" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Arena</a></li><% }else{ %>
-                  <li class="tabs-title" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Judges</a></li><% } %>
+                  <li class="tabs-title" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Judges</a></li>
                   <li class="tabs-title" <% if(eventDetail.sponsors=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel6">Sponsors</a></li>
                 </ul>
 
@@ -173,9 +168,7 @@
                       <div class="tabs-title tabs-title-mobile is-active"><a href="#panel1" aria-selected="true">Synopsis</a></div>
                       <div class="tabs-title tabs-title-mobile"><a href="#panel2">Event Description</a></div>
                       <div class="tabs-title tabs-title-mobile"><a href="#panel3">Rules</a></div>
-                      <% if( eventDetail.clubName === 'robotics'){ %><div class="tabs-title tabs-title-mobile"
-                      <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Arena</a></div><% }else{ %>
-                      <div class="tabs-title tabs-title-mobile" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Judges</a></div><% } %>
+                      <div class="tabs-title tabs-title-mobile" <% if(eventDetail.judges=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel4">Judges</a></div>
                       <div class="tabs-title tabs-title-mobile" <% if(eventDetail.sponsors=="<p>Details will be Updated soon</p>") { %> style="display: none" <% } %>  ><a href="#panel6">Sponsors</a></div>
                   </div>
                 </div>
@@ -369,7 +362,6 @@
                         return;
                     }
                     if("<%- eventDetail.eventName %>" === "sif" ){
-                        var fieldOption = ['technical', 'management', 'content', 'social'];
                         userx.field = [];
                         for(var i=0; i<4; i++){
                             if($('.student-sif-checkbox-' + i).is(":checked")){
