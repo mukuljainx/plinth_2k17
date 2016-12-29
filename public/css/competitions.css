@@ -36,10 +36,12 @@ h4{
   position: absolute;
   bottom: 20px;
   right: 20px;
+  color:#2499E8;
 }
 
-.card a{
+.card	 a{
     float:right;
+    color:black;
 /*    margin-bottom: 50px;*/
 }
 

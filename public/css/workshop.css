@@ -170,6 +170,9 @@ footer{
         height: 100px;
         margin-bottom: 20px;
 }
+.card a{
+    color:black;
+}
 
 .name {
     font: bold 15px 'Roboto';
