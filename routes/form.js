@@ -143,7 +143,7 @@ router.get('/mun/payments', Verify.verifyOrdinaryUser ,function(req, res) {
 router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
     var poc   = authUser.poc;
     var allowedUser = ['jainmukul1996@gmail.com'];
-
+    var paymentUser = poc.slice(0);
 
     if(EventURL[req.query.event] === undefined){
         res.end('Please Check the link once again there may some typo in event name');
@@ -154,10 +154,12 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
         case "astronomy":
             eventx = Astronomy;
             allowedUser = authUser.astronomy;
+            paymentUser = paymentUser.concat(allowedUser[0]);
             break;
         case "coding":
             eventx = Cybros;
             allowedUser = authUser.cybros;
+            paymentUser = paymentUser.concat(allowedUser[0]);
             break;
         case "literature":
             eventx = Literary;
@@ -165,14 +167,17 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
         case "robotics":
             eventx = Robotics;
             allowedUser = authUser.robotics;
+            paymentUser = paymentUser.concat(allowedUser[0]);
             break;
         case "management":
             eventx = Ecell;
             allowedUser = authUser.ecell;
+            paymentUser = paymentUser.concat(allowedUser[0]);
             break;
         case "quizzing":
             eventx = Quiz;
             allowedUser = authUser.quiz;
+            paymentUser = paymentUser.concat(allowedUser[0]);
             break;
         case "workshop":
             eventx = Workshop;
@@ -207,7 +212,7 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
                         results : results,
                         isLoggedIn : true,
                         user : user,
-                        paymentUser : poc
+                        paymentUser : paymentUser
                     });
                 }
             });

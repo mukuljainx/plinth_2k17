@@ -55,6 +55,23 @@ router.post('/add', function(req, res) {
 
 });
 
+
+router.post('/competition', function(req, res) {
+    console.log(req.body);
+    Eventx.findOne({'eventName' : req.body.eventName}, function(err, result){
+            if(err){
+                console.log(err);
+                return;
+            }
+            else if(result){
+                res.json(result);
+                return;
+            }
+            else{
+                res.json({'response' : false});
+            }
+    })
+});
 //user registration
 
 router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
