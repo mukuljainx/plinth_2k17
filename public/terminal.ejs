@@ -132,20 +132,17 @@
     }
     <% } %>
 
-    function unloadcallback(){
-        console.log('123');
-    };
 
     var cliUser = {};
 
     jQuery(document).ready(function($) {
+        
 
         $('.content').terminal(function(command, term) {
-
+            
             function cliUserRegisterDetail(){
-    //                term.echo('');
 
-                                term.echo('[[;#84878b;#30353A]//enter full name]');
+                                term.echo('name > ' + data.name);
     //                            term.echo(' ');
                                     term.push(function(command, term) {
                                         if(command != ''){
@@ -169,7 +166,7 @@
     //                                                        term.echo(' ');
     //                            term.echo('//enter full name');
     //                                                        term.echo(' ');
-
+                                                            term.echo('email > ' + data.email);
                                                             term.push(function(command, term) {
                                                                 if(command != ''){
     //                                                                console.log(command);
@@ -334,7 +331,6 @@
                         term.push(function(command, term) {
                             if(command == 'google'){
                                 $(".reg-with-google").trigger("click");
-                                cliUserRegisterDetail();
     //                            term.push(function(command, term) {
     //                                if(command != ''){
     //                                register(command);

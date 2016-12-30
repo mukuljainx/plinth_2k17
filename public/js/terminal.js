@@ -32,8 +32,11 @@ function unloadcallback(){
         $.post( "/user/user_validate", { "token" : localStorage.temptoken })
         .done(function( data ) {
             deactivateLoader();
+            cliUserRegisterDetail();
             if(!data.response){
-                console.log(data)
+                cliUser.name = data.name;
+                cliUser.email = data.email;
+                console.log(data);
                 formReg = 1;
                 // $('.user-name').val(data.name);
                 // $('.email').val(data.email);
