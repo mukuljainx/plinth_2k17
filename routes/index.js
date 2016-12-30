@@ -257,6 +257,41 @@ router.get('/competitions/literature/wrangle', Verify.verifyOrdinaryUser ,functi
      });
 });
 
+router.get('/competitions/literature/rostrum', Verify.verifyOrdinaryUser ,function(req, res) {
+    Eventx.findOne({'eventName' : 'rostrum'}, function(err, eventx) {
+         // if there are any errors, return the error
+         if (err)
+             return done(err);
+         // check to see if theres already a user with that email
+         if (eventx){
+             if(req.decoded.sub === ""){
+                 isLoggedIn = false;
+                 res.render('partials/event',{
+                     eventDetail : eventx,
+                     isLoggedIn : isLoggedIn
+                 });
+             }
+             else {
+                 isLoggedIn = true;
+                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                     // if there are any errors, return the error
+                     if (err)
+                         return done(err);
+                     // check to see if theres already a user with that email
+                     if (user){
+                         delete user._id;
+                         res.render('partials/event',{
+                             eventDetail : eventx,
+                             isLoggedIn : isLoggedIn,
+                             user : user,
+                         });
+                     }
+                 });
+             }
+         }
+     });
+});
+
 router.get('/competitions/quizzing/quest', Verify.verifyOrdinaryUser ,function(req, res) {
     Eventx.findOne({'eventName' : 'quest'}, function(err, eventx) {
          // if there are any errors, return the error

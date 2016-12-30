@@ -6,6 +6,7 @@ module.exports = {
     "iupc" : "/competitions/coding/iupc",
     "iupc-distraction" : "/competitions/coding/iupc_distraction",
     "wrangle" : "/competitions/literature/wrangle",
+    "rostrum" : "/competitions/literature/rostrum",
     "sif" : "/competitions/management/sif",
     "quest" : "/competitions/quizzing/quest",
     "LFR" : "/competitions/robotics/lfr",
