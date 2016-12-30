@@ -79,7 +79,7 @@ function logOut(){
     });
 }
 
-function unloadcallback(){
+var unloadcallback = function(){
     if(localStorage.temptoken !== undefined){
         activateLoader();
         $.post( "/user/user_validate", { "token" : localStorage.temptoken })

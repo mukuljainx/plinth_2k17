@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="css/terminal/jquery.terminal.css">
     <link rel="stylesheet" href="css/terminal/terminal.css">
     <link href="https://fonts.googleapis.com/css?family=Exo+2|Roboto" rel="stylesheet">
-      
+
   </head>
   <body>
-      
+
       <% include partials/header %>
         <%if (!isLoggedIn) { %>
                 <% include partials/reg-form %>
@@ -94,23 +94,19 @@
     <script src="js/terminal/terminal.js"></script>
 
     <script>
-        function closeModal(){
-            $('.close-button').trigger('click');
-        }
-        
-        function unloadcallback(){
-            console.log('dsad');
+        unloadcallback = function(){
+            console.log('123');
         };
-        
+
         var cliUser = {};
-        
+
 jQuery(document).ready(function($) {
 
     $('.content').terminal(function(command, term) {
-        
+
         function cliUserRegisterDetail(){
 //                term.echo('');
-                            
+
                             term.echo('[[;#84878b;#30353A]//enter full name]');
 //                            term.echo(' ');
                                 term.push(function(command, term) {
@@ -120,77 +116,77 @@ jQuery(document).ready(function($) {
 //                                        term.echo(' ');
                                         term.echo('[[;#84878b;#30353A]//enter male or female]');
 //                                        term.echo(' ');
-                                        
+
                                         term.push(function(command, term) {
                                             if(command != ''){
 //                                                console.log(command);
                                                 cliUser.gender = command;
 //                                                term.echo(' ');
 //                                                term.echo(' ');
-                                        
+
                                                 term.push(function(command, term) {
                                                     if(command != ''){
-//                                                        console.log(command);    
+//                                                        console.log(command);
                                                         cliUser.phoneNumber = command;
 //                                                        term.echo(' ');
 //                            term.echo('//enter full name');
 //                                                        term.echo(' ');
-                                        
+
                                                         term.push(function(command, term) {
                                                             if(command != ''){
-//                                                                console.log(command);    
+//                                                                console.log(command);
                                                                 cliUser.email = command;
 //                                                                term.echo(' ');
 //                            term.echo('//enter full name');
 //                                                                term.echo(' ');
-                                        
+
                                                                 term.push(function(command, term) {
                                                                     if(command != ''){
-//                                                                        console.log(command);    
+//                                                                        console.log(command);
                                                                         cliUser.institute = command;
                                                                         term.echo(' ');
                                                                         term.echo('[[;#84878b;#30353A]//enter 1,2,3,4,5 or 0 (0 = NA)]');
                                                                         term.echo(' ');
-                                        
+
                                                                         term.push(function(command, term) {
                                                                             if(command != ''){
-//                                                                                console.log(command);    
+//                                                                                console.log(command);
                                                                                 cliUser.year = command;
 //                                                                                term.echo(' ');
                                                                                 term.echo('[[;#84878b;#30353A]//enter yes or no]');
 //                                                                                term.echo(' ');
-                                        
+
                                                                                 term.push(function(command, term) {
                                                                                     if(command != ''){
                                                                                         cliUser.accomodation = command;
 //                                                                                        term.echo(' ');
 //                                                                                        term.echo(' ');
-                                                                                        console.log(cliUser);    
-                                        
+                                                                                        console.log(cliUser);
+
                                                                                     }
                                                                                 }, {
                                                                                     prompt : 'Accomodation >',
                                                                                     name : 'Accomodation'
                                                                                 });
-                                                                                
+
                                                                             }
                                                                         }, {
                                                                             prompt : 'Year >',
                                                                             name : 'Year'
                                                                         });
-                                                                        
+
                                                                     }
                                                                 }, {
                                                                     prompt : 'Institute >',
                                                                     name : 'Institute'
                                                                 });
-                                                                
+
                                                             }
                                                         }, {
                                                             prompt : 'Email >',
                                                             name : 'Email'
                                                         });
-                                                        
+
                                                     }
                                                 }, {
                                                     prompt : 'Phone No >',
@@ -209,7 +205,7 @@ jQuery(document).ready(function($) {
                                 name : 'Name'
                             });
         };
-        
+
        if (command == 'plinth'){
             term.echo('[[b;;;paddingParent]Commands: ]');
             term.echo("[[b;blue;#30353A;paddingChild]    about]");
@@ -358,7 +354,7 @@ jQuery(document).ready(function($) {
 });
 
 </script>
-         
-        
+
+
   </body>
 </html>
