@@ -12,7 +12,9 @@ body{
     color:white;
     text-decoration: none;
 }
-
+.navitem a:before {
+    background: #ffffff !important;
+}
 .main-logo{
     max-width:600px;
     height: 400px;
