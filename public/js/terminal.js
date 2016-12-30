@@ -1,60 +1,7 @@
 $(document).foundation();
 
-function proceedNext(){
-    $('.event-registration-form-message').css('display', 'none');
-    $('.event-registration-form-part').css('display', 'block');
-}
-
-function workshopProceedNext(){
-    $('.workshop-registration-form-message').css('display', 'none');
-    $('.event-registration-form-part').css('display', 'block');
-}
-
 formReg = 0;
 
-//HAMBURGER
-
-$('.ham-btn').click(function() {
-    $('.ham-wrapper').animate({width: "200px"}, 200);
-    $('.ham-close').css("display", "block");
-});
-
-$('.ham-close').click(function() {
-    $('.ham-close').css("display","none");
-    $('.ham-wrapper').animate({width: "0px"}, 200);
-});
-
-$('body').click(function() {
-    var toggle = $('.ham-wrapper').width();
-    if(toggle > 0){
-        $('.ham-wrapper').animate({width: "0px"}, 200);
-        $('.ham-close').css("display","none");
-    }
-});
-
-//cookie service
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length,c.length);
-        }
-    }
-    return "";
-}
-
-
-//Register Modal
-
-$('.register-pop-up').click(function(){
-  $('.wrapper-form').css('display','block');
-});
 
 // popus window for login
 
@@ -86,21 +33,12 @@ function unloadcallback(){
         .done(function( data ) {
             deactivateLoader();
             if(!data.response){
+                console.log(data)
                 formReg = 1;
-                workshopProceedNext();
-                proceedNext();
-                $('.close-button').trigger('click'); // old form
-                $('.holaxx').trigger('click'); // register form
-                $('.reg-form-event-pagging').css('display','none');
-                $('.event-registration-form-btnx').removeClass('btn-disabled');
-                $('.reg-social').css("display","none"); // register btn with fb and google
-                $('.add-member-btn').css("display", "none");
-                $('.user-name').val(data.name);
-                $('.email').val(data.email);
+                // $('.user-name').val(data.name);
+                // $('.email').val(data.email);
             }
             else{
-                $('.close-button').trigger('click');
-                $('.close-button').trigger('click');
                 location.reload();
                 localStorage.temptoken = "";
             }
@@ -151,17 +89,7 @@ $(function()
 // Reg Form Object
 
 function getUserDetails(){
-    userDetail ={
-        name : $('.user-name').val(),
-        gender : $('input:radio[name=gender]:checked').val(),
-        phoneNumber : $('.phone').val(),
-        email : $('.email').val(),
-        college : $('.college').val(),
-        year : $('input:radio[name=year]:checked').val(),
-        city : $('.city').val(),
-        accommodation : $('input:radio[name=acc]:checked').val()
-    }
-    return userDetail;
+    return cliUser;
 }
 
 function validateUserDetails(data){
