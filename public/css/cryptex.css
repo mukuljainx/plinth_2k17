@@ -15,7 +15,7 @@ body{
 
 .main-logo{
     margin-top:100px;
-    max-width:600px;
+    max-width:650px;
     height: 400px;
     border: 1px white;
     border-width: 4px;  
@@ -25,6 +25,8 @@ body{
 
 .scaledown{
     transform:Scale(0.4);
+    margin: -110px;
+    padding-top: 125px;
 }
 
 .logo-content{
@@ -67,13 +69,74 @@ body{
     font:10px;
 }
 .logo-name{
-    font-size: 40px;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 60px;
     margin-top:-10px;
     padding-top: -10px;
+}
+.backtoques{
+    font-family: 'Exo 2:700', sans-serif;
+    margin-bottom: 10px;
+    margin-top:5px;
+}
+.backtoques a{
+    color:white;
+}
+.heading{
+    background-color: white;
+    color:black;
+    margin-bottom: 30px;
+    padding: 10px;
+    font-family: 'Raleway', sans-serif;
+}
+.number{
+    font-family: 'Raleway', sans-serif;
+}
+.contentrows{
+    background-color: white;
+    color:black;
+    margin-bottom: 1px;
+    padding: 10px;
+    font-family: 'Exo 2', sans-serif;
+}
+.contentmain{
+    background-color: white;
+    color:black;
+    font-family: 'Exo 2', sans-serif;
+    padding: 10px;
+}
+.contentImage{
+    margin-top:40px;
+    margin-bottom: 40px;
+}
+.contentQues{
+    text-align: center;
+    margin-top:40px;
+    margin-bottom: 40px;
+}
+.contentInput{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.contentSubmit{
+    text-align: center;
+    margin-bottom: 30px;
+    border-style: solid;
+    border-width: 1px;
+    margin-left:auto;
+    margin-right:auto;
+    width: 200px ;
+}
+.contentSubmit a{
+    color:black;
+    display: block;
+    padding: 8px;
 }
 
 .login{
     padding-top: 50px;
+    font-family: 'Exo 2:300', sans-serif;
 }
 
 .login a{
@@ -316,6 +379,11 @@ body{
         position: relative;
         top: -160px;
     }
+    .scaledown{
+    transform:Scale(0.4);
+    margin: -70px;
+    padding-top: 50px;
+}
 }
 
 @media screen and (max-width: 470px) {

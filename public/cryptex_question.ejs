@@ -22,7 +22,8 @@
         <script src="https://use.fontawesome.com/8720ae4a19.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Exo+2:300,400" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Exo+2:300,400,700" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet"> 
        <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/cryptex.css">
@@ -37,44 +38,32 @@
                 <% include partials/reg-form %>
         <% } %>
 
-            <div class="row ">
-                <div class="small-12 small-centered column text-center main-logo">
-
-                        <div>
-                        	<div class="scaledown">
-                        		<span class="logo-plinth">plinth</span>   <span class="logo-2017">2017</span>
-                        		<br /><span class="logo-desc">Techno-Management Literary Fest</span>
-                        	</div>
-                        	<br /><span class="logo-present">presents</span>
-                        	<br /><span class="logo-name">Cryptex</span>
-                        	<div class="login">
-	                        	<div class="withsocial">
-	                        		<a  href="">
-	                        		<i class="fa fa-facebook" aria-hidden="true"></i>
-	                        		Continue with Facebook
-	                        		</a>
-	                        	</div>
-	                        	<div class="withsocial">
-	                        	   	<a href="">
-	                        		<i class="fa fa-google-plus" aria-hidden="true"></i>
-	                        		Continue with Google
-	                        		</a>
-	                        	</div>
-	                        </div>
+        <div class="row backtoques">
+        	<div class="small-12 column">
+            <a href="cryptex_leaderboard.ejs">Leaderboard ></a>
+            </div>
+        </div>
+        <div class="row contentmain">
+            <div class="small-12 column">
+                Level #1
+                <div class="row">
+                    <div class="small-10 medium-8 large-6 small-centered column">
+                        <div class="contentImage">
+                            <img src="media/plinth-preview.jpg">
                         </div>
-                        <!--<img class="logo-svg" src="media/OuterBoundary.svg" alt="Plinth-17"  />
-                    	<div id="logo-svg"></div>	
-                        <div class="logo-content">
-                        <span class="logo-clg">EngineerIndya <span style="font-size: 12px;">presents</span></span>
-                        <br /><span class="logo-plinth">plinth</span>   <span class="logo-2017">2017</span>
-                        <br /><span class="logo-desc">Techno-Management Literary Fest</span>
-                        <br /><span class="logo-name">Cryptex</span>
-                        <br /><span class="logo-date">January 18-19, 2017</span>
-                        </div>-->
-
+                        <div class="contentQues">
+                            Q. Why did Kattapa kill Bahubali?
+                        </div>
+                        <div class="contentInput">
+                            <input type="text" class="answer" id="answer" value="answer" required="">
+                        </div>
+                        <div class="contentSubmit" >
+                            <a href="sumbitlink">Submit</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
+        </div>                
         <% include partials/footer%>
 
         <script src="js/index.js"></script>
