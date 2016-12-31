@@ -22,7 +22,7 @@
         <script src="https://use.fontawesome.com/8720ae4a19.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Exo+2:300,400" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Exo+2:300,400" rel="stylesheet">
        <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/cryptex.css">
@@ -37,54 +37,44 @@
                 <% include partials/reg-form %>
         <% } %>
 
-            <div class="row ">
+            <div class="row">
                 <div class="small-12 small-centered column text-center main-logo">
-
-                        <div>
-                        	<div class="scaledown">
-                        		<span class="logo-plinth">plinth</span>   <span class="logo-2017">2017</span>
-                        		<br /><span class="logo-desc">Techno-Management Literary Fest</span>
-                        	</div>
-                        	<br /><span class="logo-present">presents</span>
-                        	<br /><span class="logo-name">Cryptex</span>
-                        	<div class="login">
-	                        	<div class="withsocial">
-	                        		<a  href="">
-	                        		<i class="fa fa-facebook" aria-hidden="true"></i>
-	                        		Continue with Facebook
-	                        		</a>
-	                        	</div>
-	                        	<div class="withsocial">
-	                        	   	<a href="">
-	                        		<i class="fa fa-google-plus" aria-hidden="true"></i>
-	                        		Continue with Google
-	                        		</a>
-	                        	</div>
-	                        </div>
+                    <div>
+                    	<div class="scaledown">
+                    		<span class="logo-plinth">plinth</span>   <span class="logo-2017">2017</span>
+                    		<br /><span class="logo-desc">Techno-Management Literary Fest</span>
+                    	</div>
+                    	<br /><span class="logo-present">presents</span>
+                    	<br /><span class="logo-name">Cryptex</span>
+                    	<div class="login">
+                            <% if(isLoggedIn){ %>
+                                <div class="withsocial">
+                            		<a class="">
+                            		Start the Game
+                            		</a>
+                            	</div>
+                            <% }else{ %>
+                                <div class="withsocial">
+                            		<a class="popupwindow" href="/user/auth/facebook" rel="windowCallUnload">
+                            		<i class="fa fa-facebook" aria-hidden="true"></i>
+                            		Continue with Facebook
+                            		</a>
+                            	</div>
+                            	<div class="withsocial">
+                            	   	<a class="popupwindow" href="/user/auth/google">
+                            		<i class="fa fa-google-plus" aria-hidden="true"></i>
+                            		Continue with Google
+                            		</a>
+                            	</div>
+                            <% } %>
                         </div>
-                        <!--<img class="logo-svg" src="media/OuterBoundary.svg" alt="Plinth-17"  />
-                    	<div id="logo-svg"></div>	
-                        <div class="logo-content">
-                        <span class="logo-clg">EngineerIndya <span style="font-size: 12px;">presents</span></span>
-                        <br /><span class="logo-plinth">plinth</span>   <span class="logo-2017">2017</span>
-                        <br /><span class="logo-desc">Techno-Management Literary Fest</span>
-                        <br /><span class="logo-name">Cryptex</span>
-                        <br /><span class="logo-date">January 18-19, 2017</span>
-                        </div>-->
-
+                    </div>
                 </div>
             </div>
 
         <% include partials/footer%>
 
         <script src="js/index.js"></script>
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.0/vivus.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.0/vivus.min.js"></script>
-
-        <script>
-            new Vivus('logo-svg', {duration: 3000, file: '/public/media/OuterBoundary.svg'});
-        </script>
--->
 
     </body>
 </html>

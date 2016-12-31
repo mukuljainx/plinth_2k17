@@ -9,6 +9,7 @@ var userSchema = mongoose.Schema({
         email          : String,
         name           : String,
         phoneNumber    : Number,
+        cryptexLevel   : Number,
         college        : String,
         year           : Number,
         city           : String,
