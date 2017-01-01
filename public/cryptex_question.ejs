@@ -36,12 +36,12 @@
         <%if (!isLoggedIn) { %>
                 <% include partials/reg-form %>
         <% } %>
-        <section class="cryptex-wrapper footer-adjust">
+        <section class="cryptex-wrapper footer-adjust question">
             <div class="row backtoques">
-                <a href="#">Leaderboard ></a>
+                <a href="#leaderboard" onclick="displayLeaderBoard()">Leaderboard ></a>
             </div>
             <div class="row">
-                <div class="small-12 column contentmain">
+                <div class="small-10 small-centered medium-12 column contentmain">
                     <span class="level-text" >Level #1<span>
                     <div class="row">
                         <div class="small-10 medium-8 large-6 small-centered column">
@@ -65,8 +65,47 @@
             </div>
         </section>
 
+        <section class="cryptex-wrapper footer-adjust leaderboard">
+            <div class="row backtoques">
+                <a href="#dashboard" onclick="displayQuestion()">< Back to questions</a>
+            </div>
+            <div class="row heading">
+                <div class="small-2 column">
+                     &nbsp
+                </div>
+                <div class="small-4 column">
+                    Name
+                </div>
+                <div class="small-4 column">
+                    College
+                </div>
+                <div class="small-2 column">
+                    Level
+                </div>
+            </div>
+
+            <div class="rankBoard">
+                <div class="row contentrows">
+                    <div class="small-2 number column">
+                         #1
+                    </div>
+                    <div class="small-4 column">
+                        Baba Ramdev
+                    </div>
+                    <div class="small-4 column">
+                        Yog School
+                    </div>
+                    <div class="small-2 column">
+                        999
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
         <% include partials/footer%>
         <script src="js/index.js"></script>
+        <script src="js/cryptex.js"></script>
 
     </body>
 </html>
