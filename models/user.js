@@ -9,6 +9,8 @@ var userSchema = mongoose.Schema({
         email          : String,
         name           : String,
         phoneNumber    : Number,
+        cryptexLevel   : Number, 
+        cryptexTime    : Number, //the time when cryptexLevel got updated;
         college        : String,
         year           : Number,
         city           : String,
