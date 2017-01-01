@@ -28,6 +28,9 @@
         <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/cryptex.css">
         <style>
+            .master-wrapper{
+                display: none
+            }
         </style>
     </head>
     <body>
@@ -38,7 +41,7 @@
         <% } %>
         <section class="cryptex-wrapper footer-adjust question">
             <div class="row backtoques">
-                <a href="#leaderboard" onclick="displayLeaderBoard()">Leaderboard ></a>
+                <a href="/cryptex/leaderboard">Leaderboard ></a>
             </div>
             <div class="row">
                 <div class="small-10 small-centered medium-12 column contentmain">
@@ -63,44 +66,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section class="cryptex-wrapper footer-adjust leaderboard">
-            <div class="row backtoques">
-                <a href="#dashboard" onclick="displayQuestion()">< Back to questions</a>
-            </div>
-            <div class="row heading">
-                <div class="small-2 column">
-                     &nbsp
-                </div>
-                <div class="small-4 column">
-                    Name
-                </div>
-                <div class="small-4 column">
-                    College
-                </div>
-                <div class="small-2 column">
-                    Level
-                </div>
-            </div>
-
-            <div class="rankBoard">
-                <div class="row contentrows">
-                    <div class="small-2 number column">
-                         #1
-                    </div>
-                    <div class="small-4 column">
-                        Baba Ramdev
-                    </div>
-                    <div class="small-4 column">
-                        Yog School
-                    </div>
-                    <div class="small-2 column">
-                        999
-                    </div>
-                </div>
-            </div>
-
         </section>
 
         <% include partials/footer%>

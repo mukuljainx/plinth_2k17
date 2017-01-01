@@ -22,12 +22,15 @@
         <script src="https://use.fontawesome.com/8720ae4a19.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Exo+2:300,400" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Exo+2:300,400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
        <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/cryptex.css">
         <style>
-
+            .master-wrapper{
+                display: none
+            }
         </style>
     </head>
     <body>
@@ -36,44 +39,47 @@
         <%if (!isLoggedIn) { %>
                 <% include partials/reg-form %>
         <% } %>
+        <section class="cryptex-wrapper footer-adjust leaderboard">
+            <div class="row backtoques">
+                <a href="/cryptex/play">< Back to questions</a>
+            </div>
+            <div class="row heading">
+                <div class="small-2 column">
+                     &nbsp
+                </div>
+                <div class="small-4 column">
+                    Name
+                </div>
+                <div class="small-4 column">
+                    College
+                </div>
+                <div class="small-2 column">
+                    Level
+                </div>
+            </div>
 
-            <div class="row">
-                <div class="small-12 small-centered column text-center main-logo">
-                    <div>
-                    	<div class="scaledown">
-                    		<span class="logo-plinth">plinth</span>   <span class="logo-2017">2017</span>
-                    		<br /><span class="logo-desc">Techno-Management Literary Fest</span>
-                    	</div>
-                    	<br /><span class="logo-present">presents</span>
-                    	<br /><span class="logo-name">Cryptex</span>
-                    	<div class="login">
-                            <% if(isLoggedIn){ %>
-                                <div class="withsocial">
-                            		<a href="/cryptex/play">
-                            		Start the Game
-                            		</a>
-                            	</div>
-                            <% }else{ %>
-                                <div class="withsocial">
-                            		<a class="popupwindow" href="/user/auth/facebook" rel="windowCallUnload">
-                            		<i class="fa fa-facebook" aria-hidden="true"></i>
-                            		Continue with Facebook
-                            		</a>
-                            	</div>
-                            	<div class="withsocial">
-                            	   	<a class="popupwindow" href="/user/auth/google">
-                            		<i class="fa fa-google-plus" aria-hidden="true"></i>
-                            		Continue with Google
-                            		</a>
-                            	</div>
-                            <% } %>
-                        </div>
+            <div class="rankBoard">
+                <div class="row contentrows">
+                    <div class="small-2 number column">
+                         #1
+                    </div>
+                    <div class="small-4 column">
+                        Baba Ramdev
+                    </div>
+                    <div class="small-4 column">
+                        Yog School
+                    </div>
+                    <div class="small-2 column">
+                        999
                     </div>
                 </div>
             </div>
 
-        <% include partials/footer%>
+        </section>
 
+        <% include partials/footer%>
+        <script src="js/index.js"></script>
+        <script src="js/cryptex.js"></script>
 
     </body>
 </html>
