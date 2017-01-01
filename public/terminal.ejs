@@ -10,7 +10,29 @@
     <link rel="stylesheet" href="css/terminal/jquery.terminal.css">
     <link rel="stylesheet" href="css/terminal/terminal.css">
     <link href="https://fonts.googleapis.com/css?family=Exo+2|Roboto" rel="stylesheet">
+              <script src="https://use.fontawesome.com/8720ae4a19.js"></script>
 
+      <style>
+          .navitem a{
+              color: white;
+          }
+          
+          .navitem a:before{
+              background-color: white;
+          }
+          
+          .footer-text a{
+              color: white;
+          }
+          
+          .social a{
+              color: white;
+          }
+          
+          footer{
+              margin-top: 100px;
+          }
+        </style>
   </head>
   <body>
 
@@ -134,6 +156,11 @@
 
 
     var cliUser = {};
+    
+    var data = {
+        name : '',
+        email : ''
+    };
 
     jQuery(document).ready(function($) {
         
@@ -142,15 +169,15 @@
             
             function cliUserRegisterDetail(){
 
-                                term.echo('name > ' + data.name);
+                                term.echo('Name > ' + data.name);
     //                            term.echo(' ');
-                                    term.push(function(command, term) {
-                                        if(command != ''){
-    //                                        console.log(command);
-                                            cliUser.name = command;
-    //                                        term.echo(' ');
+//                                    term.push(function(command, term) {
+//                                        if(command != ''){
+//    //                                        console.log(command);
+//                                            cliUser.name = command;
+//    //                                        term.echo(' ');
                                             term.echo('[[;#84878b;#30353A]//enter male or female]');
-    //                                        term.echo(' ');
+//    //                                        term.echo(' ');
 
                                             term.push(function(command, term) {
                                                 if(command != ''){
@@ -167,13 +194,13 @@
     //                            term.echo('//enter full name');
     //                                                        term.echo(' ');
                                                             term.echo('email > ' + data.email);
-                                                            term.push(function(command, term) {
-                                                                if(command != ''){
-    //                                                                console.log(command);
-                                                                    cliUser.email = command;
-    //                                                                term.echo(' ');
-    //                            term.echo('//enter full name');
-    //                                                                term.echo(' ');
+//                                                            term.push(function(command, term) {
+//                                                                if(command != ''){
+//    //                                                                console.log(command);
+//                                                                    cliUser.email = command;
+//    //                                                                term.echo(' ');
+//    //                            term.echo('//enter full name');
+//    //                                                                term.echo(' ');
 
                                                                     term.push(function(command, term) {
                                                                         if(command != ''){
@@ -216,11 +243,11 @@
                                                                         name : 'Institute'
                                                                     });
 
-                                                                }
-                                                            }, {
-                                                                prompt : 'Email >',
-                                                                name : 'Email'
-                                                            });
+//                                                                }
+//                                                            }, {
+//                                                                prompt : 'Email >',
+//                                                                name : 'Email'
+//                                                            });
 
                                                         }
                                                     }, {
@@ -234,11 +261,11 @@
                                                 name : 'Gender'
                                             });
 
-                                    }
-                                }, {
-                                    prompt : 'Name >',
-                                    name : 'Name'
-                                });
+//                                    }
+//                                }, {
+//                                    prompt : 'Name >',
+//                                    name : 'Name'
+//                                });
             };
 
            if (command == 'plinth'){
@@ -330,7 +357,9 @@
                         term.echo('[[b;cyan;#30353A;paddingChild]Register with Facebook] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type facebook]');
                         term.push(function(command, term) {
                             if(command == 'google'){
-                                $(".reg-with-google").trigger("click");
+                                $.when($(".reg-with-google").trigger("click")).then(cliUserRegisterDetail());
+//                                $(".reg-with-google").trigger("click");
+//                                cliUserRegisterDetail();
     //                            term.push(function(command, term) {
     //                                if(command != ''){
     //                                register(command);

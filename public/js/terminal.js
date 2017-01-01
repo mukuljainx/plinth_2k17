@@ -32,7 +32,7 @@ function unloadcallback(){
         $.post( "/user/user_validate", { "token" : localStorage.temptoken })
         .done(function( data ) {
             deactivateLoader();
-            cliUserRegisterDetail();
+//            cliUserRegisterDetail();
             if(!data.response){
                 cliUser.name = data.name;
                 cliUser.email = data.email;
@@ -57,17 +57,19 @@ function registerUserComplete(){
     if(!validateUserDetails(x)){
         return
     }
-    data = {"token" : localStorage.temptoken, "user" : x};
+    datax = {"token" : localStorage.temptoken, "user" : x};
     activateLoader();
     $.post( {
         url: "/user/user_register_complete",
         contentType: 'application/json; charset=utf-8',
-        dataType : 'json',
-        data: JSON.stringify(data)
+        dataxType : 'json',
+        datax: JSON.stringify(datax)
     })
-    .done(function( data ) {
+    .done(function( datax ) {
         deactivateLoader();
-        if(data.response){
+        if(datax.response){
+            data.name = datax.name;
+            data.email = datax.email;
             $('.close-button').trigger('click');
             notifDisplay(1,1);
             localStorage.temptoken = "";
