@@ -98,6 +98,9 @@ router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, res) {
+    
+    console.log(req.body);
+    
     var update = {
         phoneNumber    : req.body.user.phoneNumber,
         college        : req.body.user.college,

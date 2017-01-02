@@ -1,3 +1,4 @@
+
 $(document).foundation();
 
 formReg = 0;
@@ -37,6 +38,8 @@ function unloadcallback(){
                 cliUser.name = data.name;
                 cliUser.email = data.email;
                 console.log(data);
+//                //for resuming terminal
+//                term.resume();
                 formReg = 1;
                 // $('.user-name').val(data.name);
                 // $('.email').val(data.email);
@@ -62,8 +65,8 @@ function registerUserComplete(){
     $.post( {
         url: "/user/user_register_complete",
         contentType: 'application/json; charset=utf-8',
-        dataxType : 'json',
-        datax: JSON.stringify(datax)
+        dataType : 'json',
+        data: JSON.stringify(datax)
     })
     .done(function( datax ) {
         deactivateLoader();
@@ -98,6 +101,7 @@ function getUserDetails(){
 }
 
 function validateUserDetails(data){
+   
     if(data.name === "" || data.gender === undefined || data.phoneNumber === "" || data.email === "" || data.college === "" || data.year === undefined || data.city === "" || data.accommodation === undefined)
         return false;
     else
