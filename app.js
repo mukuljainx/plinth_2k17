@@ -28,6 +28,7 @@ var user = require('./routes/user');
 var events = require('./routes/event');
 var results = require('./routes/form');
 var payment = require('./routes/payment');
+var cryptex = require('./routes/cryptex');
 
 var app = express();
 
@@ -58,6 +59,7 @@ app.use('/user', user);
 app.use('/events', events);
 app.use('/results', results);
 app.use('/payment', payment);
+app.use('/cryptex', cryptex);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
