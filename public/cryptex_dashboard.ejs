@@ -50,15 +50,8 @@
                     <div class="row">
                         <div class="small-10 medium-8 large-6 small-centered column">
                             <div class="contentImage text-center">
-                                <form class="box" method="post" action="" enctype="multipart/form-data">
-                                  <div class="box__input">
-                                    <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" accept="image/*" multiple />
-                                    <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
-                                    <button class="box__button" type="submit">Upload</button>
-                                  </div>
-                                  <div class="box__uploading">Uploading&hellip;</div>
-                                  <div class="box__success">Done!</div>
-                                  <div class="box__error">Error! <span></span>.</div>
+                                <form action="" method="post" enctype="multipart/form-data">
+                                  <input type="file" name="file" />
                                 </form>
                             </div>
                             <div class="contentQues">
@@ -80,7 +73,8 @@
 
         <% include partials/footer%>
         <script src="js/index.js"></script>
-        <script src="js/cryptex.js"></script>
+        <script src="js/cryptex-dashboard.js"></script>
+        <script src="js/vendor/dropzone.js"></script>
 
     </body>
 </html>
