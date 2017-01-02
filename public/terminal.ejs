@@ -428,7 +428,10 @@
                         }
                     } else if(command == 'man register') {
                         term.echo("[[b;;;paddingChild]\nregister(1) \t\t\t\t\t\t\t User Commands \t\t\t\t\t\t\t register(1) \n\n\n NAME \n \t register - form for registration \n SYNOPSIS \n \t register --that's all you need \n DESCRIPTION \n \t Registration form for various events in Plinth'17. \n AUTHOR \n \t Written by dudes of LNMIIT \n REPORTING BUGS \n \t Report about bugs to wedontcare.org \n COPYRIGHT \n \t Copyright © 2020 Future Developers Foundation Inc. License GUIv1.0+: \n \t This is premium software: you are not authorised to change and redistribute it. \n SEE ALSO \n \t The full documentation for about is maintained and stored in a secret location. \n\n\n GNU V 1.1 \t\t\t\t\t\t\t January 2017 \t\t\t\t\t\t\t register(1)]");
-                    } else if(command == 'activate gui'){
+                    } else if(command == 'events') {
+                        term.echo('[[b;orange;#30353A;paddingParent]========== Events ==========]');
+                        term.echo('[[b;#1467b9;#30353A;paddingChild]]');
+                    }else if(command == 'activate gui'){
                         window.location.href = "http://plinth.lnmiit.ac.in/home.html";
                     }else {
                         term.echo('[[b;red;#30353A]unknown command ]' + command);
