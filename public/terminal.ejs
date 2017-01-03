@@ -452,7 +452,32 @@
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Roborace]');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robowar]');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robosoccer]');
-                            }else if(command == 'robotics'){
+                            }else if(command == 'quizzing'){
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Quest]');
+                            }else if(command == 'literature'){
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Wrangle]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Rostrum]');
+                            }else if(command == 'management'){
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    SIF]');
+                            }
+                        }, {
+                            prompt: 'events >',
+                            name: 'events'
+                        });
+                    }else if(command == 'workshops') {
+                        term.echo('[[b;orange;#30353A;paddingParent]========== Workshops ==========]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Vehicle Design and Dynamics  --presented by Engineer Indya]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Web O Master  --presented by Engineer Indya]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Touch & Augmented Reality  --presented by RoboFlux]');
+                        term.push(function(command, term) {
+                            if(command == 'w1'){
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 1050/- per person ]');
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    7th - 8th Jan 2017 ]');
+                            }else if(command == 'w2'){
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Fix the Bug]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC Distraction]');
+                            }else if(command == 'w3'){
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    LFR]');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Quadcopter]');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Transporter]');
@@ -461,8 +486,26 @@
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robosoccer]');
                             }
                         }, {
-                            prompt: 'events >',
-                            name: 'events'
+                            prompt: 'workshops >',
+                            name: 'workshops'
+                        });
+                    }else if(command == 'talks') {
+                        term.echo('[[b;orange;#30353A;paddingParent]========== talks ==========]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Balaji Vishwanathan  --VP Product, Invento]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Dr. Sangram Ganguly  --Senior Research Scientist, NASA]');
+                        term.push(function(command, term) {
+                            if(command == 't1'){
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Armageddon]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Astro Hunt]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Star Trek]');
+                            }else if(command == 't2'){
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Fix the Bug]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC Distraction]');
+                            }
+                        }, {
+                            prompt: 'talks >',
+                            name: 'talks'
                         });
                     }else if(command == 'activate gui'){
                         window.location.href = "http://plinth.lnmiit.ac.in/home.html";
