@@ -430,7 +430,40 @@
                         term.echo("[[b;;;paddingChild]\nregister(1) \t\t\t\t\t\t\t User Commands \t\t\t\t\t\t\t register(1) \n\n\n NAME \n \t register - form for registration \n SYNOPSIS \n \t register --that's all you need \n DESCRIPTION \n \t Registration form for various events in Plinth'17. \n AUTHOR \n \t Written by dudes of LNMIIT \n REPORTING BUGS \n \t Report about bugs to wedontcare.org \n COPYRIGHT \n \t Copyright © 2020 Future Developers Foundation Inc. License GUIv1.0+: \n \t This is premium software: you are not authorised to change and redistribute it. \n SEE ALSO \n \t The full documentation for about is maintained and stored in a secret location. \n\n\n GNU V 1.1 \t\t\t\t\t\t\t January 2017 \t\t\t\t\t\t\t register(1)]");
                     } else if(command == 'events') {
                         term.echo('[[b;orange;#30353A;paddingParent]========== Events ==========]');
-                        term.echo('[[b;#1467b9;#30353A;paddingChild]]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Astronomy]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Coding]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Robotics]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Quizzing]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Literature]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Management]');
+                        term.push(function(command, term) {
+                            if(command == 'astronomy'){
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Armageddon]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Astro Hunt]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Star Trek]');
+                            }else if(command == 'coding'){
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Fix the Bug]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC Distraction]');
+                            }else if(command == 'robotics'){
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    LFR]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Quadcopter]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Transporter]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Roborace]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robowar]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robosoccer]');
+                            }else if(command == 'robotics'){
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    LFR]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Quadcopter]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Transporter]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Roborace]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robowar]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robosoccer]');
+                            }
+                        }, {
+                            prompt: 'events >',
+                            name: 'events'
+                        });
                     }else if(command == 'activate gui'){
                         window.location.href = "http://plinth.lnmiit.ac.in/home.html";
                     }else {
