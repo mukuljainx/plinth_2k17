@@ -36,6 +36,7 @@ nav{
     float: right;
     font:normal 1.125em cl;
     margin-top: -5px;
+    letter-spacing: 1px;
 }
 
 .navitem li{
@@ -51,6 +52,10 @@ nav{
     font-weight: 800;
     position: relative;
     z-index: 1;
+}
+
+.navitem .active{
+    border-bottom: 3px solid black;
 }
 
 .navitem a:before {
