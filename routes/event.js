@@ -147,7 +147,6 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
 });
 
 router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
-
     var sif = new Sif();
     sif.detail = req.body.sifDetails;
     sif.teamEmail  = req.body.sifDetails.representativeEmail;
@@ -158,7 +157,8 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
     },
     sif.save(function(err) {
         if (err){
-            return done(err);
+            console.log(err);
+            return thro err;
         }
         else{
             res.json({ "response" : true });

@@ -156,9 +156,9 @@ router.post('/logout', Verify.verifyOrdinaryUser ,function(req, res) {
     res.json({"response": true})
 });
 
-router.get('/random', function(req, res) {
-    console.log(req.cookies['access-token']);
-    res.end('asd');
+router.post('/user_register_complete_mobile', Verify.verifyOrdinaryUser ,function(req, res) {
+    console.log(req.body);
+    res.end('success');
 });
 
 module.exports = router;
