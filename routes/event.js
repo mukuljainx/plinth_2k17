@@ -158,7 +158,9 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
     },
     sif.save(function(err) {
         if (err){
-            return done(err);
+		console.log(err);
+            res.json({"response" : false});
+return;
         }
         else{
             res.json({ "response" : true });
