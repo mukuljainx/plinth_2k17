@@ -74,5 +74,5 @@ module.exports = {
         <li>1x Booklet</li>
     </ul>`,
     imageLink : "media/icons/workshop/w2.svg",
-    fee : 1050,
+    fee : 950,
 };

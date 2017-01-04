@@ -687,6 +687,34 @@ router.get('/workshops/touch-augmented-realities', Verify.verifyOrdinaryUser ,fu
   }
 });
 
+router.get('/workshops/photography', Verify.verifyOrdinaryUser ,function(req, res) {
+    var eventDetail = require('../public/workshops/audi');
+
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('workshops/web-o-master', {
+          "isLoggedIn" : isLoggedIn,
+          eventDetail : eventDetail
+      });
+  }
+  else {
+      isLoggedIn = true;
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('workshops/web-o-master',{
+                  "isLoggedIn" : isLoggedIn,
+                  user : user,
+                  eventDetail : eventDetail
+              });
+          }
+      });
+  }
+});
+
 router.get('/talks', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
@@ -785,6 +813,33 @@ router.get('/talks/sangram-ganguly', Verify.verifyOrdinaryUser ,function(req, re
           // check to see if theres already a user with that email
           if (user){
               res.render('speaker_sangram',{
+                  "isLoggedIn" : isLoggedIn,
+                  "user" : {
+                      name : user.name,
+                      gender : user.gender,
+                  }
+              });
+          }
+      });
+  }
+});
+
+router.get('/talks/shubhranshu-choudhary', Verify.verifyOrdinaryUser ,function(req, res) {
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('speaker_shubhranshu', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
+  else {
+      isLoggedIn = true;
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('speaker_shubhranshu',{
                   "isLoggedIn" : isLoggedIn,
                   "user" : {
                       name : user.name,

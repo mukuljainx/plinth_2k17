@@ -84,7 +84,7 @@
                             <span class="by-workshop">presented by <%- eventDetail.eventCompany %></span>
                             <br />
                             <br />
-                            <span>Fee : INR. <%- eventDetail.fee %>/- per person</span>
+                            <span>Fee : INR. <%- eventDetail.fee %>/- per person<%- eventDetail.feeNote %></span>
                             <br>
                             <span><%- eventDetail.eventDate %></span>
                             <br />
@@ -393,11 +393,11 @@
                         return;
                     }
                     if("<%- eventDetail.eventName %>" === 'vehicle-dynamics'){
-                        window.location.href = "https://www.payumoney.com/events/#/buyTickets/QBDC";
+                        window.location.href = "https://goo.gl/forms/15CXmRwQVNNBidaz2";
                         return;
                     }
                     if("<%- eventDetail.eventName %>" === 'web-o-master'){
-                        window.location.href = "https://www.payumoney.com/events/#/buyTickets/webomaster";
+                        window.location.href = "https://goo.gl/forms/BtGcbK3YbZVMgZqJ3";
                         return;
                     }
                     var totalAmount = response.totalAmount;
