@@ -20,11 +20,11 @@ h4{
     padding-top: 20px;
 }
 
-.profile-dp{
-    height: 100px;
-    width: 100px;
-    border-radius: 100px;
-    background-color: darkgray;
+.profile-dp img{
+    height: 115px;
+    width: 115px;
+    border-radius: 100%;
+/*    background-color: darkgray;*/
 /*    margin-left: 50px;*/
     margin: auto;
     margin-bottom: 20px;
