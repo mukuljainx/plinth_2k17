@@ -59,6 +59,11 @@ router.get('/play', Verify.verifyOrdinaryUser ,function(req, res) {
               return done(err);
           // check to see if theres already a user with that email
           if (user){
+            //   if(user.level === undefined){
+            //       console.log('level undefined');
+            //       res.redirect('/cryptex');
+            //       return;
+            //   }
               Cryptex.findOne({'level' : 1}, function(err,doc){
                   if(err) throw err;
                   else{
