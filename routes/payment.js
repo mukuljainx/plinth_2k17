@@ -55,6 +55,7 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
     if(req.body.eventName === "robowar") totalAmount = 700;
     if(req.body.eventName === "quadcopter") totalAmount = 600;
     if(req.body.eventName === "touch-augmented-realities") totalAmount = 750;
+    if(req.body.eventName === "audi") totalAmount = 500;
 
 
     eventx.find({ 'eventName' : req.body.eventName , 'teamEmail' : req.body.email },function (err, result) {

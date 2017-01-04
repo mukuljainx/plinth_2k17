@@ -18,4 +18,5 @@ module.exports = {
     "web-o-master" : "/workshops/web-o-master",
     "touch-augmented-realities" : "/workshops/touch-augmented-realities",
     "vehicle-dynamics" : "/workshops/vehicle-dynamics",
+    "audi" : "/workshops/photography",
 }

@@ -10,6 +10,7 @@
     display: inline-block;
 }
 
+
 </style>
 
 <div class="reveal" id="sif-registration-form" style="padding: 50px 40px;" data-reveal>
@@ -108,7 +109,7 @@ function getSifDetails(){
         website : $('.sif-website').val(),
         representativeName :$('.sif-representative-name').val(),
         representativeEmail : $('.sif-representative-email').val(),
-        representativeContact : $('.sif-representative-phone').val(),
+        representativeContact : $('.sif-representative-phone').val().replace('-',''),
         numberofOpening : $('.sif-opening').val(),
         field : [],
         stipend : $('.sif-checkbox-stipend').is(":checked"),
