@@ -1,7 +1,7 @@
 module.exports = {
     eventName : "vehicle-dynamics",
     displayName : "Vehicle Design and Dynamics",
-    eventDate : "7<sup>th</sup> - 8<sup>th</sup> Jan 2017",
+    eventDate : "18<sup>th</sup> - 19<sup>th</sup> Jan 2017",
     eventCompany : "Engineer Indya ",
     memberUpperLimit : 1,
     memberLowerLimit : 1,
