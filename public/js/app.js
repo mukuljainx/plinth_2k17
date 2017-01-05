@@ -224,4 +224,4 @@ $(document).ready(function() {
     $('.master-wrapper').delay(1000).fadeOut('fast');
 });
 
-navItemActive();
+// navItemActive();

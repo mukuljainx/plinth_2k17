@@ -31,6 +31,7 @@ router.get('/auth/google/callback', function(req,res,next){
     }
       console.log(user);
       var token = Verify.getToken(user);
+      res.cookie('hola', 'asd',{ httpOnly: true, secure : false });
       res.render('redirect',{
           token : token
       });
