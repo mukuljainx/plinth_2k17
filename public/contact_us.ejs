@@ -5,7 +5,6 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Contact Us | Plinth'17</title>
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
        <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" rel="stylesheet">
@@ -31,29 +30,29 @@
 
                 <div class="medium-8 large-5 large-offset-1 columns text-centered">
 
-                        <form>
+                        <form action="javascript:void(0)">
                             <i class="fa fa-user-circle" aria-hidden="true"></i>
                             <div class="group">
-                                <input type="text" id="in-name" required>
+                                <input class="contact-name" type="text" id="in-name" required>
                                 <span class="highlight"></span>
                                 <label>Name</label>
                             </div>
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                             <div class="group">
-                                <input type="email" id="in-email" required>
+                                <input class="contact-email" type="email" id="in-email" required>
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Email</label>
                             </div>
                             <i class="fa fa-pencil-square" aria-hidden="true"></i>
                             <div class="group">
-                                <textarea id="in-query"></textarea>
+                                <textarea id="in-query" class="contact-query"></textarea>
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Query</label>
                             </div>
 
-                            <a class="button success" id="btn-submit">Submit</a>
+                            <input type="submit" class="button success" onclick="contactUs()" id="btn-submit"/>
 
                         </form>
 
@@ -75,6 +74,7 @@
         </div>
 
         <% include partials/footer %>
+        <script src="js/contact.js"></script>
 
     </body>
 </html>

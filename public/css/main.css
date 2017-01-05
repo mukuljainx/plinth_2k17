@@ -101,7 +101,7 @@ body{
 .footer-fixed{
   position: absolute;
   bottom: 20px;
-  margin-left: calc( 50% - 221.5px );
+  margin-left: calc( 50% - 275px );
 }
 
 #workshop-modal, #lectures-modal, .notif{

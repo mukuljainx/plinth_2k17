@@ -81,6 +81,9 @@ function logOut(){
 
 function unloadcallback(){
     if(localStorage.temptoken !== undefined){
+        if(localStorage.temptoken === ""){
+            return;
+        }
         activateLoader();
         $.post( "/user/user_validate", { "token" : localStorage.temptoken })
         .done(function( data ) {
@@ -172,7 +175,7 @@ function validateUserDetails(data){
 }
 
 function notifDisplay(status, icon){
-    var regMsg = ["Your registration is not successfull !", "Your registration is successfull !", "Payment will be open soon", "Payment successfull !", "Payment unsuccessfull !", "Please select fields","Two or more team member can't have same mail id"]
+    var regMsg = ["Your registration is not successfull !", "Your registration is successfull !", "Payment will be open soon", "Payment successfull !", "Payment unsuccessfull !", "Please select fields","Two or more team member can't have same mail id","We will contact you soon"]
     var regIcon = ['<i class="fa fa-times" aria-hidden="true"></i>', '<i class="fa fa-check" aria-hidden="true"></i>', '<i class="fa fa-exclamation" aria-hidden="true" style="width: 14px; height: 14px; padding-right: 4px;"></i>']
     $(".reg-status-img").html(regIcon[status]);
     $(".reg-status").html(regMsg[icon]);

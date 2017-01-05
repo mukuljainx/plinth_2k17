@@ -5,7 +5,6 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Archives | Plinth'17</title>
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.min.css" rel="stylesheet">
@@ -14,29 +13,29 @@
             footer{
                 margin-top: 150px;
             }
-            
+
             .button.hollow{
                 width: 200px !important;
                 border: 1px solid black;
                 color: black;
             }
-            
+
             .button.hollow:hover{
                 background-color: black;
                 color: white;
                 border: 1px solid black;
             }
-            
+
             .button.hollow:focus{
                 background-color: black;
                 color: white;
                 border: 1px solid black;
             }
-            
+
             .arch{
                 margin-top: 100px;
             }
-            
+
             .head{
                 margin-top: 30px;
             }
@@ -54,20 +53,20 @@
                 <h2>Archives</h2>
             </div>
         </div>
-        
-        <div class="row arch">
+
+        <div class="row arch footer-adjust">
             <div class="small-10 small-centered columns text-center archbtn">
-                <button class="hollow button" href="http://mukuljain.me/old_stuff/plinth/index.html">Plinth'16</button>
+                <a class="hollow button" target="_blank" href="http://mukuljain.me/old_stuff/plinth/index.html">
+                    Plinth'16
+                </a>
                 <br />
-                <button class="hollow button" href="#">Plinth'16 Teaser</button>
+                <!-- <a class="hollow button" href="#">Plinth'16 Teaser</a> -->
             </div>
         </div>
-        
-        
-        
-        
-        
+
+
          <% include partials/footer %>
+         <script src="js/index.js"></script>
 
     </body>
 </html>

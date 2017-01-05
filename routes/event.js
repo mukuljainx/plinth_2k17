@@ -6,6 +6,7 @@ var User = require('../models/user');
 var UserEvent = require('../models/userevent');
 var Verify = require('./verify');
 var Robotics = require('../models/robotics');
+var Contact = require('../models/contact');
 var Ecell = require('../models/ecell');
 var Quiz = require('../models/quiz');
 var Literary = require('../models/literary');
@@ -280,4 +281,22 @@ router.post('/update', Verify.verifyOrdinaryUser, function(req, res) {
      }
 })
 
+router.post('/contact', Verify.verifyOrdinaryUser, function(req, res) {
+    var contact = new Contact();
+    contact.name = req.body.name;
+    contact.email = req.body.email;
+    contact.query = req.body.query;
+
+    contact.save(function(err){
+        if(err){
+            console.log(err);
+            res.json({response : false});
+            return;
+        }
+        else{
+            res.json({response : true});
+            return;
+        }
+    })
+})
 module.exports = router;
