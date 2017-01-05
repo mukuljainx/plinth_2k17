@@ -11,16 +11,12 @@ body{
     color:white;
     text-decoration: none;
 }
+.navitem a:before {
+    background: #ffffff !important;
+}
 
 .main-logo{
     margin-top:60px;
-    max-width:650px;
-    height: 400px;
-    border: 1px white;
-    border-width: 4px;
-    border-style:double;
-    padding: 50px;
-    margin-bottom: 90px;
 }
 
 .scaledown{
@@ -160,7 +156,6 @@ body{
 
 .login a{
     color:white;
-    font:2px;
 }
 
 .withsocial{
@@ -179,7 +174,6 @@ body{
 
 
 .social{
-    AAborder:1px solid white;
     max-width: 500px;
 }
 
@@ -194,11 +188,6 @@ body{
     color:white;
 }
 
-
-.footer-text{
-    max-width: 600px;
-}
-
 .footer-text li{
     list-style: none;
     display: inline-block;
@@ -211,15 +200,6 @@ body{
     color:white;
 }
 
-.footer-fixed{
-  position: absolute;
-  bottom: 20px;
-  margin-left: calc( 50% - 221.5px );
-}
-
-#workshop-modal, #lectures-modal, .notif{
-    color: black;
-}
 
 @media screen and (max-width: 700px) {
     .logo-clg{
@@ -549,4 +529,22 @@ body{
         top: -100px;
     }
 
+}
+
+
+.cryptex-game-begins{
+    font-family: cl;
+    font-weight: 600;
+    padding: 6px 14px;
+    border: 1px solid;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.cryptex-game-begins-desc{
+    font-family: 'Exo 2', sans-serif;
+}
+.cryptex-game-begins-register{
+    font-family: 'Exo 2', sans-serif;
+    text-decoration: underline;
 }

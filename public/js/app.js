@@ -32,6 +32,16 @@ $('body').click(function() {
     }
 });
 
+//Navitem active
+
+function navItemActive(){
+    if(location.pathname.indexOf("/competitions") !== -1) $('.navitem-competitions').addClass('navitem-active');
+    if(location.pathname.indexOf("/workshops") !== -1) $('.navitem-workshops').addClass('navitem-active');
+    if(location.pathname.indexOf("/talks") !== -1) $('.navitem-talks').addClass('navitem-active');
+}
+
+
+
 //cookie service
 
 function getCookie(cname) {
@@ -213,3 +223,5 @@ $('.profile-drop-down').mouseout(function() {
 $(document).ready(function() {
     $('.master-wrapper').delay(1000).fadeOut('fast');
 });
+
+navItemActive();

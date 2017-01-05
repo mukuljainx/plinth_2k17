@@ -11,16 +11,16 @@ var fs = require('fs');
 
 router.get('/', Verify.verifyOrdinaryUser ,function(req, res) {
 
-    if(req.decoded.sub !== "jainmukul1996@gmail.com"){
-        isLoggedIn = false;
-        res.end('not authorized');
-    }
-  // if(req.decoded.sub === ""){
-  //     isLoggedIn = false;
-  //     res.render('cryptex', {
-  //         "isLoggedIn" : isLoggedIn,
-  //     });
-  // }
+    // if(req.decoded.sub !== "jainmukul1996@gmail.com"){
+    //     isLoggedIn = false;
+    //     res.end('not authorized');
+    // }
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('cryptex_countdown', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
   else {
       isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
@@ -29,7 +29,7 @@ router.get('/', Verify.verifyOrdinaryUser ,function(req, res) {
               return done(err);
           // check to see if theres already a user with that email
           if (user){
-              res.render('cryptex',{
+              res.render('cryptex_countdown',{
                   "isLoggedIn" : isLoggedIn,
                   "user" : {
                       name : user.name,
