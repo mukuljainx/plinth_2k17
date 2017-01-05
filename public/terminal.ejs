@@ -409,12 +409,14 @@
                             } else if(command == 'facebook') {
                                 $(".reg-with-fb").trigger("click");
                                 cliUserRegisterDetail();
+                            }else if(command == 'cd ..'){
+                                term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
             }
                         }, {
-                            prompt: 'plinth >',
-                            name: 'plinth'
+                            prompt: 'register >',
+                            name: 'register'
                         });
 
                         /*term.echo('[[b;yellow;#30353A;paddingChild]Last Name :]')
@@ -459,32 +461,35 @@
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Rostrum]');
                             }else if(command == 'management'){
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    SIF]');
-                            }
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                         }, {
                             prompt: 'events >',
                             name: 'events'
                         });
                     }else if(command == 'workshops') {
                         term.echo('[[b;orange;#30353A;paddingParent]========== Workshops ==========]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Photography Workshop  --presented by Audi Photography]');
                         term.echo('[[b;#197cde;#30353A;paddingChild]    Vehicle Design and Dynamics  --presented by Engineer Indya]');
                         term.echo('[[b;#197cde;#30353A;paddingChild]    Web O Master  --presented by Engineer Indya]');
                         term.echo('[[b;#197cde;#30353A;paddingChild]    Touch & Augmented Reality  --presented by RoboFlux]');
                         term.push(function(command, term) {
                             if(command == 'w1'){
-                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 1050/- per person ]');
-                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    7th - 8th Jan 2017 ]');
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 500/- per person ]');
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                             }else if(command == 'w2'){
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Fix the Bug]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC Distraction]');
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 950/- per person ]');
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                             }else if(command == 'w3'){
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    LFR]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Quadcopter]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Transporter]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Roborace]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robowar]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robosoccer]');
-                            }
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 950/- per person ]');
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
+                            }else if(command == 'w4'){
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 750/- per person ]');
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                         }, {
                             prompt: 'workshops >',
                             name: 'workshops'
@@ -493,22 +498,32 @@
                         term.echo('[[b;orange;#30353A;paddingParent]========== talks ==========]');
                         term.echo('[[b;#197cde;#30353A;paddingChild]    Balaji Vishwanathan  --VP Product, Invento]');
                         term.echo('[[b;#197cde;#30353A;paddingChild]    Dr. Sangram Ganguly  --Senior Research Scientist, NASA]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Shubhranshu Choudhary   --Award Winning Journalist]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Dr. V.A. Shiva Ayyadurai   --The Inventor of Email & Chairman/C.E.O., CytoSolve, Inc.]');
                         term.push(function(command, term) {
                             if(command == 't1'){
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Armageddon]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Astro Hunt]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Star Trek]');
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Date : 22nd Jan 2016  ]');
+                                term.echo('[[;;;paddingChild]Balaji Viswanathan is an Indian writer, author, entrepreneur and engineer. He is popularly known for his answers and posts on the question-and-answer site Quora. He has been the top-writer (on Quora) of the year(s) 2013, 2014, 2015 and 2016 with over 20 articles published on Forbes, Slate, Business Insider and other places. He is the author of From Tryst to Tendulkar: The History of Independent India, a book on the history of contemporary India.]');
                             }else if(command == 't2'){
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Fix the Bug]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC Distraction]');
-                            }
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Date : 18th - 19th Jan 2016  ]');
+                                term.echo('[[;;;paddingChild]Dr. Sangram Ganguly is a research scientist at the Biosphere Science Branch at NASA Ames Research Center, Moffett Field, California and at the Bay Area Environmental Research Institute. My work leverages expertise across a range of disciplines, including cloud computing solutions for big data science and analytics, machine learning, advanced satellite remote sensing and image analytics and climate sciences.]');
+                            }else if(command == 't3'){
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Date : 18th - 19th Jan 2016  ]');
+                                term.echo('[[;;;paddingChild]Shubhranshu Choudhary is a Knight International Journalism Fellow and the founder of CGNet Swara. Shubhranshu was a BBC South Asia producer for more than 10 years.He produced the first television coverage of foreign militants operating in Indian Kashmir and conducted the first television interview with the chief commander of the Kashmiri militant organization.]');
+                            }else if(command == 't4'){
+                                term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Date : 18th - 19th Jan 2016  ]');
+                                term.echo('[[;;;paddingChild]Dr. V.A. Shiva Ayyadurai, the inventor of email and polymath, holds four degrees from MIT and is a world-renowned systems scientist. He is a Fulbright Scholar, Lemelson-MIT Awards Finalist, First Outstanding Scientist and Technologist of Indian Origin (STIO), Westinghouse Science Talent Honors Award recipient, and was nominated for the U.S. National Medal of Technology and Innovation. In 1978, as a precocious 14-year-old boy, he was accepted to a special program in computer science at New York University, leading to his being hired by the University of Medicine and Dentistry of New Jersey (UMDNJ) as a Research Fellow, where he developed the first electronic system to replicate the entire interoffice mail system (Inbox, Outbox, Folders, Address Book, Memo, etc.), which he named “email,” defining the email we all know and use today. In 1982, the US government recognized Ayyadurai as the inventor of email by awarding him the first Copyright for “Email” at a time when Copyright was the only way to protect software inventions. His interest in human health, also began early, when as a child, he observed his grandmother, a village farmer and healer, practice Siddha, India’s oldest system of traditional medicine. This motivated his future study and research in systems biology at MIT, leading to his discovery of Systems Health®, a major breakthrough that provides an integrative framework linking eastern and western medicine. His latest invention CytoSolve®, emerging from his doctoral research at MIT, provides a revolutionary platform for modeling complex biological phenomena, to support the development multi-combination medicines without animal testing.]');
+                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                         }, {
                             prompt: 'talks >',
                             name: 'talks'
                         });
                     }else if(command == 'activate gui'){
-                        window.location.href = "http://plinth.lnmiit.ac.in/home.html";
+                        window.location.href = "https://plinth.in/";
                     }else {
                         term.echo('[[b;red;#30353A]unknown command ]' + command);
                     }
