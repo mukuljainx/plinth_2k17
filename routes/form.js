@@ -55,7 +55,6 @@ router.get('/sif/startup/payments', Verify.verifyOrdinaryUser ,function(req, res
     var allowedUser = authUser.ecell;
     var poc   = authUser.poc;
 
-
     if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1 && allowedUser.indexOf(req.decoded.sub) === -1)){
          res.end("You are not authorized. Login and try");
          return;
@@ -206,11 +205,16 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
                 }
                 // check to see if theres already a user with that email
                 if (user){
+                    var success = 0;
+                    for(var i=0; i< results.length; i++){
+                        if(results[i].payment.status === 'TXN_SUCCESS')success++;
+                    }
                     res.render('partials/team',{
                         results : results,
                         isLoggedIn : true,
                         user : user,
-                        paymentUser : paymentUser
+                        paymentUser : paymentUser,
+                        success : success,
                     });
                 }
             });

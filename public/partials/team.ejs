@@ -43,7 +43,8 @@
     <body>
         <% include header %>
         <div class="row">
-        	<h3 style="text-transform: capitalize;"><%= results[0].eventName %></h3>
+            <h3 style="text-transform: capitalize;"><%= results[0].eventName %></h3>
+        	<h6 style="text-transform: capitalize;">Paid <%= success %> / <%= results.length %></h6>
             <br>
         </div>
         <% for(var i=0; i<results.length; i++) { %>
