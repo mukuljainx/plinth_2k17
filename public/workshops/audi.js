@@ -1,7 +1,7 @@
 module.exports = {
     eventName : "audi",
     displayName : "Photography Workshop",
-    eventDate : "18<sup>th</sup> - 19<sup>th</sup> Jan 2017",
+    eventDate : "18<sup>th</sup> Jan 2017 (2 pm)",
     eventCompany : "<a style='font-size:16px;' href='https://www.facebook.com/AudiPhotography/' target='_blank'>Audi Photography</a>",
     memberUpperLimit : 1,
     memberLowerLimit : 1,
