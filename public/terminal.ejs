@@ -443,10 +443,235 @@
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Armageddon]');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Astro Hunt]');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Star Trek]');
+                                term.push(function(command, term) {
+                                    if(command == 'astro1'){
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
+                                        term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 20,000 ]');
+                                        term.push(function(command, term) {
+                                            if(command == 'synopsis'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
+                                                term.echo("[[;;;paddingChild]Scientists at NASA have discovered an asteroid 65 miles wide, named as Destroyer786. It is composed of large quantities of carbon molecules as well as the more usual rocks and metals.It has it's collision course set with Earth. The asteroid is supposed to make its impact 1.5 years from today. Destroyer786 is travelling at a speed of 30,000 miles per hour and is approaching the earth from the direction of the sun. Keeping the estimated flyby distance in mind, it is supposed to cause a mass destruction if not total wipeout of humanity from the face of Earth.]");
+                                                term.echo("[[;;;paddingChild]All countries have come together, understanding the grim situation and are ready to take extreme measures to stop the 'end of the world'. You are chosen to be a part of core team of scientists that is going to save the humanity.]");
+                                                term.echo('[[;;;paddingChild]Devise a plan to save Earth and humanity.]');
+                                                term.echo('[[;;;paddingChild]Fate of humanity lies in your hand.]');
+                                                term.echo('[[;;;paddingChild]This event consists of two rounds. First round will be online. The participants have to submit a report before the given deadline. After the date of submission, we will select the teams for the second round on the basis of their report. All the teams selected teams will have to present their report in front of the judges during plinth.]');
+                                            }else if(command == 'desc'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
+                                                term.echo('[[b;;;paddingChild]Problem Statement]');
+                                                term.echo('[[;;;paddingChild]   1. You have no economic constraints as all countries are willing to pool their resources in an attempt to save humanity.]');
+                                                term.echo('[[;;;paddingChild]   2. You have 547 days in total to save earth, delay of even an hour will lead to human extinction.]');
+                                                term.echo('[[;;;paddingChild]   3. Level of technology is not much advance than today, therefore make assumptions that are almost realistic.]');
+                                                term.echo('[[;;;paddingChild]   The final project report should be mailed to astronomy.lnmiit@gmail.com with the subject Plinth: Armageddon Project Report: TeamId.]');
+                                            }else if(command == 'rules'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
+                                                term.echo('[[b;;;paddingChild]General Rules]');
+                                                term.echo('[[;;;paddingChild]   1. Any form of copying of textual material would lead to disqualification.]');
+                                                term.echo('[[;;;paddingChild]   2. You can work alone or in a team of at most five.]');
+                                                term.echo('[[;;;paddingChild]   3. One project should be submitted by only one team/individual. If same project is submitted by two teams/individuals, first one would be evaluated and second would be disqualified.]');
+                                                term.echo(' ');
+                                                term.echo('[[b;;;paddingChild]Format of the project]');
+                                                term.echo('[[;;;paddingChild]   1. The project should be submitted in a pdf.]');
+                                                term.echo('[[;;;paddingChild]   2. There is no strict format that you need to stick to. Make it as comprehensible as possible.]');
+                                            }else if(command == 'judges'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Judges ==========]');
+                                                term.echo('[[b;;;paddingChild]Evaluation Methodology]');
+                                                term.echo('[[;;;paddingChild]   1. Your report would be evaluated on how many different aspects you have deliberated upon and how many of these are in line with the physics of the planet.]');
+                                                term.echo('[[;;;paddingChild]   2. The more descriptive you are, the more points your report will score.]');
+                                                term.echo('[[;;;paddingChild]   3. You can use diagrams and pictures.]');
+                                            }
+                                        }, {
+                                    prompt: 'armageddon >',
+                                    name: 'armageddon'
+                                        });
+                                    }else if(command == 'astro2'){
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
+                                        term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 20,000 ]');
+                                        term.push(function(command, term) {
+                                            if(command == 'synopsis'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
+                                                term.echo("[[;;;paddingChild]Foresee the unfathomable and explore the mysteries of the universe. Only the sharp, intelligent and astronomy enthusiasts will make it to the end. The route to solve the mysteries of the universe lies within the depths of the dark sky and your imagination. It’s time to bring out the Galileo Galilee in you and look into the infinite cosmic depths.]");
+                                            }else if(command == 'desc'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
+                                                term.echo('[[;;;paddingChild]   1. At the beginning of the Astro Hunt each team will be given a map of the LNMIIT Campus and a Sky chart.]');
+                                                term.echo('[[;;;paddingChild]   2. Astro Hunt will consist of 4 rounds.]');
+                                                term.echo('[[;;;paddingChild]   3. At the beginning of each round every team will receive an identical set of clues or puzzles which must be solved in order to find a piece of information. This information could be words from a historical astronomical event, name of a star, planet or any other celestial body, cosmic theories or just a name of a person. The clues and puzzles will be related to astronomy in some manner and will lead to a location/check point within walking distance where players will use a vital piece of information to answer a question.]');
+                                                term.echo('[[;;;paddingChild]   4. After completing a round by solving the puzzles/clues and reaching the check point the teams will get a flag and the clues/puzzles for the next round.]');
+                                                term.echo('[[;;;paddingChild]   5. Each flag will also consist of some information/clue. After collecting all the 4 flags the participants will have to solve the final puzzle.]');
+                                                term.echo('[[;;;paddingChild]   6. The team which will collect all the 4 flags and solve the final puzzle in minimum time will be the winner.]');
+                                            }else if(command == 'rules'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
+                                                term.echo('[[b;;;paddingChild]General Rules]');
+                                                term.echo('[[;;;paddingChild]   1. Members per team: 3 -5]');
+                                                term.echo('[[;;;paddingChild]   2. Each team should have unique participants i.e. no two teams can have even one common name registered.]');
+                                                term.echo('[[;;;paddingChild]   3. The participants have to reach the starting point 15 minutes before the event schedule.]');
+                                                term.echo('[[;;;paddingChild]   4. All the team members should be present at each check point while receiving a token.]');
+                                                term.echo('[[;;;paddingChild]   5. Decision of the volunteers at each check point will be final.]');
+                                                term.echo('[[;;;paddingChild]   6. Usage of Internet is allowed.]');
+                                            }
+                                        }, {
+                                    prompt: 'astro hunt >',
+                                    name: 'astro hunt'
+                                        });
+                                    }else if(command == 'astro3'){
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
+                                        term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 20,000 ]');
+                                        term.push(function(command, term) {
+                                            if(command == 'synopsis'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
+                                                term.echo("[[;;;paddingChild]This event consists of 2 rounds: Spacewalk and Messier marathon. Detailed description of the event are as follows.]");
+                                                term.echo("[[b;;;paddingChild]1st Round: Spacewalk]");
+                                                term.echo("[[;;;paddingChild]It will be an audio-visual quiz related to astronomy.Pictures and videos would be projected in front and participants have to answer the questions that follow.]");
+                                                term.echo("[[b;;;paddingChild]2nd Round: Messier Marathon]");
+                                                term.echo("[[;;;paddingChild]So are you one of those who sneak out of your rooms during night hours and wander long gazing at the sky, trying to build up your imagination. Well folks then this is a perfect game for you to play, a hunt for the stars. Participants need to set themselves on a voyage of different celestial bodies and conquer to best of their capabilities. So, are you ready for this mission to get kicked off? See you at the battle field . A basic tutorial session would be held on handling of telescope and any further enhancements of the skills would be student’s personal interest.]");
+                                            }else if(command == 'desc'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
+                                                term.echo("[[b;;;paddingChild]Spacewalk]");
+                                                term.echo('[[;;;paddingChild]   1. Participants will have 1 minute to answer each question by writing it down on the given sheet.]');
+                                                term.echo('[[;;;paddingChild]   2. These questions will be objective or one word.]');
+                                                term.echo('[[;;;paddingChild]   3. Each question will carry 2 points.]');
+                                                term.echo('[[;;;paddingChild]   4. Marks will be allotted to each question individually.]');
+                                                term.echo('[[;;;paddingChild]   5. Only top 50% teams will go to the next round.]');
+                                            }else if(command == 'rules'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
+                                                term.echo('[[b;;;paddingChild]General Rules]');
+                                                term.echo('[[;;;paddingChild]   1. Participants can form team of up to three.]');
+                                                term.echo('[[;;;paddingChild]   2. Individual participants are also allowed.]');
+                                                term.echo('[[;;;paddingChild]   3. Using mobile phones is not allowed.]');
+                                            }
+                                        }, {
+                                    prompt: 'star trek >',
+                                    name: 'star trek'
+                                        });
+                                    }
+                                },{
+                                    prompt: 'astronomy >',
+                                    name: 'astronomy'
+                                });
                             }else if(command == 'coding'){
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Fix the Bug]');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC]');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC Distraction]');
+                                term.push(function(command, term) {
+                                    if(command == 'code1'){
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 150/- ]');
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
+                                        term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 10,000 ]');
+                                        term.push(function(command, term) {
+                                            if(command == 'synopsis'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
+                                                term.echo("[[;;;paddingChild]'Bloody instructions, which, being taught, return to plague the inventor …']");
+                                                term.echo("[[;;;paddingChild]-William Shakespeare,Macbeth, act 1, scene 7.]");
+                                                term.echo(' ');
+                                                term.echo("[[;;;paddingChild]How right the 'Bard of Avon' was! Every programmer who has crossed skill levels beyond the 'hello world' phase, has learnt to fear those mysterious fiends called bugs. Seeing the enigmatic 'seg. fault' on the screen sends chills down the spine of even some veterans! To deal with such entities requires a level patience and skill that escapes ordinary programmers. Think you are up to it? Are you one of those gifted few who can spot a bug like the eagle does a mouse? Why doubt when you can find out!]");
+                                            }else if(command == 'desc'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
+                                                term.echo('[[;;;paddingChild]It is a debugging event with some restrictions on time and language. The questions will related to scripting or will ask to either debug some code with limited time frame to complete the event. It will be an onsite competition to be held during Plinth’17]');
+                                                term.echo('[[;;;paddingChild]EVENT DURATION: 2 Hrs.]');
+                                            }else if(command == 'rules'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
+                                                term.echo('[[b;;;paddingChild]Registration Rules]');
+                                                term.echo('[[;;;paddingChild]   1. Team with maximum of 2 members is allowed.]');
+                                                term.echo('[[;;;paddingChild]   2. All the members should be of same college.]');
+                                                term.echo('[[;;;paddingChild]   3. To claim prize you need to be registered here.]');
+                                                term.echo(' ');
+                                                term.echo('[[b;;;paddingChild]Contest Rules]');
+                                                term.echo('[[;;;paddingChild]   1. Each team is expected to carry a Linux (preferably Ubuntu 14.04) machine.]');
+                                                term.echo('[[;;;paddingChild]   2. Language used for Problem codes is solely the decision of organizers.]');
+                                                term.echo('[[;;;paddingChild]   3. The decision of the organizers in declaring the results will be final. No queries in this regard will be entertained.]');
+                                            }else if(command == 'judges'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Judges ==========]');
+                                                term.echo('[[;;;paddingChild]Leaderboard from DoSelect will be considered for selecting winners, however in case of any conflicts the decision of the organizers in declaring the results will be final. No queries in this regard will be entertained.]');
+                                               
+                                            }
+                                        }, {
+                                    prompt: 'fix the bug >',
+                                    name: 'fix the bug'
+                                        });
+                                    }else if(command == 'code2'){
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 150/- ]');
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
+                                        term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 40,000 ]');
+                                        term.push(function(command, term) {
+                                            if(command == 'synopsis'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
+                                                term.echo("[[;;;paddingChild]See logic in everything around you? Is your daily grammar a 'SYNTAX'?Algorithms and flow charts cloud your brain? Love to solve new and challenging problems?Then you should not miss out on IUPC the Inter University Programming Contest... go and Code the Code...!]");
+                                            }else if(command == 'desc'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
+                                                term.echo("[[;;;paddingChild]This national level programming contest shall assess the intelligence through various rounds: First round will be held online followed by further onsite rounds which will be held during Plinth'17.]");
+                                                term.echo('[[;;;paddingChild]Platform: HackerEarth]');
+                                                term.echo('[[;;;paddingChild]Contest Durations: 3 Hours]');
+                                            }else if(command == 'rules'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
+                                                term.echo('[[b;;;paddingChild]Registration Rules]');
+                                                term.echo('[[;;;paddingChild]   1. Team with maximum of 2 members is allowed.]');
+                                                term.echo('[[;;;paddingChild]   2. All the members should be of same college.]');
+                                                term.echo('[[;;;paddingChild]   3. One of the team member has to register on HackerEarth and should have a valid username for participation.]');
+                                                term.echo('[[;;;paddingChild]   4. Team lead should have a valid HackerEarth handle. All submissions should be made from this handle only.]');
+                                                term.echo('[[;;;paddingChild]   5. To claim prize you need to be registered here.]');
+                                                term.echo("[[;;;paddingChild]   6. Selected teams will be called for onsite round(s) to be held during Plinth'17.]");
+                                                term.echo('[[;;;paddingChild]   7. Only the teams which participate in onsite rounds are eligible for prizes.]');
+                                                term.echo('[[b;;;paddingChild]Contest Rules]');
+                                                term.echo('[[;;;paddingChild]   1. For the programming questions in the test, you need to choose one language from the given list and attempt.]');
+                                                term.echo('[[;;;paddingChild]   2. All inputs for the programming problem are from STDIN and output to STDOUT.]');
+                                                term.echo("[[;;;paddingChild]   3. Programming questions have a 'Compile and Test' option where you can run your solution against sample test cases, before submitting.]");
+                                                term.echo('[[;;;paddingChild]   4. You can submit a solution for a programming problem as many times as you want.]');
+                                                term.echo('[[;;;paddingChild]   5. The questions will be marked with the language in which solution is expected.]');
+                                                term.echo("[[;;;paddingChild]   6. The solutions will be judged on the relative basis.]");
+                                                term.echo('[[;;;paddingChild]   7. Time Limit Exceed might also mean that there is a syntax in your source code.]');
+                                            }else if(command == 'judges'){
+                                                term.echo("[[;;;paddingChild]Leaderboard from HackerEarth will be considered for selecting winners, however in case of any conflicts the decision of the organizers in declaring the results will be final. No queries in this regard will be entertained.]");
+                                                term.echo('[[b;;;paddingChild]Judging Criteria]');
+                                                term.echo('[[;;;paddingChild]   1. Different problems have different points based on their relative difficulty level.]');
+                                                term.echo('[[;;;paddingChild]   2. Participants are ranked according to the most problems solved. Ties will be broken by the total time for each user in ascending order of time.]');
+                                                term.echo('[[;;;paddingChild]   3. The decision of the organizers in declaring the results will be final. No queries in this regard will be entertained.]');
+                                                term.echo('[[;;;paddingChild]   4. Any participant found to be indulging in any form of malpractice or plagiarism will be immediately disqualified.]');
+                                                term.echo('[[;;;paddingChild]   5. The total time is the sum of the time consumed for each problem solved. The time consumed for a solved problem is the time elapsed from the beginning of the contest to the submission of the first accepted run plus 20 penalty minutes for every previously rejected run for that problem (Wrong answer, Time limit exceeded, Runtime Error, Compilation Error). There is no time consumed for a problem that is not solved.]');
+                                            }
+                                        }, {
+                                    prompt: 'iupc >',
+                                    name: 'iupc'
+                                        });
+                                    }else if(command == 'code3'){
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 150/- ]');
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
+                                        term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 10,000 ]');
+                                        term.push(function(command, term) {
+                                            if(command == 'synopsis'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
+                                                term.echo("[[;;;paddingChild]'A programming contest crossed with Interruption games'.]");
+                                                term.echo("[[b;;;paddingChild]Do you think you can code? Do you think you can code while being distracted? Do you have what it takes to get interrupted and then Compile?]");
+                                            }else if(command == 'desc'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
+                                                term.echo('[[;;;paddingChild]Distraction IUPC is an IUPC-style programming contest crossed with various distractions (you will get to know when you enter in the contest arena!), where teams of three people try to solve as many programming problems as they can. Meanwhile, our Distraction Team will be doing what they can to make the job of programming more difficult and/or enjoyable.]');
+                                            }else if(command == 'rules'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
+                                                term.echo('[[b;;;paddingChild]Registration Rules]');
+                                                term.echo('[[;;;paddingChild]   1. Only teams with exactly 2 members are allowed.]');
+                                                term.echo('[[;;;paddingChild]   2. All the members should be of same college.]');
+                                                term.echo('[[;;;paddingChild]   3. One of the team member has to register on HackerEarth and should have a valid username for participation.]');
+                                                term.echo('[[;;;paddingChild]   4. Team lead should have a valid HackerEarth handle. All submissions should be made from this handle only.]');
+                                                term.echo('[[;;;paddingChild]   5. Registration closes 60 minutes before the start of the contest.]');
+                                                term.echo("[[;;;paddingChild]   6.To claim prize you need to be registered here.]");
+                                                term.echo('[[b;;;paddingChild]Contest Rules]');
+                                                term.echo('[[;;;paddingChild]   1. Contest will be of 2 -2.5 hours]');
+                                                term.echo('[[;;;paddingChild]   2. Distraction Rules will be introduced in contest arena. Teams are expected to follow them.]');
+                                                term.echo("[[;;;paddingChild]   3. Plagiarism by any means will lead to immediate disqualification of the team.]");
+                                                term.echo('[[;;;paddingChild]   4.The decision of Plinth Organizing Committee will be final.]');
+                                            }else if(command == 'judges'){
+                                                term.echo("[[;;;paddingChild]Leaderboard from HackerEarth will be considered for selecting winners, however in case of any conflicts the decision of the organizers in declaring the results will be final. No queries in this regard will be entertained.]");
+                                            }
+                                        }, {
+                                    prompt: 'iupc distraction >',
+                                    name: 'iupc distraction'
+                                        });
+                                    }
+                                },{
+                                    prompt: 'coding >',
+                                    name: 'coding'
+                                });
                             }else if(command == 'robotics'){
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    LFR]');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Quadcopter]');
@@ -456,9 +681,72 @@
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robosoccer]');
                             }else if(command == 'quizzing'){
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Quest]');
+                                term.push(function(command, term) {
+                                    if(command == 'quest'){
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    19th Jan 2017 ]');
+                                        term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 20,000 ]');
+                                        term.push(function(command, term) {
+                                            if(command == 'synopsis'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
+                                                term.echo("[[;;;paddingChild]LNMIIT Quiz Club organizes thrilling quizzing events making our fests a terrific platform for avid quizzers and inquisitive minds to show their mettle to battle.]");
+                                                term.echo("[[;;;paddingChild]This year we will be organising The Quest- general quiz covering all the topics from sports to entertainment, current affairs to history, business to technical knowledge.]");
+                                                term.echo("[[;;;paddingChild]Get ready to face the utlimate battle of wits to prove your knowledge among all the quizzers of the country.]");
+                                            }else if(command == 'desc'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
+                                                term.echo('[[;;;paddingChild]   1. The Quest will be held in 2 rounds, both these rounds will take place back to back at LNMIIT during Plinth.]');
+                                                term.echo('[[;;;paddingChild]   2. The initial round (Prelims) will be a written elimination round. Each team should consist of exactly 2 members.]');
+                                                term.echo('[[;;;paddingChild]   3. The final (mains) round will be between the top 6 teams from Prelims.]');
+                                                term.echo('[[;;;paddingChild]   4. The decision of Quizmaster will be final and binding.]');
+                                            }else if(command == 'rules'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
+                                                term.echo('[[b;;;paddingChild]General Rules]');
+                                                term.echo('[[;;;paddingChild]   1. This event is open to all students.]');
+                                                term.echo('[[;;;paddingChild]   2. The team should comprise of exactly 2 members.]');
+                                                term.echo('[[;;;paddingChild]   3. An individual can be a part of only one registered team.]');
+                                                term.echo('[[;;;paddingChild]   4. There is no cap on the number of teams registered per institute.]');
+                                                term.echo('[[;;;paddingChild]   5. The decisions of the organizers of the contest will be final and binding on all the participants.]');
+                                                term.echo('[[;;;paddingChild]   6. Quiz master is god.]');
+                                                term.echo('[[;;;paddingChild]   7. Cross college teams are allowed.]');
+                                            }
+                                        }, {
+                                    prompt: 'quest >',
+                                    name: 'quest'
+                                        });
+                                    }
+                                }, {
+                                    prompt: 'quizzing >',
+                                    name: 'quizzing'
+                                });
                             }else if(command == 'literature'){
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Wrangle]');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Rostrum]');
+                                term.push(function(command, term) {
+                                    if(command == 'wrangle'){
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
+                                        term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
+                                        term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 10,000 ]');
+                                        term.push(function(command, term) {
+                                            if(command == 'synopsis'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
+                                                term.echo("[[;;;paddingChild]Wrangle N hush - let’s discuss the issues that concern us. A lot is going in our country and there are plethora of issues that deserve our attention. Plinth 2017 invites you to an open discussion that would intrigue you to speak and think about the issues that form a part of our daily lives.]");
+                                            }else if(command == 'desc'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
+                                                term.echo('[[;;;paddingChild]Details will be Updated soon]');
+                                            }else if(command == 'rules'){
+                                                term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
+                                                term.echo('[[b;;;paddingChild]General Rules]');
+                                                term.echo('[[;;;paddingChild]   1. Each participant will get maximum of 2 minutes to speak in one go.]');
+                                            }
+                                        }, {
+                                    prompt: 'quest >',
+                                    name: 'quest'
+                                        });
+                                    }
+                                }, {
+                                    prompt: 'quizzing >',
+                                    name: 'quizzing'
+                                });
                             }else if(command == 'management'){
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    SIF]');
                             }else {
