@@ -42,7 +42,7 @@ router.get('/', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.get('/play', Verify.verifyOrdinaryUser ,function(req, res) {
-    if(req.decoded.sub !== "jainmukul1996@gmail.com" || req.decoded.sub !== "nikhilshagri@gmail.com"){
+    if(req.decoded.sub !== "jainmukul1996@gmail.com" && req.decoded.sub !== "nikhilshagri@gmail.com"){
         isLoggedIn = false;
         res.end('not authorized');
     }
@@ -82,7 +82,7 @@ router.get('/play', Verify.verifyOrdinaryUser ,function(req, res) {
 
 
 router.get('/leaderboard', Verify.verifyOrdinaryUser ,function(req, res) {
-    if(req.decoded.sub !== "jainmukul1996@gmail.com" || req.decoded.sub !== "nikhilshagri@gmail.com"){
+    if(req.decoded.sub !== "jainmukul1996@gmail.com" && req.decoded.sub !== "nikhilshagri@gmail.com"){
         isLoggedIn = false;
         res.end('not authorized');
     }
@@ -112,7 +112,7 @@ router.get('/leaderboard', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.get('/dashboard', Verify.verifyOrdinaryUser ,function(req, res) {
-    if(req.decoded.sub !== "jainmukul1996@gmail.com" || req.decoded.sub !== "nikhilshagri@gmail.com"){
+    if(req.decoded.sub !== "jainmukul1996@gmail.com" && req.decoded.sub !== "nikhilshagri@gmail.com"){
         isLoggedIn = false;
         res.end('not authorized');
     }
@@ -154,7 +154,7 @@ router.get('/dashboard', Verify.verifyOrdinaryUser ,function(req, res) {
 
 
 router.post('/editlevel/image/*', Verify.verifyOrdinaryUser, multipartMiddleware ,function(req, res) {
-    if(req.decoded.sub !== "jainmukul1996@gmail.com" || req.decoded.sub !== "nikhilshagri@gmail.com"){
+    if(req.decoded.sub !== "jainmukul1996@gmail.com" && req.decoded.sub !== "nikhilshagri@gmail.com"){
         isLoggedIn = false;
         res.end('not authorized');
     }
@@ -178,7 +178,7 @@ router.post('/editlevel/image/*', Verify.verifyOrdinaryUser, multipartMiddleware
 });
 
 router.post('/editlevel/question', Verify.verifyOrdinaryUser ,function(req, res) {
-    if(req.decoded.sub !== "jainmukul1996@gmail.com" || req.decoded.sub !== "nikhilshagri@gmail.com"){
+    if(req.decoded.sub !== "jainmukul1996@gmail.com" && req.decoded.sub !== "nikhilshagri@gmail.com"){
         isLoggedIn = false;
         res.end('not authorized');
     }
