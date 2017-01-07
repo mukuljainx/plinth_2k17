@@ -116,7 +116,7 @@
                             <span>Venue : <%- eventDetail.eventVenue %></span>
                             <br />
                             <br />
-                            <ul>
+                            <ul <% if(eventDetail.eventName === 'wrangle'){ %> style="display : none" <%}%>>
                                 <%if (isLoggedIn) { %>
                                     <%if (user.events.indexOf(eventDetail.eventName) !== -1) { %>
                                         <li><a class="reg-btn" >Registered</a></li>
