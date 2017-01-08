@@ -91,9 +91,9 @@ function logOut(){
 
 function unloadcallback(){
     if(localStorage.temptoken !== undefined){
-        if(localStorage.temptoken === ""){
-            return;
-        }
+        //if(localStorage.temptoken === ""){
+          //  return;
+        //}
         activateLoader();
         $.post( "/user/user_validate", { "token" : localStorage.temptoken })
         .done(function( data ) {
@@ -224,4 +224,4 @@ $(document).ready(function() {
     $('.master-wrapper').delay(1000).fadeOut('fast');
 });
 
- navItemActive();
+navItemActive();
