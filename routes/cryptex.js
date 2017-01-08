@@ -9,38 +9,7 @@ var multipartMiddleware = multipart();
 var path = require('path');
 var fs = require('fs');
 
-
 router.get('/', Verify.verifyOrdinaryUser ,function(req, res) {
-
-  if(req.decoded.sub === ""){
-      isLoggedIn = false;
-      res.render('cryptex_countdown', {
-          "isLoggedIn" : isLoggedIn,
-      });
-  }
-  else {
-      isLoggedIn = true;
-      User.findOne({'email' : req.decoded.sub }, function(err, user) {
-          if(user.cryptexLevel === undefined) var newUser = true;
-          // if there are any errors, return the error
-          if (err)
-              return done(err);
-          // check to see if theres already a user with that email
-          if (user){
-              res.render('cryptex_countdown',{
-                  "isLoggedIn" : isLoggedIn,
-                  "user" : {
-                      name : user.name,
-                      gender : user.gender,
-                  },
-                  newUser : newUser,
-              });
-          }
-      });
-  }
-});
-
-router.get('/home', Verify.verifyOrdinaryUser ,function(req, res) {
 
   if(req.decoded.sub === ""){
       isLoggedIn = false;
@@ -71,7 +40,7 @@ router.get('/home', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.get('/play', Verify.verifyOrdinaryUser ,function(req, res) {
-    var limitLevel = 10;
+    var limitLevel = 11;
   if(req.decoded.sub === ""){
       isLoggedIn = false;
       res.redirect('/cryptex');
