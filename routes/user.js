@@ -3,10 +3,11 @@ var router = express.Router();
 var passport = require('passport');
 var google = require('../authenticate').google;
 var facebook = require('../authenticate').facebook;
+var facebookValidate = require('../authenticate').facebookValidate;
 var Verify = require('./verify');
 var User = require('../models/user');
 var UserEvent = require('../models/userevent');
-
+var GoogleAuth = require('google-auth-library');
 
 /* GET users listing. */
 router.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }), function(req,res){});
@@ -106,8 +107,6 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
         city           : req.body.user.city,
         accommodation  : req.body.user.accommodation,
         gender         : req.body.user.gender,
-        name           : req.body.user.name,
-        email          : req.body.user.email,
         events         : ['init'],
         valid          : true,
     };
@@ -157,9 +156,50 @@ router.post('/logout', Verify.verifyOrdinaryUser ,function(req, res) {
     res.json({"response": true})
 });
 
-router.post('/user_register_complete_mobile', Verify.verifyOrdinaryUser ,function(req, res) {
-    console.log(req.body);
-    res.end('success');
-});
+// router.post('/user_register_complete_mobile/google', Verify.verifyOrdinaryUser ,function(req, res) {
+//
+//     var auth = new GoogleAuth;
+//     var client = new auth.OAuth2(CLIENT_ID);
+//     client.verifyIdToken( token, CLIENT_ID, function(e, login) {
+//           var payload = login.getPayload();
+//           var userid = payload['sub'];
+//           // If request specified a G Suite domain:
+//           //var domain = payload['hd'];
+//       });
+// });
+//
+// router.post('/user_register_complete_mobile/facebook',
+//     passport.authenticate('facebook-token'),
+//     function (req, res) {
+//         res.json(req.user);
+//         var user = new User();
+//         var user = {
+//             phoneNumber    : req.body.phoneNumber,
+//             college        : req.body.college,
+//             year           : req.body.year,
+//             city           : req.body.city,
+//             accommodation  : req.body.accommodation,
+//             gender         : req.body.gender,
+//             name           : req.user.name,
+//             email          : req.user.email,
+//             events         : ['init'],
+//             valid          : true,
+//             facebookid     : profile.id,
+// 			facebooktoken  : accessToken,
+//         };
+//
+//         user.save(function(err){
+//             if(err){
+//                 console.log(err);
+//                 res.json({response : false});
+//                 return;
+//             }
+//             else{
+//                 res.json({response : true});
+//                 return;
+//             }
+//         })
+//     }
+// );
 
 module.exports = router;

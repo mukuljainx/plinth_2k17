@@ -20,16 +20,13 @@
         <meta name="twitter:card" content="summary_large_image">
         <title>Cryptex | Plinth'17</title>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Exo+2:300,400" rel="stylesheet">
        <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/cryptex.css">
         <style>
-            .reg-status{
-                color : black;
-            }
+
         </style>
     </head>
     <body>
@@ -39,8 +36,8 @@
                 <% include partials/reg-form %>
         <% } %>
 
-            <div class="row">
-                <div class="small-12 small-centered column text-center footer-adjust">
+            <div class="row footer-adjust">
+                <div class="small-12 small-centered column text-center main-logo">
                     <div>
                     	<div class="scaledown">
                     		<span class="logo-plinth">plinth</span>   <span class="logo-2017">2017</span>
@@ -49,32 +46,10 @@
                     	<br /><span class="logo-present">presents</span>
                     	<br /><span class="logo-name">Cryptex</span>
                     	<div class="login">
-                            <% if(isLoggedIn){ %>
-                                <div class="withsocial">
-                                    <% if(newUser){ %>
-                                		<a onclick="startTheGame()">
-                                		Start the Game
-                                		</a>
-                                    <% }else{ %>
-                                        <a href="/cryptex/play">
-                                		Continue Playing
-                                		</a>
-                                    <% } %>
-                            	</div>
-                            <% }else{ %>
-                                <div class="withsocial">
-                            		<a class="popupwindow" href="/user/auth/facebook" rel="windowCallUnload">
-                            		<i class="fa fa-facebook" aria-hidden="true"></i>
-                            		Continue with Facebook
-                            		</a>
-                            	</div>
-                            	<div class="withsocial">
-                            	   	<a class="popupwindow" href="/user/auth/google">
-                            		<i class="fa fa-google-plus" aria-hidden="true"></i>
-                            		Continue with Google
-                            		</a>
-                            	</div>
-                            <% } %>
+                            <span class="cryptex-game-begins">Game is On</span>
+                            <p class="cryptex-game-begins-desc">
+                                Congrulation, you have solved all question for today, Come back Tomorrow for more.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -82,33 +57,6 @@
 
         <% include partials/footer%>
         <script src="js/index.js"></script>
-        <script>
-            function startTheGame(){
-                data = {
-                    random : "radom"
-                }
-                activateLoader();
-                $.post( {
-                    url: '/cryptex/startthegame',
-                    contentType: 'application/json; charset=utf-8',
-                    dataType : 'json',
-                    // data: JSON.stringify(data)
-                })
-                .done(function( data ) {
-                    deactivateLoader();
-                    if(data.response){
-                        notifDisplay(1,1);
-                        window.location.href = "https://www.plinth.in/cryptex/play";
-                    }
-                    else {
-                        notifDisplay(0,0);
-                    }
-                })
-                .fail(function(response) {
-                    apiCallFail(response);
-                });
-            }
-        </script>
 
     </body>
 </html>
