@@ -1,5 +1,6 @@
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
+var FacebookValidate = require('passport-facebook-token');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var User = require('./models/user');
 var configAuth = require('./config/auth');
@@ -81,3 +82,21 @@ exports.facebook = passport.use(new FacebookStrategy({
 		})
 	})
 );
+
+
+exports.facebookValidate = passport.use(new FacebookValidate({
+    clientID        : configAuth.facebookAuth.clientID,
+    clientSecret    : configAuth.facebookAuth.clientSecret,
+  },
+  function(accessToken, refreshToken, profile, done) {
+    if(profile){
+        var user = {
+            'email': profile.emails[0].value,
+            'name' : profile.name.givenName + ' ' + profile.name.familyName,
+            'id'   : profile.id,
+        }
+        return done(null, user);
+    }
+    return done(null, null);
+  }
+));

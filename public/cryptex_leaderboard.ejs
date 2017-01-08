@@ -59,20 +59,22 @@
             </div>
 
             <div class="rankBoard">
-                <div class="row contentrows">
-                    <div class="small-2 number column">
-                         #1
+                <% for(var i=0; i<results.length; i++){ %>
+                    <div class="row contentrows">
+                        <div class="small-2 number column">
+                             #<%= i + 1 %>
+                        </div>
+                        <div class="small-4 column">
+                            <%= results[i].name  %>
+                        </div>
+                        <div class="small-4 column">
+                            <%= results[i].college  %>
+                        </div>
+                        <div class="small-2 column">
+                            <%= results[i].cryptexLevel  %>
+                        </div>
                     </div>
-                    <div class="small-4 column">
-                        Baba Ramdev
-                    </div>
-                    <div class="small-4 column">
-                        Yog School
-                    </div>
-                    <div class="small-2 column">
-                        999
-                    </div>
-                </div>
+                <% } %>
             </div>
 
         </section>

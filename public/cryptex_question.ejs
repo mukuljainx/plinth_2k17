@@ -31,6 +31,9 @@
             .master-wrapper{
                 display: none
             }
+            .reg-status{
+                color : black;
+            }
         </style>
     </head>
     <body>
@@ -45,7 +48,7 @@
             </div>
             <div class="row">
                 <div class="small-10 small-centered medium-12 column contentmain">
-                    <span class="level-text" >Level #1<span>
+                    <span class="level-text" >Level #<%= doc.level %><span>
                     <div class="row">
                         <div class="small-10 medium-8 large-6 small-centered column">
                             <div class="contentImage text-center">
@@ -56,11 +59,11 @@
                             </div>
                             <form action="javascript:void(0)" class="text-center">
                                 <div class="group group-center">
-                                    <input type="text" id="in-name" class="user-name" required>
+                                    <input type="text" id="in-name" class="user-answer" required>
                                     <span class="highlight"></span>
                                     <label>Answer</label>
                                 </div>
-                                <input type="submit" value="Submit" class="reg-form-btn-register cryptex-btn" onclick="addMember()">
+                                <input type="submit" value="Submit" class="reg-form-btn-register cryptex-btn" onclick="submitAnswer()">
                             </from>
                         </div>
                     </div>
@@ -70,7 +73,38 @@
 
         <% include partials/footer%>
         <script src="js/index.js"></script>
-        <script src="js/cryptex.js"></script>
+        <script>
+            function submitAnswer(){
+                data = {
+                    answer : $('.user-answer').val(),
+                    level : <%= doc.level %>,
+                }
+                if(data.answer === ""){
+                    return;
+                }
+
+                activateLoader();
+                $.post( {
+                    url: '/cryptex/submitanswer',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType : 'json',
+                    data: JSON.stringify(data)
+                })
+                .done(function( data ) {
+                    deactivateLoader();
+                    if(data.response){
+                        notifDisplay(1,8);
+                        window.location.href = "/cryptex/play";
+                    }
+                    else {
+                        notifDisplay(0,9);
+                    }
+                })
+                .fail(function(response) {
+                    apiCallFail(response);
+                });
+            }
+        </script>
 
     </body>
 </html>
