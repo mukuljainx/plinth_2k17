@@ -232,26 +232,37 @@ router.post('/submitanswer', Verify.verifyOrdinaryUser ,function(req, res) {
         res.json({response : false})
         return;
     }
-    Cryptex.findOne({'level' : req.body.level}, function(err, doc){
-        if(err){
-            console.log(err);
-            res.json({response : false});
-            return;
-        }
-        else{
-            if(doc.answer.toLowerCase() === req.body.answer.toLowerCase()){
-                var newLevel = req.body.level + 1;
-                var timestamp = + new Date();
-                User.findOneAndUpdate({'email' : req.decoded.sub}, {'cryptexLevel' : newLevel, 'cryptexTime' : timestamp}, {'new' : true}, function(err,user){
-                    res.json({response : true});
-                    return;
-                })
-            }else{
+    else {
+        User.findOne({'email' : req.decoded.sub }, function(err, user) {
+            if(err){
+                console.log(err);
                 res.json({response : false});
                 return;
             }
-        }
-    })
+            if(user){
+                Cryptex.findOne({'level' : user.cryptexLevel}, function(err, doc){
+                    if(err){
+                        console.log(err);
+                        res.json({response : false});
+                        return;
+                    }
+                    else{
+                        if(doc.answer.toLowerCase() === req.body.answer.toLowerCase()){
+                            var newLevel = user.cryptexLevel + 1;
+                            var timestamp = + new Date();
+                            User.findOneAndUpdate({'email' : req.decoded.sub}, {'cryptexLevel' : newLevel, 'cryptexTime' : timestamp}, {'new' : true}, function(err,user){
+                                res.json({response : true});
+                                return;
+                            })
+                        }else{
+                            res.json({response : false});
+                            return;
+                        }
+                    }
+                })
+            }
+        })
+    }
 });
 
 
