@@ -96,7 +96,6 @@ router.get('/leaderboard', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
       User.find({'cryptexLevel' : { $exists : true}}, null, {sort : {'cryptexLevel' : -1, 'cryptexTime' : 1 }}, function(err,results){
-          console.log(results);
           res.render('cryptex_leaderboard', {
               "isLoggedIn" : isLoggedIn,
               results : results
@@ -114,7 +113,6 @@ router.get('/leaderboard', Verify.verifyOrdinaryUser ,function(req, res) {
           if (user){
               //seatch user db again to create leaderboard
               User.find({'cryptexLevel' : { $exists : true}}, usersProjection, {sort : {'cryptexLevel' : -1, 'cryptexTime' : 1 }}, function(err,results){
-                  console.log(results);
                   res.render('cryptex_leaderboard',{
                       isLoggedIn : isLoggedIn,
                       user : user,
@@ -177,7 +175,6 @@ router.post('/editlevel/image/*', Verify.verifyOrdinaryUser, multipartMiddleware
         res.end('something wrong')
         return;
     }
-    console.log(req.files.file);
     var level = req.params['0'];
     var tempPath = req.files.file.path;
     var ext = path.extname(req.files.file.name);
@@ -202,7 +199,6 @@ router.post('/editlevel/question', Verify.verifyOrdinaryUser ,function(req, res)
     Cryptex.findOneAndUpdate({'level' : req.body.level}, update , options, function(err,doc){
         if (err) throw err;
         else {
-            console.log(doc);
             console.log("Upload completed!");
             res.json({response : true});
             return;
@@ -220,7 +216,6 @@ router.post('/startthegame', Verify.verifyOrdinaryUser ,function(req, res) {
         }
         // check to see if theres already a user with that email
         if (user){
-            console.log(user)
             res.json({response : true});
             return;
         }

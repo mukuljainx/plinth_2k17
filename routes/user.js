@@ -15,7 +15,6 @@ router.get('/auth/google', passport.authenticate('google', { scope : ['profile',
 
 router.get('/auth/google/callback', function(req,res,next){
   passport.authenticate('google', function(err, user, info) {
-    console.log(req);
     if (err) {
       return next(err);
     }
@@ -31,7 +30,6 @@ router.get('/auth/google/callback', function(req,res,next){
           err: 'Could not log in user'
         });
     }
-      console.log(user);
       var token = Verify.getToken(user);
       res.cookie('access-token', token ,{ httpOnly: true, secure : false });
       res.render('redirect',{
@@ -83,14 +81,12 @@ router.get('/auth/facebook/callback', function(req,res,next){
 
 router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
     User.findOne({ 'email' :  req.decoded.sub }, function(err, user) {
-        console.log(req.decoded.sub);
         // if there are any errors, return the error
         if (err){
             return done(err);
         }
         // check to see if theres already a user with that email
         if (user) {
-            console.log(user);
             if(!user.valid){
                 res.json({"response" : false, "email" : user.email, "name" : user.name});
             }
@@ -124,10 +120,7 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
         }
         // check to see if theres already a user with that email
         if (oldUser) {
-            console.log(1,update.events);
             update.events = update.events.concat(oldUser.events);
-            console.log(2, oldUser.events);
-            console.log(update.events);
             User.findOneAndUpdate({'email' : req.decoded.sub}, update, {new: true}, function(err, user) {
                 if (err){
                     // return done(err);
@@ -139,9 +132,6 @@ router.post('/user_register_complete', Verify.verifyOrdinaryUser ,function(req, 
             });
         }
         else{
-            console.log(req.decoded.sub);
-            console.log(update);
-
             User.findOneAndUpdate({'email' : req.decoded.sub}, update, {new: true}, function(err, user) {
                 if (err){
                     console.log('errr');
