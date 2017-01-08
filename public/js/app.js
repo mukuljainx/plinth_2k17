@@ -11,7 +11,7 @@ function workshopProceedNext(){
 }
 
 formReg = 0;
-
+//random
 //HAMBURGER
 
 $('.ham-btn').click(function() {
