@@ -95,7 +95,7 @@ router.get('/leaderboard', Verify.verifyOrdinaryUser ,function(req, res) {
     };
   if(req.decoded.sub === ""){
       isLoggedIn = false;
-      User.find({'cryptexLevel' : { $exists : true}}, null, {sort : {'cryptexLevel' : -1, 'cryptexTime' : 1 }}, function(err,results){
+      User.find({'cryptexLevel' : { $exists : true}}, usersProjection, {sort : {'cryptexLevel' : -1, 'cryptexTime' : 1 }}, function(err,results){
           res.render('cryptex_leaderboard', {
               "isLoggedIn" : isLoggedIn,
               results : results

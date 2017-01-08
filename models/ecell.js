@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+var mongoose_csv = require('mongoose-csv');
 
 var ecellRegistrationSchema = mongoose.Schema({
     team : [
@@ -27,5 +27,6 @@ var ecellRegistrationSchema = mongoose.Schema({
     },
 });
 
+ecellRegistrationSchema.plugin(mongoose_csv);
 // create the model for users and expose it to our app
 module.exports = mongoose.model('Ecell', ecellRegistrationSchema);

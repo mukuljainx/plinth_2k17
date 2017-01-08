@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var mongoose_csv = require('mongoose-csv');
 
 var workshopRegistrationSchema = mongoose.Schema({
     team : [
@@ -23,6 +24,6 @@ var workshopRegistrationSchema = mongoose.Schema({
         amount   : String,
     },
 });
-
+workshopRegistrationSchema.plugin(mongoose_csv);
 // create the model for users and expose it to our app
 module.exports = mongoose.model('Workshop', workshopRegistrationSchema);

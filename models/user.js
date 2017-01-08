@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+var mongoose_csv = require('mongoose-csv');
 
 var userSchema = mongoose.Schema({
         googletoken    : String,
@@ -9,7 +9,7 @@ var userSchema = mongoose.Schema({
         email          : String,
         name           : String,
         phoneNumber    : Number,
-        cryptexLevel   : Number, 
+        cryptexLevel   : Number,
         cryptexTime    : Number, //the time when cryptexLevel got updated;
         college        : String,
         year           : Number,
@@ -20,6 +20,6 @@ var userSchema = mongoose.Schema({
         events         : Array,
         paidEvents     : Array,
 });
-
+userSchema.plugin(mongoose_csv);
 // create the model for users and expose it to our app
 module.exports = mongoose.model('User', userSchema);

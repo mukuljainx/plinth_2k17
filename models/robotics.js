@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+var mongoose_csv = require('mongoose-csv');
 
 var roboticsRegistrationSchema = mongoose.Schema({
         team : [
@@ -24,6 +24,6 @@ var roboticsRegistrationSchema = mongoose.Schema({
             amount   : String,
         },
 });
-
+roboticsRegistrationSchema.plugin(mongoose_csv);
 // create the model for users and expose it to our app
 module.exports = mongoose.model('Robotics', roboticsRegistrationSchema);

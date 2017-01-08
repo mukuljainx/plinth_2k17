@@ -17,6 +17,8 @@ var PaymentDB = require('../models/payment');
 var PaymentMUN = require('../models/paymentMUN');
 var PaymentSIF = require('../models/paymentSIF');
 var EventURL = require('../config/eventURL');
+var mongoose_csv = require('mongoose-csv');
+
 
 
 router.get('/sif/startup', Verify.verifyOrdinaryUser ,function(req, res) {
@@ -276,6 +278,90 @@ router.get('/user/registered', Verify.verifyOrdinaryUser ,function(req, res) {
                     });
                 }
             });
+        }
+    });
+});
+
+router.get('/user/registered/csv', Verify.verifyOrdinaryUser ,function(req, res) {
+    var poc   = authUser.poc;
+    if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1)){
+        res.end("You are not authorized. Login and try");
+        return;
+     }
+    res.writeHead(200, {
+        'Content-Type': 'text/csv',
+        'Content-Disposition': 'attachment; filename=registereduser.csv'
+    });
+    // pipe file using mongoose-csv
+    User.find().csv(res);
+});
+
+
+router.get('/csv/*', Verify.verifyOrdinaryUser ,function(req, res) {
+    var poc   = authUser.poc;
+    var allowedUser = ['jainmukul1996@gmail.com'];
+    var paymentUser = poc.slice(0);
+
+    if(EventURL[req.query.event] === undefined){
+        res.end('Please Check the link once again there may some typo in event name');
+        return;
+    }
+
+    switch(req.params['0']) {
+        case "astronomy":
+            eventx = Astronomy;
+            allowedUser = authUser.astronomy;
+            paymentUser = paymentUser.concat(allowedUser[0]);
+            break;
+        case "coding":
+            eventx = Cybros;
+            allowedUser = authUser.cybros;
+            paymentUser = paymentUser.concat(allowedUser[0]);
+            break;
+        case "literature":
+            eventx = Literary;
+            break;
+        case "robotics":
+            eventx = Robotics;
+            allowedUser = authUser.robotics;
+            paymentUser = paymentUser.concat(allowedUser[0]);
+            break;
+        case "management":
+            eventx = Ecell;
+            allowedUser = authUser.ecell;
+            paymentUser = paymentUser.concat(allowedUser[0]);
+            break;
+        case "quizzing":
+            eventx = Quiz;
+            allowedUser = authUser.quiz;
+            paymentUser = paymentUser.concat(allowedUser[0]);
+            break;
+        case "workshop":
+            eventx = Workshop;
+            allowedUser = authUser.admin;
+            break;
+            default:
+            res.end('Please Check the link once again there may some typo in club name');
+            return;
+            break;
+    }
+    if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1 && allowedUser.indexOf(req.decoded.sub) === -1)){
+         res.end("You are not authorized. Login and try");
+         return;
+     }
+
+    User.findOne({'email' : req.decoded.sub }, function(err, user) {
+        // if there are any errors, return the error
+        if (err){
+            return done(err);
+        }
+        // check to see if theres already a user with that email
+        if (user){
+            res.writeHead(200, {
+                'Content-Type': 'text/csv',
+                'Content-Disposition': 'attachment; filename=' + req.query.event + '.csv'
+            });
+            eventx.find({'eventName' : req.query.event}).csv(res);
         }
     });
 });

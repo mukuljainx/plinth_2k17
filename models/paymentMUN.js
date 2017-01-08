@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+var mongoose_csv = require('mongoose-csv');
 
 var paymentMUNSchema = mongoose.Schema({
         order_id      : String,
@@ -16,6 +16,6 @@ var paymentMUNSchema = mongoose.Schema({
         timestamps: { createdAt: 'created_at' }
     }
 );
-
+paymentMUNSchema.plugin(mongoose_csv);
 // create the model for payments and expose it to our app
 module.exports = mongoose.model('PaymentMUN', paymentMUNSchema);
