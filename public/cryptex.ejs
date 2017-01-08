@@ -63,13 +63,13 @@
                             	</div>
                             <% }else{ %>
                                 <div class="withsocial">
-                            		<a class="popupwindow" href="/user/auth/facebook" rel="windowCallUnload">
+                            		<a onclick='userLoginInitiate("/user/auth/facebook")'>
                             		<i class="fa fa-facebook" aria-hidden="true"></i>
                             		Continue with Facebook
                             		</a>
                             	</div>
                             	<div class="withsocial">
-                            	   	<a class="popupwindow" href="/user/auth/google">
+                            	   	<a onclick='userLoginInitiate("/user/auth/google")'>
                             		<i class="fa fa-google-plus" aria-hidden="true"></i>
                             		Continue with Google
                             		</a>
@@ -98,7 +98,7 @@
                     deactivateLoader();
                     if(data.response){
                         notifDisplay(1,1);
-                        window.location = "https://plinth.in/cryptex/play";
+                        window.location.href = location.origin +  "/cryptex/play";
                     }
                     else {
                         notifDisplay(0,0);

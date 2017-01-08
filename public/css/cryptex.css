@@ -136,7 +136,7 @@ body{
     margin-bottom: 0;
 }
 .contentImage img{
-    height: 250px;
+    height: 450px;
 }
 .contentQues{
     text-align: center;
@@ -547,4 +547,7 @@ body{
 .cryptex-game-begins-register{
     font-family: 'Exo 2', sans-serif;
     text-decoration: underline;
+}
+.cryptex-notifty {
+    display: none;
 }

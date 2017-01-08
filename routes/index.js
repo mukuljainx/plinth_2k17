@@ -6,15 +6,16 @@ var Verify = require('./verify');
 
 /* GET home page. */
 router.get('/', Verify.verifyOrdinaryUser ,function(req, res, next) {
-  if(req.decoded.sub === ""){
+  if(req.decoded.sub === "")
+  {
       isLoggedIn = false;
       res.render('index', {
           "isLoggedIn" : isLoggedIn,
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -40,8 +41,8 @@ router.get('/cli', Verify.verifyOrdinaryUser ,function(req, res, next) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -67,8 +68,8 @@ router.get('/competitions', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -95,8 +96,8 @@ router.get('/about', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -122,8 +123,8 @@ router.get('/termsandconditions', Verify.verifyOrdinaryUser ,function(req, res) 
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -149,8 +150,8 @@ router.get('/serviceflow', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -176,8 +177,8 @@ router.get('/competitions/astronomy', Verify.verifyOrdinaryUser ,function(req, r
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -203,8 +204,8 @@ router.get('/competitions/coding', Verify.verifyOrdinaryUser ,function(req, res)
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -237,8 +238,8 @@ router.get('/competitions/literature/wrangle', Verify.verifyOrdinaryUser ,functi
                  });
              }
              else {
-                 isLoggedIn = true;
                  User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                     isLoggedIn = user.valid;
                      // if there are any errors, return the error
                      if (err)
                          return done(err);
@@ -272,8 +273,8 @@ router.get('/competitions/literature/rostrum', Verify.verifyOrdinaryUser ,functi
                  });
              }
              else {
-                 isLoggedIn = true;
                  User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                     isLoggedIn = user.valid;
                      // if there are any errors, return the error
                      if (err)
                          return done(err);
@@ -307,8 +308,8 @@ router.get('/competitions/quizzing/quest', Verify.verifyOrdinaryUser ,function(r
                  });
              }
              else {
-                 isLoggedIn = true;
                  User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                     isLoggedIn = user.valid;
                      // if there are any errors, return the error
                      if (err)
                          return done(err);
@@ -335,8 +336,8 @@ router.get('/competitions/robotics', Verify.verifyOrdinaryUser ,function(req, re
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -363,8 +364,8 @@ router.get('/competitions/management', Verify.verifyOrdinaryUser ,function(req, 
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -390,8 +391,8 @@ router.get('/competitions/literature', Verify.verifyOrdinaryUser ,function(req, 
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -417,8 +418,8 @@ router.get('/competitions/quizzing', Verify.verifyOrdinaryUser ,function(req, re
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -445,8 +446,8 @@ router.get('/contact_us', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -472,8 +473,8 @@ router.get('/faq', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -499,8 +500,8 @@ router.get('/faq/payment', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -530,8 +531,8 @@ router.get('/sponsors', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -557,8 +558,8 @@ router.get('/team', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -584,8 +585,8 @@ router.get('/workshops', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -614,8 +615,8 @@ router.get('/workshops/web-o-master', Verify.verifyOrdinaryUser ,function(req, r
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -642,8 +643,8 @@ router.get('/workshops/vehicle-dynamics', Verify.verifyOrdinaryUser ,function(re
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -670,8 +671,8 @@ router.get('/workshops/touch-augmented-realities', Verify.verifyOrdinaryUser ,fu
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -698,8 +699,8 @@ router.get('/workshops/photography', Verify.verifyOrdinaryUser ,function(req, re
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -723,8 +724,8 @@ router.get('/talks', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -750,8 +751,8 @@ router.get('/talks/2016', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -778,8 +779,8 @@ router.get('/talks/2015', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -805,8 +806,8 @@ router.get('/talks/sangram-ganguly', Verify.verifyOrdinaryUser ,function(req, re
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -832,8 +833,8 @@ router.get('/talks/dr-shiva-ayyadurai', Verify.verifyOrdinaryUser ,function(req,
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -859,8 +860,8 @@ router.get('/talks/shubhranshu-choudhary', Verify.verifyOrdinaryUser ,function(r
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -886,8 +887,8 @@ router.get('/talks/balaji-vishwanathan', Verify.verifyOrdinaryUser ,function(req
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -911,8 +912,8 @@ router.get('/myprofile', Verify.verifyOrdinaryUser ,function(req, res) {
         res.redirect(301,'/');
     }
     else {
-        isLoggedIn = true;
         User.findOne({'email' : req.decoded.sub }, function(err, user) {
+            isLoggedIn = user.valid;
             // if there are any errors, return the error
             if (err)
                 return done(err);
@@ -942,8 +943,8 @@ router.get('/competitions/astronomy/astro_hunt', Verify.verifyOrdinaryUser ,func
                 });
             }
             else {
-                isLoggedIn = true;
                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    isLoggedIn = user.valid;
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -976,8 +977,8 @@ router.get('/competitions/astronomy/star_trek', Verify.verifyOrdinaryUser ,funct
                 });
             }
             else {
-                isLoggedIn = true;
                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    isLoggedIn = user.valid;
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -1011,8 +1012,8 @@ router.get('/competitions/coding/fix_the_bug', Verify.verifyOrdinaryUser ,functi
                 });
             }
             else {
-                isLoggedIn = true;
                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    isLoggedIn = user.valid;
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -1046,8 +1047,8 @@ router.get('/competitions/coding/iupc', Verify.verifyOrdinaryUser ,function(req,
                 });
             }
             else {
-                isLoggedIn = true;
                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    isLoggedIn = user.valid;
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -1080,8 +1081,8 @@ router.get('/competitions/coding/iupc_distraction', Verify.verifyOrdinaryUser ,f
                 });
             }
             else {
-                isLoggedIn = true;
                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    isLoggedIn = user.valid;
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -1115,8 +1116,8 @@ router.get('/competitions/robotics/lfr', Verify.verifyOrdinaryUser ,function(req
                 });
             }
             else {
-                isLoggedIn = true;
                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    isLoggedIn = user.valid;
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -1150,8 +1151,8 @@ router.get('/competitions/robotics/quadcopter', Verify.verifyOrdinaryUser ,funct
                 });
             }
             else {
-                isLoggedIn = true;
                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    isLoggedIn = user.valid;
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -1185,8 +1186,8 @@ router.get('/competitions/robotics/roborace', Verify.verifyOrdinaryUser ,functio
                 });
             }
             else {
-                isLoggedIn = true;
                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    isLoggedIn = user.valid;
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -1220,8 +1221,8 @@ router.get('/competitions/robotics/robosoccer', Verify.verifyOrdinaryUser ,funct
                 });
             }
             else {
-                isLoggedIn = true;
                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    isLoggedIn = user.valid;
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -1255,8 +1256,8 @@ router.get('/competitions/robotics/robowar', Verify.verifyOrdinaryUser ,function
                 });
             }
             else {
-                isLoggedIn = true;
                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    isLoggedIn = user.valid;
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -1290,8 +1291,8 @@ router.get('/competitions/robotics/transporter', Verify.verifyOrdinaryUser ,func
                 });
             }
             else {
-                isLoggedIn = true;
                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    isLoggedIn = user.valid;
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -1325,8 +1326,8 @@ router.get('/competitions/management/sif', Verify.verifyOrdinaryUser ,function(r
                 });
             }
             else {
-                isLoggedIn = true;
                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    isLoggedIn = user.valid;
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -1360,8 +1361,8 @@ router.get('/competitions/astronomy/armAgeddon', Verify.verifyOrdinaryUser ,func
                 });
             }
             else {
-                isLoggedIn = true;
                 User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    isLoggedIn = user.valid;
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -1396,7 +1397,7 @@ router.get('/mun/pay', Verify.verifyOrdinaryUser ,function(req, res) {
   //   //   });
   // }
   // else {
-  //     isLoggedIn = true;
+  //     isLoggedIn = user.valid;
   //     User.findOne({'email' : req.decoded.sub }, function(err, user) {
   //         // if there are any errors, return the error
   //         if (err)
@@ -1423,8 +1424,8 @@ router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -1450,8 +1451,8 @@ router.get('/archive', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -1478,8 +1479,8 @@ router.get('/animation', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);

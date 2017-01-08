@@ -44,9 +44,9 @@
     </div>
 </nav>
 
-<div class="cryptex-notifty">
+<a href="/cryptex" class="cryptex-notifty">
     Play Cryptex
-</div>
+</a>
 
 <div class="reveal" id="register-pop-up-window" data-reveal>
     <h5 class="text-center">Register Yourself</h5>
@@ -55,8 +55,8 @@
         you would be able to get exclusive coupons and offers.
 </p>
     <div class="text-center">
-        <a class="btn btn-register popupwindow reg-with-google" href="/user/auth/google" rel="windowCallUnload"><i class="fa fa-google-plus" aria-hidden="true"></i>Register with Google</a>
-        <a class="btn btn-register popupwindow reg-with-fb" href="/user/auth/facebook" rel="windowCallUnload"><i class="fa fa-facebook" aria-hidden="true"></i>Register with Facebook</a>
+        <a class="btn btn-register reg-with-google" onclick='userLoginInitiate("/user/auth/google")'><i class="fa fa-google-plus" aria-hidden="true"></i>Register with Google</a>
+        <a class="btn btn-register reg-with-fb" onclick='userLoginInitiate("/user/auth/facebook")'><i class="fa fa-facebook" aria-hidden="true"></i>Register with Facebook</a>
     </div>
     <button class="close-button" data-close aria-label="Close modal" type="button">
         <span aria-hidden="true">&times;</span>

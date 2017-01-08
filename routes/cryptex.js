@@ -18,8 +18,8 @@ router.get('/', Verify.verifyOrdinaryUser ,function(req, res) {
       });
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           if(user.cryptexLevel === undefined) var newUser = true;
           // if there are any errors, return the error
           if (err)
@@ -47,8 +47,8 @@ router.get('/play', Verify.verifyOrdinaryUser ,function(req, res) {
       return
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -105,8 +105,8 @@ router.get('/leaderboard', Verify.verifyOrdinaryUser ,function(req, res) {
       return
   }
   else {
-      isLoggedIn = true;
       User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
           // if there are any errors, return the error
           if (err)
               return done(err);
@@ -143,8 +143,8 @@ router.get('/dashboard', Verify.verifyOrdinaryUser ,function(req, res) {
         return
     }
     else {
-        isLoggedIn = true;
         User.findOne({'email' : req.decoded.sub }, function(err, user) {
+            isLoggedIn = user.valid;
         // if there are any errors, return the error
         if (err)
           return done(err);
@@ -182,10 +182,10 @@ router.post('/editlevel/image/*', Verify.verifyOrdinaryUser, multipartMiddleware
     var tempPath = req.files.file.path;
     var ext = path.extname(req.files.file.name);
     relativePath = 'public/media/cryptex/'
-    targetPath = path.resolve(relativePath + level);
+    targetPath = path.resolve(relativePath + req.files.file.originalFilename);
     fs.rename(tempPath, targetPath, function(err) {
         if (err) throw err;
-        Cryptex.findOneAndUpdate({'level' : req.params['0']}, {$set : {'image' : relativePath + level}},{new: true}, function(err,doc){
+        Cryptex.findOneAndUpdate({'level' : req.params['0']}, {$set : {'image' : relativePath + req.files.file.originalFilename}},{new: true}, function(err,doc){
             console.log("Upload completed!");
         })
     });

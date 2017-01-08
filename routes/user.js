@@ -15,6 +15,7 @@ router.get('/auth/google', passport.authenticate('google', { scope : ['profile',
 
 router.get('/auth/google/callback', function(req,res,next){
   passport.authenticate('google', function(err, user, info) {
+    console.log(req);
     if (err) {
       return next(err);
     }
@@ -32,9 +33,10 @@ router.get('/auth/google/callback', function(req,res,next){
     }
       console.log(user);
       var token = Verify.getToken(user);
-      res.cookie('hola', 'asd',{ httpOnly: true, secure : false });
+      res.cookie('access-token', token ,{ httpOnly: true, secure : false });
       res.render('redirect',{
-          token : token
+          isLoggedIn : false,
+          valid : user.valid,
       });
     });
   })(req,res,next);
@@ -69,8 +71,10 @@ router.get('/auth/facebook/callback', function(req,res,next){
             });
         }
         var token = Verify.getToken(user);
+        res.cookie('access-token', token ,{ httpOnly: true, secure : false });
         res.render('redirect',{
-            token : token
+            isLoggedIn : false,
+            valid : user.valid,
         });
     });
   })(req,res,next);
@@ -79,12 +83,14 @@ router.get('/auth/facebook/callback', function(req,res,next){
 
 router.post('/user_validate', Verify.verifyOrdinaryUser ,function(req, res) {
     User.findOne({ 'email' :  req.decoded.sub }, function(err, user) {
+        console.log(req.decoded.sub);
         // if there are any errors, return the error
         if (err){
             return done(err);
         }
         // check to see if theres already a user with that email
         if (user) {
+            console.log(user);
             if(!user.valid){
                 res.json({"response" : false, "email" : user.email, "name" : user.name});
             }

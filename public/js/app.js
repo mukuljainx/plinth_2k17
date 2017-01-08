@@ -47,104 +47,16 @@ $('.register-pop-up').click(function(){
   $('.wrapper-form').css('display','block');
 });
 
-// popus window for login
-
-var profiles =
-{
-    windowCallUnload:
-    {
-        // height:300,
-        // width:400,
-        center:1,
-        onUnload:unloadcallback
-    }
-};
-
 
 function logOut(){
     $.post( "/user/logout")
     .done(function( data ) {
         if(data.response){
+            localStorage.setItem("userStatus", 'true');
             location.reload();
         }
     });
 }
-
-function unloadcallback(){
-    if(localStorage.temptoken !== undefined){
-        activateLoader();
-        $.post( "/user/user_validate", { "token" : localStorage.temptoken })
-        .done(function( data ) {
-            deactivateLoader();
-            if(!data.response){
-                formReg = 1;
-                workshopProceedNext();
-                proceedNext();
-                $('.name-label').css('display','none');
-                $('.user-name').attr("disabled", "");
-                $('.email').attr("disabled", "");
-                $('.close-button').trigger('click'); // old form
-                $('.holaxx').trigger('click'); // register form
-                $('.reg-form-event-pagging').css('display','none');
-                $('.event-registration-form-btnx').removeClass('btn-disabled');
-                $('.reg-social').css("display","none"); // register btn with fb and google
-                $('.add-member-btn').css("display", "none");
-                $('.user-name').val(data.name);
-                $('.email').val(data.email);
-            }
-            else{
-                $('.close-button').trigger('click');
-                $('.close-button').trigger('click');
-                location.reload();
-                localStorage.temptoken = "";
-            }
-        })
-        .fail(function(response) {
-            apiCallFail(response);
-        });
-    }else{
-        return;
-    }
-};
-
-function registerUserComplete(){
-    var x = getUserDetails();
-    if(!validateUserDetails(x)){
-        return
-    }
-    data = {"token" : localStorage.temptoken, "user" : x};
-    activateLoader();
-    $.post( {
-        url: "/user/user_register_complete",
-        contentType: 'application/json; charset=utf-8',
-        dataType : 'json',
-        data: JSON.stringify(data)
-    })
-    .done(function( data ) {
-        deactivateLoader();
-        if(data.response){
-            $('.close-button').trigger('click');
-            notifDisplay(1,1);
-            localStorage.temptoken = "";
-            location.reload();
-        }else{
-            notifDisplay(0,0);
-        }
-    })
-    .fail(function(response) {
-        apiCallFail(response);
-    });
-}
-
-
-$(function()
-{
-    $(".popupwindow").popupwindow(profiles);
-});
-
-
-
-// Reg Form Object
 
 function getUserDetails(){
     userDetail ={
@@ -207,4 +119,11 @@ $(document).ready(function() {
     $('.master-wrapper').delay(1000).fadeOut('fast');
 });
 
- navItemActive();
+navItemActive();
+
+//Login stratery
+
+function userLoginInitiate(url){
+    localStorage.setItem("tempURL", location.href);
+    window.location = location.origin + url;
+}

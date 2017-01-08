@@ -57,6 +57,8 @@
                             <div class="contentQues">
                                 Q. <%= doc.question %>
                             </div>
+                            <br>
+                            <br>
                             <form action="javascript:void(0)" class="text-center">
                                 <div class="group group-center">
                                     <input type="text" id="in-name" class="user-answer" required>
@@ -72,7 +74,6 @@
         </section>
 
         <% include partials/footer%>
-        <script src="js/index.js"></script>
         <script>
             function submitAnswer(){
                 data = {
