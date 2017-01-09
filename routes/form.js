@@ -194,6 +194,7 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
          return;
      }
 
+     console.log(req.query.event);
 
     eventx.find({'eventName' : req.query.event},function (err, results) {
         if (err){
