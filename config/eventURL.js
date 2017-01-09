@@ -19,4 +19,5 @@ module.exports = {
     "touch-augmented-realities" : "/workshops/touch-augmented-realities",
     "vehicle-dynamics" : "/workshops/vehicle-dynamics",
     "audi" : "/workshops/photography",
+    "3d-printing" : "/workshops/3d-printer-workshop",
 }

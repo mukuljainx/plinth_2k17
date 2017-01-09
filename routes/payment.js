@@ -55,6 +55,7 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
     if(req.body.eventName === "quadcopter") totalAmount = 600;
     if(req.body.eventName === "touch-augmented-realities") totalAmount = 750;
     if(req.body.eventName === "audi") totalAmount = 500;
+    if(req.body.eventName === "3d-printing") totalAmount = 250;
 
 
     eventx.find({ 'eventName' : req.body.eventName , 'teamEmail' : req.body.email },function (err, result) {
@@ -107,6 +108,7 @@ router.get('/initiatepayment', function(req, res) {
     if(req.query.eventName === "quadcopter") totalAmount = 600;
     if(req.query.eventName === "touch-augmented-realities") totalAmount = 750;
     if(req.body.eventName === "audi") totalAmount = 500;
+    if(req.body.eventName === "3d-printing") totalAmount = 250;
 
     eventx.findOne({'_id' : id },function (err, results) {
         if (err){
@@ -124,6 +126,7 @@ router.get('/initiatepayment', function(req, res) {
 
                         if(req.query.eventName === "touch-augmented-realities") totalAmount = 750 * results.team.length;
                         if(req.query.eventName === "audi") totalAmount = 500 * results.team.length; //workshop
+                        if(req.query.eventName === "3d-printing") totalAmount = 250 * results.team.length; //workshop
                         if(results.teamEmail === "jainmukul1996@gmail.com") totalAmount = 0.10;
                         paymentdb.id = id;
                         paymentdb.clubName = req.query.clubName;
