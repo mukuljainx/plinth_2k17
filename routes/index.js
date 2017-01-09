@@ -465,6 +465,33 @@ router.get('/contact_us', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
+router.get('/how-to-reach', Verify.verifyOrdinaryUser ,function(req, res) {
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('how-to-reach', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
+  else {
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('how-to-reach',{
+                  "isLoggedIn" : isLoggedIn,
+                  "user" : {
+                      name : user.name,
+                      gender : user.gender,
+                  }
+              });
+          }
+      });
+  }
+});
+
 router.get('/faq', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;

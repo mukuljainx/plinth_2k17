@@ -72,7 +72,6 @@ router.get('/play', Verify.verifyOrdinaryUser ,function(req, res) {
                       return;
                   }
                   else{
-                      console.log(doc);
                       res.render('cryptex_question',{
                           isLoggedIn : isLoggedIn,
                           user : user,
