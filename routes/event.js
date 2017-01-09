@@ -112,7 +112,7 @@ router.post('/register', Verify.verifyOrdinaryUser, function(req, res) {
         eventx.teamEmail = req.body.userDetails[0].email;
         eventx.teamNumber = req.body.userDetails[0].phoneNumber;
         eventx.payment = {
-            status   : 'TXN_FAILURE',
+            status   : 'TXN_NOT_DONE',
             order_id : 'undefined'
         }
         var emails = [];
@@ -153,7 +153,7 @@ router.post('/register/sif', Verify.verifyOrdinaryUser, function(req, res) {
     sif.teamEmail  = req.body.sifDetails.representativeEmail;
     sif.teamNumber  = req.body.sifDetails.representativeContact;
     sif.payment   = {
-        status   : "TXN_FAILURE",
+        status   : "TXN_NOT_DONE",
         amount   : 500,
     },
     sif.save(function(err) {
@@ -179,7 +179,7 @@ router.post('/workshop/register', Verify.verifyOrdinaryUser, function(req, res) 
     workshop.teamEmail = req.body.userDetails[0].email;
     workshop.teamNumber = req.body.userDetails[0].phoneNumber;
     workshop.payment = {
-        status   : 'TXN_FAILURE',
+        status   : 'TXN_NOT_DONE',
         order_id : 'undefined'
     }
 
