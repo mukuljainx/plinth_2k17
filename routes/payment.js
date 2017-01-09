@@ -26,6 +26,7 @@ var paytmURL = 'https://secure.paytm.in/oltp-web/processTransaction';
 
 router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
     var totalAmount = 100;
+    var eventx = "";
     switch(req.body.clubName) {
         case "astronomy":
             eventx = Astronomy;
@@ -55,7 +56,7 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
     if(req.body.eventName === "quadcopter") totalAmount = 600;
     if(req.body.eventName === "touch-augmented-realities") totalAmount = 750;
     if(req.body.eventName === "audi") totalAmount = 500;
-    if(req.body.eventName === "3d-printing") totalAmount = 250;
+    if(req.body.eventName === "3dPrinting") totalAmount = 250;
 
 
     eventx.find({ 'eventName' : req.body.eventName , 'teamEmail' : req.body.email },function (err, result) {
@@ -77,7 +78,7 @@ router.get('/initiatepayment', function(req, res) {
     paymentdb = new PaymentDB();
     var totalAmount = 100;
     var id = req.query.id;
-
+    var eventx = "";
     switch(req.query.clubName) {
         case "astronomy":
             eventx = Astronomy;
@@ -108,9 +109,13 @@ router.get('/initiatepayment', function(req, res) {
     if(req.query.eventName === "quadcopter") totalAmount = 600;
     if(req.query.eventName === "touch-augmented-realities") totalAmount = 750;
     if(req.body.eventName === "audi") totalAmount = 500;
-    if(req.body.eventName === "3d-printing") totalAmount = 250;
-
-    eventx.findOne({'_id' : id },function (err, results) {
+    if(req.body.eventName === "3dPrinting") totalAmount = 250;
+    payment = {
+        status   : 'TXN_NOT_DONE',
+        order_id : 'undefined',
+        date : "" + new Date(),
+    }
+    eventx.findOneAndUpdate({'_id' : id }, {$set : {'payment' : payment}}, {'new': true},function (err, results) {
         if (err){
             return console.error(err);
         }
@@ -126,7 +131,7 @@ router.get('/initiatepayment', function(req, res) {
 
                         if(req.query.eventName === "touch-augmented-realities") totalAmount = 750 * results.team.length;
                         if(req.query.eventName === "audi") totalAmount = 500 * results.team.length; //workshop
-                        if(req.query.eventName === "3d-printing") totalAmount = 250 * results.team.length; //workshop
+                        if(req.query.eventName === "3dPrinting") totalAmount = 250 * results.team.length; //workshop
                         if(results.teamEmail === "jainmukul1996@gmail.com") totalAmount = 0.10;
                         paymentdb.id = id;
                         paymentdb.clubName = req.query.clubName;
@@ -147,11 +152,11 @@ router.get('/initiatepayment', function(req, res) {
                             paymentdb.order_id = result.ORDER_ID;
                             paymentdb.save(function(err) {
                                 if (err){
-                                    return done(err);
+                                    console.log(err);
+                                    res.end('something went wrong')
+                                    return;
                                 }
                                 else{
-                                    console.log('*****************');
-                                    console.log(result);
                                     result['PAYTM_URL'] = paytmURL;
                                     res.render('pgredirect2.ejs',{ 'restdata' : result});
                                 }
@@ -242,14 +247,7 @@ router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
                 return;
             }
             else{
-
-                if(paramlist.STATUS === "TXN_FAILURE"){
-                    res.render('payment_failed', {
-                        clubName : result.clubName,
-                        backURL : eventURL[result.eventName],
-                    });
-                }
-
+                var eventx = "";
                 switch(result.clubName) {
                     case "astronomy":
                         eventx = Astronomy;
@@ -269,7 +267,7 @@ router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
                     case "quizzing":
                         eventx = Quiz;
                         break;
-                    case "quizzing":
+                    case "workshop":
                         eventx = Workshop;
                         break;
                 }
@@ -280,12 +278,20 @@ router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
                     date     : paramlist.TXNDATE,
                     amount   : paramlist.TXNAMOUNT
                 }
-                eventx.findOneAndUpdate({'_id' : result.id}, {$set : {'payment' : payment}},{new: true}, function(err, doc){
+                eventx.findOneAndUpdate({'_id' : result.id}, {$set : {'payment' : payment}}, {'new': true}, function(err, doc){
                     if(err){
                         console.log(err);
                         return;
                     }
                     else{
+                        if(paramlist.STATUS === "TXN_FAILURE"){
+                            res.render('payment_failed', {
+                                clubName : result.clubName,
+                                backURL : eventURL[result.eventName],
+                            });
+                            return;
+                        }
+
                         if(paramlist.STATUS === 'TXN_SUCCESS'){
                             var emails = [];
                             for(var i=0; i<doc.team.length; i++ ){
@@ -448,7 +454,9 @@ router.get('/sif/initiatepayment', function(req, res) {
                 checksum.genchecksum(paramaters, paytm.key, function (err, result) {
                     paymentsif.save(function(err) {
                         if (err){
-                            return done(err);
+                            console.log(err);
+                            res.end('something went wrong');
+                            return;
                         }
                         else{
                             result['PAYTM_URL'] = paytmURL;

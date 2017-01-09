@@ -89,14 +89,12 @@ exports.facebookValidate = passport.use(new FacebookValidate({
     clientSecret    : configAuth.facebookAuth.clientSecret,
   },
   function(accessToken, refreshToken, profile, done) {
-    if(profile){
-        var user = {
-            'email': profile.emails[0].value,
-            'name' : profile.name.givenName + ' ' + profile.name.familyName,
-            'id'   : profile.id,
-        }
-        return done(null, user);
+      
+    var user = {
+        'email': profile.emails[0].value,
+        'name' : profile.name.givenName + ' ' + profile.name.familyName,
+        'id'   : profile.id,
     }
-    return done(null, null);
+    return done(null, user);
   }
 ));
