@@ -164,38 +164,47 @@ router.post('/user_register_complete_mobile/google', Verify.verifyOrdinaryUser ,
       });
 });
 
-router.post('/user_register_complete_mobile/facebook',
-    passport.authenticate('facebook-token'),
-    function (req, res) {
-        res.json(req.user);
-        var user = new User();
-        var user = {
-            phoneNumber    : req.body.phoneNumber,
-            college        : req.body.college,
-            year           : req.body.year,
-            city           : req.body.city,
-            accommodation  : req.body.accommodation,
-            gender         : req.body.gender,
-            name           : req.user.name,
-            email          : req.user.email,
-            events         : ['init'],
-            valid          : true,
-            facebookid     : profile.id,
-			facebooktoken  : accessToken,
-        };
+// router.post('/user_register_complete_mobile/facebook',
+    // passport.authenticate('facebook-token'),
+    // function (req, res) {
+        // res.json(req.user);
+        // var user = new User();
+        // var user = {
+        //     phoneNumber    : req.body.phoneNumber,
+        //     college        : req.body.college,
+        //     year           : req.body.year,
+        //     city           : req.body.city,
+        //     accommodation  : req.body.accommodation,
+        //     gender         : req.body.gender,
+        //     name           : req.user.name,
+        //     email          : req.user.email,
+        //     events         : ['init'],
+        //     valid          : true,
+        //     facebookid     : profile.id,
+		// 	facebooktoken  : accessToken,
+        // };
+        //
+        // user.save(function(err){
+        //     if(err){
+        //         console.log(err);
+        //         res.json({msg : {response : false}});
+        //         return;
+        //     }
+        //     else{
+        //         res.json({msg : {response : true}});
+        //         return;
+        //     }
+        // })
 
-        user.save(function(err){
-            if(err){
-                console.log(err);
-                res.json({msg : {response : false}});
-                return;
-            }
-            else{
-                res.json({msg : {response : true}});
-                return;
-            }
-        })
-    }
-);
+    // }
+// );
+
+router.post('/user_register_complete_mobile/facebook', function (req, res) {
+    console.log('************');
+    console.log(req.body);
+    console.log('************');
+                    res.json({msg : "true"});
+                    return;
+});
 
 module.exports = router;
