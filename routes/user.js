@@ -8,6 +8,7 @@ var Verify = require('./verify');
 var User = require('../models/user');
 var UserEvent = require('../models/userevent');
 var GoogleAuth = require('google-auth-library');
+var googleSetting = require('../config/auth').googleAuth;
 
 /* GET users listing. */
 router.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }), function(req,res){});
@@ -152,51 +153,68 @@ router.post('/logout', Verify.verifyOrdinaryUser ,function(req, res) {
     res.json({"response": true})
 });
 
-router.post('/user_register_complete_mobile/google', Verify.verifyOrdinaryUser ,function(req, res) {
-
-    var auth = new GoogleAuth;
-    var client = new auth.OAuth2(CLIENT_ID);
-    client.verifyIdToken( token, CLIENT_ID, function(e, login) {
-          var payload = login.getPayload();
-          var userid = payload['sub'];
-          // If request specified a G Suite domain:
-          //var domain = payload['hd'];
-      });
-});
+// router.get('/user_register_complete_mobile/google' ,function(req, res) {
+//     token = "ya29.Ci_NA0oKiePZH47p-P264CXUhJG1lNqGEF-ejcfx3SlNHVFjJj_2zBKwGUvqC9L4FQ";
+//     var auth = new GoogleAuth;
+//     var client = new auth.OAuth2(googleSetting.clientID);
+//     client.verifyIdToken( token, googleSetting.clientID, function(err, login) {
+//           if(err){
+//               res.end('err bro');
+//               return;
+//           }else{
+//               var payload = login.getPayload();
+//               var userid = payload['sub'];
+//               console.log(payload);
+//               console.log(userid)
+//           }
+//      });
+// });
 
 router.post('/user_register_complete_mobile/facebook',
     passport.authenticate('facebook-token'),
     function (req, res) {
-        var user = new User();
-        console.log('*****1');
-
-            user.phoneNumber    = 123;
-            user.college        = 'req.body.college';
-            user.year           = 1;
-            user.city           = 'req.body.city';
-            user.accommodation  = 'req.body.accommodation';
-            user.gender         = 'req.body.gender';
-            user.name           = 'req.user.name';
-            user.email          = '123';
-            user.events         = ['init'];
-            user.valid          = true;
-            user.facebookid     = 'req.user.id';
-			user.facebooktoken  = 'req.body.access_token';
-
-        console.log('*****2');
-        console.log(user);
-        user.save(function(err) {
-            console.log('*****3');
+        User.findOne({'email' : req.user.email}, function(err,user){
             if(err){
                 console.log(err);
                 res.json({msg : "false"});
                 return;
             }
-            else{
-                res.json({msg : "true"});
+            else if(user){
+                res.json({msg : "false"});
                 return;
             }
-        });
+            else{
+                if(req.user.email !== req.body.email){
+                    res.json({msg : "false"});
+                    return;
+                }
+                var user = new User();
+                user.phoneNumber    = req.body.phoneNumber;
+                user.college        = req.body.college;
+                user.year           = req.body.year;
+                user.city           = req.body.city;
+                user.accommodation  = req.body.accommodation;
+                user.gender         = req.body.gender;
+                user.name           = req.user.name;
+                user.email          = req.user.email;
+                user.events         = ['init'];
+                user.valid          = true;
+                user.facebookid     = req.user.id;
+        		user.facebooktoken  = req.body.access_token;
+
+                user.save(function(err) {
+                    if(err){
+                        console.log(err);
+                        res.json({msg : "false"});
+                        return;
+                    }
+                    else{
+                        res.json({msg : "true"});
+                        return;
+                    }
+                });
+            }
+        })
     }
 );
 

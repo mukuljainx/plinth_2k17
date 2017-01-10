@@ -139,7 +139,6 @@ router.get('/initiatepayment', function(req, res) {
                         paymentdb.id = id;
                         paymentdb.clubName = req.query.clubName;
                         paymentdb.eventName = req.query.eventName;
-                        timestamp = + new Date();
                         paramaters ={
                             REQUEST_TYPE    : "DEFAULT",
                             ORDER_ID        : event_order_id,
@@ -246,7 +245,7 @@ router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
     if(checksum.verifychecksum(paramlist, paytm.key)){
         PaymentDB.findOne({'order_id' : paramlist.ORDERID}, function(err, result){
             if(err){
-                console.log(err)
+                console.log(err);
                 return;
             }
             else{
@@ -343,7 +342,6 @@ router.post('/response', Verify.verifyOrdinaryUser,function(req,res){
         });
     };
 });
-
 
 router.post('/mun/response', Verify.verifyOrdinaryUser,function(req,res){
     var paramlist = req.body;
@@ -523,9 +521,5 @@ router.post('/sif/response', Verify.verifyOrdinaryUser,function(req,res){
         });
     };
 });
-
-// router.get('/check', Verify.verifyOrdinaryUser,function(req,res){
-//     res.end('aws');
-// })
 
 module.exports = router;
