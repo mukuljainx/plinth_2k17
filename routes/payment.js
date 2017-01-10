@@ -20,6 +20,9 @@ var mongoose = require('mongoose');
 var paytm = require('../config/paytm');
 var eventURL = require('../config/eventURL');
 var checksum = require('../checksum/checksum');
+var poc = require('../config/authuser').poc;
+
+
 
 var hostURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://plinth.in'
 var paytmURL = 'https://secure.paytm.in/oltp-web/processTransaction';
@@ -132,7 +135,7 @@ router.get('/initiatepayment', function(req, res) {
                         if(req.query.eventName === "touch-augmented-realities") totalAmount = 750 * results.team.length;
                         if(req.query.eventName === "audi") totalAmount = 500 * results.team.length; //workshop
                         if(req.query.eventName === "3dPrinting") totalAmount = 250 * results.team.length; //workshop
-                        if(results.teamEmail === "jainmukul1996@gmail.com") totalAmount = 0.10;
+                        if(poc.indexOf(results.teamEmail) !== -1) totalAmount = 0.10;
                         paymentdb.id = id;
                         paymentdb.clubName = req.query.clubName;
                         paymentdb.eventName = req.query.eventName;
@@ -448,7 +451,7 @@ router.get('/sif/initiatepayment', function(req, res) {
                     // EMAIL            : result.email,
                     CALLBACK_URL     : hostURL + '/payment/sif/response',
                 }
-                if(doc.teamEmail === "jainmukul1996@gmail.com") paramaters.TXN_AMOUNT = 0.10;
+                if(poc.indexOf(doc.teamEmail) === -1) paramaters.TXN_AMOUNT = 0.10;
 
                 // Create an array having all required parameters for creating checksum.
                 checksum.genchecksum(paramaters, paytm.key, function (err, result) {
