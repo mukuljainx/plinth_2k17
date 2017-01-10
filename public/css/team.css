@@ -13,7 +13,7 @@ h4{
 /*    position: relative;*/
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
-    height:300px;
+    height:350px;
     max-width: 300px;
     text-align: center;
     margin-bottom: 30px;
@@ -37,11 +37,12 @@ h4{
 .profile-content{
     font:normal 15px 'Roboto';
     color:#626262;
+/*    height: 20px;*/
 }
 
 .profile-social ul{
     list-style: none;
-    margin-top: 5px;
+    margin-top: 15px;
     margin-bottom: 5px;
 }
 
@@ -53,6 +54,28 @@ h4{
 .fa-phone, .fa-envelope{
     color:#0697d8;
     padding-right: 15px;
+}
+
+hr.style18 { 
+  height: 30px; 
+  border-style: solid; 
+  border-color: #8cc3db; 
+  border-width: 1px 0 0 0; 
+  border-radius: 20px; 
+} 
+hr.style18:before { 
+  display: block; 
+  content: ""; 
+  height: 30px; 
+  margin-top: -31px; 
+  border-style: solid; 
+  border-color: #8cc3db; 
+  border-width: 0 0 1px 0; 
+  border-radius: 20px; 
+}
+.hrstyle{
+    margin: auto;
+    width: 400px;
 }
 
 footer{
