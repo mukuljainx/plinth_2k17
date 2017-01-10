@@ -5,6 +5,7 @@ var contactSchema = mongoose.Schema({
         name    : String,
         email   : String,
         query   : String,
+        status  : String,
 });
 
 contactSchema.plugin(mongoose_csv);

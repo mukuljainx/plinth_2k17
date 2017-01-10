@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Eventx = require('../models/event');
 var User = require('../models/user');
+var Contact = require('../models/contact');
 var UserEvent = require('../models/userevent');
 var Verify = require('./verify');
 var Sif = require('../models/sif');
@@ -283,6 +284,40 @@ router.get('/user/registered', Verify.verifyOrdinaryUser ,function(req, res) {
     });
 });
 
+router.get('/contact', Verify.verifyOrdinaryUser ,function(req, res) {
+    var poc   = authUser.poc;
+    if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1)){
+        res.end("You are not authorized. Login and try");
+        return;
+    }
+    else{
+        Contact.find(function (err, results) {
+            if (err){
+                console.error(err)
+                res.end('Internal Server error')
+                return;
+            }
+            else{
+                User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                    if (err){
+                        console.log(err);
+                        res.end('Internal Server error')
+                        return;
+                    }
+                    if (user){
+                        res.render('partials/contact-us',{
+                            results : results,
+                            isLoggedIn : true,
+                            user : user,
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+});
+
 router.get('/user/registered/csv', Verify.verifyOrdinaryUser ,function(req, res) {
     var poc   = authUser.poc;
     if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1)){
@@ -296,7 +331,6 @@ router.get('/user/registered/csv', Verify.verifyOrdinaryUser ,function(req, res)
     // pipe file using mongoose-csv
     User.find().csv(res);
 });
-
 
 router.get('/csv/*', Verify.verifyOrdinaryUser ,function(req, res) {
     var poc   = authUser.poc;

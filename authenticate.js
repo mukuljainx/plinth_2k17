@@ -1,6 +1,7 @@
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var FacebookValidate = require('passport-facebook-token');
+var GoogleValidate = require('passport-google-token').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var User = require('./models/user');
 var configAuth = require('./config/auth');
@@ -96,5 +97,20 @@ exports.facebookValidate = passport.use(new FacebookValidate({
         'id'   : profile.id,
     }
     return done(null, user);
+  }
+));
+
+exports.googleValidate = passport.use(new GoogleValidate({
+    clientID        : configAuth.googleAuth.clientID,
+    clientSecret    : configAuth.googleAuth.clientSecret,
+  },
+  function(accessToken, refreshToken, profile, done) {
+      if(err){
+          console.log('**********1');
+          console.log(err);
+      }
+      console.log('**********2');
+      console.log(profile)
+      return done(err, profile);
   }
 ));

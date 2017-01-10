@@ -16,6 +16,7 @@ var Sif = require('../models/sif');
 var PaymentDB = require('../models/payment');
 var PaymentMUN = require('../models/paymentMUN');
 var PaymentSIF = require('../models/paymentSIF');
+var ErrorDB = require('../models/error');
 var mongoose = require('mongoose');
 var paytm = require('../config/paytm');
 var eventURL = require('../config/eventURL');
@@ -120,7 +121,8 @@ router.get('/initiatepayment', function(req, res) {
     }
     eventx.findOneAndUpdate({'_id' : id }, {$set : {'payment' : payment}}, {'new': true},function (err, results) {
         if (err){
-            return console.error(err);
+            console.error(err);
+            return;
         }
         else{
             if(results){

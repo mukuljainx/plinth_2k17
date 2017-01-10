@@ -4,10 +4,11 @@ var passport = require('passport');
 var google = require('../authenticate').google;
 var facebook = require('../authenticate').facebook;
 var facebookValidate = require('../authenticate').facebookValidate;
+var googleValidate = require('../authenticate').googleValidate;
+var GoogleAuth = require('google-auth-library');
 var Verify = require('./verify');
 var User = require('../models/user');
 var UserEvent = require('../models/userevent');
-var GoogleAuth = require('google-auth-library');
 var googleSetting = require('../config/auth').googleAuth;
 
 /* GET users listing. */
@@ -153,22 +154,65 @@ router.post('/logout', Verify.verifyOrdinaryUser ,function(req, res) {
     res.json({"response": true})
 });
 
-// router.get('/user_register_complete_mobile/google' ,function(req, res) {
-//     token = "ya29.Ci_NA0oKiePZH47p-P264CXUhJG1lNqGEF-ejcfx3SlNHVFjJj_2zBKwGUvqC9L4FQ";
-//     var auth = new GoogleAuth;
-//     var client = new auth.OAuth2(googleSetting.clientID);
-//     client.verifyIdToken( token, googleSetting.clientID, function(err, login) {
-//           if(err){
-//               res.end('err bro');
-//               return;
-//           }else{
-//               var payload = login.getPayload();
-//               var userid = payload['sub'];
-//               console.log(payload);
-//               console.log(userid)
-//           }
-//      });
-// });
+
+router.post('/user_register_complete_mobile/google',function(req, res) {
+    var auth = new GoogleAuth;
+    var client = new auth.OAuth2(googleSetting.clientID);
+    client.verifyIdToken( req.body.access_token, googleSetting.clientID, function(err, login) {
+          if(err){
+              res.json({msg : "false"});
+              return;
+            }else{
+              var payload = login.getPayload();
+              var email = payload['email'];
+              User.findOne({'email' : email}, function(err,user){
+                  if(err){
+                      console.log(err);
+                      res.json({msg : "false"});
+                      return;
+                  }
+                  else if(user){
+                      console.log(user)
+                      res.json({msg : "false"});
+                      return;
+                  }
+                  else{
+                      if(email !== req.body.email){
+                          res.json({msg : "false"});
+                          return;
+                      }
+                      else{
+                          var user = new User();
+                          user.phoneNumber    = req.body.phoneNumber;
+                          user.college        = req.body.college;
+                          user.year           = req.body.year;
+                          user.city           = req.body.city;
+                          user.accommodation  = req.body.accommodation;
+                          user.gender         = req.body.gender;
+                          user.name           = req.body.name;
+                          user.email          = email;
+                          user.events         = ['init'];
+                          user.valid          = true;
+                          user.googleid     = req.body.id;
+                          user.googletoken  = req.body.access_token;
+
+                          user.save(function(err) {
+                              if(err){
+                                  console.log(err);
+                                  res.json({msg : "false"});
+                                  return;
+                              }
+                              else{
+                                  res.json({msg : "true"});
+                                  return;
+                              }
+                          });
+                      }
+                  }
+              })
+          }
+     });
+});
 
 router.post('/user_register_complete_mobile/facebook',
     passport.authenticate('facebook-token'),
