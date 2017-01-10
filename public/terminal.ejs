@@ -304,7 +304,7 @@
 //                term.echo('[[b;#12ed2c;#30353A;paddingChild]    contact]');
                 term.echo('[[b;#12ed2c;#30353A;paddingChild]    register]');
                 term.echo('[[b;#12ed2c;#30353A;paddingChild]    events]');
-                term.echo('[[b;#12ed2c;#30353A;paddingChild]    workshop]');
+                term.echo('[[b;#12ed2c;#30353A;paddingChild]    workshops]');
                 term.echo('[[b;#12ed2c;#30353A;paddingChild]    talks]');
                 term.push(function(command, term) {
                     if (command == 'about') {
@@ -427,22 +427,36 @@
                         term.echo("[[b;;;paddingChild]\nregister(1) \t\t\t\t\t\t\t User Commands \t\t\t\t\t\t\t register(1) \n\n\n NAME \n \t register - form for registration \n SYNOPSIS \n \t register --that's all you need \n DESCRIPTION \n \t Registration form for various events in Plinth'17. \n AUTHOR \n \t Written by dudes of LNMIIT \n REPORTING BUGS \n \t Report about bugs to wedontcare.org \n COPYRIGHT \n \t Copyright © 2020 Future Developers Foundation Inc. License GUIv1.0+: \n \t This is premium software: you are not authorised to change and redistribute it. \n SEE ALSO \n \t The full documentation for about is maintained and stored in a secret location. \n\n\n GNU V 1.1 \t\t\t\t\t\t\t January 2017 \t\t\t\t\t\t\t register(1)]");
                     } else if(command == 'events') {
                         term.echo('[[b;orange;#30353A;paddingParent]========== Events ==========]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Astronomy]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Coding]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Robotics]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Quizzing]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Literature]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Management]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Astronomy] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type astronomy]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Coding]    \t\t\t\t\t\t\t [[;#84878b;#30353A]//type coding]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Robotics]  \t\t\t\t\t\t\t [[;#84878b;#30353A]//type robotics]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Quizzing]  \t\t\t\t\t\t\t [[;#84878b;#30353A]//type quizzing]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Literature]\t\t\t\t\t\t\t [[;#84878b;#30353A]//type literature]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Management]\t\t\t\t\t\t\t [[;#84878b;#30353A]//type management]');
+                        term.echo(' ');
+                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                        term.echo(' ');
                         term.push(function(command, term) {
                             if(command == 'astronomy'){
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Armageddon]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Astro Hunt]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Star Trek]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Armageddon] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type astro1');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Astro Hunt] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type astro2');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Star Trek]  \t\t\t\t\t\t\t [[;#84878b;#30353A]//type astro3');
+                                term.echo(' ');
+                                term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                term.echo(' ');
                                 term.push(function(command, term) {
                                     if(command == 'astro1'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 20,000 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type judges]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -474,7 +488,11 @@
                                                 term.echo('[[;;;paddingChild]   1. Your report would be evaluated on how many different aspects you have deliberated upon and how many of these are in line with the physics of the planet.]');
                                                 term.echo('[[;;;paddingChild]   2. The more descriptive you are, the more points your report will score.]');
                                                 term.echo('[[;;;paddingChild]   3. You can use diagrams and pictures.]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'armageddon >',
                                     name: 'armageddon'
@@ -483,6 +501,13 @@
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 20,000 ]');
+                                         term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -504,7 +529,11 @@
                                                 term.echo('[[;;;paddingChild]   4. All the team members should be present at each check point while receiving a token.]');
                                                 term.echo('[[;;;paddingChild]   5. Decision of the volunteers at each check point will be final.]');
                                                 term.echo('[[;;;paddingChild]   6. Usage of Internet is allowed.]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'astro hunt >',
                                     name: 'astro hunt'
@@ -513,6 +542,13 @@
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 20,000 ]');
+                                         term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -535,25 +571,44 @@
                                                 term.echo('[[;;;paddingChild]   1. Participants can form team of up to three.]');
                                                 term.echo('[[;;;paddingChild]   2. Individual participants are also allowed.]');
                                                 term.echo('[[;;;paddingChild]   3. Using mobile phones is not allowed.]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'star trek >',
                                     name: 'star trek'
                                         });
-                                    }
+                                    }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                 },{
                                     prompt: 'astronomy >',
                                     name: 'astronomy'
                                 });
                             }else if(command == 'coding'){
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Fix the Bug]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC Distraction]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Fix the Bug]     \t\t\t\t\t\t\t [[;#84878b;#30353A]//type code1');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC]            \t\t\t\t\t\t\t [[;#84878b;#30353A]//type code2');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC Distraction]\t\t\t\t\t\t\t [[;#84878b;#30353A]//type code3');
+                                term.echo(' ');
+                                term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                term.echo(' ');
                                 term.push(function(command, term) {
                                     if(command == 'code1'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 150/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 10,000 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type judges]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -580,7 +635,11 @@
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Judges ==========]');
                                                 term.echo('[[;;;paddingChild]Leaderboard from DoSelect will be considered for selecting winners, however in case of any conflicts the decision of the organizers in declaring the results will be final. No queries in this regard will be entertained.]');
                                                
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'fix the bug >',
                                     name: 'fix the bug'
@@ -589,6 +648,14 @@
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 150/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 40,000 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type judges]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -624,7 +691,11 @@
                                                 term.echo('[[;;;paddingChild]   3. The decision of the organizers in declaring the results will be final. No queries in this regard will be entertained.]');
                                                 term.echo('[[;;;paddingChild]   4. Any participant found to be indulging in any form of malpractice or plagiarism will be immediately disqualified.]');
                                                 term.echo('[[;;;paddingChild]   5. The total time is the sum of the time consumed for each problem solved. The time consumed for a solved problem is the time elapsed from the beginning of the contest to the submission of the first accepted run plus 20 penalty minutes for every previously rejected run for that problem (Wrong answer, Time limit exceeded, Runtime Error, Compilation Error). There is no time consumed for a problem that is not solved.]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'iupc >',
                                     name: 'iupc'
@@ -633,6 +704,14 @@
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 150/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 10,000 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type judges]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -657,28 +736,46 @@
                                                 term.echo('[[;;;paddingChild]   4.The decision of Plinth Organizing Committee will be final.]');
                                             }else if(command == 'judges'){
                                                 term.echo("[[;;;paddingChild]Leaderboard from HackerEarth will be considered for selecting winners, however in case of any conflicts the decision of the organizers in declaring the results will be final. No queries in this regard will be entertained.]");
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'iupc distraction >',
                                     name: 'iupc distraction'
                                         });
-                                    }
+                                    }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                 },{
                                     prompt: 'coding >',
                                     name: 'coding'
                                 });
                             }else if(command == 'robotics'){
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    LFR]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Quadcopter]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Transporter]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Roborace]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robowar]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robosoccer]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    LFR]        \t\t\t\t\t\t\t [[;#84878b;#30353A]//type lfr');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Quadcopter] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type do');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Transporter]\t\t\t\t\t\t\t [[;#84878b;#30353A]//type transporter');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Roborace]   \t\t\t\t\t\t\t [[;#84878b;#30353A]//type roborace');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robowar]    \t\t\t\t\t\t\t [[;#84878b;#30353A]//type robowar');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Robosoccer] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type robosoccer');
+                                term.echo(' ');
+                                term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                term.echo(' ');
                                 term.push(function(command, term) {
                                     if(command == 'lfr'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 200/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 25,000 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -713,7 +810,11 @@
                                                 term.echo('[[;;;paddingChild]   3. Spray, throw or use projectiles.]');
                                                 term.echo('[[;;;paddingChild]   4. Jam or shock other electrical interface.]');
                                                 term.echo('[[;;;paddingChild]   5. Exceed Maximum circuit voltage of 12v at any point of time.]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'lfr >',
                                     name: 'lfr'
@@ -722,6 +823,13 @@
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 600/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 50,000 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -786,7 +894,11 @@
                                                 term.echo('[[;;;paddingChild]   3. Teams can bring not only Drones but other flying machines as mentioned Zeplin, Coaxial chopper, Tail rotor chopper, Quadrotor, Hexapod, Tripod and Octacopter.]');
                                                 term.echo('[[b;;;paddingChild]Eligibility]');
                                                 term.echo('[[;;;paddingChild]   All students with a valid identity card of their respective educational institutions are eligible to participate with team size of maximum 6 members.]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'drone_obstruction >',
                                     name: 'drone_obstruction'
@@ -795,6 +907,13 @@
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 200/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 25,000 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -848,7 +967,11 @@
                                                 term.echo('[[;;;paddingChild]   1. Length: 10 minutes]');
                                                 term.echo('[[;;;paddingChild]   2. As many as retries can be made only after the referee’s permission in cases such as when the robot is declared immobile.]');
                                                 term.echo('[[;;;paddingChild]   3. Only the 2 team members per robot are allowed to touch the robot while placing it back to the retry point whose names should be given to coordinators before the game starts.]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'transporter  >',
                                     name: 'transporter '
@@ -857,6 +980,13 @@
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 200/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 25,000 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -912,7 +1042,11 @@
                                                 term.echo('[[;;;paddingChild]   9. The organizers reserve the right to change any or all of the rules as they desire.]');
                                                 term.echo('[[;;;paddingChild]   10. Change in the rules as if any will be informed through e-mail or via Facebook page.]');
                                                 term.echo('[[;;;paddingChild]   11. Participants need to carry their own power source (preferably 12V battery).]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'roborace  >',
                                     name: 'roborace '
@@ -921,6 +1055,13 @@
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 700/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 50,000 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -976,7 +1117,11 @@
                                                 term.echo('[[;;;paddingChild]   2. Liquid projectiles.]');
                                                 term.echo('[[;;;paddingChild]   3. Any kind of inflammable liquid.]');
                                                 term.echo('[[;;;paddingChild]   4. Flame-based weapons.]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'robowar  >',
                                     name: 'robowar '
@@ -985,6 +1130,13 @@
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 200/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 25,000 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -1024,23 +1176,41 @@
                                                 term.echo('[[;;;paddingChild]   1. During the match, the team members are not allowed to touch the machine or the arena without]');
                                                 term.echo('[[;;;paddingChild]   2. The teams will be asked to get ready 15 minutes before the start of their match. If a team is not ready within the stipulated time, they may be disqualified.]');
                                                 term.echo('[[;;;paddingChild]   3. In any case, the decision of the judges will be final if they feel that any team is not playing with fair interest.]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'robosoccer  >',
                                     name: 'robosoccer '
                                         });
-                                    }
+                                    }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                 }, {
                                     prompt:'robotics >',
                                     name:'robotics'
                                 });
                             }else if(command == 'quizzing'){
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Quest]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Quest] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type quest');
+                                term.echo(' ');
+                                term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                term.echo(' ');
                                 term.push(function(command, term) {
                                     if(command == 'quest'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 20,000 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -1063,24 +1233,42 @@
                                                 term.echo('[[;;;paddingChild]   5. The decisions of the organizers of the contest will be final and binding on all the participants.]');
                                                 term.echo('[[;;;paddingChild]   6. Quiz master is god.]');
                                                 term.echo('[[;;;paddingChild]   7. Cross college teams are allowed.]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'quest >',
                                     name: 'quest'
                                         });
-                                    }
+                                    }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                 }, {
                                     prompt: 'quizzing >',
                                     name: 'quizzing'
                                 });
                             }else if(command == 'literature'){
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Wrangle]');
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Rostrum]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Wrangle] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type wrangle');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    Rostrum] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type rostrum');
+                                term.echo(' ');
+                                term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                term.echo(' ');
                                 term.push(function(command, term) {
                                     if(command == 'wrangle'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 10,000 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -1092,7 +1280,11 @@
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]General Rules]');
                                                 term.echo('[[;;;paddingChild]   1. Each participant will get maximum of 2 minutes to speak in one go.]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'wrangle >',
                                     name: 'wrangle'
@@ -1101,6 +1293,13 @@
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 10,000 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -1119,21 +1318,39 @@
                                                 term.echo('[[;;;paddingChild]       2.Runner-up in “for the motion”.]');
                                                 term.echo('[[;;;paddingChild]       3.First in “against the motion”.]');
                                                 term.echo('[[;;;paddingChild]       4.Runner-up in “against the motion”.]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'rostrum >',
                                     name: 'rostrum'
                                         });
-                                    }
+                                    }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                 }, {
                                     prompt: 'quizzing >',
                                     name: 'quizzing'
                                 });
                             }else if(command == 'management'){
-                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    SIF]');
+                                term.echo('[[b;#c12ee5;#30353A;paddingChild]    SIF] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type sif');
+                                term.echo(' ');
+                                term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                term.echo(' ');
                                 if(command == 'sif'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th Jan 2017 ]');
+                                        term.echo(' ');
+                                        term.echo("[[;#84878b;#30353A]//available commands]");
+                                        term.echo("[[;#84878b;#30353A]//type synopsis]");
+                                        term.echo("[[;#84878b;#30353A]//type desc]");
+                                        term.echo("[[;#84878b;#30353A]//type rules]");
+                                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                                        term.echo(' ');
                                         term.push(function(command, term) {
                                             if(command == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
@@ -1146,12 +1363,22 @@
                                                 term.echo('[[;;;paddingChild]   1. Carry at least two passport size photographs and a valid College ID. Without it, your entry in SIF shall be denied.]');
                                                 term.echo('[[;;;paddingChild]   2. Students must bring their own copies of resumes. Carry at least as many copies as the internship profiles you are applying for.]');
                                                 term.echo('[[;;;paddingChild]   3. One student can apply for multiple internship openings but can be selected in maximum of three. Once a student gets selected in 3 internships, he/she shall be debarred from applying further.]');
-                                            }
+                                            }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
                                         }, {
                                     prompt: 'sif >',
                                     name: 'sif'
                                         });
-                                    }
+                                    }else if(command == 'cd ..'){
+                                term.pop();
+                            }else {
+                term.echo('[[b;red;#30353A]unknown command ]' + command);
+            }
+                            }else if(command == 'cd ..'){
+                                term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
             }
@@ -1161,10 +1388,14 @@
                         });
                     }else if(command == 'workshops') {
                         term.echo('[[b;orange;#30353A;paddingParent]========== Workshops ==========]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Photography Workshop  --presented by Audi Photography]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Vehicle Design and Dynamics  --presented by Engineer Indya]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Web O Master  --presented by Engineer Indya]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Touch & Augmented Reality  --presented by RoboFlux]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Photography Workshop  --presented by Audi Photography]     \t\t\t\t\t [[;#84878b;#30353A]//type w1');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Vehicle Design and Dynamics  --presented by Engineer Indya]\t\t\t\t\t [[;#84878b;#30353A]//type w2');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Web O Master  --presented by Engineer Indya]               \t\t\t\t\t [[;#84878b;#30353A]//type w3');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Touch & Augmented Reality  --presented by RoboFlux]        \t\t\t\t\t [[;#84878b;#30353A]//type w4');
+                        term.echo(' ');
+                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                        term.echo(' ');
+
                         term.push(function(command, term) {
                             if(command == 'w1'){
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 500/- per person ]');
@@ -1186,6 +1417,8 @@
                                 term.echo("[[;;;paddingChild]Touch and Augmented Reality is the two days workshop to learn about sixth sense technologies on which Microsoft, Google, Intel & many more organisations currently working on it.]");
                                 term.echo(" ");
                                 term.echo("[[;;;paddingChild]For more information visit Roboflux. Watch workshop Trailer here]");
+                            }else if(command == 'cd ..'){
+                                term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
             }
@@ -1195,10 +1428,13 @@
                         });
                     }else if(command == 'talks') {
                         term.echo('[[b;orange;#30353A;paddingParent]========== talks ==========]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Balaji Vishwanathan  --VP Product, Invento]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Dr. Sangram Ganguly  --Senior Research Scientist, NASA]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Shubhranshu Choudhary   --Award Winning Journalist]');
-                        term.echo('[[b;#197cde;#30353A;paddingChild]    Dr. V.A. Shiva Ayyadurai   --The Inventor of Email & Chairman/C.E.O., CytoSolve, Inc.]');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Balaji Vishwanathan  --VP Product, Invento]               \t\t\t\t\t\t\t [[;#84878b;#30353A]//type t1');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Dr. Sangram Ganguly  --Senior Research Scientist, NASA]   \t\t\t\t\t\t\t [[;#84878b;#30353A]//type t2');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Shubhranshu Choudhary   --Award Winning Journalist]       \t\t\t\t\t\t\t [[;#84878b;#30353A]//type t3');
+                        term.echo('[[b;#197cde;#30353A;paddingChild]    Dr. V.A. Shiva Ayyadurai   --The Inventor of Email & Chairman/C.E.O., CytoSolve, Inc.] [[;#84878b;#30353A]//type t4');
+                        term.echo(' ');
+                        term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
+                        term.echo(' ');
                         term.push(function(command, term) {
                             if(command == 't1'){
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Date : 22nd Jan 2016  ]');
@@ -1232,7 +1468,7 @@
             } else if (command == ''){
                 term.echo(command);
             } else if(command == 'activate gui'){
-                window.location.href = "http://plinth.lnmiit.ac.in/home.html";
+                window.location.href = "https://plinth.in/";
             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
             }
