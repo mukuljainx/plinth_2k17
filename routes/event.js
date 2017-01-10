@@ -218,10 +218,14 @@ router.post('/workshop/register', Verify.verifyOrdinaryUser, function(req, res) 
 });
 
 router.get('/edit', Verify.verifyOrdinaryUser, function(req, res) {
-        if(authUser.dev.indexOf(req.decoded.sub) === -1){
-         res.end("You are not authorized.");
-         return;
-     }
+    if(req.decoded.sub === ""){
+        res.end("You are not authorized.");
+        return;
+    }
+    if(authUser.dev.indexOf(req.decoded.sub) === -1){
+        res.end("You are not authorized.");
+        return;
+    }
      else{
          if(EventURL[req.query.event] === undefined){
              res.end('Please Check the link once again there may some typo in event name');
