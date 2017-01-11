@@ -1,7 +1,7 @@
 module.exports = {
     eventName : "3dPrinting",
     displayName : "3D Printing Workshop",
-    eventDate : "19<sup>th</sup> Jan 2017",
+    eventDate : "19<sup>th</sup> Jan 2017 (9 AM)",
     eventCompany : "Proxbotics Creation",
     memberUpperLimit : 1,
     memberLowerLimit : 1,
