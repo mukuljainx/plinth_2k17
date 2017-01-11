@@ -161,5 +161,6 @@ $(document).ready(function() {
 
 
 if(jQuery.browser.mobile){
-    window.location = 'https://plinth.in';
+    $('.terminaltwo').css('display', 'none');
+    $('.for-mobile').css('display', 'block');
 }
