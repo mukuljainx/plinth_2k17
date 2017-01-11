@@ -1436,7 +1436,7 @@ router.get('/competitions/astronomy/armAgeddon', Verify.verifyOrdinaryUser ,func
 });
 
 router.get('/wikitolearn' ,function(req, res) {
-    res.render('wiki');
+    res.redirect('https://india2017.wikitolearn.events/');
 });
 
 
