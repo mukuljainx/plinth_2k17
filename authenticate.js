@@ -106,11 +106,9 @@ exports.googleValidate = passport.use(new GoogleValidate({
   },
   function(accessToken, refreshToken, profile, done) {
       if(err){
-          console.log('**********1');
           console.log(err);
+          res.end('Internal server error');
       }
-      console.log('**********2');
-      console.log(profile)
       return done(err, profile);
   }
 ));
