@@ -100,7 +100,7 @@ body{
 
 .footer-fixed{
   position: absolute;
-  bottom: 20px;
+  bottom: 0px;
   margin-left: calc( 50% - 275px );
 }
 
@@ -434,4 +434,10 @@ body{
 }
 .cryptex-notifty {
     color: white;
+}
+
+
+.cmd-intro a{
+    color: white;
+    font-family: 'Roboto';
 }
