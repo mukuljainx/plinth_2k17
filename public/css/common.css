@@ -160,7 +160,7 @@ nav{
 
 
 .footer-text{
-    max-width: 600px;
+/*    max-width: 600px;*/
 }
 
 .footer-text li{
@@ -178,7 +178,7 @@ nav{
 .footer-fixed{
   position: absolute;
   bottom: 15px;
-  margin-left: calc( 50% - 275px );
+  margin-left: calc( 50% - 370px );
 }
 
 
