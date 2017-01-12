@@ -40,7 +40,7 @@ router.get('/', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 router.get('/play', Verify.verifyOrdinaryUser ,function(req, res) {
-    var limitLevel = 29;
+    var limitLevel = 30;
   if(req.decoded.sub === ""){
       isLoggedIn = false;
       res.redirect('/cryptex');

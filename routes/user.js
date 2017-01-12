@@ -195,7 +195,7 @@ router.post('/user_register_complete_mobile/google',function(req, res) {
                           user.valid          = true;
                           user.googleid     = req.body.id;
                           user.googletoken  = req.body.access_token;
-
+                          console.log(req.body.access_token);
                           user.save(function(err) {
                               if(err){
                                   console.log(err);
@@ -208,6 +208,46 @@ router.post('/user_register_complete_mobile/google',function(req, res) {
                               }
                           });
                       }
+                  }
+              })
+          }
+     });
+});
+
+
+router.post('/user_validate_mobile/google',function(req, res) {
+    var auth = new GoogleAuth;
+    var client = new auth.OAuth2(googleSetting.clientID);
+    client.verifyIdToken( req.body.access_token, googleSetting.clientID, function(err, login) {
+          if(err){
+              res.json({msg : "false"});
+              return;
+            }else{
+              var payload = login.getPayload();
+              var email = payload['email'];
+              User.findOne({'email' : email}, function(err,user){
+                  if(err){
+                      console.log(err);
+                      res.json({msg : "false"});
+                      return;
+                  }
+                  else if(user){
+                      userx = {
+                          msg : "true",
+                          phoneNumber  : user.phoneNumber,
+                          college  : user.college,
+                          year  : user.year,
+                          city  : user.city,
+                          accommodation  : user.accommodation,
+                          gender  : user.gender,
+                          name  : user.name,
+                          email  : user.email,
+                      }
+                      res.json(userx);
+                      return;
+                  }
+                  else{
+                      res.json({msg : "false"});
                   }
               })
           }
@@ -257,6 +297,37 @@ router.post('/user_register_complete_mobile/facebook',
                         return;
                     }
                 });
+            }
+        })
+    }
+);
+
+router.post('/user_validate_mobile/facebook',
+    passport.authenticate('facebook-token'),
+    function (req, res) {
+        User.findOne({'email' : req.user.email}, function(err,user){
+            if(err){
+                console.log(err);
+                res.json({msg : "false"});
+                return;
+            }
+            else if(user){
+                userx = {
+                    msg : "true",
+                    phoneNumber  : user.phoneNumber,
+                    college  : user.college,
+                    year  : user.year,
+                    city  : user.city,
+                    accommodation  : user.accommodation,
+                    gender  : user.gender,
+                    name  : user.name,
+                    email  : user.email,
+                }
+                res.json(userx);
+                return;
+            }
+            else{
+                res.json({msg : "false"});
             }
         })
     }

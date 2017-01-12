@@ -604,6 +604,33 @@ router.get('/team', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
+router.get('/schedule', Verify.verifyOrdinaryUser ,function(req, res) {
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('schedule', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
+  else {
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('schedule',{
+                  "isLoggedIn" : isLoggedIn,
+                  "user" : {
+                      name : user.name,
+                      gender : user.gender,
+                  }
+              });
+          }
+      });
+  }
+});
+
 router.get('/workshops', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
