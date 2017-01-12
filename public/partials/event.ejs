@@ -126,7 +126,7 @@
                                     <li><a data-open="payment-modal" onclick="fetchAmountAndMember()">Make Payment ></a></li>
                                 <% } else { %>
                                     <li><a class="reg-btn" onclick="loggedUserRegistration()">Register ></a></li>
-                                    <li><a data-open="payment-modal">Make Payment ></a></li>
+                                    <li><a data-open="payment-modal" class="make-payment-btn-events">Make Payment ></a></li>
                                 <% } %>
                                 <% if ( eventDetail.eventName === 'sif') { %>
                                     <li><a href="#" ><a data-open="sif-registration-form" class="sifForm">Startup Register ></a></li>
@@ -614,8 +614,13 @@
             return result;
         }
 
-        if(findGetParameter('type') !==null){
-            alert(findGetParameter('type') +  " and " + findGetParameter('user'));
+        if(findGetParameter('type') === 'payment'){
+            if(findGetParameter('user') !== null){
+                $('.payment-email').val(findGetParameter('user'));
+                $('.reg-form-btn-register').trigger('click');
+                $('.make-payment-btn-events').trigger('click');
+                fetchAmountAndMember();
+            }
         }
         </script>
 
