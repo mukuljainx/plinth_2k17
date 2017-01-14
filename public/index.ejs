@@ -27,7 +27,10 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-
+    <div class="app-promotion show-for-small-only text-center column">
+        <p class="text-left">Get the App</p><a href="https://play.google.com/store/apps/details?id=lnmiit.madclub.plinth&hl=en"><img src="media/app-promo.png" alt="play store icon" /></a>
+        <i class="fa fa-times" onclick="hideAppPromo()" aria-hidden="true"></i>
+    </div>
         <% include partials/header %>
         <%if (!isLoggedIn) { %>
                 <% include partials/reg-form %>

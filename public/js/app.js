@@ -1,4 +1,7 @@
 $(document).foundation();
+function hideAppPromo(){
+    $('.app-promotion').css('display','none');
+}
 
 function proceedNext(){
     $('.event-registration-form-message').css('display', 'none');

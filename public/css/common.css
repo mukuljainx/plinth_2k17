@@ -18,6 +18,29 @@
     src: url("../font/HelveticaNeue.ttf");
 }
 
+.app-promotion{
+    background: white;
+    width: 100%;
+    height: 60px;
+    color: black;
+    padding-top: 10px;
+}
+.app-promotion p{
+    display: inline-block;
+}
+
+.app-promotion i{
+    float: right;
+}
+
+.app-promotion a{
+    color: black;
+}
+.app-promotion img{
+    height: 40px;
+    margin-left: 10px;
+}
+
 nav{
     height: 70px;
     padding: 20px 20px 0px ;
