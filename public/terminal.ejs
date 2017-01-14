@@ -325,6 +325,7 @@
 //                term.echo('[[b;#12ed2c;#30353A;paddingChild]    contact]');
                 term.echo('[[b;#12ed2c;#30353A;paddingChild]    register]');
                 term.echo('[[b;#12ed2c;#30353A;paddingChild]    events]');
+                term.echo('[[b;#12ed2c;#30353A;paddingChild]    wikitolearn]');
                 term.echo('[[b;#12ed2c;#30353A;paddingChild]    workshops]');
                 term.echo('[[b;#12ed2c;#30353A;paddingChild]    talks]');
                 term.push(function(command, term) {
@@ -333,7 +334,9 @@
                         term.echo('[[b;;;desc]PLINTH is the annual inter-collegiate Techno-Management-Literary Festival of The LNMIIT, Jaipur. It encompasses and transcends the boundaries of science and technology, bringing to its audience a truly enriching experience.]');
                     } else if(command == 'man about') {
                         term.echo("[[b;;;paddingChild]\nabout(1) \t\t\t\t\t\t\t User Commands \t\t\t\t\t\t\t about(1) \n\n\n NAME \n \t about - conveys info \n SYNOPSIS \n \t about --that's all you need \n DESCRIPTION \n \t List information about Plinth'17. \n AUTHOR \n \t Written by dudes of LNMIIT \n REPORTING BUGS \n \t Report about bugs to wedontcare.org \n COPYRIGHT \n \t Copyright © 2020 Future Developers Foundation Inc. License GUIv1.0+: \n \t This is premium software: you are not authorised to change and redistribute it. \n SEE ALSO \n \t The full documentation for about is maintained and stored in a secret location. \n\n\n GNU V 1.1 \t\t\t\t\t\t\t January 2017 \t\t\t\t\t\t\t about(1)]");
-                    } else if (command == 'faq') {
+                    } else if(command == 'wikitolearn'){
+                        window.location = 'https://india2017.wikitolearn.events/';
+                    }else if (command == 'faq') {
                         term.echo('[[b;orange;#30353A;paddingParent]========== Frequently Asked Questions ==========]');
                         term.echo('[[b;yellow;#30353A;paddingChild]> What are the registration charges?]');
                         term.echo('  The registration charges and other necessary details regarding the payment are available under the tab "Register" of all specific events at http://plinth.lnmiit.ac.in .');
