@@ -622,6 +622,10 @@
                 fetchAmountAndMember();
             }
         }
+
+        if(findGetParameter('type') === 'register'){
+            $('.reg-btn').trigger("click");
+        }
         </script>
 
     </body>

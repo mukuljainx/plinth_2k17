@@ -16,29 +16,29 @@
           .navitem a{
               color: white;
           }
-          
+
           .navitem a:before{
               background-color: white;
           }
-          
+
           .footer-text a{
               color: white;
           }
-          
+
           .social a{
               color: white;
           }
-          
+
           footer{
               margin-top: 100px;
           }
-          
+
           .for-mobile{
               margin-top: 50px;
               display: none;
               color: white;
           }
-          
+
           .for-mobile a{
               color: white;
           }
@@ -98,7 +98,7 @@
         <div class="large-12 content ">
         </div>
       </div>
-      
+
       <div class="row for-mobile">
           <div class="small-10 small-centered columns text-center">
               <div>This device is not supported.</div>
@@ -122,7 +122,6 @@
     	</div>
     </div>!
 -->
-<!--footer-->
 
 <div class="reveal" id="opensource-pop" data-reveal style="color:black">
     We Support Open source, our website is developed using Github.
@@ -149,9 +148,11 @@
             <ul>
                 <a href="/about"><li>About Us</li></a>
                 <a href="/sponsors"><li>Sponsors</li></a>
-                <!-- <a href="/team"><li>Our Team</li></a> -->
+                <a href="/team"><li>Our Team</li></a>
                 <a href="/faq"><li>FAQs</li></a>
                 <a href="/contact_us"><li>Contact Us</li></a>
+                <a href="/termsandconditions"><li>Terms and Condition</li></a>
+                <a href="/archive"><li>Archive</li></a>
             </ul>
         </div>
     </div>
@@ -177,17 +178,17 @@
 
 
     var cliUser = {};
-    
+
     var data = {
         name : '',
         email : ''
     };
 
     jQuery(document).ready(function($) {
-        
+
 
         $('.content').terminal(function(command, term) {
-            
+
             function cliUserRegisterDetail(){
 //                                term.echo('name > ' + cliUser.name);
     //                            term.echo(' ');
@@ -317,7 +318,7 @@
 //                                });
             };
 
-           if (command == 'plinth'){
+           if (command.toLocaleLowerCase() == 'plinth'){
                 term.echo('[[b;;;paddingParent]Commands: ]');
                 term.echo("[[b;#12ed2c;#30353A;paddingChild]    about]");
                 term.echo('[[b;#12ed2c;#30353A;paddingChild]    faq]');
@@ -329,14 +330,14 @@
                 term.echo('[[b;#12ed2c;#30353A;paddingChild]    workshops]');
                 term.echo('[[b;#12ed2c;#30353A;paddingChild]    talks]');
                 term.push(function(command, term) {
-                    if (command == 'about') {
+                    if (command.toLocaleLowerCase() == 'about') {
                         term.echo('[[b;orange;#30353A;paddingParent]========== About Plinth17 ==========]');
                         term.echo('[[b;;;desc]PLINTH is the annual inter-collegiate Techno-Management-Literary Festival of The LNMIIT, Jaipur. It encompasses and transcends the boundaries of science and technology, bringing to its audience a truly enriching experience.]');
-                    } else if(command == 'man about') {
+                    } else if(command.toLocaleLowerCase() == 'man about') {
                         term.echo("[[b;;;paddingChild]\nabout(1) \t\t\t\t\t\t\t User Commands \t\t\t\t\t\t\t about(1) \n\n\n NAME \n \t about - conveys info \n SYNOPSIS \n \t about --that's all you need \n DESCRIPTION \n \t List information about Plinth'17. \n AUTHOR \n \t Written by dudes of LNMIIT \n REPORTING BUGS \n \t Report about bugs to wedontcare.org \n COPYRIGHT \n \t Copyright © 2020 Future Developers Foundation Inc. License GUIv1.0+: \n \t This is premium software: you are not authorised to change and redistribute it. \n SEE ALSO \n \t The full documentation for about is maintained and stored in a secret location. \n\n\n GNU V 1.1 \t\t\t\t\t\t\t January 2017 \t\t\t\t\t\t\t about(1)]");
-                    } else if(command == 'wikitolearn'){
+                    } else if(command.toLocaleLowerCase() == 'wikitolearn'){
                         window.location = 'https://india2017.wikitolearn.events/';
-                    }else if (command == 'faq') {
+                    }else if (command.toLocaleLowerCase() == 'faq') {
                         term.echo('[[b;orange;#30353A;paddingParent]========== Frequently Asked Questions ==========]');
                         term.echo('[[b;yellow;#30353A;paddingChild]> What are the registration charges?]');
                         term.echo('  The registration charges and other necessary details regarding the payment are available under the tab "Register" of all specific events at http://plinth.lnmiit.ac.in .');
@@ -383,17 +384,17 @@
                         term.echo('');
                         term.echo('[[b;yellow;#30353A;paddingChild]> What all deliverables do we receive after registering?]');
                         term.echo("  After registration you'll get pass for that particular event. You will also get participation certificate if you're not in winning position.");
-                    } else if(command == 'man faq') {
+                    } else if(command.toLocaleLowerCase() == 'man faq') {
                         term.echo("[[b;;;paddingChild]\nfaq(1) \t\t\t\t\t\t\t User Commands \t\t\t\t\t\t\t about(1) \n\n\n NAME \n \t faq - frequently asked questions \n SYNOPSIS \n \t faq --that's all you need \n DESCRIPTION \n \t List frequently asked questions about Plinth'17. \n AUTHOR \n \t Written by dudes of LNMIIT \n REPORTING BUGS \n \t Report about bugs to wedontcare.org \n COPYRIGHT \n \t Copyright © 2020 Future Developers Foundation Inc. License GUIv1.0+: \n \t This is premium software: you are not authorised to change and redistribute it. \n SEE ALSO \n \t The full documentation for faq is maintained and stored in a secret location. \n\n\n GNU V 1.1 \t\t\t\t\t\t\t January 2017 \t\t\t\t\t\t\t faq(1)]");
-                    } else if(command == 'location'){
+                    } else if(command.toLocaleLowerCase() == 'location'){
                         term.echo('[[b;orange;#30353A;paddingParent]========== Location ==========]');
                         term.echo('[[b;yellow;#30353A;paddingChild]Address: ]');
                         term.echo(' The LNM Institute Of Information Technology, Rupa ki Nangal, Post-Sumel, Via-Jamdoli, Jaipur, Rajasthan 302031');
                         term.echo(' Link to Google Maps : ');
                         term.echo(' https://goo.gl/Q6ari2');
-                    } else if(command == 'man location') {
+                    } else if(command.toLocaleLowerCase() == 'man location') {
                         term.echo("[[b;;;paddingChild]\nlocation(1) \t\t\t\t\t\t\t User Commands \t\t\t\t\t\t\t location(1) \n\n\n NAME \n \t location - how to reach LNMIIT\n SYNOPSIS \n \t location --that's all you need \n DESCRIPTION \n \t How to reach the venue for Plinth'17 along with google map's link. \n AUTHOR \n \t Written by dudes of LNMIIT \n REPORTING BUGS \n \t Report about bugs to wedontcare.org \n COPYRIGHT \n \t Copyright © 2020 Future Developers Foundation Inc. License GUIv1.0+: \n \t This is premium software: you are not authorised to change and redistribute it. \n SEE ALSO \n \t The full documentation for about is maintained and stored in a secret location. \n\n\n GNU V 1.1 \t\t\t\t\t\t\t January 2017 \t\t\t\t\t\t\t location(1)]");
-                    } else if(command == 'register'){
+                    } else if(command.toLocaleLowerCase() == 'register'){
                         if(localStorage.getItem('isLoggedIn') == 'false'){
                         term.echo('[[b;orange;#30353A;paddingParent]========== Register ==========]');
                         //term.echo('[[b;yellow;#30353A;paddingChild]First Name :]')
@@ -407,7 +408,7 @@
                         term.echo('[[b;cyan;#30353A;paddingChild]Register with Google] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type google]');
                         term.echo('[[b;cyan;#30353A;paddingChild]Register with Facebook] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type facebook]');
                         term.push(function(command, term) {
-                            if(command == 'google'){
+                            if(command.toLocaleLowerCase() == 'google'){
 //                                $.when($(".reg-with-google").trigger("click")).then(cliUserRegisterDetail());
                                 $(".reg-with-google").trigger("click");
                                 cliUserRegisterDetail();
@@ -425,10 +426,10 @@
     //                            }, {
     //                                prompt: 'First Name >',
     //                                name: 'First Name'});
-                            } else if(command == 'facebook') {
+} else if(command.toLocaleLowerCase() == 'facebook') {
                                 $(".reg-with-fb").trigger("click");
                                 cliUserRegisterDetail();
-                            }else if(command == 'cd ..'){
+                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -447,9 +448,9 @@
                         }else{
                             term.echo('[[b;orange;#30353A;paddingParent]you have alerady registered !]')
                         }
-                    } else if(command == 'man register') {
+                    } else if(command.toLocaleLowerCase() == 'man register') {
                         term.echo("[[b;;;paddingChild]\nregister(1) \t\t\t\t\t\t\t User Commands \t\t\t\t\t\t\t register(1) \n\n\n NAME \n \t register - form for registration \n SYNOPSIS \n \t register --that's all you need \n DESCRIPTION \n \t Registration form for various events in Plinth'17. \n AUTHOR \n \t Written by dudes of LNMIIT \n REPORTING BUGS \n \t Report about bugs to wedontcare.org \n COPYRIGHT \n \t Copyright © 2020 Future Developers Foundation Inc. License GUIv1.0+: \n \t This is premium software: you are not authorised to change and redistribute it. \n SEE ALSO \n \t The full documentation for about is maintained and stored in a secret location. \n\n\n GNU V 1.1 \t\t\t\t\t\t\t January 2017 \t\t\t\t\t\t\t register(1)]");
-                    } else if(command == 'events') {
+                    } else if(command.toLocaleLowerCase() == 'events') {
                         term.echo('[[b;orange;#30353A;paddingParent]========== Events ==========]');
                         term.echo('[[b;#197cde;#30353A;paddingChild]    Astronomy] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type astronomy]');
                         term.echo('[[b;#197cde;#30353A;paddingChild]    Coding]    \t\t\t\t\t\t\t [[;#84878b;#30353A]//type coding]');
@@ -461,7 +462,7 @@
                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                         term.echo(' ');
                         term.push(function(command, term) {
-                            if(command == 'astronomy'){
+                            if(command.toLocaleLowerCase() == 'astronomy'){
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Armageddon] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type astro1');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Astro Hunt] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type astro2');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Star Trek]  \t\t\t\t\t\t\t [[;#84878b;#30353A]//type astro3');
@@ -469,7 +470,7 @@
                                 term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                 term.echo(' ');
                                 term.push(function(command, term) {
-                                    if(command == 'astro1'){
+                                    if(command.toLocaleLowerCase() == 'astro1'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 20,000 ]');
@@ -482,21 +483,21 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]Scientists at NASA have discovered an asteroid 65 miles wide, named as Destroyer786. It is composed of large quantities of carbon molecules as well as the more usual rocks and metals.It has it's collision course set with Earth. The asteroid is supposed to make its impact 1.5 years from today. Destroyer786 is travelling at a speed of 30,000 miles per hour and is approaching the earth from the direction of the sun. Keeping the estimated flyby distance in mind, it is supposed to cause a mass destruction if not total wipeout of humanity from the face of Earth.]");
                                                 term.echo("[[;;;paddingChild]All countries have come together, understanding the grim situation and are ready to take extreme measures to stop the 'end of the world'. You are chosen to be a part of core team of scientists that is going to save the humanity.]");
                                                 term.echo('[[;;;paddingChild]Devise a plan to save Earth and humanity.]');
                                                 term.echo('[[;;;paddingChild]Fate of humanity lies in your hand.]');
                                                 term.echo('[[;;;paddingChild]This event consists of two rounds. First round will be online. The participants have to submit a report before the given deadline. After the date of submission, we will select the teams for the second round on the basis of their report. All the teams selected teams will have to present their report in front of the judges during plinth.]');
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo('[[b;;;paddingChild]Problem Statement]');
                                                 term.echo('[[;;;paddingChild]   1. You have no economic constraints as all countries are willing to pool their resources in an attempt to save humanity.]');
                                                 term.echo('[[;;;paddingChild]   2. You have 547 days in total to save earth, delay of even an hour will lead to human extinction.]');
                                                 term.echo('[[;;;paddingChild]   3. Level of technology is not much advance than today, therefore make assumptions that are almost realistic.]');
                                                 term.echo("[[;;;paddingChild]   The final project report should be mailed to astronomy.lnmiit@gmail.com with the subject Plinth: Armageddon Project Report: TeamId.]");
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]General Rules]');
                                                 term.echo('[[;;;paddingChild]   1. Any form of copying of textual material would lead to disqualification.]');
@@ -506,13 +507,13 @@
                                                 term.echo('[[b;;;paddingChild]Format of the project]');
                                                 term.echo('[[;;;paddingChild]   1. The project should be submitted in a pdf.]');
                                                 term.echo('[[;;;paddingChild]   2. There is no strict format that you need to stick to. Make it as comprehensible as possible.]');
-                                            }else if(command == 'judges'){
+                                            }else if(command.toLocaleLowerCase() == 'judges'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Judges ==========]');
                                                 term.echo('[[b;;;paddingChild]Evaluation Methodology]');
                                                 term.echo('[[;;;paddingChild]   1. Your report would be evaluated on how many different aspects you have deliberated upon and how many of these are in line with the physics of the planet.]');
                                                 term.echo('[[;;;paddingChild]   2. The more descriptive you are, the more points your report will score.]');
                                                 term.echo('[[;;;paddingChild]   3. You can use diagrams and pictures.]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -521,7 +522,7 @@
                                     prompt: 'armageddon >',
                                     name: 'armageddon'
                                         });
-                                    }else if(command == 'astro2'){
+                                    }else if(command.toLocaleLowerCase() == 'astro2'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 20,000 ]');
@@ -533,10 +534,10 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]Foresee the unfathomable and explore the mysteries of the universe. Only the sharp, intelligent and astronomy enthusiasts will make it to the end. The route to solve the mysteries of the universe lies within the depths of the dark sky and your imagination. It’s time to bring out the Galileo Galilee in you and look into the infinite cosmic depths.]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo('[[;;;paddingChild]   1. At the beginning of the Astro Hunt each team will be given a map of the LNMIIT Campus and a Sky chart.]');
                                                 term.echo('[[;;;paddingChild]   2. Astro Hunt will consist of 4 rounds.]');
@@ -544,7 +545,7 @@
                                                 term.echo('[[;;;paddingChild]   4. After completing a round by solving the puzzles/clues and reaching the check point the teams will get a flag and the clues/puzzles for the next round.]');
                                                 term.echo('[[;;;paddingChild]   5. Each flag will also consist of some information/clue. After collecting all the 4 flags the participants will have to solve the final puzzle.]');
                                                 term.echo('[[;;;paddingChild]   6. The team which will collect all the 4 flags and solve the final puzzle in minimum time will be the winner.]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]General Rules]');
                                                 term.echo('[[;;;paddingChild]   1. Members per team: 3 -5]');
@@ -553,7 +554,7 @@
                                                 term.echo('[[;;;paddingChild]   4. All the team members should be present at each check point while receiving a token.]');
                                                 term.echo('[[;;;paddingChild]   5. Decision of the volunteers at each check point will be final.]');
                                                 term.echo('[[;;;paddingChild]   6. Usage of Internet is allowed.]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -562,7 +563,7 @@
                                     prompt: 'astro hunt >',
                                     name: 'astro hunt'
                                         });
-                                    }else if(command == 'astro3'){
+                                    }else if(command.toLocaleLowerCase() == 'astro3'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 20,000 ]');
@@ -574,14 +575,14 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]This event consists of 2 rounds: Spacewalk and Messier marathon. Detailed description of the event are as follows.]");
                                                 term.echo("[[b;;;paddingChild]1st Round: Spacewalk]");
                                                 term.echo("[[;;;paddingChild]It will be an audio-visual quiz related to astronomy.Pictures and videos would be projected in front and participants have to answer the questions that follow.]");
                                                 term.echo("[[b;;;paddingChild]2nd Round: Messier Marathon]");
                                                 term.echo("[[;;;paddingChild]So are you one of those who sneak out of your rooms during night hours and wander long gazing at the sky, trying to build up your imagination. Well folks then this is a perfect game for you to play, a hunt for the stars. Participants need to set themselves on a voyage of different celestial bodies and conquer to best of their capabilities. So, are you ready for this mission to get kicked off? See you at the battle field . A basic tutorial session would be held on handling of telescope and any further enhancements of the skills would be student’s personal interest.]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo("[[b;;;paddingChild]Spacewalk]");
                                                 term.echo('[[;;;paddingChild]   1. Participants will have 1 minute to answer each question by writing it down on the given sheet.]');
@@ -589,13 +590,13 @@
                                                 term.echo('[[;;;paddingChild]   3. Each question will carry 2 points.]');
                                                 term.echo('[[;;;paddingChild]   4. Marks will be allotted to each question individually.]');
                                                 term.echo('[[;;;paddingChild]   5. Only top 50% teams will go to the next round.]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]General Rules]');
                                                 term.echo('[[;;;paddingChild]   1. Participants can form team of up to three.]');
                                                 term.echo('[[;;;paddingChild]   2. Individual participants are also allowed.]');
                                                 term.echo('[[;;;paddingChild]   3. Using mobile phones is not allowed.]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -604,7 +605,7 @@
                                     prompt: 'star trek >',
                                     name: 'star trek'
                                         });
-                                    }else if(command == 'cd ..'){
+                                    }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -613,7 +614,7 @@
                                     prompt: 'astronomy >',
                                     name: 'astronomy'
                                 });
-                            }else if(command == 'coding'){
+                            }else if(command.toLocaleLowerCase() == 'coding'){
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Fix the Bug]     \t\t\t\t\t\t\t [[;#84878b;#30353A]//type code1');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC]            \t\t\t\t\t\t\t [[;#84878b;#30353A]//type code2');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    IUPC Distraction]\t\t\t\t\t\t\t [[;#84878b;#30353A]//type code3');
@@ -621,7 +622,7 @@
                                 term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                 term.echo(' ');
                                 term.push(function(command, term) {
-                                    if(command == 'code1'){
+                                    if(command.toLocaleLowerCase() == 'code1'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 150/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 10,000 ]');
@@ -634,17 +635,17 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]'Bloody instructions, which, being taught, return to plague the inventor …']");
                                                 term.echo("[[;;;paddingChild]-William Shakespeare,Macbeth, act 1, scene 7.]");
                                                 term.echo(' ');
                                                 term.echo("[[;;;paddingChild]How right the 'Bard of Avon' was! Every programmer who has crossed skill levels beyond the 'hello world' phase, has learnt to fear those mysterious fiends called bugs. Seeing the enigmatic 'seg. fault' on the screen sends chills down the spine of even some veterans! To deal with such entities requires a level patience and skill that escapes ordinary programmers. Think you are up to it? Are you one of those gifted few who can spot a bug like the eagle does a mouse? Why doubt when you can find out!]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo('[[;;;paddingChild]It is a debugging event with some restrictions on time and language. The questions will related to scripting or will ask to either debug some code with limited time frame to complete the event. It will be an onsite competition to be held during Plinth’17]');
                                                 term.echo('[[;;;paddingChild]EVENT DURATION: 2 Hrs.]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]Registration Rules]');
                                                 term.echo('[[;;;paddingChild]   1. Team with maximum of 2 members is allowed.]');
@@ -655,11 +656,11 @@
                                                 term.echo('[[;;;paddingChild]   1. Each team is expected to carry a Linux (preferably Ubuntu 14.04) machine.]');
                                                 term.echo('[[;;;paddingChild]   2. Language used for Problem codes is solely the decision of organizers.]');
                                                 term.echo('[[;;;paddingChild]   3. The decision of the organizers in declaring the results will be final. No queries in this regard will be entertained.]');
-                                            }else if(command == 'judges'){
+                                            }else if(command.toLocaleLowerCase() == 'judges'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Judges ==========]');
                                                 term.echo('[[;;;paddingChild]Leaderboard from DoSelect will be considered for selecting winners, however in case of any conflicts the decision of the organizers in declaring the results will be final. No queries in this regard will be entertained.]');
-                                               
-                                            }else if(command == 'cd ..'){
+
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -668,7 +669,7 @@
                                     prompt: 'fix the bug >',
                                     name: 'fix the bug'
                                         });
-                                    }else if(command == 'code2'){
+                                    }else if(command.toLocaleLowerCase() == 'code2'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 150/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 40,000 ]');
@@ -681,15 +682,15 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]See logic in everything around you? Is your daily grammar a 'SYNTAX'?Algorithms and flow charts cloud your brain? Love to solve new and challenging problems?Then you should not miss out on IUPC the Inter University Programming Contest... go and Code the Code...!]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo("[[;;;paddingChild]This national level programming contest shall assess the intelligence through various rounds: First round will be held online followed by further onsite rounds which will be held during Plinth'17.]");
                                                 term.echo('[[;;;paddingChild]Platform: HackerEarth]');
                                                 term.echo('[[;;;paddingChild]Contest Durations: 3 Hours]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]Registration Rules]');
                                                 term.echo('[[;;;paddingChild]   1. Team with maximum of 2 members is allowed.]');
@@ -707,7 +708,7 @@
                                                 term.echo('[[;;;paddingChild]   5. The questions will be marked with the language in which solution is expected.]');
                                                 term.echo("[[;;;paddingChild]   6. The solutions will be judged on the relative basis.]");
                                                 term.echo('[[;;;paddingChild]   7. Time Limit Exceed might also mean that there is a syntax in your source code.]');
-                                            }else if(command == 'judges'){
+                                            }else if(command.toLocaleLowerCase() == 'judges'){
                                                 term.echo("[[;;;paddingChild]Leaderboard from HackerEarth will be considered for selecting winners, however in case of any conflicts the decision of the organizers in declaring the results will be final. No queries in this regard will be entertained.]");
                                                 term.echo('[[b;;;paddingChild]Judging Criteria]');
                                                 term.echo('[[;;;paddingChild]   1. Different problems have different points based on their relative difficulty level.]');
@@ -715,7 +716,7 @@
                                                 term.echo('[[;;;paddingChild]   3. The decision of the organizers in declaring the results will be final. No queries in this regard will be entertained.]');
                                                 term.echo('[[;;;paddingChild]   4. Any participant found to be indulging in any form of malpractice or plagiarism will be immediately disqualified.]');
                                                 term.echo('[[;;;paddingChild]   5. The total time is the sum of the time consumed for each problem solved. The time consumed for a solved problem is the time elapsed from the beginning of the contest to the submission of the first accepted run plus 20 penalty minutes for every previously rejected run for that problem (Wrong answer, Time limit exceeded, Runtime Error, Compilation Error). There is no time consumed for a problem that is not solved.]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -724,7 +725,7 @@
                                     prompt: 'iupc >',
                                     name: 'iupc'
                                         });
-                                    }else if(command == 'code3'){
+                                    }else if(command.toLocaleLowerCase() == 'code3'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 150/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 10,000 ]');
@@ -737,14 +738,14 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]'A programming contest crossed with Interruption games'.]");
                                                 term.echo("[[b;;;paddingChild]Do you think you can code? Do you think you can code while being distracted? Do you have what it takes to get interrupted and then Compile?]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo('[[;;;paddingChild]Distraction IUPC is an IUPC-style programming contest crossed with various distractions (you will get to know when you enter in the contest arena!), where teams of three people try to solve as many programming problems as they can. Meanwhile, our Distraction Team will be doing what they can to make the job of programming more difficult and/or enjoyable.]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]Registration Rules]');
                                                 term.echo('[[;;;paddingChild]   1. Only teams with exactly 2 members are allowed.]');
@@ -758,9 +759,9 @@
                                                 term.echo('[[;;;paddingChild]   2. Distraction Rules will be introduced in contest arena. Teams are expected to follow them.]');
                                                 term.echo("[[;;;paddingChild]   3. Plagiarism by any means will lead to immediate disqualification of the team.]");
                                                 term.echo('[[;;;paddingChild]   4.The decision of Plinth Organizing Committee will be final.]');
-                                            }else if(command == 'judges'){
+                                            }else if(command.toLocaleLowerCase() == 'judges'){
                                                 term.echo("[[;;;paddingChild]Leaderboard from HackerEarth will be considered for selecting winners, however in case of any conflicts the decision of the organizers in declaring the results will be final. No queries in this regard will be entertained.]");
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -769,7 +770,7 @@
                                     prompt: 'iupc distraction >',
                                     name: 'iupc distraction'
                                         });
-                                    }else if(command == 'cd ..'){
+                                    }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -778,7 +779,7 @@
                                     prompt: 'coding >',
                                     name: 'coding'
                                 });
-                            }else if(command == 'robotics'){
+                            }else if(command.toLocaleLowerCase() == 'robotics'){
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    LFR]        \t\t\t\t\t\t\t [[;#84878b;#30353A]//type lfr');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Quadcopter] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type do');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Transporter]\t\t\t\t\t\t\t [[;#84878b;#30353A]//type transporter');
@@ -789,7 +790,7 @@
                                 term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                 term.echo(' ');
                                 term.push(function(command, term) {
-                                    if(command == 'lfr'){
+                                    if(command.toLocaleLowerCase() == 'lfr'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 200/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 25,000 ]');
@@ -801,15 +802,15 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]Line follower robots were one of the earliest automatic guided robots. They are able to follow a line marked on a contrasting background, usually a black line on a white surface or vice-versa. For Beginners it is usually their first robot to play with. It’s the most basic example of adding small intelligence to a robot, but it’s actually the designer’s intelligence!]");
                                                 term.echo("[[;;;paddingChild]Our event goals: Fun while Learning, Sharing, and Teamwork….Winning is secondary.]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo('[[;;;paddingChild]   1. An Autonomous bot that follows black line on white surface or vice-versa.]');
                                                 term.echo('[[;;;paddingChild]   2. There will be separate points for how the bots follows the path as well, the other parameter being time. Thus the bot with the most cumulative points will win.]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]General Rules]');
                                                 term.echo('[[;;;paddingChild]   1. Max. Number of members in a team: 4.]');
@@ -834,7 +835,7 @@
                                                 term.echo('[[;;;paddingChild]   3. Spray, throw or use projectiles.]');
                                                 term.echo('[[;;;paddingChild]   4. Jam or shock other electrical interface.]');
                                                 term.echo('[[;;;paddingChild]   5. Exceed Maximum circuit voltage of 12v at any point of time.]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -843,7 +844,7 @@
                                     prompt: 'lfr >',
                                     name: 'lfr'
                                         });
-                                    }else if(command == 'do'){
+                                    }else if(command.toLocaleLowerCase() == 'do'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 600/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 50,000 ]');
@@ -855,11 +856,11 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]The Drone Obstruction is a copter controlled-flying competition presented to you by Plinth, The LNMIIT giving you an opportunity to showcase your talents through this event with your performances. You will be judged in both the aspects of the bot that is on the expertise of your flying skill and the stability of your bot. Participate to express your aerodynamics skills.]");
                                                 term.echo("[[;;;paddingChild]Our event goals: Fun while Learning, Sharing, and Teamwork….Winning is secondary.]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo('[[b;;;paddingChild]Arena]');
                                                 term.echo('[[;;;paddingChild]The track is in the shape of three letters ‘L’, ‘N’, ‘M’ which signifies our college name LNMIIT.]');
@@ -905,7 +906,7 @@
                                                 term.echo('[[;;;paddingChild]   17. No point will be given if any part of model touches or lies outside the circle during spot landing.]');
                                                 term.echo('[[;;;paddingChild]   18. This has to be done only after crossing all the obstacles.]');
                                                 term.echo('[[;;;paddingChild]   19. No extra time will be provided for landing. It has to performed within 6 minutes given for round-2.]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]General Rules]');
                                                 term.echo('[[;;;paddingChild]   1. Points earned will be calculated within the time limit and free time will be provided only once if any technical problem occurs.]');
@@ -918,7 +919,7 @@
                                                 term.echo('[[;;;paddingChild]   3. Teams can bring not only Drones but other flying machines as mentioned Zeplin, Coaxial chopper, Tail rotor chopper, Quadrotor, Hexapod, Tripod and Octacopter.]');
                                                 term.echo('[[b;;;paddingChild]Eligibility]');
                                                 term.echo('[[;;;paddingChild]   All students with a valid identity card of their respective educational institutions are eligible to participate with team size of maximum 6 members.]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -927,7 +928,7 @@
                                     prompt: 'drone_obstruction >',
                                     name: 'drone_obstruction'
                                         });
-                                    }else if(command == 'transporter'){
+                                    }else if(command.toLocaleLowerCase() == 'transporter'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 200/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 25,000 ]');
@@ -939,11 +940,11 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]Assume you are in a virtual gaming world. Virtual reality gaming is where a person can experience being in a three-dimensional environment and interact with that environment during a game. This is an essential part of the game.]");
                                                 term.echo("[[;;;paddingChild]Think that there is sudden attack by foe army on a castle and here king, some courtier, some other people are trapped inside the castle. Our aim is to design a transporter robot which has to save all the trapped people from castle. The task is mammoth and the time is minimal.]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo('[[b;;;paddingChild]Problem Statement]');
                                                 term.echo('[[;;;paddingChild]   * Manual Bot Task]');
@@ -963,7 +964,7 @@
                                                 term.echo('[[;;;paddingChild]   3. There are no hooks attached to the blocks you have grab them by your bot’s arm.]');
                                                 term.echo('[[;;;paddingChild]   4. After picking up all the people manual bot has to pick the king from where he is trapped.]');
                                                 term.echo('[[;;;paddingChild]   5. Meanwhile conveyor assembly will start saving the people and transferring them to the safe pits.]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]General Rules]');
                                                 term.echo('[[;;;paddingChild]   1. Max. Number of members in a team: 4.]');
@@ -991,7 +992,7 @@
                                                 term.echo('[[;;;paddingChild]   1. Length: 10 minutes]');
                                                 term.echo('[[;;;paddingChild]   2. As many as retries can be made only after the referee’s permission in cases such as when the robot is declared immobile.]');
                                                 term.echo('[[;;;paddingChild]   3. Only the 2 team members per robot are allowed to touch the robot while placing it back to the retry point whose names should be given to coordinators before the game starts.]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1000,7 +1001,7 @@
                                     prompt: 'transporter  >',
                                     name: 'transporter '
                                         });
-                                    }else if(command == 'roborace'){
+                                    }else if(command.toLocaleLowerCase() == 'roborace'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 200/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 25,000 ]');
@@ -1012,7 +1013,7 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]For all those who believe in setting the place on fire! Here’s a live experience of a racing tournament. Build your own robot and come on board!]");
                                                 term.echo("[[;;;paddingChild]Robotics as a whole is a competition where people can showcase their technical skills. RoboRace is a competition where couple of Robots compete with each other in their speed and accurate control.]");
@@ -1020,7 +1021,7 @@
                                                 term.echo('[[;;;paddingChild]   2. You have to build a manually controlled robot capable of traversing over different terrain and unseen hurdles.]');
                                                 term.echo('[[;;;paddingChild]   3. There will be separate points for overcoming the obstacles as well as the other parameter being within time. Thus the bot with the most cumulative points will win.]');
                                                 term.echo('[[;;;paddingChild]   4. The aim of the event is to check the robustness of the vehicle and its competence with the opponent on the same track.]');
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo('[[b;;;paddingChild]Problem Statement]');
                                                 term.echo('[[;;;paddingChild]   1. Construct Your Machine to have the maximum speed to beat another machine on the given track to reach the final destination in minimum time.]');
@@ -1052,7 +1053,7 @@
                                                 term.echo('[[b;;;paddingChild]Track Specification]');
                                                 term.echo('[[;;;paddingChild]   1. The track will be 3035 cm wide.]');
                                                 term.echo('[[;;;paddingChild]   2. The track will be having many zones.]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]General Rules]');
                                                 term.echo('[[;;;paddingChild]   1. No human intervention is allowed in between the race.]');
@@ -1066,7 +1067,7 @@
                                                 term.echo('[[;;;paddingChild]   9. The organizers reserve the right to change any or all of the rules as they desire.]');
                                                 term.echo('[[;;;paddingChild]   10. Change in the rules as if any will be informed through e-mail or via Facebook page.]');
                                                 term.echo('[[;;;paddingChild]   11. Participants need to carry their own power source (preferably 12V battery).]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1075,7 +1076,7 @@
                                     prompt: 'roborace  >',
                                     name: 'roborace '
                                         });
-                                    }else if(command == 'robowar'){
+                                    }else if(command.toLocaleLowerCase() == 'robowar'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 700/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 50,000 ]');
@@ -1087,14 +1088,14 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]Robots and destruction and all the ‘Michael Bay-isms’ that follow: is that what you crave for? Only this time you can be you can be a part of it. The arena is ready for you. Create the ultimate fighting machine on wheels and unleash inferno in the ring. Feel the adrenaline flow as you witness the death-tango of metal versus metal! PLINTH’17 welcomes you to Robo-War.]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo('[[b;;;paddingChild]Problem Statement]');
                                                 term.echo('[[;;;paddingChild]The challenge is to create a robot (manually controlled / autonomous) whose sole purpose is to push, throw, flip, drag, or otherwise move your opponent out of the arena within a stipulated time. This event aims to test your Robot against another in a field of combat where brute strength and cat-like reflexes hold the key to success.]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]Team Specification]');
                                                 term.echo('[[;;;paddingChild]   1. Any team can participate in this event. A team may consist of a maximum of 6 participants. These participants can be from same or different institutes.]');
@@ -1141,7 +1142,7 @@
                                                 term.echo('[[;;;paddingChild]   2. Liquid projectiles.]');
                                                 term.echo('[[;;;paddingChild]   3. Any kind of inflammable liquid.]');
                                                 term.echo('[[;;;paddingChild]   4. Flame-based weapons.]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1150,7 +1151,7 @@
                                     prompt: 'robowar  >',
                                     name: 'robowar '
                                         });
-                                    }else if(command == 'robosoccer'){
+                                    }else if(command.toLocaleLowerCase() == 'robosoccer'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 200/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 25,000 ]');
@@ -1162,10 +1163,10 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]Are you a technophile? Is playing soccer your forte? Ever thought of their combo. If not, Plinth’17 provides you the perfect opportunity to showcase your talent. Use your soccer enthusiasm and robotic skills to beat your opponent and become the ‘Ultimate Robosoccer Champion’ in Plinth’17. Be there or be square!]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo('[[b;;;paddingChild]Task Description]');
                                                 term.echo('[[;;;paddingChild]   1. Each team will have to defend the goal on its side as well as score the goal on the opposite side.]');
@@ -1174,7 +1175,7 @@
                                                 term.echo('[[;;;paddingChild]   4. The game will last for 5min.]');
                                                 term.echo('[[;;;paddingChild]   5. In case of jam up of robots for than 30 sec., the robots will have to kick- off again at the order of the referee.]');
                                                 term.echo('[[;;;paddingChild]   6. Each goal scored by a team by rolling the ball on the ground will fetch the team by 1 point. (*or, Point description will be disclosed on the spot before commencement of the event.)]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]General Rules]');
                                                 term.echo('[[;;;paddingChild]   1. Registration fees is applicable per bot.]');
@@ -1200,7 +1201,7 @@
                                                 term.echo('[[;;;paddingChild]   1. During the match, the team members are not allowed to touch the machine or the arena without]');
                                                 term.echo('[[;;;paddingChild]   2. The teams will be asked to get ready 15 minutes before the start of their match. If a team is not ready within the stipulated time, they may be disqualified.]');
                                                 term.echo('[[;;;paddingChild]   3. In any case, the decision of the judges will be final if they feel that any team is not playing with fair interest.]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1209,7 +1210,7 @@
                                     prompt: 'robosoccer  >',
                                     name: 'robosoccer '
                                         });
-                                    }else if(command == 'cd ..'){
+                                    }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1218,13 +1219,13 @@
                                     prompt:'robotics >',
                                     name:'robotics'
                                 });
-                            }else if(command == 'quizzing'){
+                            }else if(command.toLocaleLowerCase() == 'quizzing'){
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Quest] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type quest');
                                 term.echo(' ');
                                 term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                 term.echo(' ');
                                 term.push(function(command, term) {
-                                    if(command == 'quest'){
+                                    if(command.toLocaleLowerCase() == 'quest'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 20,000 ]');
@@ -1236,18 +1237,18 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]LNMIIT Quiz Club organizes thrilling quizzing events making our fests a terrific platform for avid quizzers and inquisitive minds to show their mettle to battle.]");
                                                 term.echo("[[;;;paddingChild]This year we will be organising The Quest- general quiz covering all the topics from sports to entertainment, current affairs to history, business to technical knowledge.]");
                                                 term.echo("[[;;;paddingChild]Get ready to face the utlimate battle of wits to prove your knowledge among all the quizzers of the country.]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo('[[;;;paddingChild]   1. The Quest will be held in 2 rounds, both these rounds will take place back to back at LNMIIT during Plinth.]');
                                                 term.echo('[[;;;paddingChild]   2. The initial round (Prelims) will be a written elimination round. Each team should consist of exactly 2 members.]');
                                                 term.echo('[[;;;paddingChild]   3. The final (mains) round will be between the top 6 teams from Prelims.]');
                                                 term.echo('[[;;;paddingChild]   4. The decision of Quizmaster will be final and binding.]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]General Rules]');
                                                 term.echo('[[;;;paddingChild]   1. This event is open to all students.]');
@@ -1257,7 +1258,7 @@
                                                 term.echo('[[;;;paddingChild]   5. The decisions of the organizers of the contest will be final and binding on all the participants.]');
                                                 term.echo('[[;;;paddingChild]   6. Quiz master is god.]');
                                                 term.echo('[[;;;paddingChild]   7. Cross college teams are allowed.]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1266,7 +1267,7 @@
                                     prompt: 'quest >',
                                     name: 'quest'
                                         });
-                                    }else if(command == 'cd ..'){
+                                    }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1275,14 +1276,14 @@
                                     prompt: 'quizzing >',
                                     name: 'quizzing'
                                 });
-                            }else if(command == 'literature'){
+                            }else if(command.toLocaleLowerCase() == 'literature'){
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Wrangle] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type wrangle');
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    Rostrum] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type rostrum');
                                 term.echo(' ');
                                 term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                 term.echo(' ');
                                 term.push(function(command, term) {
-                                    if(command == 'wrangle'){
+                                    if(command.toLocaleLowerCase() == 'wrangle'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 10,000 ]');
@@ -1294,17 +1295,17 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]Wrangle N hush - let’s discuss the issues that concern us. A lot is going in our country and there are plethora of issues that deserve our attention. Plinth 2017 invites you to an open discussion that would intrigue you to speak and think about the issues that form a part of our daily lives.]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo('[[;;;paddingChild]Details will be Updated soon]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]General Rules]');
                                                 term.echo('[[;;;paddingChild]   1. Each participant will get maximum of 2 minutes to speak in one go.]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1313,7 +1314,7 @@
                                     prompt: 'wrangle >',
                                     name: 'wrangle'
                                         });
-                                    }else if(command == 'rostrum'){
+                                    }else if(command.toLocaleLowerCase() == 'rostrum'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                         term.echo('[[b;#dbdb3d;#000000;paddingChild]    Prize Worth: INR. 10,000 ]');
@@ -1325,13 +1326,13 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]Words are pale shadows of forgotten names. As names have power, words have power. Words can light fires in the minds of men. Words can draw opinion from the dreary heart. When words collide, they leave an immortal afterthought. Plinth’17 invites you to be part of the battle of thought and afterthought: ‘Rostrum- the Debate’. Take your stand among the best debaters of the country and wrangle your way to the top. Prove to the world why they call you the “sorcerer of words” and win exciting prizes!]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo('[[;;;paddingChild]Details will be Updated soon]');
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[b;;;paddingChild]General Rules]');
                                                 term.echo('[[;;;paddingChild]   1. Students are required to come in teams of two. One speaker shall be for the motion and the other shall be against. There is no restriction on the number of teams from a college.]');
@@ -1342,7 +1343,7 @@
                                                 term.echo('[[;;;paddingChild]       2.Runner-up in “for the motion”.]');
                                                 term.echo('[[;;;paddingChild]       3.First in “against the motion”.]');
                                                 term.echo('[[;;;paddingChild]       4.Runner-up in “against the motion”.]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1351,7 +1352,7 @@
                                     prompt: 'rostrum >',
                                     name: 'rostrum'
                                         });
-                                    }else if(command == 'cd ..'){
+                                    }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1360,12 +1361,12 @@
                                     prompt: 'quizzing >',
                                     name: 'quizzing'
                                 });
-                            }else if(command == 'management'){
+                            }else if(command.toLocaleLowerCase() === 'management'){
                                 term.echo('[[b;#c12ee5;#30353A;paddingChild]    SIF] \t\t\t\t\t\t\t [[;#84878b;#30353A]//type sif');
                                 term.echo(' ');
                                 term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                 term.echo(' ');
-                                if(command == 'sif'){
+                                if(command.toLocaleLowerCase() == 'sif'){
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 100/- ]');
                                         term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th Jan 2017 ]');
                                         term.echo(' ');
@@ -1376,18 +1377,18 @@
                                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                                         term.echo(' ');
                                         term.push(function(command, term) {
-                                            if(command == 'synopsis'){
+                                            if(command.toLocaleLowerCase() == 'synopsis'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Synopsis ==========]');
                                                 term.echo("[[;;;paddingChild]As the name very well suggests, SIF aims at bringing the budding startups and the aspiring students all under one umbrella. Here, the associated startups would be able to find just the right intern for their company whether it be for summers ,winters or workfrom-home. On the other hand, the students would be able to apply their acquired skills and broaden their technical horizons, by working in a thriving startup environment. The process would be an aggregated one and the students would be screened on the spot and would get the opportunity to land up amidst some cool entrepreneurs.]");
-                                            }else if(command == 'desc'){
+                                            }else if(command.toLocaleLowerCase() == 'desc'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Description ==========]');
                                                 term.echo("[[;;;paddingChild]Our inboxes are usually spammed with emails from internship and training websites. With the startup boom in our country, fresh ideas are launching every day. They definitely need creative problem-solvers, out-of-the-box thinkers, who share the same vision as that of the company. Applying through virtual platforms is tedious and time-consuming. With multiple screening rounds, group discussions etc, the wait to hire the perfect candidate gets even longer! This is why we present to you SIF. We here at the Startup Intern Fair would open the gates of entrepreneurship to a lot of creative minds. Thus, to bridge the gap between the talent-seekers and the talented, we present Startup Intern Fair in its very second edition at PLINTH'17, the annual techno-management literary fest of LNMIIT.]");
-                                            }else if(command == 'rules'){
+                                            }else if(command.toLocaleLowerCase() == 'rules'){
                                                 term.echo('[[b;orange;#30353A;paddingParent]========== Rules ==========]');
                                                 term.echo('[[;;;paddingChild]   1. Carry at least two passport size photographs and a valid College ID. Without it, your entry in SIF shall be denied.]');
                                                 term.echo('[[;;;paddingChild]   2. Students must bring their own copies of resumes. Carry at least as many copies as the internship profiles you are applying for.]');
                                                 term.echo('[[;;;paddingChild]   3. One student can apply for multiple internship openings but can be selected in maximum of three. Once a student gets selected in 3 internships, he/she shall be debarred from applying further.]');
-                                            }else if(command == 'cd ..'){
+                                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1396,12 +1397,12 @@
                                     prompt: 'sif >',
                                     name: 'sif'
                                         });
-                                    }else if(command == 'cd ..'){
+                                    }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
             }
-                            }else if(command == 'cd ..'){
+        }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1410,7 +1411,7 @@
                             prompt: 'events >',
                             name: 'events'
                         });
-                    }else if(command == 'workshops') {
+                    }else if(command.toLocaleLowerCase() == 'workshops') {
                         term.echo('[[b;orange;#30353A;paddingParent]========== Workshops ==========]');
                         term.echo('[[b;#197cde;#30353A;paddingChild]    Photography Workshop  --presented by Audi Photography]     \t\t\t\t\t [[;#84878b;#30353A]//type w1');
                         term.echo('[[b;#197cde;#30353A;paddingChild]    Vehicle Design and Dynamics  --presented by Engineer Indya]\t\t\t\t\t [[;#84878b;#30353A]//type w2');
@@ -1421,27 +1422,27 @@
                         term.echo(' ');
 
                         term.push(function(command, term) {
-                            if(command == 'w1'){
+                            if(command.toLocaleLowerCase() == 'w1'){
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 500/- per person ]');
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th Jan 2017 ]');
                                 term.echo('[[;;;paddingChild]With the advent use of smartphones and better affordable cameras, more and more people are turning to photography as a hobby as well as a full time job.]');
                                 term.echo(' ');
                                 term.echo('[[;;;paddingChild]Auditya Venkatesh, better known as Audi, is a self taught photographer who is now a youth icon. He has over 8 lakhs followers on facebook and above 1.5 lakhs followers on Instagram. His top clientele includes brands like Vodafone, Samsung, Nissan and Toyota as his patrons. Also his interviews are included in economic times as well as India Today. He has also shot several videos and photos for Discovery Channel and has a youtube channel where he posts his work regularly, which also reaches the trending page of the country regularly. Auditya is also a motivational speaker and has given a Ted Talk.]');
-                            }else if(command == 'w2'){
+                            }else if(command.toLocaleLowerCase() == 'w2'){
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 950/- per person ]');
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                 term.echo('[[;;;paddingChild]It is workshop for those who gets excited by vehicles. In the 15 hours of workshop, the participants will be taught basics of automobile, its working principles, simulation, design and manufacturing a prototype of an automobile. It will provide an insight on how to collaborate design with various automotive components to design a better vehicle in all the terms. Students who are pursuing engineering can learn various concepts regarding engineering mechanics, engineering design of machine elements and mechanics of material using software like CAD/CAE.]');
-                            }else if(command == 'w3'){
+                            }else if(command.toLocaleLowerCase() == 'w3'){
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 950/- per person ]');
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                 term.echo("[[;;;paddingChild]Engineer Indya in association with EI Transporation presents India's Unique two days Combo Workshop on Web-O-Master with a Live Project. It's a two days workshop based on Web Development, Joomla CMS, Search Engine Optimization(SEO), Social Media Optimization (SMO), App Development & Web Security. Also get a chance to work on a Live Project based on a Social Networking Community Site for Engineers of India. All participants will be awarded with a dual certificate for attending this workshop i.e. Certificate of Merit & Live Project Completion Certificate.]");
-                            }else if(command == 'w4'){
+                            }else if(command.toLocaleLowerCase() == 'w4'){
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Fee : INR. 750/- per person ]');
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    18th - 19th Jan 2017 ]');
                                 term.echo("[[;;;paddingChild]Touch and Augmented Reality is the two days workshop to learn about sixth sense technologies on which Microsoft, Google, Intel & many more organisations currently working on it.]");
                                 term.echo(" ");
                                 term.echo("[[;;;paddingChild]For more information visit Roboflux. Watch workshop Trailer here]");
-                            }else if(command == 'cd ..'){
+                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1450,7 +1451,7 @@
                             prompt: 'workshops >',
                             name: 'workshops'
                         });
-                    }else if(command == 'talks') {
+                    }else if(command.toLocaleLowerCase() == 'talks') {
                         term.echo('[[b;orange;#30353A;paddingParent]========== talks ==========]');
                         term.echo('[[b;#197cde;#30353A;paddingChild]    Balaji Vishwanathan  --VP Product, Invento]               \t\t\t\t\t\t\t [[;#84878b;#30353A]//type t1');
                         term.echo('[[b;#197cde;#30353A;paddingChild]    Dr. Sangram Ganguly  --Senior Research Scientist, NASA]   \t\t\t\t\t\t\t [[;#84878b;#30353A]//type t2');
@@ -1460,19 +1461,19 @@
                         term.echo("[[;#84878b;#30353A]//type 'cd ..' to go back]");
                         term.echo(' ');
                         term.push(function(command, term) {
-                            if(command == 't1'){
+                            if(command.toLocaleLowerCase() == 't1'){
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Date : 22nd Jan 2016  ]');
                                 term.echo('[[;;;paddingChild]Balaji Viswanathan is an Indian writer, author, entrepreneur and engineer. He is popularly known for his answers and posts on the question-and-answer site Quora. He has been the top-writer (on Quora) of the year(s) 2013, 2014, 2015 and 2016 with over 20 articles published on Forbes, Slate, Business Insider and other places. He is the author of From Tryst to Tendulkar: The History of Independent India, a book on the history of contemporary India.]');
-                            }else if(command == 't2'){
+                            }else if(command.toLocaleLowerCase() == 't2'){
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Date : 18th - 19th Jan 2016  ]');
                                 term.echo('[[;;;paddingChild]Dr. Sangram Ganguly is a research scientist at the Biosphere Science Branch at NASA Ames Research Center, Moffett Field, California and at the Bay Area Environmental Research Institute. My work leverages expertise across a range of disciplines, including cloud computing solutions for big data science and analytics, machine learning, advanced satellite remote sensing and image analytics and climate sciences.]');
-                            }else if(command == 't3'){
+                            }else if(command.toLocaleLowerCase() == 't3'){
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Date : 18th - 19th Jan 2016  ]');
                                 term.echo('[[;;;paddingChild]Shubhranshu Choudhary is a Knight International Journalism Fellow and the founder of CGNet Swara. Shubhranshu was a BBC South Asia producer for more than 10 years.He produced the first television coverage of foreign militants operating in Indian Kashmir and conducted the first television interview with the chief commander of the Kashmiri militant organization.]');
-                            }else if(command == 't4'){
+                            }else if(command.toLocaleLowerCase() == 't4'){
                                 term.echo('[[b;#dbdb3d;#30353A;paddingChild]    Date : 18th - 19th Jan 2016  ]');
                                 term.echo('[[;;;paddingChild]Dr. V.A. Shiva Ayyadurai, the inventor of email and polymath, holds four degrees from MIT and is a world-renowned systems scientist. He is a Fulbright Scholar, Lemelson-MIT Awards Finalist, First Outstanding Scientist and Technologist of Indian Origin (STIO), Westinghouse Science Talent Honors Award recipient, and was nominated for the U.S. National Medal of Technology and Innovation. In 1978, as a precocious 14-year-old boy, he was accepted to a special program in computer science at New York University, leading to his being hired by the University of Medicine and Dentistry of New Jersey (UMDNJ) as a Research Fellow, where he developed the first electronic system to replicate the entire interoffice mail system (Inbox, Outbox, Folders, Address Book, Memo, etc.), which he named “email,” defining the email we all know and use today. In 1982, the US government recognized Ayyadurai as the inventor of email by awarding him the first Copyright for “Email” at a time when Copyright was the only way to protect software inventions. His interest in human health, also began early, when as a child, he observed his grandmother, a village farmer and healer, practice Siddha, India’s oldest system of traditional medicine. This motivated his future study and research in systems biology at MIT, leading to his discovery of Systems Health®, a major breakthrough that provides an integrative framework linking eastern and western medicine. His latest invention CytoSolve®, emerging from his doctoral research at MIT, provides a revolutionary platform for modeling complex biological phenomena, to support the development multi-combination medicines without animal testing.]');
-                            }else if(command == 'cd ..'){
+                            }else if(command.toLocaleLowerCase() == 'cd ..'){
                                 term.pop();
                             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1481,7 +1482,7 @@
                             prompt: 'talks >',
                             name: 'talks'
                         });
-                    }else if(command == 'activate gui'){
+                    }else if(command.toLocaleLowerCase() == 'activate gui'){
                         window.location.href = "https://plinth.in/";
                     }else {
                         term.echo('[[b;red;#30353A]unknown command ]' + command);
@@ -1489,9 +1490,9 @@
                 }, {
                     prompt: 'plinth > ',
                     name: 'plinth'});
-            } else if (command == ''){
+            } else if (command.toLocaleLowerCase() == ''){
                 term.echo(command);
-            } else if(command == 'activate gui'){
+            } else if(command.toLocaleLowerCase() == 'activate gui'){
                 window.location.href = "https://plinth.in/";
             }else {
                 term.echo('[[b;red;#30353A]unknown command ]' + command);
