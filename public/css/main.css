@@ -444,4 +444,5 @@ body{
 .cmd-intro a{
     color: white;
     font-family: 'Roboto';
+    margin-bottom: 60px;
 }

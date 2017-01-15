@@ -553,6 +553,33 @@ router.get('/faq/payment', Verify.verifyOrdinaryUser ,function(req, res) {
 router.get('/sponsors', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;
+      res.render('sponsors_2k17', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
+  else {
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('sponsors_2k17',{
+                  "isLoggedIn" : isLoggedIn,
+                  "user" : {
+                      name : user.name,
+                      gender : user.gender,
+                  }
+              });
+          }
+      });
+  }
+});
+
+router.get('/sponsors/2016', Verify.verifyOrdinaryUser ,function(req, res) {
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
       res.render('sponsors_2k16', {
           "isLoggedIn" : isLoggedIn,
       });
