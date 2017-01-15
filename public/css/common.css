@@ -576,11 +576,21 @@ input[type="radio"]:checked + label span {
     position: absolute;
     border: 2px solid;
     padding: 4px 20px 4px 23px;
-    border-radius: 14px;
+    border-radius: 2px;
     font-family: cl;
     font-weight: 600;
     right: 20px;
     color: #4a4a4a;
+    width: 150px;
+    text-align: center;
+}
+
+.notify-2{
+    margin-top: 46px;
+}
+
+.notify-3{
+    margin-top: 93px;
 }
 
 .game-is-on-green{
