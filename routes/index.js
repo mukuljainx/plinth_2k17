@@ -1580,6 +1580,33 @@ router.get('/mun', Verify.verifyOrdinaryUser ,function(req, res) {
   }
 });
 
+router.get('/school-outreach-program', Verify.verifyOrdinaryUser ,function(req, res) {
+  if(req.decoded.sub === ""){
+      isLoggedIn = false;
+      res.render('school_outreach_program', {
+          "isLoggedIn" : isLoggedIn,
+      });
+  }
+  else {
+      User.findOne({'email' : req.decoded.sub }, function(err, user) {
+          isLoggedIn = user.valid;
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+          // check to see if theres already a user with that email
+          if (user){
+              res.render('school_outreach_program',{
+                  "isLoggedIn" : isLoggedIn,
+                  "user" : {
+                      name : user.name,
+                      gender : user.gender,
+                  }
+              });
+          }
+      });
+  }
+});
+
 router.get('/archive', Verify.verifyOrdinaryUser ,function(req, res) {
   if(req.decoded.sub === ""){
       isLoggedIn = false;

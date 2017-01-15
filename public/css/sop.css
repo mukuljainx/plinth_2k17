@@ -14,7 +14,7 @@ h4{
     box-shadow: 1px 4px 8px 0 rgba(0,0,0,.2);
     height:220px;
     padding: 25px;
-    margin-bottom: 50px;    
+    margin-bottom: 50px;
 }
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -22,9 +22,12 @@ h4{
 .card img{
     height:100px;
     width:100px;
-    margin-bottom: 40px;: 
+    margin-bottom: 40px;:
 }
 
+.large-offset-1-5 {
+    margin-left: 12.63333%;
+}
 
 footer{
     margin-top: 100px;
