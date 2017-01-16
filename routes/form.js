@@ -400,4 +400,71 @@ router.get('/csv/*', Verify.verifyOrdinaryUser ,function(req, res) {
 });
 
 
+router.get('/acco/*', Verify.verifyOrdinaryUser ,function(req, res) {
+    var poc   = authUser.poc;
+    var allowedUser = ['jainmukul1996@gmail.com'];
+    var paymentUser = poc.slice(0);
+
+    if(req.decoded.sub === "" || (poc.indexOf(req.decoded.sub) === -1 && allowedUser.indexOf(req.decoded.sub) === -1)){
+         res.end("You are not authorized. Login and try");
+         return;
+     }
+
+    switch(req.params['0']) {
+        case "astronomy":
+            eventx = Astronomy;
+            break;
+        case "coding":
+            eventx = Cybros;
+            break;
+        case "literature":
+            eventx = Literary;
+            break;
+        case "robotics":
+            eventx = Robotics;
+            break;
+        case "management":
+            eventx = Ecell;
+            break;
+        case "quizzing":
+            eventx = Quiz;
+            break;
+        case "workshop":
+            eventx = Workshop;
+            allowedUser = authUser.admin;
+            break;
+        default:
+            res.end('Please Check the link once again there may some typo in club name');
+            return;
+            break;
+    }
+
+
+
+    eventx.find({"payment.status" : "TXN_SUCCESS"},function (err, results) {
+        if (err){
+            return console.error(err);
+        }
+        else{
+            User.findOne({'email' : req.decoded.sub }, function(err, user) {
+                // if there are any errors, return the error
+                if (err){
+                    return done(err);
+                }
+                // check to see if theres already a user with that email
+                if (user){
+                    var count = 0;
+                    for(var i=0; i< results.length; i++){
+                        for(var j=0; j< results[i].team.length; j++){
+                            if(results[i].team[j].accommodation === "yes") count++;
+                        }
+                    }
+                    res.json({count : count});
+                }
+            });
+        }
+    });
+});
+
+
 module.exports = router;
