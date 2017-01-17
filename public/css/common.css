@@ -593,6 +593,14 @@ input[type="radio"]:checked + label span {
     margin-top: 93px;
 }
 
+.notify-4{
+    margin-top: 140px;
+}
+
+.cryptex-notifty-small{
+    position: static;
+}
+
 .game-is-on-green{
     display: inline-block;
     border-radius: 100%;

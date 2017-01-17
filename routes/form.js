@@ -183,7 +183,7 @@ router.get('/participants/*', Verify.verifyOrdinaryUser ,function(req, res) {
             break;
         case "workshop":
             eventx = Workshop;
-            allowedUser = authUser.admin;
+            allowedUser = authUser.astronomy;
             break;
             default:
             res.end('Please Check the link once again there may some typo in club name');

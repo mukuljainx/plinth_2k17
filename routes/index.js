@@ -770,31 +770,7 @@ router.get('/workshops/3d-printer-workshop', Verify.verifyOrdinaryUser ,function
 });
 
 router.get('/workshops/vehicle-dynamics', Verify.verifyOrdinaryUser ,function(req, res) {
-    var eventDetail = require('../public/workshops/vehicle-dynamics-data');
-
-  if(req.decoded.sub === ""){
-      isLoggedIn = false;
-      res.render('workshops/web-o-master', {
-          "isLoggedIn" : isLoggedIn,
-          eventDetail : eventDetail
-      });
-  }
-  else {
-      User.findOne({'email' : req.decoded.sub }, function(err, user) {
-          isLoggedIn = user.valid;
-          // if there are any errors, return the error
-          if (err)
-              return done(err);
-          // check to see if theres already a user with that email
-          if (user){
-              res.render('workshops/web-o-master',{
-                  "isLoggedIn" : isLoggedIn,
-                  user : user,
-                  eventDetail : eventDetail
-              });
-          }
-      });
-  }
+    res.end('Workshops Cancelled');
 });
 
 router.get('/workshops/touch-augmented-realities', Verify.verifyOrdinaryUser ,function(req, res) {

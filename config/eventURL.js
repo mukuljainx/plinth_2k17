@@ -20,4 +20,5 @@ module.exports = {
     "vehicle-dynamics" : "/workshops/vehicle-dynamics",
     "audi" : "/workshops/photography",
     "3dPrinting" : "/workshops/3d-printer-workshop",
+    "solar" : "/workshops/solar-astronomy",
 }
