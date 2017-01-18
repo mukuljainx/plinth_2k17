@@ -59,7 +59,7 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
     if(req.body.eventName === "robowar") totalAmount = 700;
     if(req.body.eventName === "quadcopter") totalAmount = 600;
     if(req.body.eventName === "touch-augmented-realities") totalAmount = 750;
-    if(req.body.eventName === "audi") totalAmount = 500;
+    if(req.body.eventName === "audi") totalAmount = 600;
     if(req.body.eventName === "3dPrinting") totalAmount = 250;
 
 
@@ -112,7 +112,7 @@ router.get('/initiatepayment', function(req, res) {
     if(req.query.eventName === "robowar") totalAmount = 700;
     if(req.query.eventName === "quadcopter") totalAmount = 600;
     if(req.query.eventName === "touch-augmented-realities") totalAmount = 750;
-    if(req.body.eventName === "audi") totalAmount = 500;
+    if(req.body.eventName === "audi") totalAmount = 600;
     if(req.body.eventName === "3dPrinting") totalAmount = 250;
     payment = {
         status   : 'TXN_NOT_DONE',
@@ -135,7 +135,7 @@ router.get('/initiatepayment', function(req, res) {
                         var event_order_id = "Plinth-" + req.query.eventName + "-" + (count + 1) + "-" + id_tag;
 
                         if(req.query.eventName === "touch-augmented-realities") totalAmount = 750 * results.team.length;
-                        if(req.query.eventName === "audi") totalAmount = 500 * results.team.length; //workshop
+                        if(req.query.eventName === "audi") totalAmount = 600 * results.team.length; //workshop
                         if(req.query.eventName === "3dPrinting") totalAmount = 250 * results.team.length; //workshop
                         if(poc.indexOf(results.teamEmail) !== -1) totalAmount = 0.10;
                         paymentdb.id = id;
