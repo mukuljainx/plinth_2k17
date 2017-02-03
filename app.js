@@ -76,7 +76,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.render('error_dev', {
       message: err.message,
       error: err
     });
@@ -88,10 +88,12 @@ if (app.get('env') === 'development') {
 if (app.get('env') === 'production') {
     app.use(function(err, req, res, next) {
       res.status(err.status || 500);
-      // res.render('error', {
-      //   message: err.message,
-      //   error: {}
-      // });
+      if(err.status === 401){
+          res.render('error_401', {
+            message: err.message,
+            "isLoggedIn" : isLoggedIn,
+          });
+      }
       res.redirect('/');
     });
 }
