@@ -89,10 +89,11 @@ if (app.get('env') === 'production') {
     app.use(function(err, req, res, next) {
       res.status(err.status || 500);
       if(err.status === 401){
-          res.render('error_401', {
-            message: err.message,
-            "isLoggedIn" : isLoggedIn,
-          });
+          res.end(err.message);
+        //   res.render('error_401', {
+        //     message: err.message,
+        //     "isLoggedIn" : isLoggedIn,
+        //   });
       }
       res.redirect('/');
     });
