@@ -25,7 +25,7 @@ var poc = require('../config/authuser').poc;
 
 
 
-var hostURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://plinth.in'
+var hostURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://plinth.mukuljain.me'
 var paytmURL = 'https://secure.paytm.in/oltp-web/processTransaction';
 
 router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
