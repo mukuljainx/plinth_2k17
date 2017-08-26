@@ -11,7 +11,7 @@ exports.getToken = function (user) {
     }
 
     var jwt = nJwt.create(claims,config.secretKey);
-    jwt.setExpiration(new Date('2017-06-31'));
+    jwt.setExpiration(new Date('2020-06-31'));
 
     var token = jwt.compact();
     var buffer = new Buffer(token);
@@ -31,11 +31,16 @@ exports.verifyOrdinaryUser = function (req, res, next) {
     }
     var buffer = new Buffer(tokenx, 'base64');
     var token = buffer.toString('ascii');
+
         // decode token
     if (token) {
         // verifies secret and checks exp
         jwt.verify(token, config.secretKey, function (err, decoded) {
             if (err) {
+                console.log("************************");
+                console.log("err name: ", err.name);
+                console.log("err message: ", err.message);
+                console.log("************************");
                 var err = new Error('You are not authenticated! please clear your cookies and try again');
                 err.status = 401;
                 return next(err);

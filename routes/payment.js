@@ -25,11 +25,11 @@ var poc = require('../config/authuser').poc;
 
 
 
-var hostURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://plinth.mukuljain.me'
+var hostURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : 'https://plinth.mukuljain.me'
 var paytmURL = 'https://secure.paytm.in/oltp-web/processTransaction';
 
 router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
-    var totalAmount = 100;
+    var totalAmount = 0.01;
     var eventx = "";
     switch(req.body.clubName) {
         case "astronomy":
@@ -37,14 +37,14 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
             break;
         case "coding":
             eventx = Cybros;
-            var totalAmount = 150;
+            var totalAmount = 0.01;
             break;
         case "literature":
             eventx = Literary;
             break;
         case "robotics":
             eventx = Robotics;
-            totalAmount = 200;
+            totalAmount = 0.01;
             break;
         case "management":
             eventx = Ecell;
@@ -56,11 +56,11 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
             eventx = Workshop;
             break;
     }
-    if(req.body.eventName === "robowar") totalAmount = 700;
-    if(req.body.eventName === "quadcopter") totalAmount = 600;
-    if(req.body.eventName === "touch-augmented-realities") totalAmount = 750;
-    if(req.body.eventName === "audi") totalAmount = 600;
-    if(req.body.eventName === "3dPrinting") totalAmount = 250;
+    if(req.body.eventName === "robowar") totalAmount = 0.01;
+    if(req.body.eventName === "quadcopter") totalAmount = 0.01;
+    if(req.body.eventName === "touch-augmented-realities") totalAmount = 0.01;
+    if(req.body.eventName === "audi") totalAmount = 0.01;
+    if(req.body.eventName === "3dPrinting") totalAmount = 0.01;
 
 
     eventx.find({ 'eventName' : req.body.eventName , 'teamEmail' : req.body.email },function (err, result) {
@@ -80,7 +80,7 @@ router.post('/fetchData', Verify.verifyOrdinaryUser, function(req, res) {
 
 router.get('/initiatepayment', function(req, res) {
     paymentdb = new PaymentDB();
-    var totalAmount = 100;
+    var totalAmount = 0.01;
     var id = req.query.id;
     var eventx = "";
     switch(req.query.clubName) {
@@ -89,14 +89,14 @@ router.get('/initiatepayment', function(req, res) {
             break;
         case "coding":
             eventx = Cybros;
-            var totalAmount = 150;
+            var totalAmount = 0.01;
             break;
         case "literature":
             eventx = Literary;
             break;
         case "robotics":
             eventx = Robotics;
-            totalAmount = 200;
+            totalAmount = 0.01;
             break;
         case "management":
             eventx = Ecell;
@@ -109,11 +109,11 @@ router.get('/initiatepayment', function(req, res) {
             break;
     }
 
-    if(req.query.eventName === "robowar") totalAmount = 700;
-    if(req.query.eventName === "quadcopter") totalAmount = 600;
-    if(req.query.eventName === "touch-augmented-realities") totalAmount = 750;
-    if(req.body.eventName === "audi") totalAmount = 600;
-    if(req.body.eventName === "3dPrinting") totalAmount = 250;
+    if(req.query.eventName === "robowar") totalAmount = 0.01;
+    if(req.query.eventName === "quadcopter") totalAmount = 0.01;
+    if(req.query.eventName === "touch-augmented-realities") totalAmount = 0.01;
+    if(req.body.eventName === "audi") totalAmount = 0.01;
+    if(req.body.eventName === "3dPrinting") totalAmount = 0.01;
     payment = {
         status   : 'TXN_NOT_DONE',
         order_id : 'undefined',
@@ -135,9 +135,9 @@ router.get('/initiatepayment', function(req, res) {
                         var event_order_id = "Plinth-" + req.query.eventName + "-" + (count + 1) + "-" + id_tag;
 
                         if(req.query.eventName === "touch-augmented-realities") totalAmount = 750 * results.team.length;
-                        if(req.query.eventName === "audi") totalAmount = 600 * results.team.length; //workshop
-                        if(req.query.eventName === "3dPrinting") totalAmount = 250 * results.team.length; //workshop
-                        if(poc.indexOf(results.teamEmail) !== -1) totalAmount = 0.10;
+                        if(req.query.eventName === "audi") totalAmount = 0.01 * results.team.length; //workshop
+                        if(req.query.eventName === "3dPrinting") totalAmount = 0.01 * results.team.length; //workshop
+                        if(poc.indexOf(results.teamEmail) !== -1) totalAmount = 0.01;
                         paymentdb.id = id;
                         paymentdb.clubName = req.query.clubName;
                         paymentdb.eventName = req.query.eventName;
@@ -185,9 +185,9 @@ router.post('/mun/initiatepayment', function(req, res) {
     }
     else{
         var accommodation = req.body.user.accommodation;
-        if(req.body.type !== "accommodation") var amount = req.body.type === "delegate" ? 1300 : 750;
+        if(req.body.type !== "accommodation") var amount = req.body.type === "delegate" ? 0.01 : 0.01;
         else var amount = 0;
-        amount = amount + (200 * accommodation)
+        amount = amount + (0.01 * accommodation)
 
         PaymentMUN.count({}, function(err, count){
             var order_id = "MUN-" + req.body.type + "-" + (count + 1) + "-" + id_tag;
@@ -432,7 +432,7 @@ router.get('/sif/initiatepayment', function(req, res) {
             var id_tag = process.env.NODE_ENV === 'development' ? 'dev' : '2017'
             order_id = 'Plinth-' + (count + 1) + "-SIF-" + id_tag;
             paymentsif.order_id = order_id;
-            paymentsif.amount = 500 ;
+            paymentsif.amount = 0.01 ;
             paymentsif.email = doc.teamEmail;
             paymentsif.name =  doc.detail.name;
             paymentsif.number =  doc.teamNumber;
@@ -442,7 +442,7 @@ router.get('/sif/initiatepayment', function(req, res) {
                     REQUEST_TYPE     : "DEFAULT",
                     ORDER_ID         : order_id,
                     CUST_ID          : "plinth-" + doc.email,
-                    TXN_AMOUNT       : 500,
+                    TXN_AMOUNT       : 0.01,
                     CHANNEL_ID       :'WEB',
                     INDUSTRY_TYPE_ID : paytm.industryID,
                     MID              : paytm.mid,
@@ -451,7 +451,7 @@ router.get('/sif/initiatepayment', function(req, res) {
                     // EMAIL            : result.email,
                     CALLBACK_URL     : hostURL + '/payment/sif/response',
                 }
-                if(poc.indexOf(doc.teamEmail) !== -1) paramaters.TXN_AMOUNT = 0.10;
+                if(poc.indexOf(doc.teamEmail) !== -1) paramaters.TXN_AMOUNT = 0.01;
 
                 // Create an array having all required parameters for creating checksum.
                 checksum.genchecksum(paramaters, paytm.key, function (err, result) {
