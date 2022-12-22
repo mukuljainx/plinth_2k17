@@ -16,7 +16,7 @@
     "express-session": "^1.14.2",
     "google-auth-library": "^0.10.0",
     "jade": "~1.11.0",
-    "jsonwebtoken": "^7.1.9",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^4.6.3",
     "mongoose-csv": "^1.0.0",
     "mongoose-currency": "^0.2.0",
